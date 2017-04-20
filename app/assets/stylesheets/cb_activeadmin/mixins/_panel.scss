@@ -64,7 +64,7 @@
       color: get-nav-text-color($bg_color);
       @include icon-constructor;
       position: absolute;
-      right: $content-offset-sm;
+      right: $content-offset-xs;
       top: 0;
       bottom: 0;
       @include transition(all .2s ease-in-out);
@@ -81,6 +81,6 @@
   }
   @include mobile {
     margin-bottom: 1.5 * $offset;
-    & > h3 { padding-left: $content-offset-sm; }
+    & > h3 { padding-left: $content-offset-xs; }
   }
 }

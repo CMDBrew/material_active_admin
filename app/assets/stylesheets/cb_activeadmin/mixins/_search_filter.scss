@@ -150,7 +150,7 @@
       input[type="submit"] { float: right; }
       a.clear_filters_btn { @include button-constructor($color:$text-color-secondary, $type:link); }
       input[type="submit"] {
-        @include button-constructor($color:$brand-primary, $type:link);
+        @include button-constructor($color:$brand-primary);
         margin-left: $offset;
       }
     }

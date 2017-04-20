@@ -1,3 +1,64 @@
+form {
+  ul.errors {
+    background: $brand-danger;
+    border-radius: $border-radius;
+    color: get-text-color($brand-danger);
+    padding: $content-offset-xs;
+    padding-left: 4 * $offset;
+  }
+  ol,
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    &.hidden { display: none !important; }
+    &.input:not(.with-guide) {
+      @include placeholder(
+      $color: $text-color-placeholder,
+      $font-weight: normal
+      );
+      &.boolean label { @include checkbox-constructor; }
+      &.stringish,
+      &.text,
+      &.just_time_picker_with_ampm,
+      &.just_datetime_picker,
+      &.date_select .fragment,
+      &.datetime_select .fragment,
+      &.select { @include text-field-constructor($type:$input-type); }
+      &.just_datetime_picker,
+      &.just_time_picker_with_ampm {
+        flex-direction: row !important;
+        align-items: center;
+        & > * {
+          flex: 1;
+          &:not(:first-child) { margin-left: $offset; }
+          &:not(:last-child) { margin-right: $offset; }
+        }
+      }
+      .fragments-group {
+        display: flex;
+        flex-direction: row;
+        .fragment { padding: 0 $content-offset-xs; }
+        .fragment:first-child { padding-left: 0; }
+        .fragment:last-child { padding-right: 0; }
+      }
+    }
+    &.error .file-container .file-text { border-color: $brand-danger; }
+    .field_with_errors {
+      width: 100%;
+      input,
+      select,
+      textarea { border-color: $brand-danger !important; }
+    }
+    p.inline-errors {
+      width: 100%;
+      color: $brand-danger;
+      font-weight: 500;
+      margin: $offset 0;
+    }
+  }
+}
+
 body.logged_in {
   form {
     fieldset {
@@ -91,12 +152,12 @@ body.logged_in {
     }
     @include mobile {
       fieldset {
-        & > legend { padding: 0 $content-offset-sm; }
-        &.actions { padding: $content-offset-sm; }
+        & > legend { padding: 0 $content-offset-xs; }
+        &.actions { padding: $content-offset-xs; }
         &.inputs {
-          .has_many_container { padding: $content-offset-sm; }
+          .has_many_container { padding: $content-offset-xs; }
           li.input {
-            padding: $content-offset-sm;
+            padding: $content-offset-xs;
             &.boolean label {
               .checkbox-label {
                 position: static;
@@ -114,68 +175,6 @@ body.logged_in {
           }
         }
       }
-    }
-  }
-}
-
-// Original
-form {
-  ul.errors {
-    background: $brand-danger;
-    border-radius: $border-radius;
-    color: get-text-color($brand-danger);
-    padding: $content-offset-sm;
-    padding-left: 4 * $offset;
-  }
-  ol,
-  li {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    &.hidden { display: none !important; }
-    &.input:not(.with-guide) {
-      @include placeholder(
-      $color: $text-color-placeholder,
-      $font-weight: normal
-      );
-      &.boolean label { @include checkbox-constructor; }
-      &.stringish,
-      &.text,
-      &.just_time_picker_with_ampm,
-      &.just_datetime_picker,
-      &.date_select .fragment,
-      &.datetime_select .fragment,
-      &.select { @include text-field-constructor($type:$input-type); }
-      &.just_datetime_picker,
-      &.just_time_picker_with_ampm {
-        flex-direction: row !important;
-        align-items: center;
-        & > * {
-          flex: 1;
-          &:not(:first-child) { margin-left: $offset; }
-          &:not(:last-child) { margin-right: $offset; }
-        }
-      }
-      .fragments-group {
-        display: flex;
-        flex-direction: row;
-        .fragment { padding: 0 $content-offset-sm; }
-        .fragment:first-child { padding-left: 0; }
-        .fragment:last-child { padding-right: 0; }
-      }
-    }
-    &.error .file-container .file-text { border-color: $brand-danger; }
-    .field_with_errors {
-      width: 100%;
-      input,
-      select,
-      textarea { border-color: $brand-danger !important; }
-    }
-    p.inline-errors {
-      width: 100%;
-      color: $brand-danger;
-      font-weight: 500;
-      margin: $offset 0;
     }
   }
 }

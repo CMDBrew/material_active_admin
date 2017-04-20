@@ -19,8 +19,8 @@
     @include dropdown-menu-constructor($parent_bg: $navbar-bg);
     & > a {
       display: flex !important;
-      &:after { display: none !important; }
-      span.text { display: none; }
+      &:after,
+      span.text { display: none !important; }
     }
   }
   .batch_actions_selector {
@@ -28,15 +28,9 @@
     display: flex;
     align-items: center;
     .dropdown_menu_button.disabled { opacity: 0; }
-    // &:after {
-    //   content: "";
-    //   width: 1px;
-    //   height: calc(#{$height} - 4 * #{$offset});
-    //   margin: 0 $offset;
-    //   background: $divider_color;
-    // }
     & > a {
       @include button-constructor($color: $link_color, $type:link);
+      &:after { content: none; }
       @if (lightness($bg_color) > 50) {
         &:hover { background: rgba(black, .05) !important; }
         &:active,
@@ -46,15 +40,10 @@
         &:active,
         &:focus { background: rgba(white, .15) !important; }
       }
-      // &:before {
-      //   content: "\E065";
-      //   margin-right: $offset / 2;
-      //   @include icon-constructor;
-      // }
-      &:after { content: none; }
     }
   }
   .button-wrap { position: relative; }
+  .action_item a,
   .nav-icon {
     $size: $ctrl-height;
     width: $size;
@@ -140,10 +129,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      .action_item {
-        &:not(:first-child) { margin-left: $offset; }
-        a:not(.nav-icon) { @include button-constructor($color: $link_color, $type: link); }
-      }
+      .action_item:not(:first-child) { margin-left: $offset; }
     }
   }
   @include mobile {
