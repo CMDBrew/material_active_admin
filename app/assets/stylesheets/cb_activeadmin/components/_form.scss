@@ -100,6 +100,7 @@ body.logged_in {
               font-size: $label-fontsize;
               overflow: hidden;
               color: get-text-color($panel-bg);
+              text-transform: capitalize;
               .field_with_errors input { border-color: $brand-danger; }
               input { width: calc(100% - 30%); }
             }
