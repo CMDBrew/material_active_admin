@@ -1,0 +1,239 @@
+@keyframes menu-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1,0,0,90deg)scale(.5)translateY(0));
+  }
+  to {
+    @include transform(perspective(1000px)rotate3d(1,0,0,0)scale(1));
+  }
+}
+@-webkit-keyframes menu-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1,0,0,90deg)scale(.5)translateY(0));
+  }
+  to {
+    @include transform(perspective(1000px)rotate3d(1,0,0,0)scale(1));
+  }
+}
+
+@mixin select2-constructor(
+  $height:         $input-height,
+  $parent_bg:      $panel-bg,
+  $bg_color:       $select2-bg,
+  $clear_btn_size: 20px,
+  $min_width:      124px,
+  $shadow:         $select2-shadow,
+  $chip_size:      $chip-size,
+  $input_type:     $input-type
+) {
+  $border: null;
+  @if (lightness($bg_color) > 50) {
+    $border: $input-guide-border-light-parent;
+  } @else {
+    $border: $input-guide-border-dark-parent;
+  }
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-size: $h6-fontsize;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: transparent;
+  -webkit-appearance: none;
+  -webkit-backface-visibility: hidden;
+  width: 100%;
+  color: get-text-color($bg_color);
+  &.select2-container--focus .select2-selection--multiple {
+    border-color: $brand-primary;
+    background-color: transparent;
+    outline: none;
+    padding-right: 0;
+    @if($input_type == "guide") {
+      border: 0;
+      border-bottom: 2px solid $brand-primary;
+    } @elseif($input_type == "solid") {
+      border: $input-solid-border-active;
+    }
+  }
+  .selection {
+    display: block;
+  }
+  .select2-selection {
+    display: flex;
+    align-items: center;
+    border: 0;
+    min-height: $height;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    padding-right: 2 * $offset;
+    background-position: 100% 8px;
+    @if (lightness($parent_bg) > 50) {
+      background-image: image-url("cb_activeadmin/arrow_down.png");
+    } @else {
+      background-image: image-url("cb_activeadmin/arrow_down-light.png");
+    }
+    @if($input_type == "solid") {
+      background-color: $input-solid-bg;
+      padding: 0 2 * $offset;
+      border: $input-solid-border;
+      border-radius: $input-border-radius;
+    } @else {
+      border-bottom: $border;
+      border-radius: 0;
+      padding: 0;
+      background-color: transparent;
+    }
+    .select2-selection__clear {
+      position: absolute;
+      top: ($select2-option-height - $clear_btn_size - $offset) / 2;
+      right: 3 * $offset;
+    }
+    .select2-selection__choice__remove,
+    .select2-selection__clear {
+      font-weight: normal !important;
+      width: $clear_btn_size;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background: $chip-remove-bg;
+      color: $chip-remove-text-color;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      height: $clear_btn_size;
+      margin: 0;
+    }
+  }
+  .select2-selection__rendered {
+    position: relative;
+    width: 100%;
+    padding-left: 0 !important;
+    font-size: $select2-fontsize;
+    padding-right: 7 * $offset !important;
+  }
+  .select2-selection__placeholder { color: $text-color-placeholder; }
+  .select2-selection__arrow { display: none; }
+  .select2-results__option--highlighted[aria-selected] {
+    @if (lightness($bg_color) > 50) {
+      background: darken($bg_color, $color-adjust-default) !important;
+      color: get-text-color(darken($bg_color, $color-adjust-default)) !important;
+    } @else {
+      background: lighten($bg_color, $color-adjust-default) !important;
+      color: get-text-color(lighten($bg_color, $color-adjust-default)) !important;
+    }
+  }
+  .select2-search--dropdown {
+    padding: 0;
+    border: 0;
+    input.select2-search__field {
+      padding: $offset $offset * 1.5;
+      border: 0;
+      border-bottom: 1px solid get-divider-color($bg_color);
+      background: transparent;
+    }
+  }
+  .select2-search--inline .select2-search__field {
+    padding: 0 !important;
+    border: 0 !important;
+    margin: 0;
+  }
+  .select2-selection--single .select2-selection__rendered {
+    color: inherit;
+  }
+  .select2-selection--single .select2-selection__rendered {
+    display: inline-block;
+    align-items: center;
+  }
+  .select2-selection--multiple {
+    @if($input_type == "solid") {
+      padding-left: $offset / 2;
+    }
+    padding-top: $offset / 2;
+    padding-bottom: $offset / 2;
+    .select2-selection__rendered {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      overflow: visible;
+      padding: 0;
+    }
+    .select2-search--inline {
+      margin-bottom: 0 !important;
+      @if($input_type == "solid") {
+        padding: 0 $offset;
+      }
+      input {
+        height: $chip_size !important;
+        background: transparent !important;
+      }
+    }
+    .select2-selection__choice {
+      $c_offset: ($chip_size - $clear_btn_size) / 2;
+      @include chip-constructor($size: $chip_size);
+      padding-right: $clear_btn_size + $c_offset * 2;
+      .select2-selection__choice__remove {
+        position: absolute;
+        right: $c_offset;
+        top: $c_offset;
+      }
+    }
+  }
+  .select2-dropdown {
+    min-width: $min_width;
+    background: $bg_color;
+    padding: 0;
+    margin: 0;
+    margin-top: $offset / 2;
+    border: 0;
+    border-radius: $border-radius;
+    z-index: 1999;
+    @include box-shadow($shadow);
+    @include animation(menu-animation .2s);
+    transform-origin: 50% 0;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      position: relative;
+      height: $select2-option-height;
+      float: left;
+      width: 100%;
+      line-height: $select2-option-height;
+      display: block;
+      align-items: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 0 $offset;
+      padding-left: $icon-size + $offset;
+      color: get-text-color($bg_color);
+      box-sizing: border-box;
+      font-size: $select2-fontsize;
+      font-weight: normal;
+      &:before {
+        position: absolute;
+        left: 0;
+        width: $icon-size + $offset;
+        height: $select2-option-height;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+      }
+      &:not(.select2-results__message):before {
+        content: '\E835';
+        color: get-nav-text-color($bg_color);
+        margin-right: $offset;
+        @include icon-constructor;
+      }
+      &.select2-results__option[aria-selected=true] {
+        background: transparent;
+        &:not(.select2-results__message):before {
+          content: '\E834';
+          color: $brand-primary !important;
+        }
+      }
+    }
+  }
+}

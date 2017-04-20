@@ -1,0 +1,134 @@
+@mixin comments-constructor(
+  $divider_color:        $comment-divider-color,
+  $avatar_size:          32px,
+  $avatar_border_radius: 50%,
+  $bg_color:             $brand-success,
+  $icon_reply:           "reply",
+  $icon_delete:          "delete"
+) {
+  .comments-list {
+    padding: 3 * $offset 0;
+    margin: 0;
+    padding-bottom: 0;
+    .comment-form {
+      display: none;
+      margin-top: 2 * $offset;
+      &.form-active { display: block; }
+      .actions .mdi-btn:not(:last-child) { margin-right: $offset; }
+    }
+    .comment_item_inner {
+      display: flex;
+      flex-direction: row;
+    }
+    .comment_item {
+      position: relative;
+      display: block;
+      padding-left: 3 * $offset;
+      .comment_header {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: $offset;
+      }
+      .comment_avatar {
+        width: $avatar_size;
+        height: $avatar_size;
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        border-radius: $avatar_border_radius;
+        margin-right: 2 * $offset;
+        font-weight: bold;
+        background: $bg_color;
+        color: get-text-color($bg_color);
+        text-transform: uppercase;
+      }
+      .comment_date {
+        font-size: $label-fontsize;
+        color: get-text-color($panel-bg, $type:secondary);
+      }
+      .comment_content {
+        flex: 1;
+        padding-bottom: $offset;
+        padding-right: 3 * $offset;
+        margin-bottom: 2 * $offset;
+        border-bottom: 1px solid $divider_color;
+      }
+    }
+    .comment_meta {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      font-size: $label-fontsize;
+      white-space: nowrap;
+      line-height: 1;
+      .comment_author {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding-right: 3 * $offset;
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        a {
+          font-weight: $font-bold;
+          font-size: $p-fontsize;
+          color: get-text-color($panel-bg);
+        }
+      }
+    }
+    .comment_actions {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      align-items: flex-end;
+      display: flex;
+      color: get-text-color($panel-bg, $type:secondary);
+      font-size: $label-fontsize;
+      opacity: 0;
+      a {
+        color: inherit;
+        padding: $offset / 2;
+        &.comment-reply:before { content: $icon_reply; }
+        &.comment-delete:before { content: $icon_delete; }
+        &.comment-reply:before,
+        &.comment-delete:before { @include icon-constructor; }
+      }
+    }
+    .comment_body {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: $offset;
+      color: get-text-color($panel-bg, $type:secondary);
+      &:hover .comment_actions { opacity: 1; }
+      .comment_text {
+        display: flex;
+        flex: 1;
+        padding-right: 3 * $offset;
+      }
+    }
+  }
+  ul.nested_comments {
+    padding: 0;
+    margin-left: $avatar_size + $offset - 3 * $offset;
+  }
+  fieldset.actions {
+    text-align: right;
+    padding: 3 * $offset;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  form { border-top: 1px solid $form-divider-color; }
+  fieldset.inputs {
+    margin-bottom: 0;
+    @include box-shadow(none);
+    textarea,
+    input { border: 0 !important; }
+    li { margin: 0; }
+    @include text-field-constructor($type:guide);
+  }
+  #active_admin_comment_submit_action {
+    display: inline-block;
+  }
+  @include mobile {
+    fieldset.inputs textarea { padding: 2 * $offset !important; }
+  }
+}

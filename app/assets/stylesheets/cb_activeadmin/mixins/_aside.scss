@@ -1,0 +1,11 @@
+@mixin aside-constructor {
+  #search-status-_sidebar_section {
+    .panel_contents * {
+      font-size: $p-fontsize;
+      margin: 0;
+    }
+  }
+  @include mobile {
+    padding: 0;
+  }
+}

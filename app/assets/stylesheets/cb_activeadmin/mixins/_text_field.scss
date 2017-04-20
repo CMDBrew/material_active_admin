@@ -1,0 +1,210 @@
+@mixin text-field-base($size) {
+  border: 0;
+  padding: 0 2 * $offset;
+  box-sizing: border-box;
+  outline: none;
+  font-size: $p-fontsize;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: transparent;
+  -webkit-appearance: none;
+  -webkit-backface-visibility: hidden;
+  width: 100%;
+  @if($size == densed) {
+    height: $input-height-densed;
+  } @else {
+    height: $input-height;
+  }
+}
+
+@mixin text-field-solid(
+  $parent_bg,
+  $size,
+  $color,
+  $border:        $input-solid-border,
+  $border_active: $input-solid-border-active,
+  $background:    $input-solid-bg
+) {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  select,
+  textarea,
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=number],
+  input[type=url],
+  input[type=search],
+  input[type=tel] {
+    @include text-field-base($size);
+    border-radius: $input-border-radius;
+    background: $background;
+    border: $border;
+    &:focus { border: $border_active; }
+    &[disabled="disabled"] {
+      background: $input-solid-disabled-bg;
+      color: $input-placeholder-color;
+    }
+  }
+  textarea {
+    padding: 2 * $offset;
+    height: auto;
+    resize: vertical;
+    white-space: normal;
+    @if($size == densed) {
+      min-height: $input-height-densed;
+    } @else {
+      min-height: $input-height;
+    }
+  }
+  &.with-icon {
+    margin-left: 4 * $offset;
+    i {
+      position: absolute;
+      left: -4 * $offset;
+      height: $input-height;
+      display: flex;
+      align-items: center;
+      color: $input-placeholder-color;
+    }
+    abbr { display: none; }
+  }
+}
+
+@mixin text-field-highlight($parent_bg, $size, $color) {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  select,
+  textarea,
+  input[type=text],
+  input[type=password],
+  input[type=search],
+  input[type=email],
+  input[type=number],
+  input[type=url],
+  input[type=tel] {
+    @include text-field-base($size);
+    border-radius: 0;
+    padding: 0;
+    $border_color: null;
+    @if (lightness($parent_bg) > 50) {
+      border-bottom: $input-guide-border-light-parent;
+    } @else {
+      border-bottom: $input-guide-border-dark-parent;
+    }
+    &[disabled="disabled"] {
+      color: $input-placeholder-color;
+    }
+  }
+  textarea {
+    padding: $offset;
+    height: auto;
+    resize: vertical;
+    white-space: normal;
+    @if (lightness($parent_bg) > 50) {
+      border: $input-guide-border-light-parent;
+    } @else {
+      border: $input-guide-border-dark-parent;
+    }
+    @if($size == densed) {
+      min-height: $input-height-densed;
+    } @else {
+      min-height: $input-height;
+    }
+  }
+  &:not(.with-guide) {
+    select,
+    textarea,
+    input[type=text],
+    input[type=password],
+    input[type=search],
+    input[type=email],
+    input[type=number],
+    input[type=url],
+    input[type=tel] {
+      &:focus { border-color: $color; }
+    }
+  }
+  &.with-icon {
+    margin-left: 4 * $offset;
+    i {
+      position: absolute;
+      left: -4 * $offset;
+      height: $input-height;
+      display: flex;
+      align-items: center;
+      color: $input-placeholder-color;
+    }
+    abbr { display: none; }
+  }
+  .guide {
+    content: "";
+    position: absolute;
+    left: 50%;
+    right: 0;
+    top: calc(#{$input-height} - 2px);
+    height: 2px;
+    width: 1px;
+    background: $color;
+    @include transform(translate(-50%, 0));
+    @include transition(width .2s linear);
+  }
+}
+
+@mixin text-field-constructor(
+  $type:      solid,
+  $size:      null,
+  $color:     $brand-primary,
+  $parent_bg: $panel-bg
+) {
+  @if($type == solid) {
+    @include text-field-solid(
+      $parent_bg: $parent_bg,
+      $color: $color,
+      $size: $size
+    );
+  } @elseif($type == guide) {
+    @include text-field-highlight(
+      $parent_bg: $parent_bg,
+      $color: $color,
+      $size: $size
+    );
+  }
+  select {
+    background-repeat: no-repeat;
+    background-size: 24px;
+    @if (lightness($parent_bg) > 50) {
+      background-image: image-url("cb_activeadmin/arrow_down.png");
+    } @else {
+      background-image: image-url("cb_activeadmin/arrow_down-light.png");
+    }
+    @if($type == solid) {
+      background-position: calc(100% - 4px) 8px;
+      padding-right: 4 * $offset;
+    } @else {
+      background-position: 100% 8px;
+      padding-right: 3 * $offset;
+    }
+  }
+  input.datepicker {
+    background-repeat: no-repeat;
+    background-size: 18px;
+    @if (lightness($parent_bg) > 50) {
+      background-image: image-url("cb_activeadmin/date.png");
+    } @else {
+      background-image: image-url("cb_activeadmin/date-light.png");
+    }
+    @if($type == solid) {
+      background-position: calc(100% - 8px) 10px;
+      padding-right: 4 * $offset;
+    } @else {
+      background-position: 100% 10px;
+      padding-right: 3 * $offset;
+    }
+  }
+}

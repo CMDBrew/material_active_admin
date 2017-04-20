@@ -1,0 +1,34 @@
+<% content_for :title do %>
+  <h3 class="text-center"><%= title t('active_admin.devise.reset_password.title') %></h3>
+<% end %>
+<!-- <%= devise_error_messages! %> -->
+<%= active_admin_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  f.inputs do
+    f.input :email,
+            :label       => content_tag(:i, "email", class: "cb_activeadmin-icons"),
+            :placeholder => "Email",
+            :wrapper_html => {
+              :class => "mdi-control with-icon with-guide"
+            },
+            :input_html  => {
+              :autofocus    => true,
+              :autocomplete => 'off',
+            }
+  end
+  f.actions do
+    f.action :submit,
+             :button_html  => {
+               value: t('active_admin.devise.reset_password.submit')
+             },
+             :wrapper_html => {
+               :class             => "mdi-btn brand-primary with-ripple",
+               :data_ripple_color => "rgba(0,0,0,.3)"
+             }
+  end
+end %>
+<% content_for :extra do %>
+  <%= render partial: "active_admin/devise/shared/links" %>
+<% end %>
+<% content_for :footer do %>
+  <%=render partial: "active_admin/devise/shared/footer" %>
+<% end %>

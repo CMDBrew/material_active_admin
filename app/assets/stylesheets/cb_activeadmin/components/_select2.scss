@@ -1,0 +1,2 @@
+.select2-container { @include select2-constructor; }
+.field_with_errors .select2-selection { border-color: $brand-danger !important; }

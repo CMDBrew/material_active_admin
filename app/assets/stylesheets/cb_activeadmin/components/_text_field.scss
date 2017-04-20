@@ -1,0 +1,9 @@
+.mdi-control {
+  &:not(.with-guide) {
+    @include text-field-constructor($type:guide);
+  }
+  &.with-guide {
+    @include text-field-constructor($type:guide);
+    &.error { @include text-field-constructor($type:guide, $color:$brand-danger); }
+  }
+}

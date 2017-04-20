@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+
+// =================================
+//    DEFAULT CONFIGS
+// =================================
+
+/**
+  GLOBAL
+  **/
+// Utilities
+$color-adjustment-intensity: 75 !default;
+$offset:                     8px !default;
+$border-radius:              2px !default;
+$screen-tablet:              768px !default;
+$screen-desktop:             992px !default;
+$widget-border-radius:       2px !default;
+
+// Ctrls
+$ctrl-height:        40px !default;
+$ctrl-height-densed: 32px !default;
+
+// Typography
+$h1-fontsize:   4rem     !default;
+$h2-fontsize:   3.21rem  !default;
+$h3-fontsize:   2.43em   !default;
+$h4-fontsize:   1.71rem  !default;
+$h5-fontsize:   1.43rem  !default;
+$h6-fontsize:   1.29rem  !default;
+$p-fontsize:    1rem     !default;
+$base-fontsize: 14px     !default;
+$font-fallback: "Helvetica Neue", Helvetica,Arial,sans-serif !default;
+$font-family:   "Roboto", $font-fallback !default;
+$font-bold:     500 !default;
+
+// Backgrounds
+$body-bg:              #EEE !default;
+$widget-bg:            white !default;
+$widget-ctrl-bg:       #F5F5F5 !default;
+$backdrop-bg:          rgba(0,0,0,.5) !default;
+
+// Shadows
+$widget-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2) !default;
+
+// Icon
+$icon-font: 'Material Icons' !default;
+$icon-size: 24px !default;
+
+// Intensity
+$color-adjust-default: 3% !default;
+$color-adjust-strong: 5% !default;
+
+// Colors
+$brand-default:   #E8E8E8 !default;
+$brand-primary:   #3F51B5 !default;
+$brand-success:   #009688 !default;
+$brand-info:      #03A9F4 !default;
+$brand-warning:   #FFC107 !default;
+$brand-danger:    #F44336 !default;
+$btn-color-map: (
+  "brand-default": $brand-default,
+  "brand-primary": $brand-primary,
+  "brand-success": $brand-success,
+  "brand-info":    $brand-info,
+  "brand-warning": $brand-warning,
+  "brand-danger":  $brand-danger
+) !default;
+
+// Text colors
+$text-color-primary:           rgba(33,33,33,1) !default;
+$text-color-secondary:         rgba(33,33,33,.54) !default;
+$text-color-primary-inverse:   rgba(255,255,255,1) !default;
+$text-color-secondary-inverse: rgba(255,255,255,.54) !default;
+$text-color-placeholder:       #B9B9B9 !default;
+
+$text-color-map: (
+  "primary":           $text-color-primary,
+  "secondary":         $text-color-secondary,
+  "primary-inverse":   $text-color-primary-inverse,
+  "secondary-inverse": $text-color-secondary-inverse,
+  "brand-primary":     $brand-primary,
+  "brand-success":     $brand-success,
+  "brand-info":        $brand-info,
+  "brand-warning":     $brand-warning,
+  "brand-danger":      $brand-danger
+) !default;
+
+// Dividers
+$divider-light:        rgba(white, .3) !default;
+$divider-dark:         rgba(0,0,0,.05) !default;
+
+/**
+  LOGGED OUT PAGE
+  **/
+$logged-out-body-bg:     $body-bg !default;
+$logged-out-form-shadow: 0 1px 4px 0 rgba(0,0,0,0.14) !default;
+$logged-out-form-bg:     $widget-bg !default;
+
+/**
+  SHOW PAGE
+  **/
+$show-max-width:                  800px !default;
+$show-field-divider-light-parent: 1px solid $divider-dark !default;
+$show-field-divider-dark-parent:  1px solid $divider-light !default;
+
+/**
+  EDIT PAGE
+  **/
+$edit-max-width: 800px !default;
+
+/**
+  FORM
+  **/
+$form-divider-color: rgba(black, .1) !default;
+$label-fontsize: 0.93rem !default;
+
+/**
+  COMPONENTS
+  **/
+// Buttons
+$button-height:               $ctrl-height !default;
+$button-height-densed:        $ctrl-height-densed !default;
+$button-fontsize:             $p-fontsize !default;
+$button-fontweight:           $font-bold !default;
+$button-border-radius:        $border-radius !default;
+$button-hover-light-parent:   rgba(black, .05) !default;
+$button-focus-light-parent:   rgba(black, .15) !default;
+$button-hover-dark-parent:    rgba(white, .05) !default;
+$button-focus-dark-parent:    rgba(white, .15) !default;
+$button-raised-shadow:        0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24) !default;
+$button-raised-shadow-active: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28) !default;
+
+// Float Action
+$float-action-bg: #FF4081 !default;
+$float-action-text-color: get-text-color($float-action-bg) !default;
+$float-action-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28) !default;
+$float-action-shadow-active: 0 0 6px rgba(0,0,0,.16), 0 6px 12px rgba(0,0,0,.32) !default;
+
+// Inputs
+$input-type:                      'guide' !default;
+$input-guide-border-light-parent: 2px solid rgba(black, .15) !default;
+$input-guide-border-dark-parent:  2px solid rgba(white, .15) !default;
+$input-solid-bg:                  rgba(black, .05) !default;
+$input-solid-disabled-bg:         transparent !default;
+$input-solid-border:              1px solid transparent !default;
+$input-solid-border-active:       1px solid $brand-primary !default;
+$input-border-radius:             $border-radius !default;
+$input-height:                    $ctrl-height !default;
+$input-height-densed:             $ctrl-height-densed !default;
+$input-placeholder-color:         $text-color-placeholder !default;
+
+// Select2
+$select2-fontsize:      $p-fontsize !default;
+$select2-bg:            $widget-bg !default;
+$select2-shadow:        $widget-shadow !default;
+$select2-option-height: $ctrl-height !default;
+
+// Tinymce
+$tinymce-bg:                           $widget-bg !default;
+$tinymce-header-panel-bg:              $widget-ctrl-bg !default;
+$tinymce-border:                       1px solid #DEE3E9 !default;
+$tinymce-border-radius:                $border-radius !default;
+$tinymce-dropdown-bg:                  $widget-bg !default;
+$tinymce-dropdown-item-shortcut-color: $text-color-placeholder !default;
+$tinymce-dropdown-shadow:              rgba(255,255,255,.9) 0px 1px 0px inset, rgba(0,0,0,.03) 0px -1px 0px inset, rgba(0,0,0,.2) 0px 1px 3px !default;
+
+// Datepicker
+$datepicker-bg: $widget-bg !default;
+$datepicker-header-bg: $brand-primary !default;
+$datepicker-shadow: $widget-shadow !default;
+
+// Navbar
+$app-header-height:     28px !default;
+$app-header-bg:         #303F9F !default;
+$app-header-shadow:     none !default;
+$navbar-bg:             $brand-primary !default;
+$navbar-shadow:         0 1px 8px rgba(0,0,0,.3) !default;
+$navbar-height:         64px !default;
+$navbar-divider-color:  get-divider-color($navbar-bg) !default;
+$navbar-link-color:     get-text-color($navbar-bg) !default;
+$navbar-text-color:     get-text-color($navbar-bg) !default;
+$table-tools-height:    48px !default;
+
+// Sidebar
+$sidebar-width-min:                   9 * $offset !default;
+$sidebar-width-max:                   240px !default;
+$sidebar-bg:                          $widget-bg !default;
+$sidebar-shadow:                      0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.4) !default;
+$sidebar-active-item-indicator-color: transparent !default;
+
+// Aside
+$aside-width: 320px !default;
+
+// Search Filter
+$search-filter-bg:            $body-bg !default;
+$search-filter-header-bg:     $navbar-bg !default;
+$search-filter-header-shadow: $navbar-shadow !default;
+$search-filter-width:         340px !default;
+$search-filter-shadow:        $widget-shadow !default;
+$search-filter-header-height: $navbar-height !default;
+
+// Panel
+$panel-header-height:        48px !default;
+$panel-header-bg:            $widget-bg !default;
+$panel-header-border-bottom: none !default;
+$panel-header-font-weight:   300 !default;
+$panel-header-font-size:     $h6-fontsize !default;
+$panel-bg:                   $widget-bg !default;
+$panel-ctrl-bg:              $widget-ctrl-bg !default;
+$panel-shadow:               0 1px 4px 0 rgba(0,0,0,0.14) !default;
+$panel-shadow-active:        0 1px 4px 0 rgba(0,0,0,0.14) !default;
+$panel-border-radius:        $widget-border-radius !default;
+
+// Has Many Fields
+$has-many-container-border: 2px solid rgba(black, .1) !default;
+$has-many-container-shadow: none !default;
+$has-many-add-color:        $brand-default !default;
+$has-many-delete-color:     $brand-danger !default;
+$has-many-add-ctrl-bg:      transparent !default;
+
+// Table
+$table-bg:              $widget-bg !default;
+$table-row-height:      48px !default;
+$table-selected-row-bg: rgba($brand-primary, .1) !default;
+$table-shadow:          0 1px 4px 0 rgba(0,0,0,0.14) !default;
+$table-border-radius:   $widget-border-radius !default;
+
+// Dropdown Menu
+$dropdown-bg:            $widget-bg !default;
+$dropdown-shadow:        $widget-shadow !default;
+$dropdown-broder-radius: 0 !default;
+
+// Modal
+$modal-bg:            $widget-bg !default;
+$modal-header-bg:     $widget-bg !default;
+$modal-shadow:        0 1px 8px rgba(0,0,0,.3) !default;
+$modal-header-shadow: none !default;
+
+// Chip
+$chip-size:              28px !default;
+$chip-size-densed:       20px !default;
+$chip-bg:                #E0E0E0 !default;
+$chip-remove-bg:         rgba(black, .3) !default;
+$chip-remove-text-color: #E0E0E0 !default;
+$chip-color-map: (
+  "brand-default":   $brand-default,
+  "brand-primary":   $brand-primary,
+  "brand-danger":    $brand-danger,
+  "brand-warning":   $brand-warning,
+  "brand-info":      $brand-info,
+  "brand-success":   $brand-success
+) !default;
+$tab-chip-bg: darken($brand-primary, 4%) !default;
+
+// $Tooltip
+$tooltip-bg:     rgba(black, .7) !default;
+$tooltip-shadow: $widget-shadow !default;
+
+// Toast
+$toast-bg:     #212121 !default;
+$toast-shadow: 0 1px 8px rgba(0,0,0,.3) !default;
+
+// Flashes
+$flash-color-map: (
+  "flash_notice": $brand-warning,
+  "flash_alert":  $brand-danger,
+  "flash_error":  $brand-danger,
+) !default;
+
+// SPINNER
+$spinner-bg: rgba(white, .54) !default;
+
+$spinner-color-map: (
+  "brand-default":   $brand-default,
+  "brand-primary":   $brand-primary,
+  "brand-danger":    $brand-danger,
+  "brand-warning":   $brand-warning,
+  "brand-info":      $brand-info,
+  "brand-success":   $brand-success,
+  "dark":            $text-color-primary,
+  "light":           $text-color-primary-inverse
+) !default;
+
+// Comments
+$comment-divider-color: rgba(black, .1) !default;
+
+// Icons
+$folder-icon: "\E2C7";

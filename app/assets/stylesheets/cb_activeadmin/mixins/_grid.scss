@@ -1,0 +1,93 @@
+@mixin grid-constructor(
+  $shadow:        $panel-shadow,
+  $bg_color:      $panel-bg,
+  $ph_bg_color:   rgba(black, .1),
+  $border:        none,
+  $border_radius: $widget-border-radius
+) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: $bg_color;
+  border: $border;
+  margin-bottom: 2 * $offset;
+  height: auto;
+  width: 184px;
+  padding: 0;
+  box-sizing: border-box;
+  color: get-text-color($bg_color);
+  margin: 1.5 * $offset;
+  border-radius: $border_radius;
+  @include transform(translate3d(0,0,0));
+  @include box-shadow($shadow);
+  * { box-sizing: border-box; }
+  .grid-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    padding: 1.5 * $offset 2 * $offset;
+    padding-right: 4 * $offset;
+    height: 48px;
+    justify-content: center;
+    & > *:not(.grid-actions) {
+      white-space: nowrap;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .title {
+      position: relative;
+      font-weight: 500;
+      display: block;
+      align-items: center;
+      padding-bottom: 0;
+      width: 100%;
+      margin: 0;
+      color: get-text-color($bg_color);
+      & > * {
+        box-sizing: border-box;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      a { color: get-text-color($bg_color); }
+    }
+    .meta {
+      color: get-text-color($bg_color, $type:secondary);
+      margin-bottom: 0;
+    }
+  }
+  .grid-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1.5 * $offset $offset;
+    z-index: 11;
+  }
+  .grid-cover {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background: $ph_bg_color;
+    border-top-left-radius: $border_radius;
+    border-top-right-radius: $border_radius;
+    &:before {
+      content: "";
+      padding-top: 75%;
+      display: block;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      max-width: auto;
+      @include transform(translateX(-50%));
+    }
+  }
+  @include mobile {
+    width: calc(50% - 1 * #{$offset});
+    margin: $offset / 2;
+  }
+}
