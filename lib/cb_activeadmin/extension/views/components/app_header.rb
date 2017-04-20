@@ -24,8 +24,8 @@ module ActiveAdmin
         @namespace.site_title_link.present?
       end
 
-      def site_title_image?
-        @namespace.site_title_image.present?
+      def favicon?
+        @namespace.favicon.present?
       end
 
       private
@@ -40,8 +40,8 @@ module ActiveAdmin
         end
         div class: "flex-col" do
           div class: "favicon-container" do
-            if site_title_image?
-              div title_image, class: 'favicon'
+            if favicon?
+              div favicon, class: 'favicon'
             end
           end
           div class: "title" do
@@ -57,9 +57,9 @@ module ActiveAdmin
         helpers.render_or_call_method_or_proc_on(helpers, @namespace.site_title)
       end
 
-      def title_image
-        path = helpers.render_or_call_method_or_proc_on(helpers, @namespace.site_title_image)
-        helpers.image_tag(path, id: "site_title_image", alt: title_text)
+      def favicon
+        path = helpers.render_or_call_method_or_proc_on(helpers, @namespace.favicon)
+        helpers.image_tag(path, id: "site_favicon", alt: title_text)
       end
 
     end
