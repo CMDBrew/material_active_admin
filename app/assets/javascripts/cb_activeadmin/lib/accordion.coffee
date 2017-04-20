@@ -8,7 +8,7 @@
            $(@).has(event.target).length != 0 &&
            $actions.has(event.target).length == 0)
           event.preventDefault()
-          $target.parent(".collapse").toggleClass "in"
+          $target.parent(".panel, .inputs").toggleClass "hidden"
           false
       }
     }

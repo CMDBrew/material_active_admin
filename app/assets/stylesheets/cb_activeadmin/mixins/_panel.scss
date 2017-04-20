@@ -12,49 +12,30 @@
 ) {
   background: $bg_color;
   border: $border;
-  margin-bottom: 3 * $offset;
+  margin-bottom: $content-offset;
   height: auto;
   overflow: hidden;
   color: get-text-color($bg_color);
   border-radius: $border_radius;
-  @include box-shadow($shadow);
-  &.collapse {
-    min-height: $header_height;
+  max-height: $header_height;
+  max-height: none;
+  @include box-shadow($shadow_active);
+  @include transition(height .2s linear, margin .2s linear);
+  &.hidden {
     max-height: $header_height;
-    @include transition(height .2s linear, margin .2s linear);
-    &:not(.in) { margin-bottom: $offset / 2; }
-    &.in {
-      max-height: none;
-      @include box-shadow($shadow_active);
-      // &:not(:first-of-type) { margin-top: 3 * $offset; }
-      h3,
-      legend {
-        &:after { @include transform(rotate(180deg)); }
-      }
-    }
-    & > legend,
-    & > h3 {
-      float: left;
-      width: 100%;
-      position: relative;
-      padding-right: 6 * $offset;
-      cursor: pointer;
-      // span { pointer-events: none; }
-      &:after {
-        content: "\E313";
-        color: get-nav-text-color($bg_color);
-        @include icon-constructor;
-        position: absolute;
-        right: 2 * $offset;
-        top: 0;
-        bottom: 0;
-        @include transition(all .2s ease-in-out);
-      }
+    margin-bottom: $offset / 2;
+    @include box-shadow($shadow);
+    h3,
+    legend {
+      &:after { @include transform(rotate(180deg)); }
     }
   }
-  & > h3,
-  & > legend {
+  & > legend,
+  & > h3 {
     position: relative;
+    float: left;
+    width: 100%;
+    cursor: pointer;
     font-size: $header_font_size;
     font-weight: $header_font_weight;
     display: block;
@@ -64,7 +45,8 @@
     color: get-text-color($header_bg_color);
     border-bottom: $header_border_bottom;
     width: 100%;
-    padding: 0 3 * $offset;
+    padding: 0 $content-offset;
+    padding-right: 6 * $offset;
     box-sizing: border-box;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -77,10 +59,19 @@
       height: $header_height;
       align-items: center;
     }
+    &:after {
+      content: "\E316";
+      color: get-nav-text-color($bg_color);
+      @include icon-constructor;
+      position: absolute;
+      right: $content-offset-sm;
+      top: 0;
+      bottom: 0;
+      @include transition(all .2s ease-in-out);
+    }
   }
-  ul.errors { margin: 3 * $offset; }
+  ul.errors { margin: $content-offset; }
   .panel_contents {
-    // padding: 3 * $offset;
     float: left;
     width: 100%;
     text-align: left;
@@ -88,14 +79,8 @@
     flex-direction: column;
     box-sizing: border-box;
   }
-  // .mdi-table.full-width {
-  //   // margin: -3 * $offset;
-  //   @include box-shadow(none);
-  // }
   @include mobile {
     margin-bottom: 1.5 * $offset;
-    & > h3 { padding: 0 2 * $offset; }
-    // .panel_contents { padding: 2 * $offset; }
-    .mdi-table.full-width { margin: -2 * $offset; }
+    & > h3 { padding-left: $content-offset-sm; }
   }
 }

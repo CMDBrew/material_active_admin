@@ -21,8 +21,7 @@ $ ->
   $('body').on 'click', "#search-filter-toggle", SEARCH_FILTER_TOGGLE.events.show
   $('body').on 'click', ".search-close", SEARCH_FILTER_TOGGLE.events.hide
   $('body').on 'click', ".with-ripple", RIPPLE_EFFECT.events.create_ripple
-  $('body').on 'click', ".panel.collapse h3", ACCORDION_TOGGLE.events.toggle
-  $('body').on 'click', ".inputs.collapse legend", ACCORDION_TOGGLE.events.toggle
+  $('body').on 'click', ".panel h3, .inputs legend", ACCORDION_TOGGLE.events.toggle
   $('body').on 'focus', ".mdi-control.with-guide :input", INPUT_GUIDE_EFFECT.events.create_guide
   $('body').on 'blur', ".mdi-control.with-guide :input", INPUT_GUIDE_EFFECT.events.destroy_guide
   $("body").on 'change', "input[type='file']", FILE_UPLOAD.events.update
