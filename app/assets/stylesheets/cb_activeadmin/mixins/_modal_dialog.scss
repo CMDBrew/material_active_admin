@@ -1,0 +1,73 @@
+@mixin modal-dialog-overlay-constructor(
+  $overlay_bg: $backdrop-bg
+) {
+  position: fixed;
+  background: $overlay_bg;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin modal-dialog-constructor(
+  $bg_color:      $modal-bg,
+  $shadow:        $modal-shadow,
+  $header_bg:     $modal-header-bg,
+  $header_shadow: $modal-header-shadow
+) {
+  position: fixed;
+  background-color: $bg_color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  color: get-text-color($bg_color);
+  @include box-shadow($modal-shadow);
+  & > * {
+    display: block;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .ui-dialog-titlebar {
+    padding: 2 * $offset 3 * $offset;
+    background: $header_bg;
+    text-align: left;
+    color: get-text-color($header_bg);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    @include box-shadow($header_shadow);
+    span { font-size: $h6-fontsize; }
+  }
+  .ui-dialog-titlebar-close { display: none }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  li { margin: $offset 0 }
+  label { margin-right: $offset }
+  .body {
+    padding: 3 * $offset;
+    font-size: $p-fontsize;
+  }
+
+  .ui-dialog-buttonset { text-align: right; }
+  .ui-dialog-buttonpane {
+    padding: $offset;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+  }
+  form {
+    display: block;
+    min-height: 0;
+  }
+  .ui-dialog-buttonpane button {
+    margin-bottom: 0 !important;
+    float: right;
+    margin-left: 10px;
+  }
+}

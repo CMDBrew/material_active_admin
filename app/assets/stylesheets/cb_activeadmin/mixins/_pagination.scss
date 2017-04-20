@@ -1,0 +1,70 @@
+@mixin pagination-constructor(
+  $bg_color: $panel-bg
+) {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  & > * {
+    display: inline-block;
+  }
+  .pager {
+    display: flex;
+    flex-direction: row;
+    background: $bg_color;
+    border-radius: $border-radius;
+    overflow: hidden;
+    @include box-shadow($panel-shadow);
+    @include transform(translate3d(0,0,0));
+  }
+  .inner-pages {
+    display: flex;
+    flex-direction: row;
+    .page {
+      display: inline-block;
+      border-right: 1px solid get-divider-color($bg_color);
+      border-radius: 0;
+      &.gap,
+      &:not(.current) a,
+      &.current {
+        $text_color: get-text-color($bg_color, $type:secondary);
+        @include button-constructor($text_color, $type:link);
+      }
+      &.gap {
+        border-right: 1px solid get-divider-color($bg_color);
+      }
+      &:first-child {
+        border-left: 1px solid get-divider-color($bg_color);
+      }
+      &:not(.current) a {
+        border-radius: 0;
+      }
+      &.current {
+        background: $brand-primary !important;
+        color: get-text-color($brand-primary) !important;
+        border-radius: 0;
+      }
+    }
+  }
+  .next-button,
+  .prev-button {
+    a {
+      $color: get-nav-text-color($bg_color);
+      @include button-constructor($color, $type:link);
+      padding: 0;
+      display: flex;
+      height: $button-height;
+      // justify-content: center;
+      // align-items: center;
+      border-radius: 0;
+      &:before {
+        color: get-text-color($bg_color, $type:secondary);
+        @include icon-constructor;
+      }
+    }
+  }
+  .next-button a:before { content: "\E315"; }
+  .prev-button a:before { content: "\E314"; }
+}

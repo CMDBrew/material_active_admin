@@ -1,0 +1,165 @@
+@keyframes filter-animation {
+  from {
+    @include transform(translateX(100%));
+  }
+  to {
+    @include transform(translateX(0));
+  }
+}
+@-webkit-keyframes filter-animation {
+  from {
+    @include transform(translateX(100%));
+  }
+  to {
+    @include transform(translateX(0));
+  }
+}
+
+@mixin search-filter-constructor(
+  $bg_color:          $search-filter-bg,
+  $width:             $search-filter-width,
+  $header_height:     $search-filter-header-height,
+  $header_bg:         $search-filter-header-bg,
+  $header_shadow:     $search-filter-header-shadow,
+  $form_field_bg:     $panel-bg,
+  $form_field_shadow: $panel-shadow,
+  $form_field_radius: $panel-border-radius,
+  $shadow:            $search-filter-shadow,
+  $label_height:      24px,
+  $input_type:        $input-type,
+  $max_height:        calc(100vh - #{$search-filter-header-height} - #{$app-header-height})
+) {
+  position: fixed;
+  right: 0;
+  top: $app-header-height;
+  bottom: 0;
+  background: $bg_color;
+  width: $width;
+  padding: 0;
+  padding-top: $header_height;
+  box-sizing: border-box;
+  display: none;
+  text-align: left;
+  color: get-text-color($bg_color);
+  border-radius: 0;
+  overflow: hidden;
+  @include animation(filter-animation .2s);
+  transform-origin: 50% 0;
+  &.search-filter-active {
+    display: block;
+    @include box-shadow($shadow);
+  }
+  .panel { background: inherit; }
+  .search-close {
+    position: absolute;
+    top: 0;
+    right: 2 * $offset;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: $h6-fontsize;
+    background: $header_bg;
+    font-weight: $font-bold;
+    height: $header_height;
+    line-height: $header_height;
+    color: get-text-color($header_bg);
+    padding: 0 2 * $offset;
+    padding-right: 6 * $offset;
+    z-index: 11;
+    @include box-shadow($header_shadow);
+    .search-close { color: get-nav-text-color($header_bg); }
+  }
+  .body {
+    padding: 0;
+    max-height: $max_height;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    box-sizing: border-box;
+  }
+  .sidebar_section.panel {
+    margin-bottom: 2 * $offset;
+    @include box-shadow(none);
+    &:last-child { margin-bottom: $offset * 10; }
+    & > h3 {
+      display: none;
+      padding: 2 * $offset 3 * $offset;
+      padding-bottom: 0;
+    }
+    .panel_contents {
+      padding: 2 * $offset;
+    }
+    .filter_form_field {
+      padding: 2 * $offset $offset;
+      padding-top: $label_height + $offset;
+      background: $form_field_bg;
+      border-radius: $form_field_radius;
+      margin-bottom: 2 * $offset;
+      @include box-shadow($form_field_shadow);
+      &.boolean,
+      &.select,
+      &.stringish {
+        @include text-field-constructor($type:$input_type);
+        text-align: left;
+        flex-direction: row;
+        label {
+          position: absolute;
+          top: $offset;
+          left: 0;
+          height: $label_height;
+          line-height: $label_height;
+          padding: 0 2 * $offset;
+          width: 100%;
+          box-sizing: border-box;
+          white-space: nowrap;
+          font-weight: $font-bold;
+          text-overflow: ellipsis;
+          font-size: $label-fontsize;
+          overflow: hidden;
+          color: get-text-color($bg_color, $type:secondary);
+        }
+        & > *:not(label):not(.seperator) {
+          flex: 1;
+          margin: 0 $offset;
+        }
+        & > .seperator {
+          display: flex;
+          width: 1px;
+          align-items: center;
+        }
+      }
+    }
+    .buttons {
+      background: transparent;
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      a.clear_filters_btn,
+      input[type="submit"] { float: right; }
+      a.clear_filters_btn { @include button-constructor($color:$text-color-secondary, $type:link); }
+      input[type="submit"] {
+        @include button-constructor($color:$brand-primary, $type:link);
+        margin-left: $offset;
+      }
+    }
+  }
+  @include mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    .body { max-height: calc(100vh - #{$panel-header-height}); }
+  }
+}

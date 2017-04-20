@@ -1,0 +1,84 @@
+@keyframes float-action-animation {
+  from {
+    opacity: 0;
+    @include transform(translateY(50px));
+  }
+  to {
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+}
+@-webkit-keyframes float-action-animation {
+  from {
+    opacity: 0;
+    @include transform(translateY(50px));
+  }
+  to {
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+}
+
+@mixin float-action-constructor(
+  $bg_color:      $float-action-bg,
+  $text_color:    $float-action-text-color,
+  $shadow:        $float-action-shadow,
+  $shadow_active: $float-action-shadow-active
+) {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $bg_color;
+  color: $text_color;
+  @include animation(float-action-animation .4s);
+  @include box-shadow($shadow);
+  &:hover { @include box-shadow($shadow_active); }
+}
+
+@mixin float-actions-constructor {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 3 * $offset;
+  &.multi-actions {
+    &:hover {
+      .float_action {
+        display: block !important;
+        .ph-icon { display: none; }
+        .hover-icon { display: block; }
+      }
+    }
+    .ph-icon { display: block; }
+    .hover-icon { display: none; }
+    .float_action:not(:last-child) {
+      display: none;
+      a {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  .float_actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .float_action {
+    margin-top: 2 * $offset;
+    position: relative;
+    z-index: 11;
+  }
+  .float_action a {
+    @include float-action-constructor;
+    @each $color_class, $color in $btn-color-map {
+      &.#{$color_class} {
+        background: $color;
+        color: get-text-color($color);
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+@mixin date-picker-constructor(
+  $bg_color:   $datepicker-bg,
+  $shadow:     $datepicker-shadow,
+  $header_bg:  $datepicker-header-bg,
+  $ctrl_width: 4 * $offset,
+  $day_size:   24px,
+  $active_bg:  $brand-primary
+) {
+  background: $bg_color;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  display: none;
+  margin-top: $offset / 2;
+  padding: 0;
+  text-align: center;
+  border-radius: $border-radius;
+  overflow: hidden;
+  @include box-shadow($shadow);
+  .ui-datepicker-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: $header_bg;
+    padding: $offset $ctrl_width;
+    box-sizing: border-box;
+    position: relative;
+    color: get-text-color($header_bg);
+    .ui-datepicker-title {
+      font-size: $h6-fontsize;
+      font-weight: 500;
+      @include text-field-constructor;
+      flex-direction: row;
+      justify-content: center;
+      select {
+        min-width: 85px;
+        &:not(:last-child) { margin-right: $offset / 2; }
+      }
+    }
+    a {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: $ctrl_width;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      span { text-indent: -99999px; }
+      &.ui-datepicker-prev {
+        left: 0;
+        &:before { content: "\E314"; }
+      }
+      &.ui-datepicker-next {
+        right: 0;
+        &:before { content: "\E315"; }
+      }
+      &:before {
+        color: get-nav-text-color($header_bg, $status:active);
+        @include icon-constructor;
+      }
+    }
+  }
+  table.ui-datepicker-calendar {
+    width: 100%;
+    th {
+      color: get-nav-text-color($bg_color);
+      font-weight: 500;
+    }
+    td {
+      &.ui-datepicker-today a {
+        color: $active_bg;
+        font-weight: 500;
+      }
+      &.ui-datepicker-current-day a {
+        font-weight: 500;
+        background: $active_bg;
+        color: get-text-color($active_bg);
+      }
+      a {
+        display: flex;
+        font-weight: normal;
+        align-items: center;
+        justify-content: center;
+        width: $day_size;
+        height: $day_size;
+        border-radius: 50%;
+        overflow: hidden;
+        color: get-text-color($bg_color);
+        &:hover {
+          @if (lightness($bg_color) > 50) {
+            background: darken($bg_color, $color-adjust-default);
+          } @else {
+            background: lighten($bg_color, $color-adjust-default);
+          }
+        }
+      }
+    }
+    th, td { padding: $offset / 2; }
+  }
+}

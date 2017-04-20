@@ -1,0 +1,2 @@
+.mdi-table:not(.no-shadow) { @include table-constructor; }
+.mdi-table.no-shadow { @include table-constructor($shadow: none); }

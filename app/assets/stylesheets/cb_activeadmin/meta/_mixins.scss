@@ -1,0 +1,31 @@
+@mixin animation($value) {
+  animation: #{$value};
+  -webkit-animation: #{$value};
+}
+
+@mixin non-selectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+@mixin box-shadow($value...) {
+  -webkit-box-shadow: #{$value};
+  -moz-box-shadow:    #{$value};
+  -ms-box-shadow:     #{$value};
+  box-shadow:         #{$value};
+}
+
+@mixin transition($value...) {
+  -webkit-transition: #{$value}; /* Safari */
+  transition: #{$value};
+}
+
+@mixin transform($value...) {
+  -webkit-transform: #{$value}; /* Safari */
+  transform: #{$value};
+}

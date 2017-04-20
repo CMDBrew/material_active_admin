@@ -1,0 +1,27 @@
+.file-container {
+  display: flex;
+  align-items: center;
+  .file-text {
+    line-height: $ctrl-height;
+    height: $ctrl-height;
+    flex: 1;
+    display: block;
+    margin-right: $offset;
+    color: $text-color-placeholder;
+    @if($input-type == "guide") {
+      $border_color: null;
+      @if (lightness($panel-bg) > 50) {
+        $border_color: rgba(black, .1);
+      } @else {
+        $border_color: rgba(white, .1);
+      }
+      border-bottom: 2px solid $border_color;
+    } @else {
+      padding: 0 2 * $offset;
+      border: $input-solid-border;
+      border-radius: $input-border-radius;
+      background: $input-solid-disabled-bg;
+    }
+  }
+  input[type="file"] { display: none; }
+}

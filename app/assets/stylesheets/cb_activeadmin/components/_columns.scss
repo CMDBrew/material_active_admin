@@ -1,0 +1,14 @@
+.columns {
+  display: flex;
+  flex-direction: row;
+  .column:not(:last-child) {
+    margin-right: 3 * $offset;
+  }
+  @include mobile {
+    flex-direction: column;
+    .column {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+  }
+}

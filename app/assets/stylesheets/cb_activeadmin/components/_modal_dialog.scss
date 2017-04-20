@@ -1,0 +1,8 @@
+.ui-widget-overlay {
+  @include modal-dialog-overlay-constructor;
+  z-index: 2500;
+}
+.ui-dialog {
+  @include modal-dialog-constructor;
+  z-index: 2800;
+}

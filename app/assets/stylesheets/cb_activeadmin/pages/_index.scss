@@ -1,0 +1,45 @@
+@mixin index-page {
+  .paginated_collection {
+    display: block;
+    width: 100%;
+  }
+  .table_tools {
+    @include table-tools-constructor;
+  }
+  .index_as_table {
+    @include table-constructor;
+  }
+  .mdi_index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &.flex-row {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: -#{$offset};
+      @include mobile { margin: -#{$offset} / 2; }
+    }
+    .resource_selection_toggle_panel { display: none; }
+    .mdi-folder,
+    .mdi-card,
+    .mdi-grid {
+      .resource_selection_cell { display: none; }
+    }
+  }
+  #index_footer {
+    padding: $offset * 3 0;
+    .pagination {
+      @include pagination-constructor;
+      margin-bottom: 4 * $offset;
+    }
+    .pagination_information,
+    .download_links {
+      margin-bottom: $offset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: get-nav-text-color($body-bg);
+      a, b { margin: 0 $offset / 2; }
+    }
+  }
+}

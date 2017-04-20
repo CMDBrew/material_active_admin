@@ -1,0 +1,36 @@
+@mixin mDirVal ($d, $value){
+  @if $d == "all" {
+    margin: $value !important;
+  } @else {
+    margin-#{$d}: $value !important;
+  }
+}
+
+@mixin pDirVal ($d, $value){
+  @if $d == "all" {
+    padding: $value !important;
+  } @else {
+    padding-#{$d}: $value !important;
+  }
+}
+
+@for $i from 0 through 50 {
+  $directions: ("all", "top", "bottom", "left", "right");
+  $signs:      ("", "-");
+  $unit:       $offset;
+
+  @each $d in $directions {
+    @each $sign in $signs {
+      $klass: #{$d}-#{$sign}#{$i}x;
+      $value: calc(#{$sign}#{$i} * #{$unit});
+
+      .m-#{$klass} { @include mDirVal($d, $value); }
+      body .m-#{$klass}-sm { @include tablet { @include mDirVal($d, $value); } }
+      body .m-#{$klass}-xs { @include mobile { @include mDirVal($d, $value); } }
+
+      .p-#{$klass} { @include pDirVal($d, $value); }
+      body .p-#{$klass}-sm { @include tablet { @include pDirVal($d, $value); } }
+      body .p-#{$klass}-xs { @include mobile { @include pDirVal($d, $value); } }
+    }
+  }
+}
