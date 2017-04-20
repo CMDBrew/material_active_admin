@@ -1,24 +1,12 @@
-@mixin table-constructor(
-  $shadow:        $table-shadow,
+@mixin table-base(
   $bg_color:      $table-bg,
-  $border:        none,
   $selected_bg:   $table-selected-row-bg,
   $border_radius: $table-border-radius,
   $row_height:    $table-row-height,
   $img_size:      24px,
   $ctrl_w:        24px
 ) {
-  $border_color: null;
-  color: get-text-color($bg_color);
-  background: $bg_color;
-  border: $border;
-  border-collapse: collapse;
-  overflow: auto;
-  white-space: nowrap;
-  text-align: left;
-  border-radius: $border_radius;
-  @include box-shadow($shadow);
-  table { width: 100%; }
+  width: 100%;
   th {
     text-transform: capitalize;
     color: get-text-color($bg_color, $type:secondary);
@@ -107,4 +95,22 @@
       &:last-child:not(.col-actions) { padding-right: 2 * $offset; }
     }
   }
+}
+
+@mixin table-constructor(
+  $shadow:        $table-shadow,
+  $bg_color:      $table-bg,
+  $border:        none,
+  $border_radius: $table-border-radius
+) {
+  $border_color: null;
+  color: get-text-color($bg_color);
+  background: $bg_color;
+  border: $border;
+  border-collapse: collapse;
+  overflow: auto;
+  white-space: nowrap;
+  text-align: left;
+  border-radius: $border_radius;
+  @include box-shadow($shadow);
 }
