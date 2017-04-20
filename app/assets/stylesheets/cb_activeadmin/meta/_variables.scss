@@ -16,7 +16,8 @@ $border-radius:              2px !default;
 $screen-tablet:              768px !default;
 $screen-desktop:             992px !default;
 $widget-border-radius:       2px !default;
-
+$content-offset:             3 * $offset !default;
+$content-offset-sm:          2 * $offset !default;
 // Ctrls
 $ctrl-height:        40px !default;
 $ctrl-height-densed: 32px !default;
