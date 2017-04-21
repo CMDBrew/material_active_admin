@@ -1,3 +1,3 @@
-table { @include table-base; }
+table:not(.ui-datepicker-calendar) { @include table-base; }
 .mdi-table:not(.no-shadow) { @include table-constructor; }
 .mdi-table.no-shadow { @include table-constructor($shadow: none); }

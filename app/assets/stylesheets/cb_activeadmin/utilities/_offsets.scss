@@ -43,6 +43,15 @@
   &.bottom { padding-bottom: $content-offset; }
   &.left   { padding-left: $content-offset; }
   &.right  { padding-right: $content-offset; }
+  &.xs {
+    &.all    { padding: $content-offset-xs; }
+    &.horz   { padding: 0 $content-offset-xs; }
+    &.vert   { padding: $content-offset-xs 0; }
+    &.top    { padding-top: $content-offset-xs; }
+    &.bottom { padding-bottom: $content-offset-xs; }
+    &.left   { padding-left: $content-offset-xs; }
+    &.right  { padding-right: $content-offset-xs; }
+  }
   @include mobile {
     &.all    { padding: $content-offset-xs; }
     &.horz   { padding: 0 $content-offset-xs; }
