@@ -15,6 +15,7 @@ $offset:                     8px !default;
 $border-radius:              2px !default;
 $screen-tablet:              768px !default;
 $screen-desktop:             992px !default;
+$content-max-width:          800px !default;
 $widget-border-radius:       2px !default;
 $content-offset:             3 * $offset !default;
 $content-offset-xs:          2 * $offset !default;
@@ -101,14 +102,14 @@ $logged-out-form-bg:     $widget-bg !default;
 /**
   SHOW PAGE
   **/
-$show-max-width:                  800px !default;
+$show-max-width:                  $content-max-width !default;
 $show-field-divider-light-parent: 1px solid $divider-dark !default;
 $show-field-divider-dark-parent:  1px solid $divider-light !default;
 
 /**
   EDIT PAGE
   **/
-$edit-max-width: 800px !default;
+$edit-max-width: $content-max-width !default;
 
 /**
   FORM
