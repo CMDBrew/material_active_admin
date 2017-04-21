@@ -78,6 +78,7 @@ body.logged_in {
     padding: 1.5 * $offset;
     flex: 1 $aside-width;
     min-width: 0;
+    max-width: $content-max-width;
   }
   #sidebar {
     padding: 1.5 * $offset;

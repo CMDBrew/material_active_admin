@@ -1,14 +1,18 @@
 .columns {
   display: flex;
   flex-direction: row;
-  .column:not(:last-child) {
-    margin-right: 3 * $offset;
+  .column {
+    padding: 0 1.5 * $offset;
+    box-sizing: border-box;
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; }
   }
   @include mobile {
     flex-direction: column;
     .column {
       width: 100% !important;
-      margin-right: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
     }
   }
 }
