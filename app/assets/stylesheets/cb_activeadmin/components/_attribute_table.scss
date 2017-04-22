@@ -2,15 +2,18 @@
   width: 100%;
   overflow: hidden;
   font-size: $p-fontsize;
-  .image {
-    width: 100%;
-    height: auto;
-    img {
-      position: relative;
-      max-width: 100%;
-      left: auto;
-      top: auto;
-      @include transform(none);
+  table tbody td {
+    .image {
+      width: 100%;
+      height: auto;
+      img {
+        position: relative;
+        max-width: 100%;
+        height: auto;
+        left: auto;
+        top: auto;
+        @include transform(none);
+      }
     }
   }
   table,
