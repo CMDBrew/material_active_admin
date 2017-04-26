@@ -42,6 +42,10 @@
         background: $bg_color;
         color: get-text-color($bg_color);
         text-transform: uppercase;
+        &.user {
+          background: $brand-warning;
+          color: get-text-color($brand-warning);
+        }
       }
       .comment_date {
         font-size: $label-fontsize;
