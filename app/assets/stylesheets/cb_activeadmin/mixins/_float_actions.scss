@@ -47,6 +47,7 @@
     &:hover {
       .float_action {
         display: block !important;
+        a.hide-on-hover { display: none !important; }
         .ph-icon { display: none; }
         .hover-icon { display: block; }
       }
