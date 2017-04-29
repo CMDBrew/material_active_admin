@@ -1,6 +1,7 @@
 $deprecated-class-list: (
   '.cb_activeadmin-icons',
-  '.collapse'
+  '.panel .collapse',
+  '.inputs .collapse'
 );
 
 @mixin deprecated-warning($el) {
