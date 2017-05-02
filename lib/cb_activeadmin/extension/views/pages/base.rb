@@ -20,6 +20,7 @@ module ActiveAdmin
           @body.add_class("active_admin")
           @body.add_class("logged_in")
           @body.add_class(active_admin_namespace.name.to_s + "_namespace")
+          @body.set_attribute("lang", I18n.locale)
         end
 
         def build_active_admin_head

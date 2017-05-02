@@ -122,9 +122,10 @@ zh-TW:
         title:  "註冊"
         submit: "註冊"
       login:
-        title:       "登入"
-        remember_me: "記住我"
-        submit:      "登入"
+        title:               "登入"
+        remember_me:         "記住我"
+        submit:              "登入"
+        submit/disable_with: "登入中..."
       reset_password:
         title:  "忘記密碼？"
         submit: "重置密碼"
