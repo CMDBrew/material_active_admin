@@ -1,4 +1,5 @@
 zh-TW:
+  language: "中文(繁體)"
   date:
     formats:
       long: "%Y/%m/%d"
