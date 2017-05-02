@@ -122,9 +122,10 @@ en:
         title:  "Sign up"
         submit: "Sign up"
       login:
-        title:       "Log In"
-        remember_me: "Remember me"
-        submit:      "Login"
+        title:               "Log In"
+        remember_me:         "Remember me"
+        submit:              "Login"
+        submit/disable_with: "Logging In..."
       reset_password:
         title:  "Forgot your password?"
         submit: "Send Instruction"

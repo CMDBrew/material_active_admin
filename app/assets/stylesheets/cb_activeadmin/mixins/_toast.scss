@@ -14,8 +14,8 @@
   $shadow:    $toast-shadow
 ) {
   position: fixed;
-  bottom: 2 * $offset;
-  left: 2 * $offset;
+  bottom: 3 * $offset;
+  left: 3 * $offset;
   @include animation(toast-animation .2s);
   @include transition(all .5s);
   &.removing { @include transform(translateY(calc(100% + 100px))); }
