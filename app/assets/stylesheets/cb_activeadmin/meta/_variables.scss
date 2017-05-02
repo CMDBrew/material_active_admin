@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-
 // =================================
 //    DEFAULT CONFIGS
 // =================================
@@ -32,7 +31,7 @@ $h5-fontsize:   1.43rem  !default;
 $h6-fontsize:   1.29rem  !default;
 $p-fontsize:    1rem     !default;
 $base-fontsize: 14px     !default;
-$font-fallback: "Helvetica Neue", Helvetica,Arial,sans-serif !default;
+$font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif !default;
 $font-family:   "Roboto", $font-fallback !default;
 $font-bold:     500 !default;
 
