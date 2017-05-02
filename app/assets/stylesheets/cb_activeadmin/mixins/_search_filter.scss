@@ -21,17 +21,14 @@
   $header_height:     $search-filter-header-height,
   $header_bg:         $search-filter-header-bg,
   $header_shadow:     $search-filter-header-shadow,
-  $form_field_bg:     $panel-bg,
-  $form_field_shadow: $panel-shadow,
-  $form_field_radius: $panel-border-radius,
   $shadow:            $search-filter-shadow,
   $label_height:      24px,
   $input_type:        $input-type,
-  $max_height:        calc(100vh - #{$search-filter-header-height} - #{$app-header-height})
+  $max_height:        calc(100vh - #{$search-filter-header-height})
 ) {
   position: fixed;
   right: 0;
-  top: $app-header-height;
+  top: 0;
   bottom: 0;
   background: $bg_color;
   width: $width;
@@ -96,16 +93,10 @@
       padding: 2 * $offset 3 * $offset;
       padding-bottom: 0;
     }
-    .panel_contents {
-      padding: 2 * $offset;
-    }
     .filter_form_field {
-      padding: 2 * $offset $offset;
-      padding-top: $label_height + $offset;
-      background: $form_field_bg;
-      border-radius: $form_field_radius;
-      margin-bottom: 2 * $offset;
-      @include box-shadow($form_field_shadow);
+      padding: 3 * $offset $offset;
+      padding-top: $label_height + 2 * $offset;
+      border-bottom: 1px solid get-divider-color($bg_color);
       &.boolean,
       &.select,
       &.stringish {
@@ -114,7 +105,7 @@
         flex-direction: row;
         label {
           position: absolute;
-          top: $offset;
+          top: 2 * $offset;
           left: 0;
           height: $label_height;
           line-height: $label_height;
@@ -141,6 +132,7 @@
     }
     .buttons {
       background: transparent;
+      padding: 2 * $offset;
       &:after {
         content: "";
         display: table;
