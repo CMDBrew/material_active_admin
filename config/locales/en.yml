@@ -1,7 +1,14 @@
 en:
+  date:
+    formats:
+      long: "%Y/%m/%d"
+  time:
+    formats:
+      long: "%Y/%m/%d %I:%M:%p"
   active_admin:
     owner:     "Clever Banana Studios Inc"
     dashboard: "Dashboard"
+    admin:     "Admin"
     dashboard_welcome:
       welcome:        "Welcome to Active Admin. This is the default dashboard page."
       call_to_action: "To add dashboard sections, checkout 'app/admin/dashboard.rb'"
@@ -50,7 +57,9 @@ en:
       "yes": "Yes"
       "no": "No"
     main_content: "Please implement %{model}#main_content to display content."
+    profile:      "Profile"
     logout:       "Logout"
+    languages:    "Languages"
     version:      "version %{version}"
     copyright:    "©%{owner}. All Rights Reserved."
     sidebars:
