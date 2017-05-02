@@ -1,8 +1,10 @@
 @mixin tab-constructor(
-  $height:   $table-tools-height,
-  $bg_color: $navbar-bg,
-  $shadow:   $navbar-shadow,
-  $chip_bg:  $tab-chip-bg
+  $height:                $table-tools-height,
+  $bg_color:              $navbar-bg,
+  $shadow:                $navbar-shadow,
+  $chip_bg:               $tab-chip-bg,
+  $tab_link_color:        $tab-link-color,
+  $tab_link_active_color: $tab-link-active-color
 ) {
   overflow: hidden;
   position: fixed;
@@ -41,8 +43,8 @@
     text-align: center;
     text-transform: uppercase;
     justify-content: center;
-    color: get-nav-text-color($bg_color, $status:active);
-    &:not(.selected) a { color: get-nav-text-color($bg_color); }
+    color: $tab_link_active_color;
+    &:not(.selected) a { color: $tab_link_color; }
     &.ui-tabs-active,
     &.selected {
       &:after {
@@ -52,9 +54,9 @@
         right: 0;
         bottom: 0;
         height: 2px;
-        background:  get-nav-text-color($bg_color, $status:active);
+        background:  $tab_link_active_color;
       }
-      a { color: get-nav-text-color($bg_color, $status:active); }
+      a { color: $tab_link_active_color; }
     }
     .count {
       margin-left: $offset;
