@@ -41,7 +41,7 @@
   background: transparent;
   -webkit-appearance: none;
   -webkit-backface-visibility: hidden;
-  width: 100%;
+  width: 100% !important;
   color: get-text-color($bg_color);
   &.select2-container--focus .select2-selection--multiple {
     border-color: $brand-primary;
