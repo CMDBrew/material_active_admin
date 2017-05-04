@@ -1,5 +1,4 @@
 en:
-  language: "English"
   date:
     formats:
       long: "%Y/%m/%d"
