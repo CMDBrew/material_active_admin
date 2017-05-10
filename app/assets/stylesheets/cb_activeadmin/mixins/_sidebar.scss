@@ -1,5 +1,6 @@
 @mixin sidebar-contructor(
   $sidebar_bg:                      $sidebar-bg,
+  $sidebar_bg_xs:                   $sidebar-bg-xs,
   $max_width:                       $sidebar-width-max,
   $min_width:                       $sidebar-width-min,
   $logo_height:                     32px,
@@ -15,6 +16,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: $sidebar_bg;
   #sidebar-close {
     cursor: pointer;
     position: absolute;
@@ -205,7 +207,7 @@
   }
   @include mobile {
     top: 0 !important;
-    background: $sidebar_bg;
+    background: $sidebar_bg_xs;
     left: 0 !important;
     width: 100%;
     max-width: 320px;

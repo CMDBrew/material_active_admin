@@ -190,7 +190,8 @@ $tab-link-active-color: get-nav-text-color($navbar-bg, $status:active) !default;
 // Sidebar
 $sidebar-width-min:                   9 * $offset !default;
 $sidebar-width-max:                   240px !default;
-$sidebar-bg:                          $widget-bg !default;
+$sidebar-bg:                          rgba(white, 0) !default;
+$sidebar-bg-xs:                       $widget-bg !default;
 $sidebar-shadow:                      0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.4) !default;
 $sidebar-active-item-indicator-color: transparent !default;
 

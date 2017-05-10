@@ -52,7 +52,7 @@ body.logged_in {
   }
   #header {
     @include sidebar-contructor;
-    z-index: 1200;
+    z-index: 11;
   }
   #title_bar {
     @include title-bar-constructor;
@@ -106,7 +106,10 @@ body.logged_in {
   @include mobile {
     #main_content_wrapper { padding: 0; }
     #sidebar { width: 100%; }
-    #header { @include transform(translateX(-100%)); }
+    #header {
+      @include transform(translateX(-100%));
+      z-index: 1200;
+    }
     #wrapper { padding-top: $navbar-height; }
     #wrapper,
     &.index .table_tools { padding-left: 0; }
