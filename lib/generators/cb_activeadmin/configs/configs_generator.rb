@@ -20,23 +20,23 @@ module CbActiveadmin
         inject_into_file 'config/initializers/active_admin.rb', after: "# == Menu System\n" do<<-'RUBY'
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add :label    => proc { menu_label("lock", "Admin") },
+      menu.add :label    => proc { menu_label("lock", I18n.t('active_admin.nav.admin')) },
                :id       => "admin",
                :priority => 999
     end
-    
+
     admin.build_menu :utility_navigation do |menu|
       menu.add  :label    => proc { menu_label("settings", admin_identifier(current_active_admin_user)) },
                 :id       => 'current_admin_user',
                 :priority => 2
 
-      menu.add  :label    => proc { menu_label("person", "Profile") },
+      menu.add  :label    => proc { menu_label("person", I18n.t('active_admin.nav.profile')) },
                 :id       => "profile",
                 :url      => proc { admin_admin_user_path(current_active_admin_user) },
                 :priority => 1,
                 :parent   => 'current_admin_user'
 
-      menu.add  :label    => proc { menu_label("exit_to_app", "Log Out") },
+      menu.add  :label    => proc { menu_label("exit_to_app", I18n.t('active_admin.nav.logout')) },
                 :id       => "logout",
                 :url      => proc{ destroy_admin_user_session_path },
                 :priority => 2,

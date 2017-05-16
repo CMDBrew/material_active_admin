@@ -8,7 +8,10 @@ zh-TW:
   active_admin:
     owner: "Clever Banana Studios Inc"
     dashboard: "儀表板"
-    admin:     "管理員介面"
+    nav:
+      admin:   "管理員介面"
+      logout:  "登出"
+      profile: "個人檔案"
     dashboard_welcome:
       welcome:        "歡迎來到 Active Admin，這是預設的儀表板頁面。"
       call_to_action: "要新增儀表板內容，請查看 'app/admin/dashboard.rb'"
