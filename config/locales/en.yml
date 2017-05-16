@@ -9,6 +9,10 @@ en:
     owner:     "Clever Banana Studios Inc"
     dashboard: "Dashboard"
     admin:     "Admin"
+    nav:
+      admin:   "Admin"
+      profile: "Profile"
+      logout:  "Log Out"
     dashboard_welcome:
       welcome:        "Welcome to Active Admin. This is the default dashboard page."
       call_to_action: "To add dashboard sections, checkout 'app/admin/dashboard.rb'"
