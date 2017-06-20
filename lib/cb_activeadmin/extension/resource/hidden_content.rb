@@ -3,6 +3,8 @@ require 'active_admin/helpers/optional_display'
 module ActiveAdmin
 
   class Resource
+
+    # Register HiddenContent Resource
     module HiddenContent
 
       def hidden_sections
@@ -14,15 +16,17 @@ module ActiveAdmin
       end
 
       def hidden_sections_for(action, render_context = nil)
-        hidden_sections.select{|section| section.display_on?(action, render_context) }
-          .sort_by(&:priority)
+        hidden_sections.select do |section|
+          section.display_on?(action, render_context)
+        end.sort_by(&:priority)
       end
 
       def hidden_sections?
-        !!@hidden_sections && @hidden_sections.any?
+        @hidden_sections && @hidden_sections.any?
       end
 
     end
+
   end
 
 end

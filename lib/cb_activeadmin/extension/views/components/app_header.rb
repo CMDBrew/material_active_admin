@@ -1,8 +1,10 @@
-require "cb_activeadmin/version"
+require 'cb_activeadmin/version'
 
 module ActiveAdmin
+
   module Views
 
+    # Register AppHeader in Views
     class AppHeader < Component
 
       def tag_name
@@ -10,7 +12,7 @@ module ActiveAdmin
       end
 
       def build(namespace)
-        super(id: "app_header")
+        super(id: 'app_header')
         @namespace = namespace
 
         if site_title_link?
@@ -35,20 +37,14 @@ module ActiveAdmin
       end
 
       def site_title_content
-        div class: "flex-col" do
-
-        end
-        div class: "flex-col" do
-          div class: "favicon-container" do
-            if favicon?
-              div favicon, class: 'favicon'
-            end
+        div(class: 'flex-col')
+        div(class: 'flex-col') do
+          div(class: 'favicon-container') do
+            div(favicon, class: 'favicon') if favicon?
           end
-          div class: "title" do
-            title_text
-          end
+          div(title_text, class: 'title')
         end
-        div class: "flex-col" do
+        div(class: 'flex-col') do
           I18n.t('active_admin.version', version: CbActiveadmin::VERSION)
         end
       end
@@ -59,10 +55,11 @@ module ActiveAdmin
 
       def favicon
         path = helpers.render_or_call_method_or_proc_on(helpers, @namespace.favicon)
-        helpers.image_tag(path, id: "site_favicon", alt: title_text)
+        helpers.image_tag(path, id: 'site_favicon', alt: title_text)
       end
 
     end
 
   end
+
 end
