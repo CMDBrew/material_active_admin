@@ -1,6 +1,8 @@
 module ActiveAdmin
+
   module Views
 
+    # Register SiteTitle in Views
     class SiteTitle < Component
 
       def tag_name
@@ -8,7 +10,7 @@ module ActiveAdmin
       end
 
       def build(namespace)
-        super(id: "site_title")
+        super(id: 'site_title')
         @namespace = namespace
 
         if site_title_link?
@@ -33,18 +35,14 @@ module ActiveAdmin
       end
 
       def site_title_content
-        div class: "favicon-container" do
-          if site_title_image?
-            div title_image, class: 'favicon'
-          else
-            div title_text[0], class: "favicon"
-          end
+        div(class: 'favicon-container') do
+          div(title_icon, class: 'favicon')
         end
-        div class: "title" do
+        div(class: 'title') do
           title_text
         end
-        div id: "sidebar-close" do
-          i "close", class: "cb_activeadmin-icons"
+        div(id: 'sidebar-close') do
+          i('close', class: 'cb_activeadmin-icons')
         end
       end
 
@@ -54,10 +52,15 @@ module ActiveAdmin
 
       def title_image
         path = helpers.render_or_call_method_or_proc_on(helpers, @namespace.site_title_image)
-        helpers.image_tag(path, id: "site_title_image", alt: title_text)
+        helpers.image_tag(path, id: 'site_title_image', alt: title_text)
+      end
+
+      def title_icon
+        site_title_image? ? title_image : title_text[0]
       end
 
     end
 
   end
+
 end

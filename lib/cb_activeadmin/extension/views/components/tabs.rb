@@ -1,6 +1,10 @@
 module ActiveAdmin
+
   module Views
+
+    # Register Tabs in Views
     class Tabs < ActiveAdmin::Component
+
       builder_method :tabs
 
       def tab(title, options = {}, &block)
@@ -9,13 +13,13 @@ module ActiveAdmin
         @tabs_content << build_content_item(title, options, &block)
       end
 
-      def build(enable_jquery=true, &block)
-        add_class "disable-jquery-ui-tabs" unless enable_jquery
-        @menu = ul(class: 'nav nav-tabs', role: "tablist")
+      def build(type = 'jquery')
+        add_class 'disable-jquery-ui-tabs' unless type == 'jquery'
+        @menu = ul(class: 'nav nav-tabs', role: 'tablist')
         @tabs_content = div(class: 'tab-content')
       end
 
-      def build_menu_item(title, options, &block)
+      def build_menu_item(title, options)
         options = options.reverse_merge({})
         li options do
           link_to title, "##{title.parameterize}", options
@@ -26,6 +30,9 @@ module ActiveAdmin
         options = options.reverse_merge(id: title.parameterize)
         div(options, &block)
       end
+
     end
+
   end
+
 end

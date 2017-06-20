@@ -1,9 +1,12 @@
 module ActiveAdmin
+
   module Views
+
+    # Overwriting Header Component - activeadmin/lib/active_admin/views/header.rb
     class Header < Component
 
       def build(namespace, menu)
-        super(id: "header")
+        super(id: 'header')
 
         @namespace    = namespace
         @menu         = menu
@@ -14,18 +17,19 @@ module ActiveAdmin
         build_utility_navigation
       end
 
-
       private
 
       def build_menu_toggle
-        div id: "menu_toggle" do
-          i class: "cb_activeadmin-icons" do
-            "menu"
+        div id: 'menu_toggle' do
+          i class: 'cb_activeadmin-icons' do
+            'menu'
           end
         end
-        div id: "header_overlay"
+        div id: 'header_overlay'
       end
 
     end
+
   end
+
 end
