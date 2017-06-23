@@ -1,7 +1,10 @@
 module ActiveAdmin
+
   module Views
-    # Build a Blank Slate
+
+    # Register BlankSlate in Views
     class BlankSlate < ActiveAdmin::Component
+
       builder_method :blank_slate
 
       def default_class_name
@@ -9,12 +12,29 @@ module ActiveAdmin
       end
 
       def build(content)
-        blank_slate_icon    = i("inbox", class: "cb_activeadmin-icons")
-        blank_slate_heading = h4(I18n.t("active_admin.blank_slate.heading"), class: "title")
-        blank_slate_content = span(content.html_safe, class: "blank_slate")
-        super([blank_slate_icon, blank_slate_heading, blank_slate_content].compact.join(" ").html_safe)
+        super(safe_join([
+          blank_slate_icon,
+          blank_slate_heading,
+          blank_slate_content(content)
+        ].compact))
+      end
+
+      private
+
+      def blank_slate_icon
+        i('inbox', class: 'cb_activeadmin-icons')
+      end
+
+      def blank_slate_heading
+        h4(I18n.t('active_admin.blank_slate.heading'), class: 'title')
+      end
+
+      def blank_slate_content(content)
+        content_tag(:span, content, class: 'blank_slate')
       end
 
     end
+
   end
+
 end

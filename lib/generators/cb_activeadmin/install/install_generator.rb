@@ -1,20 +1,19 @@
 require 'rails/generators/active_record'
 
 module CbActiveadmin
-  class InstallGenerator < Rails::Generators::Base
-    desc "Installs CbActiveadmin and generates the necessary migrations & overwrites"
-    source_root File.expand_path("../templates", __FILE__)
 
-    # def install_active_admin
-    #   generate "active_admin:install"
-    # end
+  # Install Gem
+  class InstallGenerator < Rails::Generators::Base
+
+    desc 'Installs CbActiveadmin and generates the necessary migrations & overwrites'
+    source_root File.expand_path('../templates', __FILE__)
 
     def install_configs
-      generate "cb_activeadmin:configs"
+      generate 'cb_activeadmin:configs'
     end
 
     def install_assets
-      generate "cb_activeadmin:assets"
+      generate 'cb_activeadmin:assets'
     end
 
     # def replace_active_admin_defaults
@@ -23,4 +22,5 @@ module CbActiveadmin
     # end
 
   end
+
 end

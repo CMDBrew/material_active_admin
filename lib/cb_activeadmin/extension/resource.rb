@@ -12,7 +12,10 @@ module ActiveAdmin
   # by calling the #active_admin_config method.
   #
   class Resource
+
     include HiddenContent
     include FloatActions
+
   end
+
 end

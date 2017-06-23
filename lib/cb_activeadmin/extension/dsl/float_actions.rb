@@ -1,5 +1,8 @@
 module ActiveAdmin
+
   module FloatActions
+
+    # Register in ActiveAdmin::DSL - activeadmin/lib/active_admin/dsl.rb
     module DSL
 
       def float_action(name, options = {}, &block)
@@ -7,5 +10,7 @@ module ActiveAdmin
       end
 
     end
+
   end
+
 end
