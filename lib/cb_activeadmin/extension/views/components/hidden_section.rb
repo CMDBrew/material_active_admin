@@ -1,14 +1,17 @@
 module ActiveAdmin
+
   module Views
 
+    # Register HiddenSection in Views
     class HiddenSection < ActiveAdmin::Component
+
       builder_method :hidden_section
 
       # Takes a ActiveAdmin::SidebarSection instance
       def build(section)
         @section  = section
-        @contents = div(class: "hidden_contents")
-        add_class @section.custom_class if @section.custom_class
+        @contents = div(class: 'hidden_contents')
+        add_class(@section.custom_class) if @section.custom_class
         self.id = @section.id
         build_hidden_content
       end
@@ -19,11 +22,7 @@ module ActiveAdmin
       end
 
       def add_child(child)
-        if @contents
-          @contents << child
-        else
-          super
-        end
+        @contents ? (@contents << child) : super
       end
 
       # Override children? to only report children when the panel's
@@ -43,7 +42,9 @@ module ActiveAdmin
           render(@section.partial_name)
         end
       end
+
     end
 
   end
+
 end
