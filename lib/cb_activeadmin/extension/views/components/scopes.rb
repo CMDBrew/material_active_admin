@@ -33,7 +33,7 @@ module ActiveAdmin
       private
 
       def scope_name(scope)
-        I18n.t("active_admin.scopes.#{scope.id}", default: name_for_scope(scope))
+        I18n.t("active_admin.scopes.#{scope.id}", default: scope.name.to_s)
       end
 
       def scope_params

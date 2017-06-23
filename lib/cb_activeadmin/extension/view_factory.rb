@@ -1,6 +1,8 @@
 require 'active_admin/abstract_view_factory'
 
 module ActiveAdmin
+
+  # Register View Factory Components
   class ViewFactory < AbstractViewFactory
 
     # Register Helper Renderers
@@ -26,4 +28,5 @@ module ActiveAdmin
               page:       ActiveAdmin::Views::Pages::Page
 
   end
+
 end

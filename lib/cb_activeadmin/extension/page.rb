@@ -12,7 +12,10 @@ module ActiveAdmin
   # by calling the #active_admin_config method.
   #
   class Page
+
     include Resource::HiddenContent
     include Resource::FloatActions
+
   end
+
 end
