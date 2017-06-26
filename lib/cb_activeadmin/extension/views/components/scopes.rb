@@ -33,7 +33,12 @@ module ActiveAdmin
       private
 
       def scope_name(scope)
-        I18n.t("active_admin.scopes.#{scope.id}", default: scope.name.to_s)
+        case scope.name
+        when Proc then
+          instance_exec(&scope.name).to_s
+        else
+          scope.name.to_s
+        end
       end
 
       def scope_params
