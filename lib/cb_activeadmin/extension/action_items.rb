@@ -16,8 +16,8 @@ module ActiveAdmin
       def add_default_new_action_item
         add_action_item :new, only: :index do
           if new_action?
-            link_to(
-              content_tag(:i, 'add_circle_outline', class: 'aa-icon'),
+            nav_icon(
+              'add_circle_outline',
               new_resource_path,
               title: new_btn_title,
               data: { toggle: 'tooltip', placement: 'bottom' }
@@ -30,8 +30,8 @@ module ActiveAdmin
       def add_default_edit_action_item
         add_action_item :edit, only: :show do
           if edit_action?
-            link_to(
-              content_tag(:i, 'mode_edit', class: 'aa-icon'),
+            nav_icon(
+              'mode_edit',
               edit_resource_path(resource),
               title: edit_btn_title,
               data: { toggle: 'tooltip', placement: 'bottom' }
@@ -44,9 +44,10 @@ module ActiveAdmin
       def add_default_show_action_item
         add_action_item :destroy, only: :show do
           if destroy_action?
-            link_to(
-              content_tag(:i, 'delete', class: 'aa-icon'),
+            nav_icon(
+              'delete',
               resource_path(resource),
+              class: 'hidden-mobile',
               method: :delete, title: destroy_btn_title,
               data: { confirm: destroy_confirm, toggle: 'tooltip', placement: 'bottom' }
             )

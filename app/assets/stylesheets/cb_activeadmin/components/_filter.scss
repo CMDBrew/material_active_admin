@@ -1,0 +1,113 @@
+#search-filter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: $filter-width;
+  padding: 0;
+  overflow: hidden;
+  color: $text-color-secondary;
+  text-align: left;
+  background: $filter-bg;
+  box-sizing: border-box;
+
+  @include transform(translateX(100%));
+  @include transition(transform 0.2s linear);
+
+  &.search-filter-active {
+    @include box-shadow($filter-shadow);
+    @include transform(translateX(0%));
+  }
+
+  #filters_sidebar_section > h3 {
+    display: none;
+  }
+
+  form,
+  form > div,
+  .filter_form_field {
+    float: left;
+    width: 100%;
+  }
+
+  input {
+    &[type='submit'] {
+      @include button-constructor($color: $brand-primary);
+    }
+  }
+
+  .clear_filters_btn {
+    @include button-constructor($color: $text-color-secondary, $type: 'link');
+  }
+
+  .buttons > * {
+    float: right;
+    margin-left: $offset-base;
+  }
+
+  .header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: $titlebar-height;
+    padding: 0 2 * $offset-base;
+    padding-right: 48px;
+    font-size: $h3-fontsize;
+    font-weight: $font-bold;
+    color: $text-color-primary-inverse;
+    white-space: nowrap;
+    background: $brand-primary;
+  }
+
+  .search-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .panel {
+    padding: 0;
+
+    @include box-shadow(none);
+  }
+
+  .filter_form_field {
+    label {
+      width: 100%;
+    }
+
+    & > * {
+      float: left;
+    }
+
+    &.select_and_search {
+      select,
+      input {
+        width: calc(50% - #{$offset-base} / 2);
+      }
+
+      & > *:not(:last-child) {
+        margin-right: $offset-base;
+      }
+    }
+
+    &.filter_date_range {
+      input {
+        width: calc(50% - #{$offset-base} / 2);
+      }
+
+      .seperator {
+        width: $offset-base;
+        line-height: $input-height;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -8,11 +8,30 @@ ActiveAdmin.register AdminUser do
                 :select,
                 :textarea
 
-  scope :basic_user, :show_count => false, :default => true do |records|
+  scope :basic_user, :show_count => true, :default => true do |records|
     records
   end
-  scope :super_user, :show_count => false do |records|
+  scope :super_user, :show_count => true do |records|
     records
+  end
+
+  batch_action :hello, hidden_mobile: true do
+    puts '132'
+  end
+
+  batch_action :world, dropdown_item: true do
+    puts '132'
+  end
+
+  action_item :convert, only: :show do
+    nav_btn 'asds', '#'
+  end
+
+  action_item :drop, only: :show do
+    dropdown_menu '' do
+      item "Edit Details", '#'
+      item "Edit My Account", '#'
+    end
   end
   # scope :tab_3, :show_count => false do |records|
   #   records
@@ -69,20 +88,20 @@ ActiveAdmin.register AdminUser do
     actions(dropdown: true, dropdown_name: nil)
   end
 
-  index as: :blog, label: "123" do
-    title do |post|
-      span post.email,      class: 'title'
-      span post.created_at, class: 'created_at'
-    end
-  end
-
-  index as: :block do |product|
-    div for: product do
-      resource_selection_cell product
-      h2  auto_link     product.email
-      div simple_format product.textarea
-    end
-  end
+  # index as: :blog, label: "123" do
+  #   title do |post|
+  #     span post.email,      class: 'title'
+  #     span post.created_at, class: 'created_at'
+  #   end
+  # end
+  #
+  # index as: :block do |product|
+  #   div for: product do
+  #     resource_selection_cell product
+  #     h2  auto_link     product.email
+  #     div simple_format product.textarea
+  #   end
+  # end
 
   filter :is_super_admin,
          :input_html => { class: "select2-with-search"}

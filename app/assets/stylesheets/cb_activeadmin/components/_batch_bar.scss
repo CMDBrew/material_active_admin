@@ -1,0 +1,36 @@
+#batch_bar {
+  @include navbar-constructor($color: $batch-bar-bg);
+
+  @include transform(translateY(-100%));
+  @include transition(transform 0.2s linear);
+
+  #batch_bar_left {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    flex-direction: row;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #selection-toggle {
+    margin-right: 2 * $offset-base;
+  }
+
+  #batch_bar_right {
+    display: flex;
+    flex: 0 0 auto;
+    text-align: right;
+
+    & > ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .batch_action:not(:first-child) {
+        margin-left: $offset-base;
+      }
+    }
+  }
+}

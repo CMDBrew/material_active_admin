@@ -1,0 +1,33 @@
+.table_tools {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: $table-tools-height;
+  padding: 0 2 * $offset-base;
+  background: $table-tool-bg;
+  border-bottom: 1px solid $divider-color;
+
+  .dropdown_menu_button {
+    @include button-constructor($size: 'sm');
+  }
+
+  .table_tools_segmented_control {
+    @include tab-constructor;
+
+    justify-content: center;
+  }
+
+  .scope {
+    &.selected {
+      span.count {
+        @include badge-constructor($color: $brand-primary);
+      }
+    }
+
+    span.count {
+      @include badge-constructor;
+
+      margin-left: $offset-base;
+    }
+  }
+}

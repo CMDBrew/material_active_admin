@@ -30,7 +30,7 @@
     .ui-datepicker-title {
       font-size: $h6-fontsize;
       font-weight: 500;
-      @include text-field-constructor;
+      // @include text-field-constructor;
       flex-direction: row;
       justify-content: center;
       select {

@@ -3,7 +3,6 @@ module ActiveAdmin
   module Views
 
     # Overwriting TitleBar Component - activeadmin/lib/active_admin/views/title_bar.rb
-    # rubocop:disable Metrics/ClassLength
     class TitleBar < Component
 
       # rubocop:disable Style/OptionHash
@@ -18,6 +17,10 @@ module ActiveAdmin
       end
 
       private
+
+      def build_title_tag
+        h3(@title, id: 'page_title')
+      end
 
       def build_sidebar_toggle
         div id: 'sidebar-toggle', class: 'nav-icon'
@@ -44,15 +47,10 @@ module ActiveAdmin
         end
       end
 
-      def build_batch_actions_selector
-        return unless active_admin_config.batch_actions.any?
-        insert_tag view_factory.batch_action_selector, active_admin_config.batch_actions
-      end
-
       def build_titlebar_left
         div id: 'titlebar_left' do
           build_sidebar_toggle
-          build_breadcrumb('')
+          build_breadcrumb
           build_title_tag
         end
       end
@@ -60,7 +58,6 @@ module ActiveAdmin
       def build_titlebar_right
         div id: 'titlebar_right' do
           if @is_index_page
-            build_batch_actions_selector
             build_index_list
             build_search_toggle
             build_search_filters

@@ -4,7 +4,6 @@
 #= require tinymce
 #= require select2-full
 #= require_self
-#= require active_admin/lib/batch_actions
 #= require active_admin/lib/checkbox-toggler
 #= require active_admin/lib/dropdown-menu
 #= require active_admin/lib/flash

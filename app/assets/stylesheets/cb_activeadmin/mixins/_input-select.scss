@@ -1,0 +1,17 @@
+@mixin input-select-constructor {
+  @include input-base;
+
+  position: relative;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 $offset-base * 2;
+  padding-right: 4 * $offset-base;
+  line-height: $input-height;
+  background: $input-select-bg;
+  background-image: image-url('cb_activeadmin/arrow_down.png');
+  background-position: calc(100% - 4px) 8px;
+  background-repeat: no-repeat;
+  background-size: $icon-size;
+  border-radius: 0;
+}

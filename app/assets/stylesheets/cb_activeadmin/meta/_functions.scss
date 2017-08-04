@@ -1,3 +1,19 @@
+@function adjust-text-color($color) {
+  @if (lightness($color) > 75) {
+    @return $text-color-primary;
+  } @else {
+    @return $text-color-primary-inverse;
+  }
+}
+
+@function nav-btn-hover-adjustment($color) {
+  @if (lightness($color) > 75) {
+    @return $nav-btn-hover-bg-dark;
+  } @else {
+    @return $nav-btn-hover-bg-light;
+  }
+}
+
 @function get-text-color($color, $type:normal) {
   @if($type == normal) {
     @if (lightness($color) > $color-adjustment-intensity) {

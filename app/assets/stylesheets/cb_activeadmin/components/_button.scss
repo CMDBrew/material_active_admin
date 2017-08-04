@@ -1,18 +1,9 @@
 // Generate Button Classes
-@each $color_class, $color in $btn-color-map {
-  .mdi-btn {
-    &.#{$color_class}:not(.btn-link):not(.btn-densed) {
-      @include button-constructor($color: $color);
+.mdi-btn {
+  @each $_color-klass, $_color in $btn-color-map {
+    &.mdi-btn__#{$_color-klass} {
+      @include button-constructor($_color);
     }
-    &.#{$color_class}:not(.btn-link).btn-densed {
-      @include button-constructor($color: $color, $size: densed);
-    }
-    &.#{$color_class}.btn-link:not(.btn-densed) {
-      @include button-constructor($color: $color, $type: link);
-    }
-    &.#{$color_class}.btn-link.btn-densed {
-      @include button-constructor($color: $color, $type: link, $size: densed);
-    }
-    &.btn-block { width: 100%; }
   }
+  &.btn-block { width: 100%; }
 }

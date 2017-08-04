@@ -22,18 +22,18 @@ $content-offset-xs:          2 * $offset !default;
 $ctrl-height:        40px !default;
 $ctrl-height-densed: 32px !default;
 
-// Typography
-$h1-fontsize:   4rem     !default;
-$h2-fontsize:   3.21rem  !default;
-$h3-fontsize:   2.43em   !default;
-$h4-fontsize:   1.71rem  !default;
-$h5-fontsize:   1.43rem  !default;
-$h6-fontsize:   1.29rem  !default;
-$p-fontsize:    1rem     !default;
-$base-fontsize: 14px     !default;
-$font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif !default;
-$font-family:   "Roboto", $font-fallback !default;
-$font-bold:     500 !default;
+// // Typography
+// $h1-fontsize:   2.43rem  !default;
+// $h2-fontsize:   3.21rem  !default;
+// $h3-fontsize:   1.43em   !default;
+// $h4-fontsize:   1.71rem  !default;
+// $h5-fontsize:   1.14rem  !default;
+// $h6-fontsize:   0.86rem  !default;
+// $p-fontsize:    1rem     !default;
+// $base-fontsize: 14px     !default;
+// $font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif !default;
+// $font-family:   "Roboto", $font-fallback !default;
+// $font-bold:     500 !default;
 
 // Backgrounds
 $body-bg:              #EEE !default;
@@ -52,40 +52,42 @@ $icon-size: 24px !default;
 $color-adjust-default: 3% !default;
 $color-adjust-strong: 5% !default;
 
-// Colors
-$brand-default:   #E8E8E8 !default;
-$brand-primary:   #3F51B5 !default;
-$brand-success:   #009688 !default;
-$brand-info:      #03A9F4 !default;
-$brand-warning:   #FFC107 !default;
-$brand-danger:    #F44336 !default;
-$btn-color-map: (
-  "brand-default": $brand-default,
-  "brand-primary": $brand-primary,
-  "brand-success": $brand-success,
-  "brand-info":    $brand-info,
-  "brand-warning": $brand-warning,
-  "brand-danger":  $brand-danger
-) !default;
+// // Colors
+// $brand-accent:    #4285F4 !default;
+// $brand-default:   #E8E8E8 !default;
+// $brand-primary:   #EAB03C !default;
+// $brand-success:   #009688 !default;
+// $brand-info:      #03A9F4 !default;
+// $brand-warning:   #FFC107 !default;
+// $brand-danger:    #F44336 !default;
+// $btn-color-map: (
+//   "brand-accent":  $brand-accent,
+//   "brand-default": $brand-default,
+//   "brand-primary": $brand-primary,
+//   "brand-success": $brand-success,
+//   "brand-info":    $brand-info,
+//   "brand-warning": $brand-warning,
+//   "brand-danger":  $brand-danger
+// ) !default;
 
 // Text colors
-$text-color-primary:           rgba(33,33,33,1) !default;
-$text-color-secondary:         rgba(33,33,33,.54) !default;
-$text-color-primary-inverse:   rgba(255,255,255,1) !default;
-$text-color-secondary-inverse: rgba(255,255,255,.54) !default;
-$text-color-placeholder:       #B9B9B9 !default;
+// $text-color-primary:           rgba(0, 0, 0, 1) !default;
+// $text-color-secondary:         rgba(33,33,33,.54) !default;
+// $text-color-primary-inverse:   rgba(255,255,255,1) !default;
+// $text-color-secondary-inverse: rgba(255,255,255,.54) !default;
+// $text-color-placeholder:       #9E9E9E !default;
 
-$text-color-map: (
-  "primary":           $text-color-primary,
-  "secondary":         $text-color-secondary,
-  "primary-inverse":   $text-color-primary-inverse,
-  "secondary-inverse": $text-color-secondary-inverse,
-  "brand-primary":     $brand-primary,
-  "brand-success":     $brand-success,
-  "brand-info":        $brand-info,
-  "brand-warning":     $brand-warning,
-  "brand-danger":      $brand-danger
-) !default;
+// $text-color-map: (
+//   "primary":           $text-color-primary,
+//   "secondary":         $text-color-secondary,
+//   "primary-inverse":   $text-color-primary-inverse,
+//   "secondary-inverse": $text-color-secondary-inverse,
+//   "brand-primary":     $brand-primary,
+//   "brand-success":     $brand-success,
+//   "brand-info":        $brand-info,
+//   "brand-warning":     $brand-warning,
+//   "brand-danger":      $brand-danger
+// ) !default;
 
 // Dividers
 $divider-light:        rgba(white, .3) !default;
@@ -114,40 +116,27 @@ $edit-max-width: $content-max-width !default;
   FORM
   **/
 $form-divider-color: rgba(black, .1) !default;
-$label-fontsize: 0.93rem !default;
+$label-fontsize: $h5-fontsize !default;
 
 /**
   COMPONENTS
   **/
-// Buttons
-$button-height:               $ctrl-height !default;
-$button-height-densed:        $ctrl-height-densed !default;
-$button-fontsize:             $p-fontsize !default;
-$button-fontweight:           $font-bold !default;
-$button-border-radius:        $border-radius !default;
-$button-hover-light-parent:   rgba(black, .05) !default;
-$button-focus-light-parent:   rgba(black, .15) !default;
-$button-hover-dark-parent:    rgba(white, .05) !default;
-$button-focus-dark-parent:    rgba(white, .15) !default;
-$button-raised-shadow:        0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24) !default;
-$button-raised-shadow-active: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28) !default;
-
 // Float Action
-$float-action-bg: #FF4081 !default;
+$float-action-bg: $brand-accent !default;
 $float-action-text-color: get-text-color($float-action-bg) !default;
 $float-action-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28) !default;
 $float-action-shadow-active: 0 0 6px rgba(0,0,0,.16), 0 6px 12px rgba(0,0,0,.32) !default;
 
 // Inputs
 $input-type:                      'guide' !default;
-$input-guide-border-light-parent: 2px solid rgba(black, .15) !default;
+$input-guide-border-light-parent: 1px solid rgba(black, .15) !default;
 $input-guide-border-dark-parent:  2px solid rgba(white, .15) !default;
 $input-solid-bg:                  rgba(black, .05) !default;
 $input-solid-disabled-bg:         transparent !default;
 $input-solid-border:              1px solid transparent !default;
 $input-solid-border-active:       1px solid $brand-primary !default;
 $input-border-radius:             $border-radius !default;
-$input-height:                    $ctrl-height !default;
+// $input-height:                    $ctrl-height !default;
 $input-height-densed:             $ctrl-height-densed !default;
 $input-placeholder-color:         $text-color-placeholder !default;
 
@@ -226,11 +215,11 @@ $has-many-delete-color:     $brand-danger !default;
 $has-many-add-ctrl-bg:      transparent !default;
 
 // Table
-$table-bg:              $widget-bg !default;
-$table-row-height:      48px !default;
-$table-selected-row-bg: rgba($brand-primary, .1) !default;
-$table-shadow:          0 1px 4px 0 rgba(0,0,0,0.14) !default;
-$table-border-radius:   $widget-border-radius !default;
+// $table-bg:              $widget-bg !default;
+// $table-row-height:      48px !default;
+// $table-selected-row-bg: rgba($brand-primary, .1) !default;
+// $table-shadow:          0 1px 4px 0 rgba(0,0,0,0.14) !default;
+// $table-border-radius:   $widget-border-radius !default;
 
 // Dropdown Menu
 $dropdown-bg:            $widget-bg !default;

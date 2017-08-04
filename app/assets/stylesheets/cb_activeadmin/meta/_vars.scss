@@ -1,0 +1,130 @@
+// Colors
+$brand-accent:  #DB4437 !default;
+// $brand-accent:  #3F51B5 !default;
+$brand-default: #EEEEEE !default;
+// $brand-primary: #FFB300 !default;
+$brand-primary: #3F51B5 !default;
+$brand-success: #009688 !default;
+$brand-info:    #03A9F4 !default;
+$brand-warning: #FF9800 !default;
+$brand-danger:  #DB4437 !default;
+$btn-color-map: (
+  'brand-accent':  $brand-accent,
+  'brand-default': $brand-default,
+  'brand-primary': $brand-primary,
+  'brand-success': $brand-success,
+  'brand-info':    $brand-info,
+  'brand-warning': $brand-warning,
+  'brand-danger':  $brand-danger
+) !default;
+
+// Utilities
+$offset-base:    8px !default;
+$ctrl-height:    40px !default;
+$ctrl-height-sm: 36px !default;
+$ctrl-hover-bg:  rgba(0, 0, 0, 0.05) !default;
+$divider-color:  #E0E0E0 !default;
+
+// Typography
+$h1-fontsize:        2.43rem !default;
+$h2-fontsize:        2.29rem !default;
+$h3-fontsize:        1.43rem !default;
+$h4-fontsize:        1.29rem !default;
+$h5-fontsize:        1.14rem !default;
+$h6-fontsize:        0.86rem !default;
+$p-fontsize:         1rem !default;
+$base-fontsize:      14px !default;
+$font-fallback:      Helvetica, Arial, sans-serif !default;
+$font-family:        'Roboto', $font-fallback !default;
+$font-bold:          500 !default;
+$icon-size:          24px !default;
+$checkbox-icon-size: 22px !default;
+
+// Text colors
+$text-color-placeholder:       #9E9E9E !default;
+$text-color-primary:           rgba(0, 0, 0, 1) !default;
+$text-color-secondary:         rgba(0, 0, 0, 0.87) !default;
+$text-color-hint:              rgba(0, 0, 0, 0.54) !default;
+$text-color-placeholder:       #9E9E9E !default;
+$text-color-primary-inverse:   rgba(255, 255, 255, 1) !default;
+$text-color-secondary-inverse: rgba(255, 255, 255, 0.87) !default;
+$text-color-hint-inverse:      rgba(255, 255, 255, 0.54) !default;
+$text-color-map: (
+  'primary': $text-color-primary,
+  'secondary': $text-color-secondary,
+  'hint': $text-color-hint,
+  'primary-inverse': $text-color-primary-inverse,
+  'secondary-inverse': $text-color-secondary-inverse,
+  'brand-primary': $brand-primary,
+  'brand-success': $brand-success,
+  'brand-info': $brand-info,
+  'brand-warning': $brand-warning,
+  'brand-danger': $brand-danger
+) !default;
+
+// Navbar
+$nav-btn-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !default;
+$nav-btn-hover-bg-light: rgba(255, 255, 255, 0.15) !default;
+$nav-btn-hover-bg-dark:  rgba(0, 0, 0, 0.15) !default;
+
+// Title Bar
+$titlebar-bg: $brand-primary !default;
+$titlebar-height: 64px !default;
+$titlebar-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !default;
+
+// Body
+$body-bg: #EEEEEE !default;
+
+// Batch Bar
+$batch-bar-bg: #646464 !default;
+
+// Header
+$header-width:              280px !default;
+$header-shadow:             0 0 16px rgba(0, 0, 0, 0.28) !default;
+$header-bg:                 white !default;
+$header-text-color:         $text-color-hint !default;
+$header-menu-item-height:   54px !default;
+$header-menu-item-hover-bg: $ctrl-hover-bg;
+$header-icon-padding:       70px !default;
+
+// Filter
+$filter-bg:     white !default;
+$filter-width:  340px !default;
+$filter-shadow: 0 0 16px rgba(0, 0, 0, 0.28) !default;
+
+// Panel
+$panel-bg:     white !default;
+$panel-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !default;
+
+// Form
+$input-guide-color: #E0E0E0 !default;
+$input-height:      40px !default;
+$input-select-bg:   $brand-default !default;
+
+// Button
+$button-radius:    3px !default;
+$button-height:    $ctrl-height !default;
+$button-height-sm: $ctrl-height-sm !default;
+
+// Table
+$table-row-height:      48px !default;
+$table-selected-row-bg: transparentize($brand-primary, 0.87) !default;
+
+// Dropdown
+$dropdown-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !default;
+$dropdown-radius: 2px !default;
+$dropdown-bg: white !default;
+$dropdown-min-width: 192px !default;
+$dropdown-menu-item-height: 40px !default;
+$dropdown-menu-item-hover-bg: $ctrl-hover-bg;
+
+// Tab
+$tab-height: 48px !default;
+
+// Table Tools
+$table-tools-height: 48px !default;
+$table-tool-bg: white !default;
+
+// Badge
+$badge-bg: rgba(0, 0, 0, 0.5) !default;
+$badge-radius: 3px !default;

@@ -7,6 +7,18 @@ module ActiveAdmin
 
       private
 
+      def nav_icon(icon, url, html_options = {})
+        html_options[:class] = "nav-icon #{html_options[:class]}"
+        link_to url, html_options do
+          content_tag :i, icon, class: 'aa-icon'
+        end
+      end
+
+      def nav_btn(title, url, html_options = {})
+        html_options[:class] = "nav-btn #{html_options[:class]}"
+        link_to title, url, html_options
+      end
+
       def destroy_action?
         controller.action_methods.include?('destroy') &&
           authorized?(ActiveAdmin::Auth::DESTROY, resource)

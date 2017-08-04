@@ -1,0 +1,23 @@
+// sass-lint:disable no-vendor-prefixes
+::-webkit-input-placeholder {
+  font-weight: 300;
+  color: $text-color-placeholder;
+}
+
+// sass-lint:disable no-vendor-prefixes
+:-moz-placeholder {
+  font-weight: 300;
+  color: $text-color-placeholder;
+}
+
+// sass-lint:disable no-vendor-prefixes
+::-moz-placeholder {
+  font-weight: 300;
+  color: $text-color-placeholder;
+}
+
+// sass-lint:disable no-vendor-prefixes
+:-ms-input-placeholder {
+  font-weight: 300;
+  color: $text-color-placeholder;
+}

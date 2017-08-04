@@ -38,7 +38,7 @@
     }
     @each $flash_class, $flash_color in $flash-color-map {
       &.#{$flash_class} button {
-        @include button-constructor($color: $flash_color, $type: link, $size: densed);
+        // @include button-constructor($color: $flash_color, $type: link, $size: densed);
         &:hover { background: transparent; }
       }
     }

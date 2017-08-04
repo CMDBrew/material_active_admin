@@ -1,128 +1,70 @@
-@mixin button-base($size: null) {
+@mixin button-base($size) {
   position: relative;
-  font-weight: $button-fontweight;
-  display: inline-block;
-  flex-direction: row;
-  justify-content: center;
+  display: block;
   align-items: center;
-  text-transform: uppercase;
-  font-size: $button-fontsize;
-  border-radius: $button-border-radius;
-  border: none;
-  outline: none;
-  text-overflow: ellipsis;
+  padding: 0 2 * $offset-base;
+  font-size: $p-fontsize;
+  font-weight: $font-bold;
+  text-align: center;
   text-decoration: none;
-  vertical-align: top;
-  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
   white-space: nowrap;
-  box-sizing: border-box;
+  cursor: pointer;
+  border: 0;
+  border-radius: $button-radius;
+  outline: none;
+
   -webkit-appearance: none;
   -webkit-backface-visibility: hidden;
-  background-color: transparent;
-  cursor: pointer;
-  text-align: center;
-  @include transition(
-    box-shadow .2s cubic-bezier(.4,0,1,1),
-    background-color .2s cubic-bezier(.4,0,.2,1),
-    color .2s cubic-bezier(.4,0,.2,1)
-  );
-  @include transform(translate3d(0, 0, 0));
-  input[type="submit"] {
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -webkit-backface-visibility: hidden;
-    background-color: transparent;
-    padding: 0 2 * $offset;
-    border: 0;
-    height: 100%;
-    display: block;
-    line-height: inherit;
-    text-decoration: inherit;
-    text-transform: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-  }
-  &[disabled='disabled'] {
-    opacity: 0.5;
-    cursor: default;
-    @include box-shadow(none);
-  }
-  i {
-    width: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  i + span { margin-left: $offset; }
-  @if($size == densed) {
-    line-height: $button-height-densed;
-    min-width: $button-height-densed;
-    padding: 0 $offset;
+
+  @if ($size == 'sm') {
+    line-height: $button-height-sm;
   } @else {
     line-height: $button-height;
-    min-width: $button-height;
-    padding: 0 2 * $offset;
   }
-}
 
-@mixin button-raised($color, $shadow, $size: null) {
-  @include button-base($size);
-  will-change: box-shadow;
-  background: $color;
-  color: get-text-color($color);
-  @if($shadow != false) {
-    &:not(.no-shadow) { @include box-shadow($button-raised-shadow); }
-  }
-  &:not([disabled='disabled']) {
-    &:active {
-      $color_active: mod-color($color, 5%);
-      background: $color_active;
-      color: get-text-color($color_active);
-      @include box-shadow($button-raised-shadow-active);
+  input {
+    &[type='submit'] {
+      color: inherit;
+      text-transform: uppercase;
+      background: transparent;
+      border: 0;
+
+      -webkit-appearance: none;
+      -webkit-backface-visibility: hidden;
     }
   }
 }
-
-@mixin button-link($color, $parent_bg, $size: null) {
-  @include button-base($size);
-  will-change: box-shadow;
-  @if($color == $brand-default) {
-    color: get-text-color($parent_bg, $type:secondary);
-  } @else {
-    color: $color;
-  }
-  &:not([disabled='disabled']) {
-    @if (lightness($parent_bg) > 50) {
-      &:hover { background: $button-hover-light-parent; }
-      &:active,
-      &:focus { background: $button-focus-light-parent; }
-    } @else {
-      &:hover { background: $button-hover-dark-parent; }
-      &:active,
-      &:focus { background: $button-focus-dark-parent; }
-    }
-  }
-}
-
 
 @mixin button-constructor(
-  $color,
-  $type:      raised,
-  $size:      null,
-  $shadow:    true,
-  $parent_bg: $body-bg
+  $color: $brand-default,
+  $type: 'button',
+  $size: 'default',
+  $shadow: null
 ) {
-  @if($type == raised) {
-    @include button-raised(
-      $color:  $color,
-      $size:   $size,
-      $shadow: $shadow
-    );
-  } @elseif($type == link) {
-    @include button-link(
-      $color:     $color,
-      $size:      $size,
-      $parent_bg: $parent_bg
-    );
+  @include button-base($size);
+
+  @if ($shadow != null) {
+    @include box-shadow($shadow);
+  }
+
+  @if ($type == 'link') {
+    color: $color;
+
+    &:not(.disabled):hover {
+      background: $brand-default;
+    }
+  } @else {
+    color: adjust-text-color($color);
+    background: $color;
+
+    &:not(.disabled):hover {
+      background: darken($color, 5%);
+    }
+  }
+
+  &.disabled {
+    opacity: 0.54;
   }
 }

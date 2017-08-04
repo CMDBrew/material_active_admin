@@ -1,116 +1,117 @@
-@mixin table-base(
-  $bg_color:      $table-bg,
-  $selected_bg:   $table-selected-row-bg,
-  $border_radius: $table-border-radius,
-  $row_height:    $table-row-height,
-  $img_size:      24px,
-  $ctrl_w:        24px
-) {
+@mixin table-base {
   width: 100%;
+
   th {
-    text-transform: capitalize;
-    color: get-text-color($bg_color, $type:secondary);
+    font-size: $p-fontsize;
     font-weight: $font-bold;
-    &[class*="sorted"] a { color: $brand-primary; }
+    color: $text-color-hint;
+    text-transform: capitalize;
+
+    &[class*='sorted'] a {
+      color: $brand-primary;
+    }
+
     &.sortable {
-      &.sorted-asc a:before { color: $brand-primary; }
-      &.sorted-desc a:after { color: $brand-primary; }
+
+      &.sorted-asc a::after {
+        content: '\E5C7';
+      }
+
+      &.sorted-desc a::after {
+        content: '\E5C5';
+      }
+
+      &[class*='sorted-'] {
+        color: $brand-primary;
+      }
+
       a {
-        min-height: 20px;
         position: relative;
-        padding-right: $icon-size + $offset / 2;
+        min-height: 20px;
+        padding-right: $icon-size + $offset-base / 2;
         color: inherit;
-        &:after,
-        &:before {
-          color: get-text-color($bg_color, $type:secondary);
+
+        &::after {
           position: absolute;
-          font-family: $icon-font;
-          font-size: $icon-size * 0.75;
-          line-height: 10px;
+          top: 50%;
           right: 0;
-        }
-        &:after {
-          content: "\E313";
-          bottom: 0;
-        }
-        &:before {
-          content: "\E316";
-          top: 0;
+          font-family: $icon-font;
+          font-size: $icon-size;
+          line-height: 10px;
+          @include transform(translateY(-50%));
         }
       }
     }
-    a {
-      color: get-text-color($bg_color, $type:secondary);
-      font-weight: $font-bold;
-      display: flex;
-      align-items: center;
-    }
   }
-  th, td {
-    padding: $offset;
-    height: $row_height;
-    box-sizing: border-box;
+
+  th,
+  td {
+    height: $table-row-height;
+    padding: $offset-base;
     vertical-align: middle;
-    &:first-child { padding-left: 2 * $offset; }
-    &:last-child:not(.col-actions) { padding-right: 2 * $offset; }
+    box-sizing: border-box;
+
+    &:first-child {
+      padding-left: 2 * $offset-base;
+    }
+
+    &:last-child:not(.col-actions) {
+      padding-right: 2 * $offset-base;
+    }
+
     &.col-selectable,
-    &.col-icon { width: $ctrl_w; }
-    &.col-selectable .mdi-checkbox { height: 20px; }
-    .image {
-      position: relative;
-      height: $img_size;
-      width: $img_size;
-      overflow: hidden;
-      img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        height: 100%;
-        @include transform(translate(-50%, -50%));
-      }
+    &.col-icon {
+      width: $icon-size;
+    }
+
+    &.col-selectable .mdi-checkbox {
+      height: 20px;
     }
   }
-  tr.selected { background: $selected_bg; }
-  thead { border-bottom: 1px solid get-divider-color($bg_color); }
-  tbody {
-    tr:not(:last-child) { border-bottom: 1px solid get-divider-color($bg_color); }
+
+  tr.selected {
+    background: $table-selected-row-bg;
   }
+
+  thead,
+  tbody tr {
+    border-bottom: 1px solid $divider-color;
+  }
+
   td.col-actions {
     flex-direction: row;
     text-align: right;
+
+    a.dropdown_menu_button::after {
+      color: $text-color-hint;
+    }
+
     .table_actions {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
+
       a.member_link {
-        &:not(:last-child) { margin-right: $offset / 2; }
-        @include button-constructor($brand-primary, $type:link, $size:densed);
+        &:not(:last-child) {
+          margin-right: $offset-base / 2;
+        }
       }
     }
   }
-  span.empty { color: get-text-color($bg_color, $type:secondary); }
-  @include mobile {
-    th, td {
-      &:first-child { padding-left: 2 * $offset; }
-      &:last-child:not(.col-actions) { padding-right: 2 * $offset; }
-    }
+
+  span.empty {
+    color: $text-color-hint;
   }
 }
 
-@mixin table-constructor(
-  $shadow:        $table-shadow,
-  $bg_color:      $table-bg,
-  $border:        none,
-  $border_radius: $table-border-radius
-) {
-  $border_color: null;
-  color: get-text-color($bg_color);
-  background: $bg_color;
-  border: $border;
-  border-collapse: collapse;
+@mixin table-constructor {
+  @include table-base;
+
   overflow: auto;
-  white-space: nowrap;
+  color: $text-color-secondary;
   text-align: left;
-  border-radius: $border_radius;
-  @include box-shadow($shadow);
+  white-space: nowrap;
+  border: 0;
+  border-collapse: collapse;
+  border-radius: 0;
 }

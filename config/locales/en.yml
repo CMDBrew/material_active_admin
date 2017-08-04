@@ -126,16 +126,16 @@ en:
         title:  "Sign up"
         submit: "Sign up"
       login:
-        title:               "Log In"
+        title:               "Sign In"
         remember_me:         "Remember me"
-        submit:              "Login"
+        submit:              "submit"
         submit/disable_with: "Logging In..."
       reset_password:
-        title:  "Forgot your password?"
+        title:  "Forgot password?"
         submit: "Send Instruction"
       change_password:
-        title:  "Change your password"
-        submit: "Change my password"
+        title:  "Change password"
+        submit: "submit"
       unlock:
         title:  "Resend unlock instructions"
         submit: "Resend unlock instructions"

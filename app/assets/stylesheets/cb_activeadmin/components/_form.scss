@@ -1,182 +1,69 @@
 form {
-  ul.errors {
-    background: $brand-danger;
-    border-radius: $border-radius;
-    color: get-text-color($brand-danger);
-    padding: $content-offset-xs;
-    padding-left: 4 * $offset;
-  }
   ol,
-  li {
+  ul {
     padding: 0;
     margin: 0;
     list-style: none;
-    &.hidden { display: none !important; }
-    &.input:not(.with-guide) {
-      @include placeholder(
-      $color: $text-color-placeholder,
-      $font-weight: normal
-      );
-      &.boolean label { @include checkbox-constructor; }
-      &.stringish,
-      &.text,
-      &.just_time_picker_with_ampm,
-      &.just_datetime_picker,
-      &.date_select .fragment,
-      &.datetime_select .fragment,
-      &.select { @include text-field-constructor($type:$input-type); }
-      &.just_datetime_picker,
-      &.just_time_picker_with_ampm {
-        flex-direction: row !important;
-        align-items: center;
-        & > * {
-          flex: 1;
-          &:not(:first-child) { margin-left: $offset; }
-          &:not(:last-child) { margin-right: $offset; }
-        }
-      }
-      .fragments-group {
-        display: flex;
-        flex-direction: row;
-        .fragment { padding: 0 $content-offset-xs; }
-        .fragment:first-child { padding-left: 0; }
-        .fragment:last-child { padding-right: 0; }
-      }
-    }
-    &.error .file-container .file-text { border-color: $brand-danger; }
-    .field_with_errors {
-      width: 100%;
-      input,
-      select,
-      textarea { border-color: $brand-danger !important; }
-    }
-    p.inline-errors {
-      width: 100%;
-      color: $brand-danger;
-      font-weight: 500;
-      margin: $offset 0;
-    }
-    .image img { max-width: 100%; }
   }
-}
 
-body.logged_in {
-  form {
-    fieldset {
-      &.inputs {
-        @include panel-constructor;
-        hr {
-          background: $form-divider-color;
-          display: block;
-          height: 1px;
-          border: 0;
-        }
-        li {
-          display: flex;
-          &.input {
-            position: relative;
-            padding: $content-offset;
-            text-align: left;
-            flex-direction: column;
-            fieldset.fragments legend.label {
-              display: block;
-              float: left;
-              width: 100%;
-            }
-            fieldset.fragments legend.label label,
-            &.boolean span.checkbox-label,
-            &.select label,
-            &.text label,
-            &.file label:not(.file-input),
-            &.stringish label,
-            &.just_time_picker_with_ampm label,
-            &.just_datetime_picker label {
-              display: flex;
-              align-items: center;
-              margin-bottom: $offset;
-              box-sizing: border-box;
-              white-space: nowrap;
-              font-weight: $font-bold;
-              text-overflow: ellipsis;
-              font-size: $label-fontsize;
-              overflow: hidden;
-              color: get-text-color($panel-bg);
-              text-transform: capitalize;
-              .field_with_errors input { border-color: $brand-danger; }
-              input { width: calc(100% - 30%); }
-            }
-            &.boolean span.checkbox-label { margin-bottom: 0; }
-          }
-          .inline-hints { margin-top: $offset; }
-        }
-        .has_many_container {
-          flex-direction: column;
-          padding: $content-offset;
-          fieldset.has_many_fields {
-            border: $has-many-container-border;
-            margin-bottom: $content-offset;
-            @include box-shadow($has-many-container-shadow);
-            ol { padding-bottom: 0; }
-            li:not(.input):not(.has_many_container) {
-              padding: $offset;
-              justify-content: flex-end;
-              background: $has-many-add-ctrl-bg;
-              margin-bottom: 0;
-            }
-          }
-          a.has_many_add { @include button-constructor($color:$has-many-add-color, $shadow: false); }
-          a.has_many_remove { @include button-constructor($color:$has-many-delete-color, $type:link, $size: densed); }
-        }
-      }
-      &.actions {
-        margin-top: $content-offset;
-        padding: 0;
-        ol { padding: 0; }
-        ol:after {
-          content: "";
-          display: table;
-          clear: both;
-        }
-        li {
-          display: block;
-          float: right;
-          margin-left: $offset;
-        }
-        li.cancel a { @include button-constructor($color:$brand-default, $type:link); }
-        input[type="submit"] { @include button-constructor($color:$brand-primary); }
-      }
-      legend,
-      ol {
-        float: left;
-        display: block;
-        width: 100%;
+  select {
+    @include input-select-constructor;
+  }
+
+  label.label {
+    display: block;
+    width: 100%;
+    margin-bottom: $offset-base;
+    font-size: $p-fontsize;
+    font-weight: $font-bold;
+    color: $text-color-secondary;
+
+    abbr {
+      &[title='required'] {
+        margin-left: $offset-base / 2;
+        color: $brand-danger;
+        text-decoration: none;
+        border: 0;
       }
     }
-    @include mobile {
-      fieldset {
-        & > legend { padding: 0 $content-offset-xs; }
-        &.actions { padding: $content-offset-xs; }
-        &.inputs {
-          .has_many_container { padding: $content-offset-xs; }
-          li.input {
-            padding: $content-offset-xs;
-            &.boolean label {
-              .checkbox-label {
-                position: static;
-                padding: 0;
-              }
-            }
-            &.select label,
-            &.file label:not(.file-input),
-            &.text label,
-            &.stringish label {
-              position: static;
-              width: 100%;
-              padding: 0;
-            }
-          }
-        }
+  }
+
+  .input {
+    &.error {
+      background: transparentize($brand-danger, 0.87);
+
+      input:focus {
+        border-color: $brand-danger;
       }
     }
+
+    .inline-errors {
+      margin-top: 2 * $offset-base;
+      font-size: $h5-fontsize;
+      color: $brand-danger;
+    }
+
+    .inline-hints {
+      margin-top: 2 * $offset-base;
+      font-size: $h5-fontsize;
+      color: $text-color-secondary;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .stringish {
+    @include input-text-constructor;
+  }
+
+  .boolean {
+    @include input-checkbox-constructor;
+  }
+
+  .action {
+    float: left;
+    width: auto;
   }
 }

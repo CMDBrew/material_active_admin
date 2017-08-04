@@ -1,86 +1,20 @@
-@mixin panel-constructor(
-  $shadow:               $panel-shadow,
-  $shadow_active:        $panel-shadow-active,
-  $bg_color:             $panel-bg,
-  $header_height:        $panel-header-height,
-  $header_bg_color:      $panel-header-bg,
-  $header_border_bottom: $panel-header-border-bottom,
-  $header_font_weight:   $panel-header-font-weight,
-  $header_font_size:     $panel-header-font-size,
-  $border_radius:        $panel-border-radius,
-  $border:               none
-) {
-  background: $bg_color;
-  border: $border;
-  margin-bottom: $content-offset;
-  height: auto;
-  overflow: hidden;
-  color: get-text-color($bg_color);
-  border-radius: $border_radius;
-  max-height: $header_height;
-  max-height: none;
-  @include box-shadow($shadow_active);
-  @include transition(height .2s linear, margin .2s linear);
-  &.hidden {
-    max-height: $header_height;
-    margin-bottom: $offset / 2;
-    @include box-shadow($shadow);
-    h3,
-    legend {
-      &:after { @include transform(rotate(180deg)); }
-    }
+@mixin panel-constructor {
+  padding: 3 * $offset-base;
+  background: $panel-bg;
+  @include box-shadow($panel-shadow);
+
+  & > h3,
+  .input {
+    padding: 2 * $offset-base;
   }
-  & > legend,
+
   & > h3 {
-    position: relative;
-    float: left;
-    width: 100%;
-    cursor: pointer;
-    font-size: $header_font_size;
-    font-weight: $header_font_weight;
-    display: block;
-    align-items: center;
-    line-height: $header_height;
-    background: $header_bg_color;
-    color: get-text-color($header_bg_color);
-    border-bottom: $header_border_bottom;
-    width: 100%;
-    padding: 0 $content-offset;
-    padding-right: 6 * $offset;
-    box-sizing: border-box;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin: 0;
-    @include non-selectable;
-    .header_action {
-      display: flex;
-      float: right;
-      height: $header_height;
-      align-items: center;
-    }
-    &:after {
-      content: "\E316";
-      color: get-nav-text-color($bg_color);
-      @include icon-constructor;
-      position: absolute;
-      right: $content-offset-xs;
-      top: 0;
-      bottom: 0;
-      @include transition(all .2s ease-in-out);
-    }
+    padding-top: 0;
+    font-weight: $font-bold;
   }
-  ul.errors { margin: $content-offset; }
-  .panel_contents {
-    float: left;
-    width: 100%;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-  @include mobile {
-    margin-bottom: 1.5 * $offset;
-    & > h3 { padding-left: $content-offset-xs; }
+
+  .buttons,
+  .actions {
+    padding: 2 * $offset-base;
   }
 }
