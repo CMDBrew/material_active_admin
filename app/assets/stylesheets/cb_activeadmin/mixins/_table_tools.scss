@@ -1,9 +1,0 @@
-@mixin table-tools-constructor {
-  @include tab-constructor;
-  justify-content: flex-end;
-  ul.scopes.table_tools_segmented_control {
-    flex: 1;
-    justify-content: flex-start;
-  }
-  ul.indexes.table_tools_segmented_control { @include indexes-constructor; }
-}

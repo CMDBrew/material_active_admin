@@ -39,3 +39,13 @@ $ ->
   $.rails.showConfirmDialog = (link) ->
     message = link.attr("data-confirm") || ""
     ActiveAdmin.modal_dialog  message, [], -> $.rails.confirmed(link)
+
+  titlebarH = $('#title_bar').height()
+  scrollKlass = 'scrolled'
+
+  $(document).on 'scroll', ->
+    scrollY = $('body').scrollTop()
+    if scrollY >= titlebarH
+      $('body').addClass scrollKlass
+    else
+      $('body').removeClass scrollKlass

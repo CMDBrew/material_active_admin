@@ -1,0 +1,60 @@
+.pagination {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+
+  .pager {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+
+    @include transform(translate3d(0, 0, 0));
+
+    .inner-pages {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .next-button a,
+    .prev-button a,
+    .page a {
+      @include button-constructor($text-color-hint, $type: 'link', $size: 'sm');
+
+      &:not(.current) a {
+        border-radius: 0;
+      }
+    }
+
+    .page.current {
+      @include button-constructor($brand-primary, $size: 'sm');
+    }
+
+    .next-button a,
+    .prev-button a,
+    .page.current,
+    .page a {
+      display: inline-block;
+      width: $button-height-sm;
+      padding: 0;
+      margin: 0 1px;
+    }
+  }
+
+  .next-button,
+  .prev-button {
+    a::before {
+      @include icon-constructor;
+    }
+  }
+
+  .next-button a::before {
+    content: '\E315';
+  }
+
+  .prev-button a::before {
+    content: '\E314';
+  }
+}

@@ -1,6 +1,6 @@
 @mixin flash-base($color) {
-  padding: $offset 2 * $offset;
-  border-radius: $border-radius;
-  color: get-text-color($color);
-  background: $color;
+  padding: 2 * $offset-base;
+  font-size: $h5-fontsize;
+  color: $color;
+  background: transparentize($color, 0.87);
 }

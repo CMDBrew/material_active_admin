@@ -3,29 +3,29 @@
   $font_weight,
   $letter_spacing: null
 ) {
-  ::-webkit-input-placeholder {
-    color: $color !important;
-    font-weight: $font_weight;
-    letter-spacing: $letter_spacing;
-  }
-  /* Firefox 18- */
-  :-moz-placeholder {
-    color: $color !important;
-    font-weight: $font_weight;
-    letter-spacing: $letter_spacing;
-  }
-
-  /* Firefox 19+ */
-  ::-moz-placeholder {
-    color: $color !important;
-    font-weight: $font_weight;
-    letter-spacing: $letter_spacing;
-  }
-
-  /* Firefox 19+ */
-  :-ms-input-placeholder {
-    color: $color !important;
-    font-weight: $font_weight;
-    letter-spacing: $letter_spacing;
-  }
+//   ::-webkit-input-placeholder {
+//     color: $color !important;
+//     font-weight: normal;
+//     letter-spacing: $letter_spacing;
+//   }
+//   /* Firefox 18- */
+//   :-moz-placeholder {
+//     color: $color !important;
+//     font-weight: normal;
+//     letter-spacing: $letter_spacing;
+//   }
+//
+//   /* Firefox 19+ */
+//   ::-moz-placeholder {
+//     color: $color !important;
+//     font-weight: normal;
+//     letter-spacing: $letter_spacing;
+//   }
+//
+//   /* Firefox 19+ */
+//   :-ms-input-placeholder {
+//     color: $color !important;
+//     font-weight: normal;
+//     letter-spacing: $letter_spacing;
+//   }
 }

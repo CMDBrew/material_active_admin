@@ -21,7 +21,7 @@ module ActiveAdmin
 
       def build_menu_toggle
         div id: 'menu_toggle' do
-          i class: 'cb_activeadmin-icons' do
+          i class: 'mdi-icon' do
             'menu'
           end
         end

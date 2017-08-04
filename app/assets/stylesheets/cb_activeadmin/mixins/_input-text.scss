@@ -1,0 +1,23 @@
+@mixin input-text-constructor {
+  input {
+    @include input-base;
+
+    &[type='text'],
+    &[type='password'],
+    &[type='email'],
+    &[type='number'],
+    &[type='url'],
+    &[type='search'],
+    &[type='tel'] {
+      position: relative;
+      flex: 1;
+      flex-direction: column;
+      width: 100%;
+      border-bottom: 1px solid $input-guide-color;
+
+      &:focus {
+        border-bottom: 2px solid $brand-primary;
+      }
+    }
+  }
+}

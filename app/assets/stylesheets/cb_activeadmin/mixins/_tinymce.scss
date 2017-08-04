@@ -160,7 +160,7 @@
       overflow: hidden;
       align-items: center;
       line-height: 1;
-      @include icon-constructor($font_size: $icon_size);
+      @include icon-constructor($_font-size: $icon_size);
     }
     &.mce-i-undo:before          { content: "chevron_left"; }
     &.mce-i-redo:before          { content: "chevron_right"; }

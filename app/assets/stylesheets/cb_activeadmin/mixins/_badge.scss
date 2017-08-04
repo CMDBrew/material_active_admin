@@ -1,0 +1,13 @@
+@mixin badge-constructor($color: $badge-bg) {
+  padding: $offset-base / 2 $offset-base;
+  font-size: $p-fontsize;
+  font-weight: $font-bold;
+  background: $color;
+  border-radius: $badge-radius;
+
+  @if (lightness($color) > 50) {
+    color: $text-color-primary;
+  } @else {
+    color: $text-color-primary-inverse;
+  }
+}

@@ -26,6 +26,7 @@ module ActiveAdmin
           return unless any_table_tools?
           div class: 'table_tools' do
             build_scopes
+            build_index_list
           end
         end
 
@@ -38,7 +39,31 @@ module ActiveAdmin
           scopes_renderer active_admin_config.scopes, scope_options
         end
 
+        def build_batch_bar
+          div id: 'batch_bar' do
+            build_batch_actions_selector
+          end
+        end
+
         private
+
+        def build_page
+          within @body do
+            div(id: 'wrapper') do
+              components.each do |x|
+                next if should_skip_component?(x)
+                send(x)
+              end
+            end
+          end
+        end
+
+        def components
+          %i[
+            build_unsupported_browser build_header build_batch_bar build_title_bar
+            build_page_content build_float_ctrl build_hidden_content
+          ]
+        end
 
         def filter_section?(section)
           section.name.to_sym == :filters
@@ -51,6 +76,11 @@ module ActiveAdmin
             sections.push section
           end
           sections
+        end
+
+        def build_batch_actions_selector
+          return unless active_admin_config.batch_actions.any?
+          insert_tag view_factory.batch_action_selector, active_admin_config.batch_actions
         end
 
         def build_sidebar(sections: [])

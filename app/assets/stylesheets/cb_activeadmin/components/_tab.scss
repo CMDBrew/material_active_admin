@@ -1,2 +1,4 @@
 .mdi-tabs,
-.tabs .nav.nav-tabs { @include tab-constructor; }
+.tabs .nav.nav-tabs {
+  @include tab-constructor;
+}

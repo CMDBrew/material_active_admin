@@ -8,6 +8,14 @@ module CbActiveadmin
   # initialize CbCore Engine
   class Engine < ::Rails::Engine
 
+    ActiveAdmin.before_load do |app|
+      require_relative 'extension/batch_actions/resource_extension'
+      require_relative 'extension/batch_actions/views/batch_action_selector'
+      ::ActiveAdmin::Resource.send :include, ActiveAdmin::BatchActions::ResourceExtension
+      app.view_factory.register batch_action_selector:
+        ::ActiveAdmin::BatchActions::BatchActionSelector
+    end
+
     initializer 'initialize overrides' do |_app|
       require_resources
       require_dsls
@@ -58,8 +66,8 @@ module CbActiveadmin
 
     def component_files
       %w[
-        columns blank_slate app_header scopes site_title
-        tabs table_for hidden_section
+        columns blank_slate batch_action_menu app_header scopes site_title
+        tabs table_for hidden_section dropdown_menu
       ]
     end
 

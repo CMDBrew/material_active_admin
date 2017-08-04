@@ -6,7 +6,7 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Dummy"
 
-  config.site_title_image = "slack-logo.png"
+  config.site_title_image = "logo.png"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -226,13 +226,13 @@ ActiveAdmin.setup do |config|
                 :id       => 'current_admin_user',
                 :priority => 2
 
-      menu.add  :label    => proc { menu_label("person", "Profile") },
+      menu.add  :label    => "Profile",
                 :id       => "profile",
                 :url      => proc { admin_admin_user_path(current_active_admin_user) },
                 :priority => 1,
                 :parent   => 'current_admin_user'
 
-      menu.add  :label    => proc { menu_label("exit_to_app", "Log Out") },
+      menu.add  :label    => "Log Out",
                 :id       => "logout",
                 :url      => proc{ destroy_admin_user_session_path },
                 :priority => 2,

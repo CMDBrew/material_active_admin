@@ -127,7 +127,7 @@
     textarea,
     input { border: 0 !important; }
     li { margin: 0; }
-    @include text-field-constructor($type:guide);
+    // @include text-field-constructor($type:guide);
   }
   #active_admin_comment_submit_action {
     display: inline-block;

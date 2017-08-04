@@ -15,3 +15,17 @@
     @content;
   }
 }
+
+
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  display: none !important;
+  @include mobile {
+    display: block !important;
+  }
+}

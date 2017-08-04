@@ -1,45 +1,59 @@
 @mixin index-page {
+  #collection_selection {
+    @include panel-constructor;
+
+    padding: 0;
+  }
+
   .paginated_collection {
     display: block;
     width: 100%;
   }
-  .table_tools {
-    @include table-tools-constructor;
-  }
+
   .index_as_table {
-    @include table-constructor;
+    overflow: scroll;
+    table { @include table-constructor; }
   }
+
   .mdi_index {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+
     &.flex-row {
       flex-direction: row;
       flex-wrap: wrap;
-      margin: -#{$offset};
-      @include mobile { margin: -#{$offset} / 2; }
+      margin: -#{$offset-base};
+
+      @include mobile {
+        margin: -#{$offset-base} / 2;
+      }
     }
-    .resource_selection_toggle_panel { display: none; }
-    .mdi-folder,
-    .mdi-card,
-    .mdi-grid {
-      .resource_selection_cell { display: none; }
+
+    .resource_selection_toggle_panel {
+      display: none;
     }
   }
+
   #index_footer {
-    padding: $offset * 3 0;
+    padding: $offset-base * 2 0;
+
     .pagination {
-      @include pagination-constructor;
-      margin-bottom: 4 * $offset;
+      margin-bottom: 2 * $offset-base;
     }
+
     .pagination_information,
     .download_links {
-      margin-bottom: $offset;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: get-nav-text-color($body-bg);
-      a, b { margin: 0 $offset / 2; }
+      margin-bottom: $offset-base;
+      color: $text-color-secondary;
+
+      a,
+      b {
+        margin: 0 $offset-base / 2;
+      }
     }
   }
 }

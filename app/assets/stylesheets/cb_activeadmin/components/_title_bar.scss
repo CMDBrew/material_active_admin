@@ -1,0 +1,72 @@
+#title_bar {
+  @include navbar-constructor;
+
+  #sidebar-toggle {
+    position: relative;
+    margin-right: 2 * $offset-base;
+
+    &::before {
+      content: 'menu';
+    }
+  }
+
+  #search-filter-toggle {
+    position: relative;
+
+    &::before {
+      content: 'search';
+    }
+  }
+
+  #titlebar_left {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    flex-direction: row;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    #page_title,
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    #page_title,
+    .breadcrumb,
+    .breadcrumb span,
+    .breadcrumb a {
+      font-size: $h3-fontsize;
+      font-weight: 500;
+      color: inherit;
+    }
+
+    .breadcrumb > * {
+      display: inline-block;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .breadcrumb_sep {
+      margin: 0 $offset-base / 2;
+    }
+  }
+
+  #titlebar_right {
+    display: flex;
+    flex: 0 0 auto;
+    text-align: right;
+
+    .action_items {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .action_item:not(:first-child) {
+        margin-left: $offset-base;
+      }
+    }
+  }
+}

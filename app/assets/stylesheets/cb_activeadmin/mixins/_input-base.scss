@@ -1,0 +1,15 @@
+@mixin input-base {
+  display: flex;
+  align-items: center;
+  height: $input-height;
+  font-size: $h5-fontsize;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+
+  // sass-lint:disable no-vendor-prefixes
+  -webkit-appearance: none;
+  -webkit-backface-visibility: hidden;
+}

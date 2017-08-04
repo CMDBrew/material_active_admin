@@ -30,8 +30,8 @@ module ActiveAdmin
 
         def components
           %i[
-            build_unsupported_browser build_app_header build_header build_title_bar
-            build_page_content build_footer build_float_ctrl build_hidden_content
+            build_unsupported_browser build_header build_title_bar
+            build_page_content build_float_ctrl build_hidden_content
           ]
         end
 
@@ -40,9 +40,9 @@ module ActiveAdmin
             (component.to_s == 'build_hidden_content' && skip_hidden_content?)
         end
 
-        def build_app_header
-          insert_tag view_factory.app_header, active_admin_namespace
-        end
+        # def build_app_header
+        #   insert_tag view_factory.app_header, active_admin_namespace
+        # end
 
         def hidden_sections_for_action
           if active_admin_config && active_admin_config.hidden_sections?
@@ -91,6 +91,15 @@ module ActiveAdmin
 
         def build_float_actions
           insert_tag view_factory.float_actions, float_actions_for_action
+        end
+
+        def build_main_content_wrapper
+          div id: 'main_content_wrapper' do
+            div id: 'main_content' do
+              main_content
+              build_footer
+            end
+          end
         end
 
       end

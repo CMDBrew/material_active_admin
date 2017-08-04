@@ -42,7 +42,7 @@ module ActiveAdmin
           title_text
         end
         div(id: 'sidebar-close') do
-          i('close', class: 'cb_activeadmin-icons')
+          i('close', class: 'mdi-icon')
         end
       end
 

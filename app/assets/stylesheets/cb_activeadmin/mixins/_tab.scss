@@ -1,74 +1,52 @@
-@mixin tab-constructor(
-  $height:                $table-tools-height,
-  $bg_color:              $navbar-bg,
-  $shadow:                $navbar-shadow,
-  $chip_bg:               $tab-chip-bg,
-  $tab_link_color:        $tab-link-color,
-  $tab_link_active_color: $tab-link-active-color
-) {
-  overflow: hidden;
-  position: fixed;
-  top: $navbar-height + $app-header-height;
-  left: 0;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: $height;
+@mixin tab-constructor {
+  z-index: 111;
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: flex-start;
-  z-index: 111;
-  padding-left: 0;
+  height: $tab-height;
+  padding: 0 2 * $offset-base;
+  margin: 0 auto;
+  overflow: hidden;
+  overflow-x: scroll;
+  border-bottom: 1px solid $divider-color;
   box-sizing: border-box;
+
   @include non-selectable;
-  ul {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    overflow-x: scroll;
-  }
+
   li {
-    flex: 1;
     position: relative;
-    height: 100%;
-    min-width: 20 * $offset;
-    max-width: 20 * $offset;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 2 * $offset;
-    white-space: nowrap;
-    line-height: $height;
-    text-align: center;
-    text-transform: uppercase;
+    flex-shrink: 0;
     justify-content: center;
-    color: $tab_link_active_color;
-    &:not(.selected) a { color: $tab_link_color; }
+    height: 100%;
+    padding: 0 3 * $offset-base;
+    overflow: hidden;
+    line-height: $tab-height;
+    color: $text-color-hint;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+
     &.ui-tabs-active,
     &.selected {
-      &:after {
-        content: "";
+      color: $brand-primary;
+
+      &::after {
         position: absolute;
-        left: 0;
         right: 0;
         bottom: 0;
+        left: 0;
         height: 2px;
-        background:  $tab_link_active_color;
+        background: $brand-primary;
+        content: '';
       }
-      a { color: $tab_link_active_color; }
     }
-    .count {
-      margin-left: $offset;
-      vertical-align: middle;
-      @include chip-constructor($bg_color: $chip_bg, $size: $chip-size-densed);
-    }
+
     a {
       height: 100%;
-      font-weight: 500;
+      font-weight: $font-bold;
+      color: inherit;
     }
-  }
-  @include mobile {
-    top: $navbar-height;
   }
 }
