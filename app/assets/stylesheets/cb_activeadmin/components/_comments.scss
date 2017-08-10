@@ -1,1 +1,3 @@
-.panel.comments { @include comments-constructor; }
+.panel.comments {
+  @include comments-constructor;
+}

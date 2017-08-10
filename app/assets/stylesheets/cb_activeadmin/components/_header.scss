@@ -11,66 +11,44 @@
 
   @include transform(translateX(-100%));
   @include transition(transform 0.2s linear);
+  @include site-title-constructor($header-title-bg);
+
+  .site_title {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 180px;
+    padding: 3 * $offset-base;
+    background: $header-title-bg;
+
+    .favicon-container {
+      justify-content: flex-start;
+      height: 64px;
+
+      .favicon {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    .title {
+      margin-top: 3 * $offset-base;
+      font-size: $h5-fontsize;
+    }
+  }
 
   #sidebar-close {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 11;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 48px;
-    height: 100%;
-    cursor: pointer;
-  }
-
-  #site_title {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
     height: $titlebar-height;
-    padding: 0 $header-icon-padding;
-    white-space: nowrap;
-    background: transparent;
-
-    .favicon-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $header-icon-padding;
-      height: $titlebar-height;
-
-      .favicon {
-        position: relative;
-        width: 32px;
-        height: 32px;
-        margin: 0;
-        overflow: hidden;
-
-        img {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          display: block;
-          height: 100%;
-
-          @include transform(translate(-50%, -50%));
-        }
-      }
-    }
-
-    .title {
-      overflow: hidden;
-      font-size: $h5-fontsize;
-      font-weight: $font-bold;
-      color: $text-color-primary;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    color: adjust-text-color($header-title-bg);
+    cursor: pointer;
   }
 
   ul {
@@ -81,11 +59,18 @@
     &#tabs,
     &#utility_nav {
       padding: $offset-base 0;
-      border-top: 1px solid $divider-color;
+    }
+
+    li.current:not(.has_nested) > a {
+      background: $header-menu-item-hover-bg;
     }
   }
 
   ul.header-item.tabs {
+    & + ul {
+      border-top: 1px solid adjust-divider-color($header-bg);
+    }
+
     li {
       &.current > a {
         color: $brand-primary;
@@ -93,6 +78,8 @@
 
       &.has_nested {
         & > a::after {
+          @include icon-constructor;
+
           position: absolute;
           top: 0;
           right: 0;
@@ -101,8 +88,6 @@
           justify-content: center;
           width: 48px;
           height: 100%;
-          font-family: $icon-font;
-          font-size: $icon-size;
           content: 'keyboard_arrow_down';
 
           @include transition(all 0.2s ease-in-out);
@@ -110,7 +95,7 @@
 
         &.sub-menu-active {
           & > a::after {
-            @include transform(rotate(-180deg));
+            @include transform(rotate(180deg));
           }
 
           ul {

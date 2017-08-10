@@ -12,6 +12,7 @@ module ActiveAdmin
         @menu         = menu
         @utility_menu = @namespace.fetch_menu(:utility_navigation)
 
+        build_sidebar_toggle
         build_site_title
         build_global_navigation
         build_utility_navigation
@@ -19,13 +20,10 @@ module ActiveAdmin
 
       private
 
-      def build_menu_toggle
-        div id: 'menu_toggle' do
-          i class: 'mdi-icon' do
-            'menu'
-          end
+      def build_sidebar_toggle
+        div(id: 'sidebar-close') do
+          i('keyboard_arrow_left', class: 'mdi-icon')
         end
-        div id: 'header_overlay'
       end
 
     end

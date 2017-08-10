@@ -222,6 +222,7 @@ GEM
       thread_safe (~> 0.1)
     warden (1.2.6)
       rack (>= 1.0)
+    yard (0.9.9)
 
 PLATFORMS
   ruby
@@ -236,6 +237,7 @@ DEPENDENCIES
   pg (~> 0.15)
   quiet_assets
   thin
+  yard
 
 BUNDLED WITH
    1.14.6

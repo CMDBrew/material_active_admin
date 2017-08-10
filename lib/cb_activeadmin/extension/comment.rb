@@ -8,6 +8,8 @@ module ActiveAdmin
       # activeadmin/lib/active_admin/orm/active_record/comments/views/active_admin_comments.rb
       class Comments < ActiveAdmin::Views::Panel
 
+        protected
+
         def build_comments
           div class: 'comments-list' do
             if @comments.any?
@@ -59,17 +61,15 @@ module ActiveAdmin
             comment_meta(comment)
             div class: 'comment_body' do
               div comment.body, class: 'comment_text'
-              comment_actions(comment)
             end
           end
         end
 
         def comment_meta(comment)
           div class: 'comment_header' do
-            div class: 'comment_meta' do
-              comment_author(comment)
-              comment_date(comment)
-            end
+            comment_author(comment)
+            comment_date(comment)
+            comment_actions(comment)
           end
         end
 
@@ -80,7 +80,7 @@ module ActiveAdmin
         end
 
         def comment_author(comment)
-          para class: 'comment_author' do
+          h5 class: 'comment_author' do
             if comment.author
               auto_link(comment.author)
             else
@@ -97,15 +97,17 @@ module ActiveAdmin
 
         def comment_actions(comment)
           div class: 'comment_actions' do
-            if authorized?(ActiveAdmin::Auth::DESTROY, comment)
-              text_node comment_action_delete(comment)
+            dropdown_menu '' do
+              if authorized?(ActiveAdmin::Auth::DESTROY, comment)
+                comment_action_delete(comment)
+              end
             end
           end
         end
 
         def comment_action_delete(comment)
-          link_to(
-            '', comments_url(comment.id),
+          item(
+            I18n.t('active_admin.comments.delete'), comments_url(comment.id),
             method: :delete, class: 'comment-delete',
             data: { confirm: I18n.t('active_admin.comments.delete_confirmation') }
           )

@@ -1,8 +1,9 @@
 #batch_bar {
   @include navbar-constructor($color: $batch-bar-bg);
-
   @include transform(translateY(-100%));
   @include transition(transform 0.2s linear);
+
+  opacity: 0;
 
   #batch_bar_left {
     display: flex;

@@ -1,56 +1,71 @@
 @keyframes toast-animation {
-  from  { @include transform(translateY(calc(100% + 100px))); }
-  to    { @include transform(translateY(0)); }
+  from {
+    @include transform(translateY(calc(100% + 100px)));
+  }
+
+  to {
+    @include transform(translateY(0));
+  }
 }
 
 @-webkit-keyframes toast-animation {
-  from  { @include transform(translateY(calc(100% + 100px))); }
-  to    { @include transform(translateY(0)); }
+  from {
+    @include transform(translateY(calc(100% + 100px)));
+  }
+
+  to {
+    @include transform(translateY(0));
+  }
 }
 
-@mixin toast-constructor(
-  $bg_color:  $toast-bg,
-  $max_width: 400px,
-  $shadow:    $toast-shadow
-) {
+@mixin toast-constructor {
   position: fixed;
-  bottom: 3 * $offset;
-  left: 3 * $offset;
-  @include animation(toast-animation .2s);
-  @include transition(all .5s);
-  &.removing { @include transform(translateY(calc(100% + 100px))); }
-  .toast {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    max-width: $max_width;
-    background: $bg_color;
-    padding: $offset 2 * $offset;
-    border-radius: $border-radius;
-    @include box-shadow($shadow);
-    .flash-message {
-      font-weight: 500;
-      color: get-text-color($bg_color);
-      line-height: 1.3;
-      margin-right: $offset;
-    }
-    @each $flash_class, $flash_color in $flash-color-map {
-      &.#{$flash_class} button {
-        // @include button-constructor($color: $flash_color, $type: link, $size: densed);
-        &:hover { background: transparent; }
-      }
-    }
-  }
+  bottom: 3 * $offset-base;
+  left: 3 * $offset-base;
+
+  @include transition(all 0.5s);
+  @include animation(toast-animation 0.2s);
+
   @include mobile {
-    left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
+
     .toast {
       max-width: none;
       border-radius: 0;
-      .flash-message { flex: 1; }
+
+      .flash-message {
+        flex: 1;
+      }
+    }
+  }
+
+  &.removing {
+    @include transform(translateY(calc(100% + 100px)));
+  }
+
+  .toast {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    max-width: $toast-max-width;
+    padding: 2 * $offset-base;
+    background: $toast-bg;
+    border-radius: $toast-radius;
+    box-sizing: border-box;
+
+    @include box-shadow($toast-shadow);
+
+    .flash-message {
+      margin-right: $offset-base;
+      line-height: 1.3;
+      color: adjust-text-color($toast-bg);
+    }
+
+    button {
+      @include button-constructor($color: $toast-btn-color, $type: 'link', $size: 'sm')
     }
   }
 }

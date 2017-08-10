@@ -1,4 +1,4 @@
-@mixin tab-constructor {
+@mixin tab-constructor($color: $panel-bg) {
   z-index: 111;
   display: flex;
   flex: 1;
@@ -9,7 +9,6 @@
   margin: 0 auto;
   overflow: hidden;
   overflow-x: scroll;
-  border-bottom: 1px solid $divider-color;
   box-sizing: border-box;
 
   @include non-selectable;
@@ -22,7 +21,7 @@
     padding: 0 3 * $offset-base;
     overflow: hidden;
     line-height: $tab-height;
-    color: $text-color-hint;
+    color: adjust-tab-text-color($color);
     text-align: center;
     text-overflow: ellipsis;
     text-transform: uppercase;
@@ -30,15 +29,15 @@
 
     &.ui-tabs-active,
     &.selected {
-      color: $brand-primary;
+      color: adjust-tab-text-color($color, $type: 'selected');
 
       &::after {
         position: absolute;
         right: 0;
         bottom: 0;
         left: 0;
-        height: 2px;
-        background: $brand-primary;
+        height: $tab-active-indicator-height;
+        background: adjust-tab-text-color($color, $type: 'selected');
         content: '';
       }
     }

@@ -40,6 +40,10 @@ module ActiveAdmin
             (component.to_s == 'build_hidden_content' && skip_hidden_content?)
         end
 
+        # def build_title_bar
+        #   insert_tag view_factory.title_bar, active_admin_namespace, title, action_items_for_action
+        # end
+
         # def build_app_header
         #   insert_tag view_factory.app_header, active_admin_namespace
         # end
@@ -97,7 +101,7 @@ module ActiveAdmin
           div id: 'main_content_wrapper' do
             div id: 'main_content' do
               main_content
-              build_footer
+              # build_footer
             end
           end
         end

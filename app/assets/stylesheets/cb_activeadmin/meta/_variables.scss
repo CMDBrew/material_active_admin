@@ -164,17 +164,17 @@ $datepicker-shadow: $widget-shadow !default;
 $app-header-height:     28px !default;
 $app-header-bg:         #303F9F !default;
 $app-header-shadow:     none !default;
-$navbar-bg:             $brand-primary !default;
-$navbar-shadow:         0 1px 8px rgba(0,0,0,.3) !default;
-$navbar-height:         64px !default;
-$navbar-divider-color:  get-divider-color($navbar-bg) !default;
-$navbar-link-color:     get-text-color($navbar-bg) !default;
-$navbar-text-color:     get-text-color($navbar-bg) !default;
-$table-tools-height:    48px !default;
+// $navbar-bg:             $brand-primary !default;
+// $navbar-shadow:         0 1px 8px rgba(0,0,0,.3) !default;
+// $navbar-height:         64px !default;
+// $navbar-divider-color:  get-divider-color($navbar-bg) !default;
+// $navbar-link-color:     get-text-color($navbar-bg) !default;
+// $navbar-text-color:     get-text-color($navbar-bg) !default;
+// $table-tools-height:    48px !default;
 
 // TAB
-$tab-link-color:        get-nav-text-color($navbar-bg) !default;
-$tab-link-active-color: get-nav-text-color($navbar-bg, $status:active) !default;
+// $tab-link-color:        get-nav-text-color($navbar-bg) !default;
+// $tab-link-active-color: get-nav-text-color($navbar-bg, $status:active) !default;
 
 // Sidebar
 $sidebar-width-min:                   9 * $offset !default;
@@ -190,10 +190,10 @@ $aside-width: 320px !default;
 // Search Filter
 $search-filter-bg:            $body-bg !default;
 $search-filter-header-bg:     $body-bg !default;
-$search-filter-header-shadow: $navbar-shadow !default;
+// $search-filter-header-shadow: $navbar-shadow !default;
 $search-filter-width:         340px !default;
 $search-filter-shadow:        $widget-shadow !default;
-$search-filter-header-height: $navbar-height !default;
+// $search-filter-header-height: $navbar-height !default;
 
 // Panel
 $panel-header-height:        48px !default;
@@ -255,8 +255,8 @@ $tooltip-bg:     rgba(black, .7) !default;
 $tooltip-shadow: $widget-shadow !default;
 
 // Toast
-$toast-bg:     #212121 !default;
-$toast-shadow: 0 1px 8px rgba(0,0,0,.3) !default;
+// $toast-bg:     #212121 !default;
+// $toast-shadow: 0 1px 8px rgba(0,0,0,.3) !default;
 
 // Flashes
 $flash-color-map: (

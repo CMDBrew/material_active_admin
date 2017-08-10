@@ -47,7 +47,6 @@ module ActiveAdmin
             nav_icon(
               'delete',
               resource_path(resource),
-              class: 'hidden-mobile',
               method: :delete, title: destroy_btn_title,
               data: { confirm: destroy_confirm, toggle: 'tooltip', placement: 'bottom' }
             )

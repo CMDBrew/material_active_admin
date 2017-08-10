@@ -12,6 +12,7 @@ p {
 
 h1 {
   font-size: $h1-fontsize;
+  font-weight: $font-light;
 }
 
 h2 {
@@ -51,11 +52,13 @@ p {
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
+  text-rendering: geometricPrecision;
   text-transform: none;
   word-wrap: normal;
   white-space: nowrap;
   vertical-align: middle;
   direction: ltr;
+  -webkit-font-smoothing: antialiased;
 }
 
 .mdi-icon,

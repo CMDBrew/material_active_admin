@@ -6,6 +6,38 @@
   }
 }
 
+@function adjust-divider-color($color) {
+  @if (lightness($color) > 75) {
+    @return $divider-color;
+  } @else {
+    @return $divider-color-inverse;
+  }
+}
+
+@function adjust-nav-btn-color($color) {
+  @if (lightness($color) > 75) {
+    @return $brand-primary;
+  } @else {
+    @return $text-color-primary-inverse;
+  }
+}
+
+@function adjust-tab-text-color($color, $type: 'default') {
+  @if ($type == 'selected') {
+    @if (lightness($color) > 75) {
+      @return $brand-primary;
+    } @else {
+      @return $text-color-primary-inverse;
+    }
+  } @else {
+    @if (lightness($color) > 75) {
+      @return $text-color-hint;
+    } @else {
+      @return $text-color-hint-inverse;
+    }
+  }
+}
+
 @function nav-btn-hover-adjustment($color) {
   @if (lightness($color) > 75) {
     @return $nav-btn-hover-bg-dark;

@@ -1,18 +1,20 @@
 .table_tools {
-  position: relative;
+  position: fixed;
+  top: $titlebar-height;
+  right: 0;
+  left: 0;
   display: flex;
   align-items: center;
-  height: $table-tools-height;
+  height: $nav-tabs-height;
   padding: 0 2 * $offset-base;
-  background: $table-tool-bg;
-  border-bottom: 1px solid $divider-color;
+  background: $nav-tabs-bg;
 
   .dropdown_menu_button {
     @include button-constructor($size: 'sm');
   }
 
   .table_tools_segmented_control {
-    @include tab-constructor;
+    @include tab-constructor($color: $nav-tabs-bg);
 
     justify-content: center;
   }
@@ -20,12 +22,12 @@
   .scope {
     &.selected {
       span.count {
-        @include badge-constructor($color: $brand-primary);
+        @include badge-constructor($color: adjust-tab-text-color($nav-tabs-bg, $type: 'selected'), $type: 'active');
       }
     }
 
     span.count {
-      @include badge-constructor;
+      @include badge-constructor($color: adjust-tab-text-color($nav-tabs-bg, $type: 'selected'));
 
       margin-left: $offset-base;
     }

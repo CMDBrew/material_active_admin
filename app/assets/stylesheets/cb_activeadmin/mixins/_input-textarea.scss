@@ -1,0 +1,35 @@
+@mixin input-textarea-constructor {
+  &.error {
+    border-color: $brand-danger;
+
+    textarea {
+      &:focus {
+        border-color: $brand-danger;
+        @include box-shadow(0 0 0 1px #{$brand-danger});
+      }
+    }
+  }
+
+  textarea {
+    @include input-base;
+
+    position: relative;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 1.5 * $offset-base;
+    border: 1px solid $input-guide-color;
+    resize: vertical;
+
+    &:focus {
+      border-color: $brand-primary;
+      @include box-shadow(0 0 0 1px #{$brand-primary});
+    }
+
+    &[disabled] {
+      color: $text-color-hint;
+      border-style: dashed;
+    }
+  }
+}

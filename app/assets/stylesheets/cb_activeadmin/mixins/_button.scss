@@ -51,10 +51,7 @@
 
   @if ($type == 'link') {
     color: $color;
-
-    &:not(.disabled):hover {
-      background: $brand-default;
-    }
+    background: transparent;
   } @else {
     color: adjust-text-color($color);
     background: $color;

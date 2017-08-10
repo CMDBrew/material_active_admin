@@ -10,7 +10,7 @@ module ActiveAdmin
       end
 
       def build(namespace)
-        super(id: 'site_title')
+        super(class: 'site_title')
         @namespace = namespace
 
         if site_title_link?
@@ -35,14 +35,13 @@ module ActiveAdmin
       end
 
       def site_title_content
-        div(class: 'favicon-container') do
-          div(title_icon, class: 'favicon')
+        if site_title_image?
+          div(class: 'favicon-container') do
+            div(title_image, class: 'favicon')
+          end
         end
         div(class: 'title') do
           title_text
-        end
-        div(id: 'sidebar-close') do
-          i('close', class: 'mdi-icon')
         end
       end
 
@@ -53,10 +52,6 @@ module ActiveAdmin
       def title_image
         path = helpers.render_or_call_method_or_proc_on(helpers, @namespace.site_title_image)
         helpers.image_tag(path, id: 'site_title_image', alt: title_text)
-      end
-
-      def title_icon
-        site_title_image? ? title_image : title_text[0]
       end
 
     end

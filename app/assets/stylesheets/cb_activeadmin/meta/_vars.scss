@@ -1,11 +1,9 @@
 // Colors
-$brand-accent:  #DB4437 !default;
-// $brand-accent:  #3F51B5 !default;
+$brand-accent:  #FF4081 !default;
 $brand-default: #EEEEEE !default;
-// $brand-primary: #FFB300 !default;
 $brand-primary: #3F51B5 !default;
 $brand-success: #009688 !default;
-$brand-info:    #03A9F4 !default;
+$brand-info:    #B388FF !default;
 $brand-warning: #FF9800 !default;
 $brand-danger:  #DB4437 !default;
 $btn-color-map: (
@@ -19,11 +17,12 @@ $btn-color-map: (
 ) !default;
 
 // Utilities
-$offset-base:    8px !default;
-$ctrl-height:    40px !default;
-$ctrl-height-sm: 36px !default;
-$ctrl-hover-bg:  rgba(0, 0, 0, 0.05) !default;
-$divider-color:  #E0E0E0 !default;
+$offset-base:           8px !default;
+$ctrl-height:           40px !default;
+$ctrl-height-sm:        36px !default;
+$ctrl-hover-bg:         rgba(0, 0, 0, 0.05) !default;
+$divider-color:         #E0E0E0 !default;
+$divider-color-inverse: rgba(255, 255, 255, 0.3) !default;
 
 // Typography
 $h1-fontsize:        2.43rem !default;
@@ -36,19 +35,20 @@ $p-fontsize:         1rem !default;
 $base-fontsize:      14px !default;
 $font-fallback:      Helvetica, Arial, sans-serif !default;
 $font-family:        'Roboto', $font-fallback !default;
+$font-light:         300 !default;
 $font-bold:          500 !default;
 $icon-size:          24px !default;
 $checkbox-icon-size: 22px !default;
 
 // Text colors
 $text-color-placeholder:       #9E9E9E !default;
-$text-color-primary:           rgba(0, 0, 0, 1) !default;
-$text-color-secondary:         rgba(0, 0, 0, 0.87) !default;
-$text-color-hint:              rgba(0, 0, 0, 0.54) !default;
+$text-color-primary:           #212121 !default;
+$text-color-secondary:         rgba($text-color-primary, 0.87) !default;
+$text-color-hint:              rgba($text-color-primary, 0.54) !default;
 $text-color-placeholder:       #9E9E9E !default;
 $text-color-primary-inverse:   rgba(255, 255, 255, 1) !default;
-$text-color-secondary-inverse: rgba(255, 255, 255, 0.87) !default;
-$text-color-hint-inverse:      rgba(255, 255, 255, 0.54) !default;
+$text-color-secondary-inverse: rgba($text-color-primary-inverse, 0.87) !default;
+$text-color-hint-inverse:      rgba($text-color-primary-inverse, 0.54) !default;
 $text-color-map: (
   'primary': $text-color-primary,
   'secondary': $text-color-secondary,
@@ -63,38 +63,52 @@ $text-color-map: (
 ) !default;
 
 // Navbar
+$nav-shadow: 0 1px 8px rgba(0, 0, 0, 0.3) !default;
 $nav-btn-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2) !default;
 $nav-btn-hover-bg-light: rgba(255, 255, 255, 0.15) !default;
 $nav-btn-hover-bg-dark:  rgba(0, 0, 0, 0.15) !default;
 
 // Title Bar
-$titlebar-bg: $brand-primary !default;
+$titlebar-bg: white !default;
 $titlebar-height: 64px !default;
-$titlebar-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !default;
+$titlebar-shadow-inactive: 0 1px 8px rgba(0, 0, 0, 0.3) !default;
+$titlebar-shadow: 0 1px 8px rgba(0, 0, 0, 0.3) !default;
+$titlebar-btn-color: white !default;
+$titlebar-btn-shadow: $nav-btn-shadow !default;
+
+// Nav Tabs
+$nav-tabs-height: 48px !default;
+$nav-tabs-bg: $titlebar-bg !default;
+
+// Banner
+$banner-height: $titlebar-height + $nav-tabs-height !default;
 
 // Body
-$body-bg: #EEEEEE !default;
+$body-bg: #F1F1F1 !default;
 
 // Batch Bar
 $batch-bar-bg: #646464 !default;
 
 // Header
-$header-width:              280px !default;
-$header-shadow:             0 0 16px rgba(0, 0, 0, 0.28) !default;
+$header-width:              320px !default;
+$header-shadow:             2px 2px 4px rgba(0, 0, 0, 0.15) !default;
 $header-bg:                 white !default;
 $header-text-color:         $text-color-hint !default;
 $header-menu-item-height:   54px !default;
 $header-menu-item-hover-bg: $ctrl-hover-bg;
 $header-icon-padding:       70px !default;
+$header-title-bg:           $brand-primary !default;
 
 // Filter
-$filter-bg:     white !default;
-$filter-width:  340px !default;
-$filter-shadow: 0 0 16px rgba(0, 0, 0, 0.28) !default;
+$filter-bg:       white !default;
+$filter-title-bg: $brand-primary !default;
+$filter-width:    340px !default;
+$filter-shadow:   0 0 16px rgba(0, 0, 0, 0.28) !default;
 
 // Panel
 $panel-bg:     white !default;
-$panel-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !default;
+$panel-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14) !default;
+$panel-radius: 2px !default;
 
 // Form
 $input-guide-color: #E0E0E0 !default;
@@ -120,11 +134,23 @@ $dropdown-menu-item-hover-bg: $ctrl-hover-bg;
 
 // Tab
 $tab-height: 48px !default;
-
-// Table Tools
-$table-tools-height: 48px !default;
-$table-tool-bg: white !default;
+$tab-active-indicator-height: 2px !default;
 
 // Badge
 $badge-bg: rgba(0, 0, 0, 0.5) !default;
 $badge-radius: 3px !default;
+
+// Toast
+$toast-bg: #2D2D2D !default;
+$toast-max-width: 400px !default;
+$toast-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2) !default;
+$toast-radius: 3px !default;
+$toast-btn-color: $brand-accent !default;
+
+// Section
+$section-title-height: 40px !default;
+$section-title-bg: $brand-primary !default;
+
+// Comment
+$comment-avatar-size: 36px !default;
+$comment-avatar-bg: $brand-default !default;
