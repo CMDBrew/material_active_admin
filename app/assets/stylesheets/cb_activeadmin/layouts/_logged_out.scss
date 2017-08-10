@@ -46,6 +46,23 @@ body.logged_out {
     box-sizing: border-box;
 
     @include transform(translate3d(0, 0, 0));
+
+    & > h3,
+    .input {
+      padding: 2 * $offset-base;
+    }
+
+    .input {
+      margin: 0;
+
+      // &.error {
+      //   background: transparentize($brand-danger, 0.87);
+      // }
+    }
+
+    .actions > ol > li {
+      float: left;
+    }
   }
 
   #extra {

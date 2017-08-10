@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Dummy"
+  config.site_title = "Clever Banana Studios Inc."
 
   config.site_title_image = "logo.png"
 

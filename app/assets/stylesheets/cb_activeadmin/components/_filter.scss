@@ -30,14 +30,8 @@
     width: 100%;
   }
 
-  input {
-    &[type='submit'] {
-      @include button-constructor($color: $brand-primary);
-    }
-  }
-
   .clear_filters_btn {
-    @include button-constructor($color: $text-color-secondary, $type: 'link');
+    @include button-constructor($color: $text-color-hint, $type: 'link');
   }
 
   .buttons > * {
@@ -51,13 +45,13 @@
     align-items: center;
     justify-content: flex-start;
     height: $titlebar-height;
-    padding: 0 2 * $offset-base;
+    padding: 0 3 * $offset-base;
     padding-right: 48px;
     font-size: $h3-fontsize;
     font-weight: $font-bold;
-    color: $text-color-primary-inverse;
+    color: adjust-text-color($filter-title-bg);
     white-space: nowrap;
-    background: $brand-primary;
+    background: $filter-title-bg;
   }
 
   .search-close {
@@ -73,12 +67,15 @@
   }
 
   .panel {
-    padding: 0;
+    display: block;
+    float: left;
 
     @include box-shadow(none);
   }
 
   .filter_form_field {
+    margin: 0;
+
     label {
       width: 100%;
     }

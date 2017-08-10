@@ -47,9 +47,14 @@ module ActiveAdmin
         end
       end
 
+      def build_site_title
+        insert_tag view_factory.site_title, active_admin_namespace
+      end
+
       def build_titlebar_left
         div id: 'titlebar_left' do
           build_sidebar_toggle
+          build_site_title
           build_breadcrumb
           build_title_tag
         end

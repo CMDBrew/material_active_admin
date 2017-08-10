@@ -10,6 +10,12 @@ form {
     @include input-select-constructor;
   }
 
+  input {
+    &[type='submit'] {
+      @include button-constructor($color: $brand-primary);
+    }
+  }
+
   label.label {
     display: block;
     width: 100%;
@@ -29,29 +35,29 @@ form {
   }
 
   .input {
-    &.error {
-      background: transparentize($brand-danger, 0.87);
+    padding: 2 * $offset-base;
 
-      input:focus {
-        border-color: $brand-danger;
+    &.hidden {
+      display: none;
+    }
+
+    &.error {
+      label.label {
+        color: $brand-danger;
       }
     }
 
     .inline-errors {
       margin-top: 2 * $offset-base;
-      font-size: $h5-fontsize;
+      font-size: $p-fontsize;
       color: $brand-danger;
     }
 
     .inline-hints {
       margin-top: 2 * $offset-base;
-      font-size: $h5-fontsize;
+      font-size: $p-fontsize;
       color: $text-color-secondary;
     }
-  }
-
-  .hidden {
-    display: none;
   }
 
   .stringish {
@@ -62,8 +68,18 @@ form {
     @include input-checkbox-constructor;
   }
 
-  .action {
-    float: left;
-    width: auto;
+  .text {
+    @include input-textarea-constructor;
+  }
+
+  .actions {
+    ol > li {
+      float: right;
+      width: auto;
+    }
+  }
+
+  .cancel > a {
+    @include button-constructor($color: $text-color-hint, $type: 'link');
   }
 }

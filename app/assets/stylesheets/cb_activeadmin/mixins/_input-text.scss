@@ -1,4 +1,23 @@
 @mixin input-text-constructor {
+  &.error {
+    input {
+      &[type='text'],
+      &[type='password'],
+      &[type='email'],
+      &[type='number'],
+      &[type='url'],
+      &[type='search'],
+      &[type='tel'] {
+        border-color: $brand-danger;
+
+        &:focus {
+          border-color: $brand-danger;
+          @include box-shadow(0 1px 0 #{$brand-danger});
+        }
+      }
+    }
+  }
+
   input {
     @include input-base;
 
@@ -16,7 +35,13 @@
       border-bottom: 1px solid $input-guide-color;
 
       &:focus {
-        border-bottom: 2px solid $brand-primary;
+        border-color: $brand-primary;
+        @include box-shadow(0 1px 0 #{$brand-primary});
+      }
+
+      &[disabled] {
+        color: $text-color-hint;
+        border-style: dashed;
       }
     }
   }

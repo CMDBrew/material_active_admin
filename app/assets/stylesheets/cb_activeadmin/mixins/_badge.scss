@@ -1,13 +1,14 @@
-@mixin badge-constructor($color: $badge-bg) {
+@mixin badge-constructor($color: $badge-bg, $type: 'inactive') {
   padding: $offset-base / 2 $offset-base;
   font-size: $p-fontsize;
   font-weight: $font-bold;
+  color: adjust-tab-text-color($color, $type: 'selected');
   background: $color;
   border-radius: $badge-radius;
 
-  @if (lightness($color) > 50) {
-    color: $text-color-primary;
+  @if ($type == 'inactive') {
+    opacity: 0.54;
   } @else {
-    color: $text-color-primary-inverse;
+    opacity: 1;
   }
 }

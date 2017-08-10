@@ -1,58 +1,40 @@
 .attributes_table {
   width: 100%;
   overflow: hidden;
-  font-size: $p-fontsize;
-  table tbody td {
-    .image {
-      width: 100%;
-      height: auto;
-      img {
-        position: relative;
-        max-width: 100%;
-        height: auto;
-        left: auto;
-        top: auto;
-        @include transform(none);
-      }
-    }
-  }
-  table,
-  tbody,
-  th,
-  td,
-  tr {
-    float: left;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  table {
-    th,
-    td {
-      padding: 0 !important;
-      height: auto !important;
-    }
-    tr {
-      padding: 3 * $offset;
-      &:not(:last-child) { border-bottom: 1px solid $form-divider-color; }
-      td .empty { color: get-text-color($panel-bg, $type:secondary); }
-      th {
-        color: get-text-color($panel-bg);
-        font-weight: $font-bold;
-        vertical-align: top;
-        text-transform: capitalize;
-        font-size: $label-fontsize;
-        margin-bottom: $offset;
-      }
-    }
-  }
-}
 
-@include mobile {
-  .attributes_table {
+  table {
+    width: 100%;
+
+    td,
+    th {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+
     tr {
-      padding-bottom: $offset;
-      td, th { padding: $offset 0;  }
+      display: flex;
+      padding: 2 * $offset-base 0;
+    }
+
+    th {
+      display: block;
+      width: 30%;
+      font-size: $p-fontsize;
+      font-weight: $font-bold;
+      color: $text-color-secondary;
+    }
+
+    td {
+      align-items: center;
+      flex: 1;
+      font-size: $h5-fontsize;
+      color: $text-color-hint;
+      white-space: nowrap;
+      background: transparent;
+      border: 0;
+      outline: none;
+      box-sizing: border-box;
     }
   }
 }

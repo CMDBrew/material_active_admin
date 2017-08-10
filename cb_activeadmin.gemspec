@@ -34,4 +34,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'letter_opener'
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'quiet_assets'
+  s.add_development_dependency 'yard'
 end

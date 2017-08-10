@@ -1,17 +1,16 @@
 @mixin index-page {
-  #collection_selection {
-    @include panel-constructor;
-
-    padding: 0;
-  }
-
   .paginated_collection {
     display: block;
     width: 100%;
   }
 
   .index_as_table {
+    @include panel-constructor;
+
+    padding: 0;
+    margin-bottom: 0;
     overflow: scroll;
+
     table { @include table-constructor; }
   }
 
@@ -48,7 +47,7 @@
       align-items: center;
       justify-content: center;
       margin-bottom: $offset-base;
-      color: $text-color-secondary;
+      color: adjust-text-color($body-bg);
 
       a,
       b {

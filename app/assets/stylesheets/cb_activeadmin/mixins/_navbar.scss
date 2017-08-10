@@ -1,4 +1,7 @@
-@mixin navbar-constructor($color: $brand-primary) {
+@mixin navbar-constructor(
+  $color: $titlebar-bg,
+  $nav-btn-color: $titlebar-btn-color
+) {
   position: fixed;
   top: 0;
   left: 0;
@@ -30,9 +33,9 @@
   }
 
   .nav-btn {
-    @include button-constructor($color: white, $size: 'sm', $shadow: $nav-btn-shadow);
+    @include button-constructor($color: $nav-btn-color, $size: 'sm', $shadow: $titlebar-btn-shadow);
 
-    color: $color !important;
+    color: adjust-nav-btn-color($nav-btn-color);
   }
 
   .nav-btn,
@@ -65,8 +68,7 @@
     }
 
     &::before {
-      font-family: $icon-font;
-      font-size: $icon-size;
+      @include icon-constructor;
     }
   }
 }

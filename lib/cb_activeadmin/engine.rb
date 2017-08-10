@@ -17,6 +17,7 @@ module CbActiveadmin
     end
 
     initializer 'initialize overrides' do |_app|
+      require_view_helpers
       require_resources
       require_dsls
       require_views
@@ -40,6 +41,10 @@ module CbActiveadmin
 
     def require_resources
       require_each(resource_files, 'resource/')
+    end
+
+    def require_view_helpers
+      require_each(view_helpers, 'view_helpers/')
     end
 
     def require_dsls
@@ -67,8 +72,12 @@ module CbActiveadmin
     def component_files
       %w[
         columns blank_slate batch_action_menu app_header scopes site_title
-        tabs table_for hidden_section dropdown_menu
+        tabs table_for hidden_section dropdown_menu section
       ]
+    end
+
+    def view_helpers
+      %w[breadcrumb_helper]
     end
 
     def resource_files

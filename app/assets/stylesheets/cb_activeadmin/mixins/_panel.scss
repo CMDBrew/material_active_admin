@@ -1,20 +1,129 @@
 @mixin panel-constructor {
-  padding: 3 * $offset-base;
+  padding: 0 3 * $offset-base;
+  margin-bottom: 3 * $offset-base;
   background: $panel-bg;
+  border-radius: $panel-radius;
   @include box-shadow($panel-shadow);
 
-  & > h3,
-  .input {
-    padding: 2 * $offset-base;
+  &.transparent {
+    margin-bottom: 0;
+    background: transparent;
+
+    @include box-shadow(none);
+
+    & + .panel.transparent {
+      margin: 0;
+      border-top: 1px solid $divider-color;
+    }
+  }
+
+  &.collapse {
+    & > h3 {
+      cursor: pointer;
+
+      &::after {
+        @include icon-constructor;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $icon-size;
+        height: 100%;
+        content: 'keyboard_arrow_up';
+
+        @include transition(all 0.2s ease-in-out);
+      }
+    }
+
+    &.hidden {
+      .panel_contents {
+        display: none;
+        overflow: hidden;
+      }
+
+      & > h3 {
+        margin-bottom: 0;
+        line-height: 48px;
+
+        &::after {
+          @include transform(rotate(-180deg));
+        }
+      }
+    }
   }
 
   & > h3 {
-    padding-top: 0;
-    font-weight: $font-bold;
+    position: relative;
+    padding-right: $icon-size;
+    line-height: 64px;
   }
 
+  .section {
+    & + .section {
+      border-top: 1px solid $divider-color;
+
+      &::before {
+        display: block;
+        margin-top: 2 * $offset-base;
+        content: '';
+      }
+    }
+
+    & > h3 {
+      position: relative;
+      float: left;
+      padding-right: 2 * $offset-base;
+      padding-left: 3 * $offset-base;
+      margin-left: -3 * $offset-base;
+      line-height: $section-title-height;
+      color: adjust-text-color($section-title-bg);
+      background: $section-title-bg;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        right: $section-title-height / 2 * -1;
+        width: 0;
+        height: 0;
+        border-color: $section-title-bg transparent transparent;
+        border-style: solid;
+        border-width: $section-title-height ($section-title-height / 2) 0 0;
+        content: '';
+      }
+    }
+
+    .section_contents {
+      &::after,
+      &::before {
+        display: block;
+        clear: both;
+        content: '';
+      }
+
+      & > .tabs {
+        margin-top: 2 * $offset-base;
+      }
+    }
+  }
+
+  .panel_contents {
+    padding-bottom: 3 * $offset-base;
+  }
+
+  .tabs > .nav-tabs {
+    @include tab-constructor;
+
+    padding: 0;
+    margin: 0 calc(-3 * #{$offset-base});
+    border-bottom: 1px solid $divider-color;
+  }
+
+  .input,
   .buttons,
   .actions {
-    padding: 2 * $offset-base;
+    padding: 2 * $offset-base 0;
   }
 }

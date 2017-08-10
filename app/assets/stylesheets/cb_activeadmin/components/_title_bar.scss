@@ -1,9 +1,24 @@
 #title_bar {
-  @include navbar-constructor;
+  @include navbar-constructor($nav-btn-color: $titlebar-btn-color);
+  @include site-title-constructor($titlebar-bg);
+
+  .site_title {
+    max-width: 25%;
+    margin-right: 2 * $offset-base;
+
+    &::after {
+      position: absolute;
+      top: $offset-base * 2;
+      right: 0;
+      bottom: $offset-base * 2;
+      width: 1px;
+      background: adjust-divider-color($titlebar-bg);
+      content: '';
+    }
+  }
 
   #sidebar-toggle {
     position: relative;
-    margin-right: 2 * $offset-base;
 
     &::before {
       content: 'menu';
@@ -39,7 +54,7 @@
     .breadcrumb span,
     .breadcrumb a {
       font-size: $h3-fontsize;
-      font-weight: 500;
+      font-weight: $font-bold;
       color: inherit;
     }
 

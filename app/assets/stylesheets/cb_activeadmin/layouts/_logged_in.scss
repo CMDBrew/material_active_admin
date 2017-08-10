@@ -1,5 +1,3 @@
-$banner-height: 184px;
-
 body.logged_in {
   display: flex;
   width: 100%;
@@ -9,12 +7,14 @@ body.logged_in {
   background: $body-bg;
 
   &::before {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
-    height: $navbar-height;
-    background: $navbar-bg;
+    z-index: 11;
+    height: $titlebar-height;
+    background: $titlebar-bg;
+    @include box-shadow($titlebar-shadow-inactive);
     content: '';
   }
 
@@ -49,6 +49,8 @@ body.logged_in {
     #title_bar { display: none; }
 
     #batch_bar {
+      opacity: 1;
+
       @include transform(translateY(0%));
     }
   }
@@ -79,29 +81,12 @@ body.logged_in {
     }
 
     #wrapper {
-      padding-top: calc(#{$banner-height} - #{$tab-height} - 3 * #{$offset-base});
-    }
-
-    #main_content > .tabs > .nav-tabs {
-      justify-content: center;
-      background: $panel-bg;
+      padding-top: $banner-height;
     }
 
     &.scrolled {
-      &::after {
-        display: block;
+      &::before {
         @include box-shadow($titlebar-shadow);
-      }
-
-      #main_content {
-        .table_tools,
-        & > .tabs > .nav-tabs {
-          position: fixed;
-          top: calc(121px - #{$tab-height});
-          width: 100%;
-          max-width: 800px;
-          background: $panel-bg;
-        }
       }
     }
   }
@@ -149,7 +134,7 @@ body.logged_in {
     flex: 1;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 3 * $offset;
+    padding: 1.5 * $offset;
     padding-bottom: 100px;
 
     .table_tools {
@@ -163,6 +148,8 @@ body.logged_in {
     justify-content: center;
     max-width: $content-max-width;
     min-width: 0;
+    padding: 1.5 * $offset;
+    box-sizing: content-box;
   }
 
   #sidebar {
@@ -170,8 +157,7 @@ body.logged_in {
     flex-direction: column;
     width: $aside-width;
     padding: 1.5 * $offset;
-
-    @include aside-constructor;
+    box-sizing: content-box;
   }
 
   #main_content {

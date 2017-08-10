@@ -8,12 +8,12 @@ ActiveAdmin.register AdminUser do
                 :select,
                 :textarea
 
-  scope :basic_user, :show_count => true, :default => true do |records|
-    records
-  end
-  scope :super_user, :show_count => true do |records|
-    records
-  end
+  # scope :basic_user, :show_count => true, :default => true do |records|
+  #   records
+  # end
+  # scope :super_user, :show_count => true do |records|
+  #   records
+  # end
 
   batch_action :hello, hidden_mobile: true do
     puts '132'
@@ -33,6 +33,19 @@ ActiveAdmin.register AdminUser do
       item "Edit My Account", '#'
     end
   end
+
+  sidebar :help, class: 'collapse' do
+    "Need help? Email us at help@example.com"
+  end
+
+  sidebar :help, class: 'collapse' do
+    "Need help? Email us at help@example.com"
+  end
+
+  sidebar :help, class: 'collapse' do
+    "Need help? Email us at help@example.com"
+  end
+
   # scope :tab_3, :show_count => false do |records|
   #   records
   # end
@@ -112,19 +125,31 @@ ActiveAdmin.register AdminUser do
 
   show do
     tabs do
-      tab "123", {href: "123"} do
+      tab "Detail", {href: "123"} do
         panel "Admin User Details" do
-          attributes_table_for admin_user do
-            row :email
-            row :sign_in_count
-            row :last_sign_in_at
-            row :last_sign_in_ip
-            row :updated_at
-            row :created_at
+          section 'test' do
+            attributes_table_for admin_user do
+              row :email
+              row :sign_in_count
+              row :last_sign_in_at
+              row :last_sign_in_ip
+              row :updated_at
+              row :created_at
+            end
+          end
+          section 'test' do
+            attributes_table_for admin_user do
+              row :email
+              row :sign_in_count
+              row :last_sign_in_at
+              row :last_sign_in_ip
+              row :updated_at
+              row :created_at
+            end
           end
         end
       end
-      tab "223" do
+      tab "Password" do
         panel "Admin User Details" do
           attributes_table_for admin_user do
             row :sign_in_count
@@ -142,17 +167,19 @@ ActiveAdmin.register AdminUser do
   form do |f|
     f.semantic_errors *f.object.errors.keys
     panel "Detail", class: "collapse in" do
-      f.inputs do
-        f.input :select,
-                as: :select,
-                collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
-                :input_html => {class: "select2-with-search"},
-                multiple: true
-        f.input :is_super_admin
-        f.input :email, input_html: { disabled: "disabled" }
-        f.input :textarea, input_html: { rows: 4, class: "tinymce" }
-        f.input :password
-        f.input :password_confirmation
+      section 'test' do
+        f.inputs do
+          f.input :select,
+                  as: :select,
+                  collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+                  :input_html => {class: "select2-with-search"},
+                  multiple: true
+          f.input :is_super_admin
+          f.input :email, input_html: { disabled: "disabled" }
+          f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+          f.input :password
+          f.input :password_confirmation
+        end
       end
       f.actions
     end
