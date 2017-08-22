@@ -2,7 +2,7 @@
   & > label:not(.label) {
     display: flex;
     align-items: center;
-    font-size: $h5-fontsize;
+    font-size: $input-fontsize;
   }
 
   input {
@@ -10,8 +10,8 @@
   }
 
   input:checked + .checkbox-icon::before {
-    color: $brand-primary;
-    content: 'check_box';
+    color: $input-active-color;
+    content: get-icon('checkbox-checked');
   }
 
   .checkbox-icon {
@@ -21,12 +21,14 @@
     width: 3 * $offset;
     margin-right: $offset;
     text-align: center;
+    vertical-align: middle;
 
     &::before {
-      color: $text-color-hint;
-      content: 'check_box_outline_blank';
+      @extend %cb-aa-icon;
 
-      @include icon-constructor($_font-size: $checkbox-icon-size);
+      color: $label-text-color;
+      content: get-icon('checkbox-unchecked');
+
     }
   }
 }

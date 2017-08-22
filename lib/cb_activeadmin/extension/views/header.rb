@@ -21,8 +21,8 @@ module ActiveAdmin
       private
 
       def build_sidebar_toggle
-        div(id: 'sidebar-close') do
-          i('keyboard_arrow_left', class: 'mdi-icon')
+        div id: 'sidebar-close' do
+          i '', class: 'cb-aa-icon-close'
         end
       end
 

@@ -1,30 +1,30 @@
 @mixin chip-constructor(
-  $bg_color:   $chip-bg,
-  $size:       $chip_size
+  $bg: $chip-bg,
+  $size: $chip-size
 ) {
   position: relative;
-  height: $size;
-  min-width: $size;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: inline-block;
-  vertical-align: middle;
-  line-height: $size;
   align-items: center;
-  border-radius: $size / 2;
-  background: $bg_color;
-  font-size: $p-fontsize;
-  box-sizing: border-box;
-  padding: 0 1.5 * $offset;
-  text-align: center;
-  @if($size == $chip-size-densed) {
-    padding: 0 $offset / 2;
-  }
-  margin: $offset / 4 !important;
-  white-space: nowrap;
-  border: 0;
+  height: $size;
   max-width: 100%;
+  min-width: $size;
+  padding: 0 1.5 * $offset;
+  margin: $offset / 4;
   overflow: hidden;
+  font-size: $p-fontsize;
+  line-height: $size;
+  color: adjust-text-color($bg);
+  text-align: center;
   text-overflow: ellipsis;
-  color: get-text-color($bg_color);
+  white-space: nowrap;
+  vertical-align: middle;
+  background: $bg;
+  border: 0;
+  border-radius: $size / 2;
+  box-sizing: border-box;
+
+  @if($size == $chip-size-densed) {
+    padding: 0 $offset;
+    font-size: $h6-fontsize;
+  }
 }

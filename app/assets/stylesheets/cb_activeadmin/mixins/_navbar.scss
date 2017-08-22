@@ -1,6 +1,18 @@
+%nav-switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  width: $titlebar-height;
+  height: $titlebar-height;
+  margin: 0;
+  cursor: pointer;
+  border: 0;
+}
+
 @mixin navbar-constructor(
-  $color: $titlebar-bg,
-  $nav-btn-color: $titlebar-btn-color
+  $bg, $nav-btn-color
 ) {
   position: fixed;
   top: 0;
@@ -10,9 +22,9 @@
   flex-direction: row;
   width: 100%;
   height: $titlebar-height;
-  padding: 0 2 * $offset-base;
-  color: adjust-text-color($color);
-  background: $color;
+  padding: 0;
+  color: adjust-text-color($bg, $type: 'secondary');
+  background: $bg;
   box-sizing: border-box;
 
   a,
@@ -33,9 +45,10 @@
   }
 
   .nav-btn {
-    @include button-constructor($color: $nav-btn-color, $size: 'sm', $shadow: $titlebar-btn-shadow);
-
-    color: adjust-nav-btn-color($nav-btn-color);
+    @include button-constructor(
+      $color: $nav-btn-color,
+      $size: 'sm', $shadow: $nav-btn-shadow, $type: $nav-btn-type
+    );
   }
 
   .nav-btn,
@@ -47,28 +60,8 @@
     }
   }
 
+  .action_item .dropdown_menu,
   .nav-icon {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    justify-content: center;
-    width: $ctrl-height;
-    height: $ctrl-height;
-    cursor: pointer;
-    border: 0;
-    border-radius: 50%;
-
-    &:hover {
-      background: nav-btn-hover-adjustment($color);
-    }
-
-    &:active,
-    &:focus {
-      background: nav-btn-hover-adjustment($color);
-    }
-
-    &::before {
-      @include icon-constructor;
-    }
+    @extend %nav-icon;
   }
 }

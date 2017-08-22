@@ -6,9 +6,9 @@
   width: $filter-width;
   padding: 0;
   overflow: hidden;
-  color: $text-color-secondary;
   text-align: left;
   background: $filter-bg;
+  border-left: 1px solid $divider-color;
   box-sizing: border-box;
 
   @include transform(translateX(100%));
@@ -31,7 +31,9 @@
   }
 
   .clear_filters_btn {
-    @include button-constructor($color: $text-color-hint, $type: 'link');
+    @include button-constructor(
+      $color: $form-cancel-btn-color, $type: $form-cancel-btn-type
+    );
   }
 
   .buttons > * {
@@ -45,13 +47,14 @@
     align-items: center;
     justify-content: flex-start;
     height: $titlebar-height;
-    padding: 0 3 * $offset-base;
-    padding-right: 48px;
-    font-size: $h3-fontsize;
+    padding: 0 2 * $offset-base;
+    padding-right: $titlebar-height;
+    font-size: $filter-header-fontsize;
     font-weight: $font-bold;
-    color: adjust-text-color($filter-title-bg);
+    color: $filter-text-color;
     white-space: nowrap;
-    background: $filter-title-bg;
+    background: transparent;
+    border-bottom: 1px solid $filter-divider-color;
   }
 
   .search-close {
@@ -61,21 +64,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
+    width: $titlebar-height;
     height: 100%;
+    color: $filter-header-action-color;
     cursor: pointer;
   }
 
   .panel {
     display: block;
     float: left;
+    padding: 2 * $offset-base;
 
     @include box-shadow(none);
   }
 
   .filter_form_field {
-    margin: 0;
-
     label {
       width: 100%;
     }
@@ -97,11 +100,11 @@
 
     &.filter_date_range {
       input {
-        width: calc(50% - #{$offset-base} / 2);
+        width: calc(50% - #{$offset-base});
       }
 
       .seperator {
-        width: $offset-base;
+        width: $offset-base * 2;
         line-height: $input-height;
         text-align: center;
       }

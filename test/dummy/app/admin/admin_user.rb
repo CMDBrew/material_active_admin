@@ -8,24 +8,24 @@ ActiveAdmin.register AdminUser do
                 :select,
                 :textarea
 
-  # scope :basic_user, :show_count => true, :default => true do |records|
-  #   records
+  scope :basic_user, :show_count => true, :default => true do |records|
+    records
+  end
+  scope :super_user, :show_count => true do |records|
+    records
+  end
+
+  # batch_action :hello, hidden_mobile: true do
+  #   puts '132'
   # end
-  # scope :super_user, :show_count => true do |records|
-  #   records
+
+  # batch_action :world, dropdown_item: true do
+  #   puts '132'
   # end
-
-  batch_action :hello, hidden_mobile: true do
-    puts '132'
-  end
-
-  batch_action :world, dropdown_item: true do
-    puts '132'
-  end
-
-  action_item :convert, only: :show do
-    nav_btn 'asds', '#'
-  end
+  #
+  # action_item :convert, only: :show, priority: 0 do
+  #   nav_btn 'convert', '#'
+  # end
 
   action_item :drop, only: :show do
     dropdown_menu '' do
@@ -34,17 +34,17 @@ ActiveAdmin.register AdminUser do
     end
   end
 
-  sidebar :help, class: 'collapse' do
-    "Need help? Email us at help@example.com"
-  end
-
-  sidebar :help, class: 'collapse' do
-    "Need help? Email us at help@example.com"
-  end
-
-  sidebar :help, class: 'collapse' do
-    "Need help? Email us at help@example.com"
-  end
+  # sidebar :help, class: 'collapse' do
+  #   "Need help? Email us at help@example.com"
+  # end
+  #
+  # sidebar :help, class: 'collapse' do
+  #   "Need help? Email us at help@example.com"
+  # end
+  #
+  # sidebar :help, class: 'collapse' do
+  #   "Need help? Email us at help@example.com"
+  # end
 
   # scope :tab_3, :show_count => false do |records|
   #   records
@@ -127,7 +127,7 @@ ActiveAdmin.register AdminUser do
     tabs do
       tab "Detail", {href: "123"} do
         panel "Admin User Details" do
-          section 'test' do
+          section 'Interest Rate' do
             attributes_table_for admin_user do
               row :email
               row :sign_in_count
@@ -137,7 +137,7 @@ ActiveAdmin.register AdminUser do
               row :created_at
             end
           end
-          section 'test' do
+          section 'Beneficiaries' do
             attributes_table_for admin_user do
               row :email
               row :sign_in_count
@@ -166,22 +166,45 @@ ActiveAdmin.register AdminUser do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    panel "Detail", class: "collapse in" do
-      section 'test' do
-        f.inputs do
-          f.input :select,
-                  as: :select,
-                  collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
-                  :input_html => {class: "select2-with-search"},
-                  multiple: true
-          f.input :is_super_admin
-          f.input :email, input_html: { disabled: "disabled" }
-          f.input :textarea, input_html: { rows: 4, class: "tinymce" }
-          f.input :password
-          f.input :password_confirmation
+    tabs do
+      tab "Detail", {href: "123"} do
+        panel "Detail", class: "collapse in" do
+          section 'test' do
+            f.inputs do
+              f.input :select,
+                      as: :select,
+                      collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+                      :input_html => {class: "select2-with-search"},
+                      multiple: true
+              f.input :is_super_admin
+              f.input :email, input_html: { disabled: "disabled" }
+              f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+              f.input :password
+              f.input :password_confirmation
+            end
+          end
+          f.actions
         end
       end
-      f.actions
+      tab "Detail2", {href: "123"} do
+        panel "Detail", class: "collapse in" do
+          section 'test' do
+            f.inputs do
+              f.input :select,
+                      as: :select,
+                      collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+                      :input_html => {class: "select2-with-search"},
+                      multiple: true
+              f.input :is_super_admin
+              f.input :email, input_html: { disabled: "disabled" }
+              f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+              f.input :password
+              f.input :password_confirmation
+            end
+          end
+          f.actions
+        end
+      end
     end
   end
 

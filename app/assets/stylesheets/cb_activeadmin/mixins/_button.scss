@@ -4,7 +4,7 @@
   align-items: center;
   padding: 0 2 * $offset-base;
   font-size: $p-fontsize;
-  font-weight: $font-bold;
+  font-weight: normal;
   text-align: center;
   text-decoration: none;
   text-overflow: ellipsis;
@@ -39,7 +39,7 @@
 
 @mixin button-constructor(
   $color: $brand-default,
-  $type: 'button',
+  $type: 'solid',
   $size: 'default',
   $shadow: null
 ) {
@@ -52,6 +52,10 @@
   @if ($type == 'link') {
     color: $color;
     background: transparent;
+  } @elseif ($type == 'outline') {
+    color: $color;
+    background: transparent;
+    border: 1px solid $color;
   } @else {
     color: adjust-text-color($color);
     background: $color;

@@ -6,18 +6,6 @@ body.logged_in {
   overflow-y: scroll;
   background: $body-bg;
 
-  &::before {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 11;
-    height: $titlebar-height;
-    background: $titlebar-bg;
-    @include box-shadow($titlebar-shadow-inactive);
-    content: '';
-  }
-
   &.index {
     @include index-page;
   }
@@ -35,20 +23,13 @@ body.logged_in {
 
   &.sidebar-toggle {
     #header {
-      @include box-shadow($header-shadow);
-      @include transform(translateX(0%));
+      @extend %header-open;
     }
   }
 
   &.batch-enabled {
-    &::before,
-    &::after {
-      background: $batch-bar-bg !important;
-    }
-
-    #title_bar { display: none; }
-
     #batch_bar {
+      z-index: 1300;
       opacity: 1;
 
       @include transform(translateY(0%));
@@ -56,28 +37,14 @@ body.logged_in {
   }
 
 
-  &:not(.has_tabs) {
-    &.scrolled {
-      #title_bar {
-        @include box-shadow($titlebar-shadow);
-      }
-    }
-  }
-
   &.has_tabs {
     &::before {
       height: $banner-height;
     }
 
-    &::after {
-      position: fixed;
-      top: 0;
-      right: 0;
-      left: 0;
-      display: none;
-      height: 121px;
-      background: $brand-primary;
-      content: '';
+    #batch_bar,
+    #title_bar {
+      @extend %title_bar-has-tab;
     }
 
     #wrapper {
@@ -146,7 +113,7 @@ body.logged_in {
     display: flex;
     flex: 1 $aside-width;
     justify-content: center;
-    max-width: $content-max-width;
+    max-width: 800px;
     min-width: 0;
     padding: 1.5 * $offset;
     box-sizing: content-box;
@@ -163,5 +130,17 @@ body.logged_in {
   #main_content {
     width: 100%;
     margin: 0 auto;
+
+    & > .tabs > .nav-tabs {
+      @extend %nav-tabs;
+      @include tab-constructor($color: $titlebar-bg, $height: $nav-tabs-height);
+
+      justify-content: center;
+    }
+  }
+
+  #toast-container {
+    @include toast-constructor;
+    z-index: 1100;
   }
 }

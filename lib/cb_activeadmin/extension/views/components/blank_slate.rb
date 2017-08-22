@@ -22,11 +22,11 @@ module ActiveAdmin
       private
 
       def blank_slate_icon
-        i('inbox', class: 'cb_activeadmin-icons')
+        i('', class: 'cb-aa-icon-empty')
       end
 
       def blank_slate_heading
-        h4(I18n.t('active_admin.blank_slate.heading'), class: 'title')
+        h3(I18n.t('active_admin.blank_slate.heading'), class: 'title')
       end
 
       def blank_slate_content(content)

@@ -1,9 +1,18 @@
 form {
+  ul.errors {
+    @extend %flash-base;
+
+    padding-left: 4 * $offset-base;
+    margin-bottom: 2 * $offset-base;
+  }
+
   ol,
   ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    &:not(.errors) {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
   }
 
   select {
@@ -12,17 +21,20 @@ form {
 
   input {
     &[type='submit'] {
-      @include button-constructor($color: $brand-primary);
+      @include button-constructor(
+        $color: $form-submit-btn-color, $type: $form-submit-btn-type
+      );
     }
   }
 
   label.label {
     display: block;
     width: 100%;
-    margin-bottom: $offset-base;
-    font-size: $p-fontsize;
+    padding: $offset-base 0;
+    font-size: $label-fontsize;
     font-weight: $font-bold;
-    color: $text-color-secondary;
+    color: $label-text-color;
+    text-transform: uppercase;
 
     abbr {
       &[title='required'] {
@@ -35,16 +47,31 @@ form {
   }
 
   .input {
-    padding: 2 * $offset-base;
+    padding: 0;
+    margin-bottom: 2 * $offset-base;
 
     &.hidden {
       display: none;
     }
 
     &.error {
+      @extend %input-error;
+
       label.label {
         color: $brand-danger;
       }
+    }
+
+    &.stringish {
+      @include input-text-constructor;
+    }
+
+    &.boolean {
+      @include input-checkbox-constructor;
+    }
+
+    &.text {
+      @include input-textarea-constructor;
     }
 
     .inline-errors {
@@ -60,26 +87,17 @@ form {
     }
   }
 
-  .stringish {
-    @include input-text-constructor;
-  }
-
-  .boolean {
-    @include input-checkbox-constructor;
-  }
-
-  .text {
-    @include input-textarea-constructor;
-  }
-
   .actions {
     ol > li {
       float: right;
       width: auto;
+      margin-left: $offset-base;
     }
   }
 
   .cancel > a {
-    @include button-constructor($color: $text-color-hint, $type: 'link');
+    @include button-constructor(
+      $color: $form-cancel-btn-color, $type: $form-cancel-btn-type
+    );
   }
 }

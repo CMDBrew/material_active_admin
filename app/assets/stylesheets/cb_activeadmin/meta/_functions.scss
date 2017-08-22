@@ -1,8 +1,22 @@
-@function adjust-text-color($color) {
-  @if (lightness($color) > 75) {
-    @return $text-color-primary;
+@function adjust-text-color($color, $type: 'primary') {
+  @if ($type == 'secondary') {
+    @if (lightness($color) > 75) {
+      @return $text-color-secondary;
+    } @else {
+      @return $text-color-secondary-inverse;
+    }
+  } @elseif ($type == 'hint') {
+    @if (lightness($color) > 75) {
+      @return $text-color-hint;
+    } @else {
+      @return $text-color-hint-inverse;
+    }
   } @else {
-    @return $text-color-primary-inverse;
+    @if (lightness($color) > 75) {
+      @return $text-color-primary;
+    } @else {
+      @return $text-color-primary-inverse;
+    }
   }
 }
 
@@ -31,20 +45,20 @@
     }
   } @else {
     @if (lightness($color) > 75) {
-      @return $text-color-hint;
+      @return $text-color-secondary;
     } @else {
-      @return $text-color-hint-inverse;
+      @return $text-color-secondary-inverse;
     }
   }
 }
 
-@function nav-btn-hover-adjustment($color) {
-  @if (lightness($color) > 75) {
-    @return $nav-btn-hover-bg-dark;
-  } @else {
-    @return $nav-btn-hover-bg-light;
-  }
-}
+// @function nav-btn-hover-adjustment($color) {
+//   @if (lightness($color) > 75) {
+//     @return $nav-btn-hover-bg-dark;
+//   } @else {
+//     @return $nav-btn-hover-bg-light;
+//   }
+// }
 
 @function get-text-color($color, $type:normal) {
   @if($type == normal) {

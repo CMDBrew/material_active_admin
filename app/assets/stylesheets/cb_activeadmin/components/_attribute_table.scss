@@ -1,40 +1,43 @@
-.attributes_table {
+table.cb-aa-attributes-table {
   width: 100%;
   overflow: hidden;
 
-  table {
+  td,
+  th {
+    display: flex;
     width: 100%;
+    padding: 2 * $offset-base 0;
+    text-align: left;
+  }
 
-    td,
-    th {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
+  tr {
+    display: flex;
 
-    tr {
-      display: flex;
-      padding: 2 * $offset-base 0;
+    &:not(:last-child) {
+      border-bottom: 1px solid $attr-table-row-divider-color;
     }
+  }
 
-    th {
-      display: block;
-      width: 30%;
-      font-size: $p-fontsize;
-      font-weight: $font-bold;
-      color: $text-color-secondary;
-    }
+  th {
+    width: 30%;
+    font-size: $attr-table-th-fontsize;
+    font-weight: $font-bold;
+    color: $attr-table-th-text-color;
+    text-transform: uppercase;
+  }
 
-    td {
-      align-items: center;
-      flex: 1;
-      font-size: $h5-fontsize;
-      color: $text-color-hint;
-      white-space: nowrap;
-      background: transparent;
-      border: 0;
-      outline: none;
-      box-sizing: border-box;
-    }
+  td {
+    flex: 1;
+    font-size: $attr-table-td-fontsize;
+    color: $attr-table-td-text-color;
+    white-space: nowrap;
+    background: transparent;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  span.empty {
+    color: adjust-text-color($panel-bg, $type: 'hint');
   }
 }

@@ -12,11 +12,11 @@ p {
 
 h1 {
   font-size: $h1-fontsize;
-  font-weight: $font-light;
 }
 
 h2 {
   font-size: $h2-fontsize;
+  font-weight: $font-bold;
 }
 
 h3 {
@@ -40,43 +40,16 @@ p {
   font-size: $p-fontsize;
 }
 
-@mixin icon-constructor(
-  $_font: $icon-font,
-  $_font-size: $icon-size
-) {
-  display: inline-block;
-  align-items: center;
-  overflow: hidden;
-  font-family: $_font;
-  font-size: $_font-size;
-  font-style: normal;
-  font-weight: normal;
-  letter-spacing: normal;
-  text-rendering: geometricPrecision;
-  text-transform: none;
-  word-wrap: normal;
-  white-space: nowrap;
-  vertical-align: middle;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-}
-
 .mdi-icon,
 .aa-icon,
 .cb_activeadmin-icons {
-  @include icon-constructor;
+  @extend %cb-aa-icon;
 }
 
 html {
-  font-family: $font-family;
+  font-family: $font-stack;
   font-size: $base-fontsize;
   line-height: 1.3;
   color: $text-color-primary;
-  // text-rendering: geometricPrecision;
-  // sass-lint:disable no-vendor-prefixes
-  // -webkit-font-smoothing: antialiased;
-
-  body:lang(zh-TW) {
-    font-family: $font-fallback;
-  }
+  text-rendering: optimizeLegibility;
 }

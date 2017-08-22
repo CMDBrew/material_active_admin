@@ -1,24 +1,13 @@
 $logo-size: 80px;
-$banner-height: 278px;
 
 body.logged_out {
-  display: block;
+  display: flex;
   min-height: 100vh;
   padding: 0;
   padding-top: calc(#{$banner-height} - 100px);
   padding-bottom: 5 * $offset-base;
   background-color: $body-bg;
   box-sizing: border-box;
-
-  &::before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: $banner-height;
-    background: $brand-primary;
-    content: '';
-  }
 
   #wrapper,
   #content_wrapper {
@@ -37,36 +26,45 @@ body.logged_out {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
+  }
+
+  #title {
+    display: block;
+    margin-bottom: 4 * $offset-base;
+
+    #logo {
+      width: 96px;
+      height: 96px;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+      }
+    }
   }
 
   #login {
     width: 100%;
+    padding: 4 * $offset-base;
     overflow: hidden;
     box-sizing: border-box;
 
     @include transform(translate3d(0, 0, 0));
 
-    & > h3,
-    .input {
-      padding: 2 * $offset-base;
-    }
-
-    .input {
+    .actions > ol > li {
+      width: 100%;
       margin: 0;
 
-      // &.error {
-      //   background: transparentize($brand-danger, 0.87);
-      // }
     }
 
-    .actions > ol > li {
-      float: left;
+    input[type='submit'] {
+      width: 100%;
     }
   }
 
   #extra {
-    padding: 0 2 * $offset-base;
+    text-align: center;
 
     ul,
     li {

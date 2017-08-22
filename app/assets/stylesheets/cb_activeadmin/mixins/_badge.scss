@@ -1,14 +1,11 @@
-@mixin badge-constructor($color: $badge-bg, $type: 'inactive') {
-  padding: $offset-base / 2 $offset-base;
-  font-size: $p-fontsize;
+@mixin badge-constructor($color: $badge-bg) {
+  display: inline-block;
+  padding: 0 $offset-base;
+  font-size: $badge-fontsize;
   font-weight: $font-bold;
-  color: adjust-tab-text-color($color, $type: 'selected');
+  line-height: $badge-height;
+  color: adjust-text-color($color, $type: 'secondary');
+  vertical-align: baseline;
   background: $color;
   border-radius: $badge-radius;
-
-  @if ($type == 'inactive') {
-    opacity: 0.54;
-  } @else {
-    opacity: 1;
-  }
 }

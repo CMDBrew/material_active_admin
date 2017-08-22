@@ -13,23 +13,25 @@ module ActiveAdmin
         @is_index_page = is_index_page
         @filters       = options[:filters]
         build_titlebar_left
+        build_title_bar_center
         build_titlebar_right
       end
 
       private
 
       def build_title_tag
-        h3(@title, id: 'page_title')
+        h2(@title, id: 'page_title')
       end
 
       def build_sidebar_toggle
-        div id: 'sidebar-toggle', class: 'nav-icon'
+        div id: 'sidebar-toggle' do
+          i '', class: 'cb-aa-icon-menu'
+        end
       end
 
       def build_search_toggle
-        div class: 'button-wrap' do
-          div id: 'search-filter-toggle', class: 'nav-icon', title: search_toggle_title,
-              'data-toggle' => 'tooltip', 'data-placement' => 'bottom'
+        div id: 'search-filter-toggle', class: 'nav-icon' do
+          i '', class: 'cb-aa-icon-search'
         end
       end
 
@@ -41,7 +43,7 @@ module ActiveAdmin
         div id: 'search-filter' do
           div class: 'header' do
             span I18n.t('active_admin.search_model', model: active_admin_config.resource_label).to_s
-            div i('close', class: 'cb_activeadmin-icons'), class: 'search-close'
+            div i('', class: 'cb-aa-icon-close'), class: 'search-close'
           end
           div @filters.collect { |x| sidebar_section(x) }, class: 'body'
         end
@@ -52,16 +54,21 @@ module ActiveAdmin
       end
 
       def build_titlebar_left
-        div id: 'titlebar_left' do
+        div id: 'titlebar_left', class: 'titlebar-section' do
           build_sidebar_toggle
-          build_site_title
+          # build_site_title
+        end
+      end
+
+      def build_title_bar_center
+        div id: 'titlebar_center', class: 'titlebar-section' do
           build_breadcrumb
           build_title_tag
         end
       end
 
       def build_titlebar_right
-        div id: 'titlebar_right' do
+        div id: 'titlebar_right', class: 'titlebar-section' do
           if @is_index_page
             build_index_list
             build_search_toggle
@@ -125,6 +132,27 @@ module ActiveAdmin
           active_admin_config.page_presenters[:index].try(:size).try(:>, 1)
       rescue
         false
+      end
+
+      def build_breadcrumb(separator = '/')
+        links = build_breadcrumb_links
+        return unless links.present? && links.is_a?(::Array)
+        span class: 'breadcrumb' do
+          links.each do |link|
+            text_node link
+            next if link == links.last
+            span(separator, class: 'breadcrumb_sep')
+          end
+        end
+      end
+
+      def build_breadcrumb_links
+        breadcrumb_config = active_admin_config && active_admin_config.breadcrumb
+        if breadcrumb_config.is_a?(Proc)
+          instance_exec(controller, &active_admin_config.breadcrumb)
+        elsif breadcrumb_config.present?
+          breadcrumb_links
+        end
       end
 
     end

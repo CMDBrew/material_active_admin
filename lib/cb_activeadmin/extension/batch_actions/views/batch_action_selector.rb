@@ -35,8 +35,8 @@ module ActiveAdmin
       end
 
       def build_selection_toggle
-        div id: 'selection-toggle', class: 'nav-icon' do
-          i 'arrow_back', class: 'mdi-icon'
+        div id: 'selection-toggle' do
+          i '', class: 'cb-aa-icon-arrow-back'
         end
       end
 
@@ -120,7 +120,7 @@ module ActiveAdmin
       end
 
       def action_klass(batch_action)
-        klass = []
+        klass = [batch_action.extra_klass]
         klass.push(batch_action.icon.present? ? 'nav-icon' : 'nav-btn')
         klass.push(batch_action.hidden_mobile ? 'hidden-mobile' : nil)
         klass.join(' ').strip
@@ -135,7 +135,7 @@ module ActiveAdmin
       end
 
       def action_icon(icon)
-        content_tag(:i, icon, class: 'aa-icon')
+        content_tag(:i, '', class: "cb-aa-icon-#{icon}")
       end
 
       # Return the set of batch actions that should be displayed

@@ -60,7 +60,7 @@ rules:
   function-name-format: 1
   id-name-format: 0
   mixin-name-format: 1
-  placeholder-name-format: 1
+  placeholder-name-format: 0
   variable-name-format: 1
 
   # Style Guide

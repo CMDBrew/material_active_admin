@@ -1,26 +1,36 @@
 @mixin blank-slate-constructor {
   position: relative;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  color: get-nav-text-color($body-bg);
   padding: 3 * $offset;
+  color: get-nav-text-color($body-bg);
   box-sizing: border-box;
-  .cb_activeadmin-icons {
-    font-size: 80px;
+
+  @include mobile {
+    padding: 1.5 * $offset;
+  }
+
+  & > i {
     margin-bottom: $offset;
     line-height: 1;
-    color: $text-color-placeholder;
+    color: $text-color-hint;
+
+    &::before {
+      font-size: 64px;
+    }
   }
+
   .title {
     margin-bottom: $offset;
   }
+
   .blank_slate {
     text-align: center;
   }
-  a { text-transform: uppercase; }
-  @include mobile {
-    padding: 1.5 * $offset;
+
+  a {
+    text-transform: uppercase;
   }
 }

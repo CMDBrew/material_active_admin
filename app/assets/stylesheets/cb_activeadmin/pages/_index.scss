@@ -34,6 +34,10 @@
     }
   }
 
+  #main_content_wrapper {
+    max-width: $content-max-width;
+  }
+
   #index_footer {
     padding: $offset-base * 2 0;
 
@@ -51,7 +55,7 @@
 
       a,
       b {
-        margin: 0 $offset-base / 2;
+        margin: 0 $offset-base / 4;
       }
     }
   }

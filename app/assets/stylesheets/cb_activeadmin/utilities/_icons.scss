@@ -1,0 +1,50 @@
+@function get-icon($key) {
+  @if map-has-key($icons-list, $key) {
+    $unicode: map-get($icons-list, $key);
+    @return $unicode;
+  }
+}
+
+%cb-aa-icon {
+  display: inline-block;
+  align-items: center;
+  overflow: hidden;
+  font-family: $icon-font;
+  font-size: $icon-size;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-rendering: geometricPrecision;
+  text-transform: none;
+  word-wrap: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+[class*='cb-aa-icon-']::before {
+  @extend %cb-aa-icon;
+}
+
+$icons-list: (
+  'close':              '\E5CD',
+  'arrow-right':        '\E315',
+  'arrow-left':         '\E314',
+  'arrow-up':           '\E316',
+  'arrow-down':         '\E313',
+  'arrow-back':         '\E5C4',
+  'checkbox-unchecked': '\E835',
+  'checkbox-checked':   '\E834',
+  'search':             '\E8B6',
+  'delete':             '\E872',
+  'menu':               '\E5D2',
+  'empty':              '\E156',
+);
+
+@each $_icon-name, $_icon-value in $icons-list {
+  .cb-aa-icon-#{$_icon-name}::before {
+    content: $_icon-value;
+  }
+}

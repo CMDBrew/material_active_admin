@@ -1,6 +1,7 @@
 @mixin comments-constructor {
   .panel_contents {
-    margin: -3 * $offset-base;
+    padding-bottom: 0;
+    margin: -2 * $offset-base;
     margin-top: 0;
   }
 
@@ -54,16 +55,12 @@
   }
 
   .admin-comment-form {
-    padding: $offset-base 3 * $offset-base;
+    padding: 2 * $offset-base;
+    background: $body-bg;
     border-top: 1px solid $divider-color;
 
-    textarea {
-      padding: 0;
-      border: 0;
-
-      &:focus {
-        @include box-shadow(none);
-      }
+    .actions {
+      padding-top: 0;
     }
   }
 }

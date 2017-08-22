@@ -44,15 +44,15 @@ module ActiveAdmin::ViewHelpers
   def blank_slate_msg(
     new_resource_path = nil,
     resource_name = 'Records',
-    icon  = 'inbox',
+    icon  = 'empty',
     title = blank_slate_title,
     msg   = [blank_slate_body(resource_name)]
   )
     msg << blank_slate_new_resource_path(new_resource_path).to_s
     content_tag :div, class: 'blank_slate_container' do
-      concat(content_tag(:i, icon, class: 'cb_activeadmin-icons'))
-      concat(content_tag(:h4, title, class: 'title'))
-      concat(content_tag(:span, safe_join(msg), class: 'blank_slate'))
+      concat(content_tag(:i, '', class: "cb-aa-icon-#{icon}"))
+      concat(content_tag(:h3, title, class: 'title'))
+      concat(content_tag(:p, safe_join(msg), class: 'blank_slate'))
     end
   end
 
@@ -114,7 +114,7 @@ module ActiveAdmin::ViewHelpers
   def menu_badge(badge)
     return unless badge.is_a?(Integer) && badge.positive?
     badge = '99+' if badge > 99
-    content_tag(:span, badge, class: 'mdi-chip brand-danger chip-densed')
+    content_tag(:span, badge, class: 'cb-aa-badge')
   end
 
   def admin_avatar_icon(current_admin_user)

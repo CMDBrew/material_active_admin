@@ -17,7 +17,7 @@ $ ->
 $ ->
   $('body').on 'click', "#header li.has_nested > a", NAV_MENU.events.toggle
   $('body').on 'click', "#sidebar-toggle", SIDEBAR_TOGGLE.events.toggle
-  $('body').on 'click', "#sidebar-close", SIDEBAR_TOGGLE.events.hide
+  $('body').on 'click', "#sidebar-close", SIDEBAR_TOGGLE.events.toggle
   $('body').on 'click', "#search-filter-toggle", SEARCH_FILTER_TOGGLE.events.show
   $('body').on 'click', ".search-close", SEARCH_FILTER_TOGGLE.events.hide
   $('body').on 'click', ".with-ripple", RIPPLE_EFFECT.events.create_ripple

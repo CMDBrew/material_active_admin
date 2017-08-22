@@ -9,6 +9,7 @@ en:
     owner:     "Clever Banana Studios Inc"
     dashboard: "Dashboard"
     admin:     "Admin"
+    search:    "Search"
     nav:
       admin:   "Admin"
       profile: "Profile"

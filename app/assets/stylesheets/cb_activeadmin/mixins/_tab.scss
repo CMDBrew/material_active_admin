@@ -1,11 +1,11 @@
-@mixin tab-constructor($color: $panel-bg) {
+@mixin tab-constructor($color: $panel-bg, $height: $tab-height) {
   z-index: 111;
   display: flex;
   flex: 1;
   flex-direction: row;
   justify-content: flex-start;
-  height: $tab-height;
-  padding: 0 2 * $offset-base;
+  height: $height;
+  padding: 0;
   margin: 0 auto;
   overflow: hidden;
   overflow-x: scroll;
@@ -18,18 +18,19 @@
     flex-shrink: 0;
     justify-content: center;
     height: 100%;
-    padding: 0 3 * $offset-base;
+    padding: 0;
+    margin: 0 2 * $offset-base;
     overflow: hidden;
-    line-height: $tab-height;
-    color: adjust-tab-text-color($color);
+    line-height: $height;
+    color: $tab-text-color;
     text-align: center;
     text-overflow: ellipsis;
-    text-transform: uppercase;
+    text-transform: capitalize;
     white-space: nowrap;
 
     &.ui-tabs-active,
     &.selected {
-      color: adjust-tab-text-color($color, $type: 'selected');
+      color: $tab-text-color-active;
 
       &::after {
         position: absolute;
@@ -37,15 +38,20 @@
         bottom: 0;
         left: 0;
         height: $tab-active-indicator-height;
-        background: adjust-tab-text-color($color, $type: 'selected');
+        background: $tab-active-indicator-color;
         content: '';
       }
     }
 
     a {
+      display: inline-block;
       height: 100%;
-      font-weight: $font-bold;
+      padding: 0;
+      font-size: $tab-fontsize;
+      line-height: $height;
       color: inherit;
+      white-space: nowrap;
+      vertical-align: top;
     }
   }
 }

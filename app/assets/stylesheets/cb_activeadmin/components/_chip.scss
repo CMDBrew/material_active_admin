@@ -1,11 +1,23 @@
-@each $chip_type, $chip_color in $chip-color-map {
-  .mdi-chip,
+@each $_type, $_color in $chip-color-map {
+  .cb-aa-chip,
   .status_tag {
-    &.chip-densed.#{$chip_type} { @include chip-constructor($bg_color: $chip_color, $size: $chip-size-densed); }
-    &.#{$chip_type}:not(.chip-densed) { @include chip-constructor($bg_color: $chip_color); }
+    &.densed.#{$_type} {
+      @include chip-constructor($bg: $_color, $size: $chip-size-densed);
+    }
+
+    &.#{$_type}:not(.densed) {
+      @include chip-constructor($bg: $_color);
+    }
   }
 }
-.mdi-chip {
-  &.chip-densed { @include chip-constructor($size: $chip-size-densed); }
-  &:not(.chip-densed) { @include chip-constructor; }
+
+.cb-aa-chip,
+.status_tag {
+  &.densed {
+    @include chip-constructor($bg: $chip-bg, $size: $chip-size-densed);
+  }
+
+  &:not(.densed) {
+    @include chip-constructor($bg: $chip-bg);
+  }
 }

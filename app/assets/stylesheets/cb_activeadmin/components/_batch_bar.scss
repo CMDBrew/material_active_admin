@@ -1,9 +1,15 @@
 #batch_bar {
-  @include navbar-constructor($color: $batch-bar-bg);
+  @include navbar-constructor($bg: $batch-bar-bg, $nav-btn-color: $batch-bar-btn-color);
   @include transform(translateY(-100%));
   @include transition(transform 0.2s linear);
 
   opacity: 0;
+
+  #page_title {
+    font-size: $batch-bar-title-fontsize;
+    font-weight: normal;
+    color: $batch-bar-text-color;
+  }
 
   #batch_bar_left {
     display: flex;
@@ -16,12 +22,15 @@
   }
 
   #selection-toggle {
+    @extend %nav-switcher;
+
     margin-right: 2 * $offset-base;
   }
 
   #batch_bar_right {
     display: flex;
     flex: 0 0 auto;
+    padding: 0 2 * $offset-base;
     text-align: right;
 
     & > ul {
@@ -33,5 +42,10 @@
         margin-left: $offset-base;
       }
     }
+
+    & + .batch_actions_selector.dropdown_menu {
+      margin-left: -2 * $offset-base;
+    }
+
   }
 }
