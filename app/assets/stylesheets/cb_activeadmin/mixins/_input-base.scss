@@ -1,15 +1,45 @@
-@mixin input-base {
+%input-error {
+  input,
+  textarea,
+  select {
+    border-color: $input-error-color !important;
+
+    &:focus {
+      border-color: $input-error-color !important;
+      @include box-shadow($input-shadow-error !important);
+    }
+  }
+
+}
+
+%input-base {
   display: flex;
   align-items: center;
-  height: $input-height;
-  font-size: $h5-fontsize;
+  padding: 0 $offset-base * 1.5;
+  font-size: $input-fontsize;
+  color: $input-text-color;
   white-space: nowrap;
-  background: transparent;
-  border: 0;
+  background: $input-bg;
+  border: $input-border;
+  border-radius: $input-radius;
   outline: none;
   box-sizing: border-box;
-
   // sass-lint:disable no-vendor-prefixes
+
   -webkit-appearance: none;
   -webkit-backface-visibility: hidden;
+
+  &:focus,
+  &:active {
+    &:not([disabled]) {
+      border: $input-border-active;
+      @include box-shadow($input-shadow-active);
+    }
+  }
+
+  &[disabled] {
+    color: $input-text-color-disabled;
+    background: $input-bg-disabled;
+    border: $input-border-disabled;
+  }
 }

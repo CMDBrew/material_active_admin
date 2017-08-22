@@ -14,7 +14,7 @@ $offset:                     8px !default;
 $border-radius:              2px !default;
 $screen-tablet:              768px !default;
 $screen-desktop:             992px !default;
-$content-max-width:          800px !default;
+// $content-max-width:          800px !default;
 $widget-border-radius:       2px !default;
 $content-offset:             3 * $offset !default;
 $content-offset-xs:          2 * $offset !default;
@@ -122,10 +122,10 @@ $label-fontsize: $h5-fontsize !default;
   COMPONENTS
   **/
 // Float Action
-$float-action-bg: $brand-accent !default;
-$float-action-text-color: get-text-color($float-action-bg) !default;
-$float-action-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28) !default;
-$float-action-shadow-active: 0 0 6px rgba(0,0,0,.16), 0 6px 12px rgba(0,0,0,.32) !default;
+// $float-action-bg: $brand-accent !default;
+// $float-action-text-color: get-text-color($float-action-bg) !default;
+// $float-action-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28) !default;
+// $float-action-shadow-active: 0 0 6px rgba(0,0,0,.16), 0 6px 12px rgba(0,0,0,.32) !default;
 
 // Inputs
 $input-type:                      'guide' !default;
@@ -233,22 +233,22 @@ $modal-shadow:        0 1px 8px rgba(0,0,0,.3) !default;
 $modal-header-shadow: none !default;
 
 // Chip
-$chip-size:              28px !default;
-$chip-size-densed:       20px !default;
-$chip-bg:                #E0E0E0 !default;
-$chip-remove-bg:         rgba(black, .3) !default;
-$chip-remove-text-color: #E0E0E0 !default;
-$chip-color-map: (
-  "brand-default":   $brand-default,
-  "brand-primary":   $brand-primary,
-  "brand-danger":    $brand-danger,
-  "brand-warning":   $brand-warning,
-  "brand-info":      $brand-info,
-  "brand-success":   $brand-success,
-  "yes":             $brand-success,
-  "no":              $brand-default
-) !default;
-$tab-chip-bg: darken($brand-primary, 4%) !default;
+// $chip-size:              28px !default;
+// $chip-size-densed:       20px !default;
+// $chip-bg:                #E0E0E0 !default;
+// $chip-remove-bg:         rgba(black, .3) !default;
+// $chip-remove-text-color: #E0E0E0 !default;
+// $chip-color-map: (
+//   "brand-default":   $brand-default,
+//   "brand-primary":   $brand-primary,
+//   "brand-danger":    $brand-danger,
+//   "brand-warning":   $brand-warning,
+//   "brand-info":      $brand-info,
+//   "brand-success":   $brand-success,
+//   "yes":             $brand-success,
+//   "no":              $brand-default
+// ) !default;
+// $tab-chip-bg: darken($brand-primary, 4%) !default;
 
 // $Tooltip
 $tooltip-bg:     rgba(black, .7) !default;

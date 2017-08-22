@@ -59,6 +59,7 @@ module ActiveAdmin
       @confirm       = options[:confirm]
       @icon          = options[:icon]
       @hidden_mobile = options[:hidden_mobile]
+      @extra_klass   = options[:extra_klass]
       @dropdown_item = options[:dropdown_item]
       @block ||= proc {}
     end
@@ -73,6 +74,10 @@ module ActiveAdmin
 
     def dropdown_item
       @options[:dropdown_item] || false
+    end
+
+    def extra_klass
+      @options[:extra_klass]
     end
 
   end

@@ -1,4 +1,11 @@
+%header-open {
+  @include box-shadow($header-shadow);
+  @include transform(translateX(0%));
+}
+
 #header {
+  @extend %site-title-constructor;
+
   position: fixed;
   top: 0;
   bottom: 0;
@@ -11,31 +18,6 @@
 
   @include transform(translateX(-100%));
   @include transition(transform 0.2s linear);
-  @include site-title-constructor($header-title-bg);
-
-  .site_title {
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 180px;
-    padding: 3 * $offset-base;
-    background: $header-title-bg;
-
-    .favicon-container {
-      justify-content: flex-start;
-      height: 64px;
-
-      .favicon {
-        width: 64px;
-        height: 64px;
-      }
-    }
-
-    .title {
-      margin-top: 3 * $offset-base;
-      font-size: $h5-fontsize;
-    }
-  }
 
   #sidebar-close {
     position: absolute;
@@ -68,17 +50,17 @@
 
   ul.header-item.tabs {
     & + ul {
-      border-top: 1px solid adjust-divider-color($header-bg);
+      border-top: 1px solid $header-divider-color;
     }
 
     li {
       &.current > a {
-        color: $brand-primary;
+        color: $header-menu-item-color-selected;
       }
 
       &.has_nested {
         & > a::after {
-          @include icon-constructor;
+          @extend %cb-aa-icon;
 
           position: absolute;
           top: 0;
@@ -88,7 +70,7 @@
           justify-content: center;
           width: 48px;
           height: 100%;
-          content: 'keyboard_arrow_down';
+          content: get-icon('arrow-down');
 
           @include transition(all 0.2s ease-in-out);
         }
@@ -124,7 +106,6 @@
         padding-right: 48px;
         overflow: hidden;
         font-size: $p-fontsize;
-        font-weight: $font-bold;
         line-height: $header-menu-item-height;
         color: $header-text-color;
         text-overflow: ellipsis;
@@ -161,5 +142,9 @@
         }
       }
     }
+  }
+
+  .cb-aa-badge {
+    @include badge-constructor($header-badge-bg);
   }
 }

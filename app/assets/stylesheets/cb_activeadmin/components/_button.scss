@@ -7,3 +7,20 @@
   }
   &.btn-block { width: 100%; }
 }
+
+@each $_color-klass, $_color in $btn-color-map {
+  @each $_type in ('outline', 'line', 'default') {
+    .cb-aa-btn-#{$_type}.#{$_color-klass} {
+      @include button-constructor($type: $_type, $color: $_color);
+    }
+  }
+}
+
+@each $_color-klass, $_color in $btn-color-map {
+  #batch_bar,
+  #title_bar {
+    .nav-btn.#{$_color-klass} {
+      @include button-constructor($type: $nav-btn-type, $color: $_color, $size: 'sm');
+    }
+  }
+}

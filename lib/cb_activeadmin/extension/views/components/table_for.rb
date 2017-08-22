@@ -32,38 +32,33 @@ module ActiveAdmin
 
       def actions(options = {}, &block)
         options.delete(:defaults) { true }
+        name          = options.delete(:name)     { '' }
+        dropdown      = options.delete(:dropdown) { false }
+        dropdown_name = format_dropdown_name(options)
         options[:class] ||= 'col-actions'
-        column(action_name(options), options) do |resource|
-          render_actions(resource, options, &block)
+        column name, options do |resource|
+          render_action(resource, dropdown, dropdown_name, &block)
         end
       end
 
       private
 
-      def action_name(options)
-        options.delete(:name) { '' }
-      end
-
-      def dropdown(options)
-        options.delete(:dropdown) { false }
-      end
-
-      def dropdown_name(options)
+      def format_dropdown_name(options)
         options.delete(:dropdown_name) do
           I18n.t('active_admin.dropdown_actions.button_label', default: 'Actions')
         end
       end
 
-      def render_actions(resource, options, &block)
-        if dropdown(options)
-          render_dropdown_actions(resource, options, &block)
+      def render_action(resource, dropdown, dropdown_name, &block)
+        if dropdown
+          render_dropdown_actions(resource, dropdown_name, &block)
         else
           render_inline_actions(resource, &block)
         end
       end
 
-      def render_dropdown_actions(resource, options, &block)
-        dropdown_menu dropdown_name(options) do
+      def render_dropdown_actions(resource, dropdown_name, &block)
+        dropdown_menu dropdown_name do
           instance_exec(resource, &block) if block_given?
         end
       end

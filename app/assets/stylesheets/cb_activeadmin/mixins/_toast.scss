@@ -53,19 +53,28 @@
     max-width: $toast-max-width;
     padding: 2 * $offset-base;
     background: $toast-bg;
+    border: $toast-border;
+    border-left: $toast-indicator-border;
     border-radius: $toast-radius;
     box-sizing: border-box;
 
     @include box-shadow($toast-shadow);
 
+    @each $_type, $_color in $flash-color-map {
+      &.#{$_type} {
+        border-color: $_color;
+      }
+    }
+
     .flash-message {
       margin-right: $offset-base;
-      line-height: 1.3;
       color: adjust-text-color($toast-bg);
     }
 
     button {
-      @include button-constructor($color: $toast-btn-color, $type: 'link', $size: 'sm')
+      @include button-constructor(
+        $color: $toast-btn-color, $type: $toast-btn-type, $size: 'sm'
+      );
     }
   }
 }

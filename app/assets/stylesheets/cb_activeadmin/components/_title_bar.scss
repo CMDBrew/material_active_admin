@@ -1,61 +1,63 @@
+%title_bar-has-tab {
+  border-bottom: 1px solid $titlebar-divider-color;
+  @include box-shadow(none);
+}
+
 #title_bar {
-  @include navbar-constructor($nav-btn-color: $titlebar-btn-color);
-  @include site-title-constructor($titlebar-bg);
-
-  .site_title {
-    max-width: 25%;
-    margin-right: 2 * $offset-base;
-
-    &::after {
-      position: absolute;
-      top: $offset-base * 2;
-      right: 0;
-      bottom: $offset-base * 2;
-      width: 1px;
-      background: adjust-divider-color($titlebar-bg);
-      content: '';
-    }
-  }
+  @include navbar-constructor($bg: $titlebar-bg, $nav-btn-color: $titlebar-btn-color);
+  @include box-shadow($titlebar-shadow);
 
   #sidebar-toggle {
-    position: relative;
-
-    &::before {
-      content: 'menu';
-    }
+    @extend %nav-switcher;
   }
 
-  #search-filter-toggle {
-    position: relative;
-
-    &::before {
-      content: 'search';
-    }
-  }
 
   #titlebar_left {
-    display: flex;
     align-items: center;
-    flex: 1 1 auto;
+    // flex: 1 1 auto;
     flex-direction: row;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
 
-    #page_title,
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
+  #titlebar_right {
+    // flex: 0 0 auto;
+    justify-content: flex-end;
+    padding: 0 2 * $offset-base;
+    text-align: right;
+
+    .action_item {
+      margin-left: $offset-base;
     }
 
-    #page_title,
+    .action_items {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  #titlebar_center {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    #page_title {
+      margin-top: $offset-base / 2;
+      color: $titlebar-page-title-text-color;
+    }
+
     .breadcrumb,
     .breadcrumb span,
     .breadcrumb a {
-      font-size: $h3-fontsize;
-      font-weight: $font-bold;
-      color: inherit;
+      font-size: $titlebar-breadcrumb-fontsize;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+
+    .breadcrumb a {
+      color: $titlebar-breadcrumb-text-color;
     }
 
     .breadcrumb > * {
@@ -65,23 +67,12 @@
     }
 
     .breadcrumb_sep {
-      margin: 0 $offset-base / 2;
+      color: $titlebar-breadcrumb-text-color;
     }
   }
 
-  #titlebar_right {
+  .titlebar-section {
     display: flex;
-    flex: 0 0 auto;
-    text-align: right;
-
-    .action_items {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .action_item:not(:first-child) {
-        margin-left: $offset-base;
-      }
-    }
+    flex: 1;
   }
 }

@@ -1,14 +1,12 @@
 @mixin input-select-constructor {
-  @include input-base;
+  @extend %input-base;
 
   position: relative;
   flex: 1;
   flex-direction: column;
   width: 100%;
-  padding: 0 $offset-base * 1.5;
+  height: $input-height;
   line-height: $input-height;
-  background: $input-select-bg;
-  border-radius: 0;
 
   &:not([multiple]) {
     padding-right: 4 * $offset-base;

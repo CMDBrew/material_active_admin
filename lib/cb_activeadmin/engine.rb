@@ -31,6 +31,7 @@ module CbActiveadmin
 
     initializer 'cb_activeadmin.assets.precompile' do |app|
       app.config.assets.precompile += %w[cb_activeadmin/cb-logo.png]
+      config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     end
 
     def require_views
@@ -72,7 +73,7 @@ module CbActiveadmin
     def component_files
       %w[
         columns blank_slate batch_action_menu app_header scopes site_title
-        tabs table_for hidden_section dropdown_menu section
+        tabs table_for hidden_section dropdown_menu section attributes_table panel
       ]
     end
 

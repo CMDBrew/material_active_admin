@@ -31,7 +31,7 @@
       color: get-nav-text-color($parent_bg);
       content: '\E5D4';
 
-      @include icon-constructor;
+      @extend %cb-aa-icon;
     }
   }
   .dropdown_menu_list_wrapper {

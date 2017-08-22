@@ -40,14 +40,6 @@ module ActiveAdmin
             (component.to_s == 'build_hidden_content' && skip_hidden_content?)
         end
 
-        # def build_title_bar
-        #   insert_tag view_factory.title_bar, active_admin_namespace, title, action_items_for_action
-        # end
-
-        # def build_app_header
-        #   insert_tag view_factory.app_header, active_admin_namespace
-        # end
-
         def hidden_sections_for_action
           if active_admin_config && active_admin_config.hidden_sections?
             active_admin_config.hidden_sections_for(params[:action], self)

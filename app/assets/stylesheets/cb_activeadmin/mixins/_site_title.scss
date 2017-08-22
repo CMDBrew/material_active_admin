@@ -1,13 +1,13 @@
-@mixin site-title-constructor($color) {
+%site-title-constructor {
   .site_title {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     height: $titlebar-height;
-    padding-right: 2 * $offset-base;
+    padding-right: 48px;
     white-space: nowrap;
-    background: transparent;
+    background: $header-title-bg;
 
     .favicon-container {
       display: flex;
@@ -38,9 +38,9 @@
 
     .title {
       overflow: hidden;
-      font-size: $h3-fontsize;
+      font-size: $h4-fontsize;
       font-weight: $font-bold;
-      color: adjust-text-color($color);
+      color: adjust-text-color($header-title-bg);
       text-overflow: ellipsis;
       white-space: nowrap;
     }

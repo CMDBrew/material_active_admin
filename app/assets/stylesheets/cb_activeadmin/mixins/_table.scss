@@ -1,14 +1,14 @@
-@mixin table-base {
+%table-base {
   width: 100%;
 
   th {
-    font-size: $p-fontsize;
+    font-size: $table-th-fontsize;
     font-weight: $font-bold;
-    color: $text-color-hint;
-    text-transform: capitalize;
+    color: $table-th-text-color;
+    text-transform: uppercase;
 
     &[class*='sorted'] a {
-      color: $brand-primary;
+      color: $table-active-text-color;
     }
 
     &.sortable {
@@ -22,7 +22,7 @@
       }
 
       &[class*='sorted-'] {
-        color: $brand-primary;
+        color: $table-active-text-color;
       }
 
       a {
@@ -47,25 +47,30 @@
   th,
   td {
     height: $table-row-height;
-    padding: $offset-base;
+    max-width: 200px;
+    padding: 0 2 * $offset-base;
+    overflow: hidden;
+    text-overflow: ellipsis;
     vertical-align: middle;
     box-sizing: border-box;
-
-    &:first-child {
-      padding-left: 2 * $offset-base;
-    }
-
-    &:last-child:not(.col-actions) {
-      padding-right: 2 * $offset-base;
-    }
 
     &.col-selectable,
     &.col-icon {
       width: $icon-size;
+      padding: 0;
     }
 
-    &.col-selectable .mdi-checkbox {
-      height: 20px;
+    &.col-selectable {
+      width: 32px;
+      min-width: 32px;
+      text-align: center;
+      background: $body-bg;
+      border-right: 1px solid $table-divider-color;
+
+      .checkbox-icon {
+        display: inline-block;
+        margin: 0;
+      }
     }
   }
 
@@ -73,23 +78,33 @@
     background: $table-selected-row-bg;
   }
 
-  thead,
-  tbody tr {
-    border-bottom: 1px solid $divider-color;
+  thead th,
+  tbody tr:not(:last-child) td:not(.col-selectable) {
+    border-bottom: 1px solid $table-divider-color;
+  }
+
+  td {
+    font-size: $table-td-fontsize;
+    color: $table-td-text-color;
   }
 
   td.col-actions {
     flex-direction: row;
+    padding: 0 $offset-base / 2;
     text-align: right;
 
     a.dropdown_menu_button::after {
-      color: $text-color-hint;
+      color: $table-action-text-color;
     }
 
     .table_actions {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
+
+      & > a {
+        @include button-constructor($color: $brand-primary, $size: 'sm' , $type: 'link');
+      }
 
       a.member_link {
         &:not(:last-child) {
@@ -100,15 +115,14 @@
   }
 
   span.empty {
-    color: $text-color-hint;
+    color: $table-empty-text-color;
   }
 }
 
 @mixin table-constructor {
-  @include table-base;
+  @extend %table-base;
 
   overflow: auto;
-  color: $text-color-secondary;
   text-align: left;
   white-space: nowrap;
   border: 0;

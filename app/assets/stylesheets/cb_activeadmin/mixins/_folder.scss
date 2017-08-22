@@ -32,7 +32,7 @@
     justify-content: center;
     align-items: center;
     color: get-text-color($bg_color, $type:secondary);
-    @include icon-constructor;
+    @extend %cb-aa-icon;
   }
   * { box-sizing: border-box; }
   .folder-content {
