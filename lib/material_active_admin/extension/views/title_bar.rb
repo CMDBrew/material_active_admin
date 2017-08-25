@@ -65,9 +65,7 @@ module ActiveAdmin
 
       def build_titlebar_right
         div id: 'titlebar_right', class: 'titlebar-section' do
-          if @is_index_page
-            build_index_list
-          end
+          build_index_list if @is_index_page
           build_action_items
           if @is_index_page
             build_search_toggle

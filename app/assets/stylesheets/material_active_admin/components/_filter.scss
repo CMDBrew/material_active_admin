@@ -14,7 +14,7 @@
   @include transform(translateX(100%));
   @include transition(transform 0.2s linear);
 
-  &.search-filter-active {
+  &.search-filter-toggled {
     @include box-shadow($filter-shadow);
     @include transform(translateX(0%));
   }

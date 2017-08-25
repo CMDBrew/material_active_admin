@@ -9,8 +9,8 @@
 
 // Active Admin's got SASS!
 // @import "cb_activeadmin/themes/toby/dark";
-@import "cb_activeadmin/mixins";
-@import "cb_activeadmin/base";
+@import 'material_active_admin/mixins';
+@import 'material_active_admin/base';
 
 
 // Overriding any non-variable SASS must be done after the fact.
