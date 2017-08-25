@@ -4,12 +4,12 @@
       toggle: (event)->
         event.preventDefault()
         $target = $(@)
-        $('body').removeClass "search-filter-active"
-        $('body').toggleClass "sidebar-toggle"
+        $('body').removeClass "search-filter-toggled"
+        $('body').toggleClass "sidebar-toggled"
         false
 
       hide: (event) ->
-        $('body').removeClass "sidebar-toggle"
+        $('body').removeClass "sidebar-toggled"
         false
       }
     }

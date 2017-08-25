@@ -18,16 +18,17 @@
       flex-direction: row;
     }
 
+    .page.current,
     .next-button a,
     .prev-button a,
     .page a {
-      @include button-constructor($text-color-secondary, $type: 'link', $size: 'sm');
+      @include button-constructor($pager-btn-color, $type: 'link', $size: 'sm');
     }
 
-    .page.current {
-      @include button-constructor($brand-primary, $size: 'sm');
-
-      border-radius: 50%;
+    .page.current,
+    .page a:hover {
+      color: $pager-btn-text-color-active;
+      background: $pager-btn-color-active;
     }
 
     .next-button a,

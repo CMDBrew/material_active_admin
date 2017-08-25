@@ -21,9 +21,13 @@ body.logged_in {
     @include edit-page;
   }
 
-  &.sidebar-toggle {
+  &.sidebar-toggled {
+    #wrapper {
+      padding-left: 0;
+    }
+
     #header {
-      @extend %header-open;
+      @extend %header-toggled;
     }
   }
 

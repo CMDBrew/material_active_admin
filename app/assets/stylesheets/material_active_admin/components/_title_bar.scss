@@ -22,13 +22,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    .nav-icon,
-    .nav-btn {
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
     #page_title,
     .breadcrumb a,
     .breadcrumb_sep {
@@ -65,8 +58,10 @@
 
     .nav-icon,
     .nav-btn {
+      margin-left: $offset-base / 2;
+
       &:last-child {
-        margin-right: 0;
+        margin-left: 0;
       }
     }
 

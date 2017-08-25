@@ -219,6 +219,11 @@ $comment-avatar-bg:       $brand-default !default;
 $comment-bg:              transparent !default;
 $comment-meta-text-color: adjust-text-color($panel-bg, $type: 'secondary') !default;
 
+// Pagination
+$pager-btn-color: adjust-text-color($body-bg, $type: 'secondary') !default;
+$pager-btn-color-active: adjust-ctrl-hover-bg($body-bg) !default;
+$pager-btn-text-color-active: $brand-primary !default;
+
 // Flash
 $flash-fontsize: $p-fontsize !default;
 $flash-bg: #F1E0DF !default;

@@ -1,4 +1,4 @@
-@mixin button-base($size) {
+@mixin button-base($_size) {
   position: relative;
   display: block;
   align-items: center;
@@ -18,7 +18,7 @@
   -webkit-appearance: none;
   -webkit-backface-visibility: hidden;
 
-  @if ($size == 'sm') {
+  @if ($_size == 'sm') {
     line-height: $button-height-sm;
   } @else {
     line-height: $button-height;

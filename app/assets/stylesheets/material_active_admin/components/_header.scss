@@ -1,6 +1,6 @@
-%header-open {
-  @include box-shadow($header-shadow);
-  @include transform(translateX(0%));
+%header-toggled {
+  // @include box-shadow($header-shadow);
+  @include transform(translateX(-100%));
 }
 
 %header-has-tab {
