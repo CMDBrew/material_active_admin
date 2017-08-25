@@ -1,5 +1,7 @@
 ActiveAdmin.register AdminUser do
-  menu :parent => "integration", priority: 1, label: proc { menu_label("supervisor_account", "Admin Users") }
+  menu :parent => "integration",
+       priority: 1,
+       label: proc { menu_label("supervisor_account", "Admin Users", badge: 10) }
 
   permit_params :email,
                 :password,
@@ -178,52 +180,69 @@ ActiveAdmin.register AdminUser do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    tabs do
-      tab "Detail", {href: "123"} do
-        panel "Detail", class: "collapse in" do
-          section 'test' do
-            tabs do
-              tab "123" do
-                f.inputs do
-                  f.input :select,
-                          as: :select,
-                          collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
-                          :input_html => {class: "select2-with-search"},
-                          multiple: true
-                  f.input :is_super_admin
-                  f.input :email, input_html: { disabled: "disabled" }
-                  f.input :textarea, input_html: { rows: 4, class: "tinymce" }
-                  f.input :password
-                  f.input :password_confirmation
-                end
-              end
-              tab "123" do
-              end
-            end
-          end
-          f.actions
-        end
+    panel "Detail" do
+      f.inputs do
+        f.input :select,
+                as: :select,
+                collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+                :input_html => {class: "select2-with-search"},
+                multiple: true,
+                :hint => "ahsdioahsoidhaio oiashdoiashd oahsdo hadsoaoishd asiod ashiohds"
+        f.input :is_super_admin
+        f.input :email, input_html: { disabled: "disabled" }
+        f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+        f.input :password
+        f.input :password_confirmation
       end
-      tab "Detail2", {href: "123"} do
-        panel "Detail", class: "collapse in" do
-          section 'test' do
-            f.inputs do
-              f.input :select,
-                      as: :select,
-                      collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
-                      :input_html => {class: "select2-with-search"},
-                      multiple: true
-              f.input :is_super_admin
-              f.input :email, input_html: { disabled: "disabled" }
-              f.input :textarea, input_html: { rows: 4, class: "tinymce" }
-              f.input :password
-              f.input :password_confirmation
-            end
-          end
-          f.actions
-        end
-      end
+      f.actions
     end
+    # tabs do
+    #   tab "Detail", {href: "123"} do
+    #     panel "Detail", class: "collapse in" do
+    #       section 'test' do
+    #         tabs do
+    #           tab "123" do
+    #             f.inputs do
+    #               f.input :select,
+    #                       as: :select,
+    #                       collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+    #                       :input_html => {class: "select2-with-search"},
+    #                       multiple: true,
+    #                       :hint => "ahsdioahsoidhaio oiashdoiashd oahsdo hadsoaoishd asiod ashiohds"
+    #               f.input :is_super_admin
+    #               f.input :email, input_html: { disabled: "disabled" }
+    #               f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+    #               f.input :password
+    #               f.input :password_confirmation
+    #             end
+    #           end
+    #           tab "123" do
+    #           end
+    #         end
+    #       end
+    #       f.actions
+    #     end
+    #   end
+    #   tab "Detail2", {href: "123"} do
+    #     panel "Detail", class: "collapse in" do
+    #       section 'test' do
+    #         f.inputs do
+    #           f.input :select,
+    #                   as: :select,
+    #                   collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+    #                   :input_html => {class: "select2-with-search"},
+    #                   multiple: true
+    #           f.input :is_super_admin
+    #           f.input :email, input_html: { disabled: "disabled" }
+    #           f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+    #           f.input :password
+    #           f.input :password_confirmation
+    #         end
+    #       end
+    #       f.actions
+    #     end
+    #   end
+    # end
   end
 
 end

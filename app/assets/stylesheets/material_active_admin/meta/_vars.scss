@@ -1,7 +1,7 @@
 // Colors
 $brand-accent:  #D23F31 !default;
 $brand-default: #EEEEEE !default;
-$brand-primary: #4285F4 !default;
+$brand-primary: #3949AB !default;
 $brand-success: #5CC09D !default;
 $brand-info:    #B388FF !default;
 $brand-warning: #FF9800 !default;
@@ -45,7 +45,7 @@ $h2-fontsize:        1.71rem !default;
 $h3-fontsize:        1.43rem !default;
 $h4-fontsize:        1.14rem !default;
 $h5-fontsize:        1.07rem !default;
-$h6-fontsize:        0.93rem !default;
+$h6-fontsize:        0.86rem !default;
 $p-fontsize:         1rem !default;
 $base-fontsize:      14px !default;
 $font-stack:         Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
@@ -67,12 +67,14 @@ $divider-color-inverse:  #656565 !default;
 $content-max-width:      1000px !default;
 $ctrl-radius:            2px !default;
 $body-bg:                #EEEEEE !default;
+$body-bg-logged-out:     $body-bg !default;
 $color-adjust-intensity: 75 !default;
+$ripple-bg:              white !default;
 
 // Navbar
 $navbar-tab-bg:                     $body-bg !default;
 $navbar-height:                     64px !default;
-$navbar-shadow:                     1px 2px 1px #D3D3D3 !default;
+$navbar-shadow:                     0 1px 8px rgba(0, 0, 0, 0.3) !default;
 $navbar-btn-type:                   'solid' !default;
 $navbar-tab-height:                 48px !default;
 $navbar-tab-min-width:              200px !default;
@@ -115,7 +117,7 @@ $filter-text-color:          adjust-text-color($filter-header-bg) !default;
 
 // Panel
 $panel-bg:                 white !default;
-$panel-shadow:             0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
+$panel-shadow:             0 1px 4px 0 rgba(0, 0, 0, 0.14) !default;
 $panel-radius:             $ctrl-radius !default;
 $panel-transparent-border: adjust-divider-color($body-bg) !default;
 $panel-action-color:       adjust-text-color($panel-bg, $type: 'secondary') !default;
@@ -159,8 +161,8 @@ $button-shadow:    0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0,
 $float-action-size:          56px !default;
 $float-action-bg:            $brand-accent !default;
 $float-action-text-color:    adjust-text-color($float-action-bg) !default;
-$float-action-shadow:        0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2) !default;
-$float-action-shadow-active: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36) !default;
+$float-action-shadow:        0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
+$float-action-shadow-active: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
 
 // Table
 $table-row-height:               48px !default;
@@ -196,7 +198,6 @@ $tab-active-indicator-color:  $brand-primary !default;
 $tab-inactive-opacity:        0.54 !default;
 $tab-fontsize:                $p-fontsize !default;
 $tab-badge-bg:                $brand-accent !default;
-$tab-badge-text-color:        adjust-text-color($tab-badge-bg) !default;
 
 // Badge
 $badge-bg:         $brand-primary !default;
@@ -225,9 +226,8 @@ $pager-btn-color-active: adjust-ctrl-hover-bg($body-bg) !default;
 $pager-btn-text-color-active: $brand-primary !default;
 
 // Flash
-$flash-fontsize: $p-fontsize !default;
-$flash-bg: #F1E0DF !default;
-$flash-text-color: adjust-text-color($flash-bg) !default;
+$flash-fontsize:   $p-fontsize !default;
+$flash-radius:     $ctrl-radius !default;
 
 $flash-color-map: (
   'flash_notice': $brand-warning,

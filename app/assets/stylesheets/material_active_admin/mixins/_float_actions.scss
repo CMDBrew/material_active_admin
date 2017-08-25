@@ -26,11 +26,13 @@
 }
 
 %float-action-base {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: $float-action-size;
   height: $float-action-size;
+  overflow: hidden;
   color: $float-action-text-color;
   background: $float-action-bg;
   border-radius: 50%;

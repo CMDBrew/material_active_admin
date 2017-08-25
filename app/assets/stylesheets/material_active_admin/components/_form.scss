@@ -1,6 +1,6 @@
 form {
   ul.errors {
-    @extend %flash-base;
+    @include flash-base(get-map-value('flash_error', $flash-color-map));
 
     padding-left: 4 * $offset-base;
     margin-top: 0;
@@ -28,9 +28,9 @@ form {
     display: block;
     width: 100%;
     min-height: 24px;
-    padding: $offset-base 0;
+    padding-top: $offset-base;
     font-size: $label-fontsize;
-    font-weight: normal;
+    font-weight: $font-bold;
     color: $label-text-color;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -50,6 +50,7 @@ form {
   }
 
   .input {
+    position: relative;
     padding: 0;
     margin-bottom: 3 * $offset-base;
 
@@ -101,9 +102,11 @@ form {
     margin-top: $offset-base;
 
     ol > li {
+      position: relative;
       float: right;
       width: auto;
       margin-left: $offset-base;
+      overflow: hidden;
     }
   }
 

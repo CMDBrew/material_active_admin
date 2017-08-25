@@ -10,17 +10,6 @@ body.logged_in {
     @include index-page;
   }
 
-  &.show {
-    @include show-page;
-  }
-
-  &.new,
-  &.create,
-  &.update,
-  &.edit {
-    @include edit-page;
-  }
-
   &.sidebar-toggled {
     #wrapper {
       padding-left: 0;

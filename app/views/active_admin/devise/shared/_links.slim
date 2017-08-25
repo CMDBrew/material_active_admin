@@ -7,11 +7,9 @@ ul
           =t('active_admin.devise.texts.sign_in')
           | &nbsp;
         =link_to t('active_admin.devise.links.sign_in'), send(:"new_#{scope}_session_path")
-      br/
   - if devise_mapping.registerable? && controller_name != 'registrations'
     li 
       =link_to t('active_admin.devise.links.sign_up'), new_registration_path(resource_name)
-      br/
   - if devise_mapping.recoverable? && controller_name != 'passwords'
     li 
       p.description
@@ -19,17 +17,13 @@ ul
           =t('active_admin.devise.texts.forgot_your_password')
           | &nbsp;
         =link_to t('active_admin.devise.links.forgot_your_password'), new_password_path(resource_name)
-      br/
   - if devise_mapping.confirmable? && controller_name != 'confirmations'
     li 
       =link_to t('active_admin.devise.links.resend_confirmation_instructions'), new_confirmation_path(resource_name)
-      br/
     - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-    li 
-      =link_to t('active_admin.devise.links.resend_unlock_instructions'), new_unlock_path(resource_name)
-      br/
+      li 
+        =link_to t('active_admin.devise.links.resend_unlock_instructions'), new_unlock_path(resource_name)
   - if devise_mapping.omniauthable?
     li 
       -resource_class.omniauth_providers.each do |provider|
         =link_to t('active_admin.devise.links.sign_in_with_omniauth_provider', provider: provider.to_s.titleize), omniauth_authorize_path(resource_name, provider)                                                         
-        br/
