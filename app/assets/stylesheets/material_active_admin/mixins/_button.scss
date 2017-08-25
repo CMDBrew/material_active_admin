@@ -1,8 +1,8 @@
-@mixin button-base($_size) {
+%button {
   position: relative;
-  display: block;
   align-items: center;
-  padding: 0 2 * $offset-base;
+  justify-content: center;
+  overflow: hidden;
   font-size: $p-fontsize;
   font-weight: $font-bold;
   text-align: center;
@@ -17,6 +17,14 @@
 
   -webkit-appearance: none;
   -webkit-backface-visibility: hidden;
+}
+
+@mixin button-base($_size) {
+  @extend %button;
+
+  display: flex;
+  flex: 1;
+  padding: 0 2 * $offset-base;
 
   @if ($_size == 'sm') {
     line-height: $button-height-sm;
@@ -65,6 +73,49 @@
       background: darken($color, 5%);
     }
   }
+
+  &.disabled {
+    opacity: 0.54;
+  }
+}
+
+@mixin button-icon-base($size) {
+  @extend %button;
+
+  display: block;
+  border-radius: 50%;
+
+  @if ($size == 'sm') {
+    width: $button-height-sm;
+    height: $button-height-sm;
+    line-height: $button-height-sm;
+  } @else {
+    width: $button-height;
+    height: $button-height;
+    line-height: $button-height;
+  }
+
+  input {
+    &[type='submit'] {
+      color: inherit;
+      text-transform: uppercase;
+      background: transparent;
+      border: 0;
+
+      -webkit-appearance: none;
+      -webkit-backface-visibility: hidden;
+    }
+  }
+}
+
+@mixin button-icon-constructor(
+  $size: 'default',
+  $color: $brand-default,
+) {
+  @include button-icon-base($size);
+
+  color: $color;
+  background: transparent;
 
   &.disabled {
     opacity: 0.54;

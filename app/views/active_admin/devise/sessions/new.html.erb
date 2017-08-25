@@ -6,16 +6,16 @@
   f.inputs do
     resource.class.authentication_keys.each_with_index { |key, index|
       f.input key,
-              :label        => 'Email',
-              :placeholder  => 'you@email.com',
+              :label        => 'Email Address:',
+              :placeholder  => 'yourname@example.com',
               :input_html  => {
                 :autofocus    => index.zero?,
                 :autocomplete => 'off',
               }
     }
     f.input :password,
-            :label        => 'Password',
-            :placeholder  => 'password'
+            :label        => 'Password:',
+            :placeholder  => 'your password'
     f.input :remember_me, label: t('active_admin.devise.login.remember_me'), as: :boolean if devise_mapping.rememberable?
   end
   f.actions do
@@ -23,10 +23,6 @@
              :button_html  => {
                :value              => t('active_admin.devise.login.submit'),
                "data-disable-with" => t('active_admin.devise.login.submit/disable_with')
-             },
-             :wrapper_html => {
-               :class             => "mdi-btn mdi-btn__brand-primary with-ripple",
-               :data_ripple_color => "rgba(0,0,0,.3)"
              }
   end
 end

@@ -20,7 +20,6 @@
   $_height: $tab-height,
   $_indicator-bg: $tab-active-indicator-color,
   $_badge-bg: $tab-badge-bg,
-  $_badge-text-color: $tab-badge-text-color,
   $_align: flex-start,
   $_min-width: auto
 ) {
@@ -90,10 +89,7 @@
   }
 
   span.count {
-    @include badge-constructor(
-      $_bg: $_badge-bg,
-      $_text-color: $_badge-text-color
-    );
+    @include badge-constructor($_badge-bg);
 
     margin-left: 2 * $offset-base;
   }

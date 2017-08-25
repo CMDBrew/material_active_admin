@@ -5,13 +5,23 @@ module ActiveAdmin
     # Register Footer
     class Footer < Component
 
+      def build(namespace)
+        super id: 'footer'
+        @namespace = namespace
+
+        if footer?
+          h6 footer_text
+        else
+          h6 powered_by_message
+        end
+      end
+
       private
 
-      # rubocop:disable Rails/OutputSafety
       def powered_by_message
         I18n.t('active_admin.powered_by',
-               active_admin: link_to('Clever Banana Studios Inc.', 'http://www.cleverbanana.com'),
-               version: MaterialActiveAdmin::VERSION).html_safe
+               owner: t('active_admin.owner'),
+               version: MaterialActiveAdmin::VERSION)
       end
 
     end

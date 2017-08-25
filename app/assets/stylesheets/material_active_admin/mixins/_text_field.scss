@@ -9,11 +9,14 @@
       border-color: $brand-danger !important;
     }
   }
+
+  .guide {
+    display: none;
+  }
 }
 
 %input-guide {
   position: absolute;
-  bottom: 0;
   left: 50%;
   height: 2px;
   background: $input-border-color-active;
@@ -25,7 +28,6 @@
   display: flex;
   flex-direction: column;
   height: auto;
-  min-height: 56px;
   background: $input-wrapper-bg;
   border-radius: $input-wrapper-radius;
 }

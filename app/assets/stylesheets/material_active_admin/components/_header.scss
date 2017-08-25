@@ -34,6 +34,8 @@
     padding: 2 * $offset-base;
     color: $header-text-color;
     text-align: left;
+
+    a { white-space: nowrap; }
   }
 
   //

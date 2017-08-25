@@ -51,6 +51,6 @@ html {
   font-family: $font-stack;
   font-size: $base-fontsize;
   line-height: 1.3;
-  color: $text-color-primary;
+  color: adjust-text-color($body-bg);
   -webkit-font-smoothing: antialiased;
 }

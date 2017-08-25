@@ -1,35 +1,33 @@
 @keyframes ripple-animation {
   from {
-    transform: scale(1);
     opacity: 0.4;
+    transform: scale(1);
   }
+
   to {
-    transform: scale(100);
     opacity: 0;
+    transform: scale(100);
   }
 }
 @-webkit-keyframes ripple-animation {
   from {
-    transform: scale(1);
     opacity: 0.4;
+    transform: scale(1);
   }
+
   to {
-    transform: scale(100);
     opacity: 0;
+    transform: scale(100);
   }
 }
-.with-ripple {
-  overflow: hidden;
-  position: relative;
-  @include transform(translate3d(0,0,0));
-}
+
 .ripple-effect {
   position: absolute;
-  border-radius: 50%;
   width: 50px;
   height: 50px;
-  background: white;
+  pointer-events: none;
+  background: $ripple-bg;
+  border-radius: 50%;
   animation: ripple-animation 2s;
   -webkit-animation: ripple-animation 2s;
-  pointer-events: none;
 }

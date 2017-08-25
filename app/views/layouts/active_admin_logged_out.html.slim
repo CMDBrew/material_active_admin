@@ -27,7 +27,9 @@ html
             =yield :title
             -flash_messages.each do |type, message|
               =content_tag :div, message.downcase, class: "flash flash_#{type}"
+              
             =yield
-            #extra.m-top-2x
+            
+            #extra
               =yield :extra
           =render partial: "active_admin/devise/shared/footer"

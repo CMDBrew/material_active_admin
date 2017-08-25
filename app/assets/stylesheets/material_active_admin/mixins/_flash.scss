@@ -1,6 +1,7 @@
-%flash-base {
+@mixin flash-base($_bg) {
   padding: 2 * $offset-base;
   font-size: $flash-fontsize;
-  color: $flash-text-color;
-  background: $flash-bg;
+  color: adjust-text-color($_bg);
+  background: $_bg;
+  border-radius: $flash-radius;
 }
