@@ -1,32 +1,61 @@
-@function adjust-text-color($color, $type: 'primary') {
-  @if ($type == 'secondary') {
-    @if (lightness($color) > 75) {
-      @return $text-color-secondary;
-    } @else {
-      @return $text-color-secondary-inverse;
-    }
-  } @elseif ($type == 'hint') {
-    @if (lightness($color) > 75) {
-      @return $text-color-hint;
-    } @else {
-      @return $text-color-hint-inverse;
-    }
+@function get-map-value($key, $map) {
+  @if map-has-key($map, $key) {
+    $unicode: map-get($map, $key);
+    @return $unicode;
   } @else {
-    @if (lightness($color) > 75) {
-      @return $text-color-primary;
-    } @else {
-      @return $text-color-primary-inverse;
-    }
+    @return null;
+  }
+}
+
+@function adjust-text-color($color, $type: 'primary') {
+  @if (lightness($color) > $color-adjust-intensity) {
+    @return get-map-value('#{$type}', $text-color-map);
+  } @else {
+    @return get-map-value('#{$type}-inverse', $text-color-map);
   }
 }
 
 @function adjust-divider-color($color) {
-  @if (lightness($color) > 75) {
+  @if (lightness($color) > $color-adjust-intensity) {
     @return $divider-color;
   } @else {
     @return $divider-color-inverse;
   }
 }
+
+@function adjust-badge-color($color) {
+  @if (lightness($color) > $color-adjust-intensity) {
+    @return darken($color, 3%);
+  } @else {
+    @return lighten($color, 3%);
+  }
+}
+
+@function adjust-ctrl-hover-bg($color) {
+  @if (lightness($color) > $color-adjust-intensity) {
+    @return $ctrl-hover-bg;
+  } @else {
+    @return $ctrl-hover-bg-inverse;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OLD
 
 @function adjust-nav-btn-color($color) {
   @if (lightness($color) > 75) {

@@ -1,9 +1,10 @@
 @mixin panel-constructor {
   display: block;
   width: 100%;
-  padding: 0 2 * $offset-base;
+  padding: 0;
   margin: 0 auto;
   margin-bottom: 2 * $offset-base;
+  color: $panel-text-color;
   background: $panel-bg;
   border-radius: $panel-radius;
   @include box-shadow($panel-shadow);
@@ -30,7 +31,7 @@
 
         position: absolute;
         top: 0;
-        right: $offset-base;
+        right: $panel-padding;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -63,10 +64,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 2 * $offset-base;
-    margin: 0 $offset-base * -2;
+    padding: 0 $panel-padding;
     line-height: 48px;
-    border-bottom: 1px solid $panel-divider-color;
 
     & + .panel_contents {
       margin-top: 2 * $offset-base;
@@ -79,9 +78,9 @@
       justify-content: flex-end;
 
       a {
-        @extend %nav-icon;
+        @include button-icon-constructor($color: $panel-btn-color);
 
-        margin-left: $offset-base;
+        margin-left: $offset-base / 2;
       }
     }
   }
@@ -92,35 +91,16 @@
 
   .section {
     & + .section {
-      margin-top: 4 * $offset-base;
-
-      &::before {
-        display: block;
-        margin-top: 2 * $offset-base;
-        content: '';
-      }
+      margin-top: 3 * $offset-base;
     }
 
     .section-title {
       position: relative;
-      padding: $offset-base / 2 0;
+      padding: 0;
       margin-bottom: 2 * $offset-base;
-      overflow: hidden;
-      color: $panel-section-title-text-color;
-      text-overflow: ellipsis;
-      text-transform: uppercase;
-      white-space: nowrap;
-      border-bottom: 1px solid $panel-section-title-border;
     }
 
     .section_contents {
-      &::after,
-      &::before {
-        display: block;
-        clear: both;
-        content: '';
-      }
-
       & > .tabs {
         margin-top: 2 * $offset-base;
       }
@@ -129,15 +109,19 @@
 
   .panel_contents {
     display: block;
+    padding: 0 $panel-padding;
     padding-bottom: 3 * $offset-base;
     overflow: scroll;
   }
 
-  .tabs > .nav-tabs {
-    @include tab-constructor;
-
+  .tabs > .nav-tabs-wrap {
     padding: 0;
     margin: 0 calc(-3 * #{$offset-base});
+    margin-bottom: 3 * $offset-base;
     border-bottom: 1px solid $panel-tabs-border-color;
+
+    & > .nav-tabs {
+      @include tab-constructor;
+    }
   }
 }

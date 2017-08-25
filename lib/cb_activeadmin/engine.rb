@@ -38,6 +38,7 @@ module CbActiveadmin
       require_each(view_files, 'views/')
       require_each(page_files, 'views/pages/')
       require_each(component_files, 'views/components/')
+      require_each(filter_files, 'inputs/filters/base/')
     end
 
     def require_resources
@@ -72,9 +73,13 @@ module CbActiveadmin
 
     def component_files
       %w[
-        columns blank_slate batch_action_menu app_header scopes site_title
+        columns blank_slate batch_action_menu scopes site_title
         tabs table_for hidden_section dropdown_menu section attributes_table panel
       ]
+    end
+
+    def filter_files
+      %w[search_method_select date_range_input]
     end
 
     def view_helpers
@@ -91,7 +96,7 @@ module CbActiveadmin
 
     def other_files
       %w[
-        hidden_section view_helpers action_items float_actions
+        hidden_section view_helpers action_items float_actions footer
         comment file view_factory resource page formastic/checkbox
       ]
     end

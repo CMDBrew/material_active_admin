@@ -46,7 +46,7 @@ module ActiveAdmin
                       input_html: { value: parent.resource.id }
               f.input :body,
                       label: false,
-                      input_html: { rows: '3', placeholder: 'Your comments...' }
+                      input_html: { rows: '1', placeholder: 'Your comments...' }
             end
             f.actions do
               f.action :submit, label: I18n.t('active_admin.comments.add')

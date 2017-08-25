@@ -1,11 +1,17 @@
-@mixin badge-constructor($color: $badge-bg) {
-  display: inline-block;
-  padding: 0 $offset-base;
+@mixin badge-constructor(
+  $_bg, $_text-color: $badge-text-color
+) {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  height: $badge-height;
+  min-width: $badge-height;
+  padding: 0 $offset-base / 2;
   font-size: $badge-fontsize;
   font-weight: $font-bold;
   line-height: $badge-height;
-  color: adjust-text-color($color, $type: 'secondary');
-  vertical-align: baseline;
-  background: $color;
+  color: $_text-color;
+  background: $_bg;
   border-radius: $badge-radius;
 }

@@ -3,6 +3,7 @@
 .bundle/
 log/*.log
 pkg/
+.yardoc
 
 # Ignore Test Files
 test/dummy/db/*.sqlite3

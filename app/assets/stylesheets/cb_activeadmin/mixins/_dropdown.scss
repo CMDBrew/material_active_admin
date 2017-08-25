@@ -17,7 +17,11 @@
   }
 }
 
-@mixin dropdown-constructor {
+@mixin dropdown-constructor(
+  $_parent-bg: $panel-bg
+) {
+  position: static !important;
+
   .dropdown_menu_button {
     display: block;
 
@@ -26,7 +30,7 @@
 
       justify-content: flex-end;
       margin-right: -#{$offset-base};
-      color: $text-color-hint;
+      color: adjust-text-color($_parent-bg, 'hint');
       content: '\E5C5';
     }
 
@@ -45,9 +49,8 @@
     min-width: $dropdown-min-width;
     padding: $offset-base 0;
     margin: 0;
-    color: $text-color-primary;
+    color: adjust-text-color($dropdown-bg);
     background: $dropdown-bg;
-    border: $dropdown-border;
     border-radius: $dropdown-radius;
     transform-origin: 50% 0;
 
@@ -75,11 +78,11 @@
       align-items: center;
       flex: 1;
       height: $dropdown-menu-item-height;
-      padding: 0 2 * $offset-base;
+      padding: 0 3 * $offset-base;
       overflow: hidden;
       font-size: $p-fontsize;
       font-weight: normal;
-      color: $text-color-primary;
+      color: adjust-text-color($dropdown-bg);
       text-overflow: ellipsis;
       white-space: nowrap;
       box-sizing: border-box;

@@ -1,31 +1,15 @@
-$brand-primary: #14AAF5;
-$brand-accent: #FCBD01;
-$brand-default: #F3F5F6;
+$brand-primary: #FF3466;
 
-$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$body-bg: #F8F8F8;
+$titlebar-bg: #F8F8F8;
+$batchbar-bg: #EBEBEB;
 
-$panel-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+$navbar-shadow: 0 1px 0 0 #EBEBEB;
 
-$titlebar-shadow-inactive: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-$titlebar-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-$filter-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.15);
-$nav-btn-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
-$toast-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-$dropdown-shadow: 0 0 0 1px #D5DCE0, 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-$float-action-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+$divider-color: #EBEBEB;
 
-$header-title-bg: #222B37;
-$header-bg: #222B37;
-$filter-title-bg: #F3F5F6;
-$titlebar-bg: #F3F5F6;
-$nav-tabs-bg: white;
-$titlebar-btn-color: #F3F5F6;
-$body-bg: #F3F5F6;
-$batch-bar-bg: $brand-primary;
-$toast-bg: #222B37;
-
-$text-color-primary: #222B37;
-$text-color-hint: #848F99;
-$panel-radius: 3px;
-
-$divider-color: #E0E6E8;
+$panel-shadow: 0 2px 20px 0 rgba(0,0,0,0.05);
+$text-color-primary: #18191B;
+$text-color-secondary: #373D40;
+$text-color-hint: rgba(27,29,48,0.3);
+$navbar-tab-indicator-color-active: $brand-primary;

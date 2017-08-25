@@ -29,17 +29,20 @@ body.logged_in {
 
   &.batch-enabled {
     #batch_bar {
-      z-index: 1300;
       opacity: 1;
+      visibility: visible;
 
       @include transform(translateY(0%));
     }
+
+    .table_tools {
+      @extend %table-tools-batch-enabled;
+    }
   }
 
-
   &.has_tabs {
-    &::before {
-      height: $banner-height;
+    #header {
+      @extend %header-has-tab;
     }
 
     #batch_bar,
@@ -48,12 +51,12 @@ body.logged_in {
     }
 
     #wrapper {
-      padding-top: $banner-height;
+      padding-top: $navbar-height + $navbar-tab-height;
     }
 
     &.scrolled {
       &::before {
-        @include box-shadow($titlebar-shadow);
+        @include box-shadow($navbar-shadow);
       }
     }
   }
@@ -72,27 +75,11 @@ body.logged_in {
     flex: 1;
     flex-direction: column;
     width: 100%;
-    padding-top: $titlebar-height;
+    padding-top: $navbar-height;
+    padding-left: $header-width;
     box-sizing: border-box;
 
     @include transition(all 0.2s linear);
-  }
-
-  #app_header {
-    @include app-header-constructor;
-  }
-
-  #header {
-    z-index: 1200;
-  }
-
-  #batch_bar,
-  #title_bar {
-    z-index: 1100;
-  }
-
-  #search-filter {
-    z-index: 2400;
   }
 
   #active_admin_content {
@@ -101,12 +88,8 @@ body.logged_in {
     flex: 1;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 1.5 * $offset;
+    padding: 2 * $offset-base $offset-base;
     padding-bottom: 100px;
-
-    .table_tools {
-      z-index: 100;
-    }
   }
 
   #main_content_wrapper {
@@ -115,7 +98,7 @@ body.logged_in {
     justify-content: center;
     max-width: 800px;
     min-width: 0;
-    padding: 1.5 * $offset;
+    padding: $offset-base;
     box-sizing: content-box;
   }
 
@@ -123,7 +106,7 @@ body.logged_in {
     display: flex;
     flex-direction: column;
     width: $aside-width;
-    padding: 1.5 * $offset;
+    padding: $offset-base;
     box-sizing: content-box;
   }
 
@@ -131,16 +114,24 @@ body.logged_in {
     width: 100%;
     margin: 0 auto;
 
-    & > .tabs > .nav-tabs {
-      @extend %nav-tabs;
-      @include tab-constructor($color: $titlebar-bg, $height: $nav-tabs-height);
 
-      justify-content: center;
+    & > form > .tabs > .nav-tabs-wrap,
+    & > .tabs > .nav-tabs-wrap {
+      @extend %nav-tabs;
+
+      & > .nav-tabs {
+        @include tab-constructor(
+          $_color: $navbar-tab-bg,
+          $_height: $navbar-tab-height,
+          $_indicator-bg: $navbar-tab-indicator-color-active,
+          $_badge-bg: $navbar-tab-badge-bg,
+          $_min-width: $navbar-tab-min-width
+        );
+      }
     }
   }
 
   #toast-container {
     @include toast-constructor;
-    z-index: 1100;
   }
 }

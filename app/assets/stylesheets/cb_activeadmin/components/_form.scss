@@ -3,6 +3,7 @@ form {
     @extend %flash-base;
 
     padding-left: 4 * $offset-base;
+    margin-top: 0;
     margin-bottom: 2 * $offset-base;
   }
 
@@ -13,10 +14,6 @@ form {
       margin: 0;
       list-style: none;
     }
-  }
-
-  select {
-    @include input-select-constructor;
   }
 
   input {
@@ -30,11 +27,17 @@ form {
   label.label {
     display: block;
     width: 100%;
+    min-height: 24px;
     padding: $offset-base 0;
     font-size: $label-fontsize;
-    font-weight: $font-bold;
+    font-weight: normal;
     color: $label-text-color;
-    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.hidden {
+      opacity: 0;
+    }
 
     abbr {
       &[title='required'] {
@@ -48,7 +51,7 @@ form {
 
   .input {
     padding: 0;
-    margin-bottom: 2 * $offset-base;
+    margin-bottom: 3 * $offset-base;
 
     &.hidden {
       display: none;
@@ -62,6 +65,13 @@ form {
       }
     }
 
+    &.select,
+    &.filter_boolean,
+    &.select_and_search {
+      @include input-select-constructor;
+    }
+
+    &.date_range,
     &.stringish {
       @include input-text-constructor;
     }
@@ -75,8 +85,8 @@ form {
     }
 
     .inline-errors {
-      margin-top: 2 * $offset-base;
-      font-size: $p-fontsize;
+      margin-top: $offset-base;
+      font-size: $label-fontsize;
       color: $brand-danger;
     }
 
@@ -88,6 +98,8 @@ form {
   }
 
   .actions {
+    margin-top: $offset-base;
+
     ol > li {
       float: right;
       width: auto;

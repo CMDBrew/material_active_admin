@@ -5,7 +5,6 @@ table.cb-aa-attributes-table {
   td,
   th {
     display: flex;
-    width: 100%;
     padding: 2 * $offset-base 0;
     text-align: left;
   }
@@ -20,17 +19,18 @@ table.cb-aa-attributes-table {
 
   th {
     width: 30%;
+    padding-right: 2 * $offset-base;
     font-size: $attr-table-th-fontsize;
-    font-weight: $font-bold;
+    font-weight: normal;
     color: $attr-table-th-text-color;
-    text-transform: uppercase;
   }
 
   td {
     flex: 1;
+    flex-direction: column;
     font-size: $attr-table-td-fontsize;
     color: $attr-table-td-text-color;
-    white-space: nowrap;
+    white-space: normal;
     background: transparent;
     border: 0;
     outline: none;
@@ -38,6 +38,6 @@ table.cb-aa-attributes-table {
   }
 
   span.empty {
-    color: adjust-text-color($panel-bg, $type: 'hint');
+    color: $attr-table-td-empty-text-color;
   }
 }

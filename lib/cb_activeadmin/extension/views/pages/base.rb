@@ -81,10 +81,6 @@ module ActiveAdmin
           float_actions_for_action.empty? || assigns[:skip_float_ctrl] == true
         end
 
-        def build_footer
-          insert_tag view_factory.footer, active_admin_namespace
-        end
-
         def build_float_actions
           insert_tag view_factory.float_actions, float_actions_for_action
         end
@@ -93,7 +89,6 @@ module ActiveAdmin
           div id: 'main_content_wrapper' do
             div id: 'main_content' do
               main_content
-              # build_footer
             end
           end
         end

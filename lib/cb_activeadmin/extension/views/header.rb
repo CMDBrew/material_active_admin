@@ -14,8 +14,11 @@ module ActiveAdmin
 
         build_sidebar_toggle
         build_site_title
-        build_global_navigation
-        build_utility_navigation
+        div id: 'main-nav' do
+          build_global_navigation
+          build_utility_navigation
+        end
+        build_footer
       end
 
       private
@@ -24,6 +27,10 @@ module ActiveAdmin
         div id: 'sidebar-close' do
           i '', class: 'cb-aa-icon-close'
         end
+      end
+
+      def build_footer
+        insert_tag view_factory.footer, active_admin_namespace
       end
 
     end

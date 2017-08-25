@@ -4,15 +4,15 @@
   align-items: center;
   flex-shrink: 0;
   justify-content: center;
-  width: $titlebar-height;
-  height: $titlebar-height;
+  width: $header-icon-padding;
+  height: $navbar-height;
   margin: 0;
   cursor: pointer;
   border: 0;
 }
 
 @mixin navbar-constructor(
-  $bg, $nav-btn-color
+  $_bg, $_text-color, $_btn-color
 ) {
   position: fixed;
   top: 0;
@@ -21,10 +21,10 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
-  height: $titlebar-height;
+  height: $navbar-height;
   padding: 0;
-  color: adjust-text-color($bg, $type: 'secondary');
-  background: $bg;
+  color: $_text-color;
+  background: $_bg;
   box-sizing: border-box;
 
   a,
@@ -46,22 +46,22 @@
 
   .nav-btn {
     @include button-constructor(
-      $color: $nav-btn-color,
-      $size: 'sm', $shadow: $nav-btn-shadow, $type: $nav-btn-type
+      $color: $_btn-color,
+      $size: 'sm',
+      $type: $navbar-btn-type
     );
   }
 
   .nav-btn,
   .nav-icon {
-    margin: 0 $offset-base / 2;
-
-    &:first-child {
-      margin-right: 0;
+    & + .nav-btn,
+    & + .nav-icon {
+      margin: 0 $offset-base / 2;
     }
   }
 
   .action_item .dropdown_menu,
   .nav-icon {
-    @extend %nav-icon;
+    @include button-icon-constructor($color: $_btn-color);
   }
 }

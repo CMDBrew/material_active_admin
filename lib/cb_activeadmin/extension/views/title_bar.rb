@@ -13,19 +13,20 @@ module ActiveAdmin
         @is_index_page = is_index_page
         @filters       = options[:filters]
         build_titlebar_left
-        build_title_bar_center
         build_titlebar_right
       end
 
       private
 
       def build_title_tag
-        h2(@title, id: 'page_title')
+        h3(@title, id: 'page_title')
       end
 
       def build_sidebar_toggle
         div id: 'sidebar-toggle' do
-          i '', class: 'cb-aa-icon-menu'
+          a class: 'nav-icon' do
+            i '', class: 'cb-aa-icon-menu'
+          end
         end
       end
 
@@ -57,11 +58,6 @@ module ActiveAdmin
         div id: 'titlebar_left', class: 'titlebar-section' do
           build_sidebar_toggle
           # build_site_title
-        end
-      end
-
-      def build_title_bar_center
-        div id: 'titlebar_center', class: 'titlebar-section' do
           build_breadcrumb
           build_title_tag
         end
@@ -71,10 +67,12 @@ module ActiveAdmin
         div id: 'titlebar_right', class: 'titlebar-section' do
           if @is_index_page
             build_index_list
+          end
+          build_action_items
+          if @is_index_page
             build_search_toggle
             build_search_filters
           end
-          build_action_items
         end
       end
 
@@ -140,7 +138,6 @@ module ActiveAdmin
         span class: 'breadcrumb' do
           links.each do |link|
             text_node link
-            next if link == links.last
             span(separator, class: 'breadcrumb_sep')
           end
         end

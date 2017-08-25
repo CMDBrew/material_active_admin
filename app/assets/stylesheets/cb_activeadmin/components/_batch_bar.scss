@@ -1,14 +1,16 @@
 #batch_bar {
-  @include navbar-constructor($bg: $batch-bar-bg, $nav-btn-color: $batch-bar-btn-color);
+  @include navbar-constructor(
+    $_bg: $batchbar-bg,
+    $_text-color: $batchbar-text-color,
+    $_btn-color: $batchbar-btn-color
+  );
   @include transform(translateY(-100%));
-  @include transition(transform 0.2s linear);
 
   opacity: 0;
+  visibility: hidden;
 
   #page_title {
-    font-size: $batch-bar-title-fontsize;
-    font-weight: normal;
-    color: $batch-bar-text-color;
+    color: $batchbar-text-color;
   }
 
   #batch_bar_left {
@@ -23,8 +25,6 @@
 
   #selection-toggle {
     @extend %nav-switcher;
-
-    margin-right: 2 * $offset-base;
   }
 
   #batch_bar_right {
@@ -39,13 +39,12 @@
       justify-content: center;
 
       .batch_action:not(:first-child) {
-        margin-left: $offset-base;
+        margin-left: $offset-base / 2;
       }
     }
 
     & + .batch_actions_selector.dropdown_menu {
       margin-left: -2 * $offset-base;
     }
-
   }
 }

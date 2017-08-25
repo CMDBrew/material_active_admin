@@ -15,17 +15,23 @@ ActiveAdmin.register AdminUser do
     records
   end
 
-  # batch_action :hello, hidden_mobile: true do
-  #   puts '132'
-  # end
+  batch_action :hello, hidden_mobile: true do
+    puts '132'
+  end
 
-  # batch_action :world, dropdown_item: true do
-  #   puts '132'
-  # end
-  #
-  # action_item :convert, only: :show, priority: 0 do
-  #   nav_btn 'convert', '#'
-  # end
+  batch_action :world, dropdown_item: true do
+    puts '132'
+  end
+
+  action_item :convert, only: :index, priority: 0 do
+    nav_btn 'convert', '#'
+  end
+  action_item :convert, only: :index, priority: 0 do
+    nav_btn 'convert', '#'
+  end
+  action_item :convert, only: :index, priority: 0 do
+    nav_btn 'convert', '#'
+  end
 
   action_item :drop, only: :show do
     dropdown_menu '' do
@@ -71,24 +77,24 @@ ActiveAdmin.register AdminUser do
   #   records
   # end
 
-  # sidebar :message, only: :index, class: "collapse" do
-  #   div do
-  #     span do
-  #       "Important Dates are updated"
-  #     end
-  #     b do
-  #       "every day at 00:00 UTC"
-  #     end
-  #   end
-  # end
-  #
-  # sidebar :demo, class: "collapse" do
-  #   div do
-  #     para do
-  #       "This is the demo app for Active Admin. Don't hesitate to check out the source code for this page, the Documentation and the Github Repo."
-  #     end
-  #   end
-  # end
+  sidebar :message, only: :index, class: "collapse" do
+    div do
+      span do
+        "Important Dates are updated"
+      end
+      b do
+        "every day at 00:00 UTC"
+      end
+    end
+  end
+
+  sidebar :demo, class: "collapse" do
+    div do
+      para do
+        "This is the demo app for Active Admin. Don't hesitate to check out the source code for this page, the Documentation and the Github Repo."
+      end
+    end
+  end
 
   index do
     selectable_column
@@ -125,26 +131,32 @@ ActiveAdmin.register AdminUser do
 
   show do
     tabs do
-      tab "Detail", {href: "123"} do
+      tab "Detail" do
         panel "Admin User Details" do
-          section 'Interest Rate' do
-            attributes_table_for admin_user do
-              row :email
-              row :sign_in_count
-              row :last_sign_in_at
-              row :last_sign_in_ip
-              row :updated_at
-              row :created_at
+          tabs do
+            tab :inactive do
+              section 'Interest Rate' do
+                attributes_table_for admin_user do
+                  row :email
+                  row :sign_in_count
+                  row :last_sign_in_at
+                  row :last_sign_in_ip
+                  row :updated_at
+                  row :created_at
+                end
+              end
             end
-          end
-          section 'Beneficiaries' do
-            attributes_table_for admin_user do
-              row :email
-              row :sign_in_count
-              row :last_sign_in_at
-              row :last_sign_in_ip
-              row :updated_at
-              row :created_at
+            tab :active do
+              section 'Beneficiaries' do
+                attributes_table_for admin_user do
+                  row :email
+                  row :sign_in_count
+                  row :last_sign_in_at
+                  row :last_sign_in_ip
+                  row :updated_at
+                  row :created_at
+                end
+              end
             end
           end
         end
@@ -170,17 +182,23 @@ ActiveAdmin.register AdminUser do
       tab "Detail", {href: "123"} do
         panel "Detail", class: "collapse in" do
           section 'test' do
-            f.inputs do
-              f.input :select,
-                      as: :select,
-                      collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
-                      :input_html => {class: "select2-with-search"},
-                      multiple: true
-              f.input :is_super_admin
-              f.input :email, input_html: { disabled: "disabled" }
-              f.input :textarea, input_html: { rows: 4, class: "tinymce" }
-              f.input :password
-              f.input :password_confirmation
+            tabs do
+              tab "123" do
+                f.inputs do
+                  f.input :select,
+                          as: :select,
+                          collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+                          :input_html => {class: "select2-with-search"},
+                          multiple: true
+                  f.input :is_super_admin
+                  f.input :email, input_html: { disabled: "disabled" }
+                  f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+                  f.input :password
+                  f.input :password_confirmation
+                end
+              end
+              tab "123" do
+              end
             end
           end
           f.actions
