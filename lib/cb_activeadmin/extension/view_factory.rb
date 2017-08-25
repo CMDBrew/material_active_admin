@@ -9,7 +9,6 @@ module ActiveAdmin
     register  global_navigation:   ActiveAdmin::Views::TabbedNavigation,
               utility_navigation:  ActiveAdmin::Views::TabbedNavigation,
               site_title:          ActiveAdmin::Views::SiteTitle,
-              app_header:          ActiveAdmin::Views::AppHeader,
               unsupported_browser: ActiveAdmin::Views::UnsupportedBrowser,
               action_items:        ActiveAdmin::Views::ActionItems,
               float_actions:       ActiveAdmin::Views::FloatActions,

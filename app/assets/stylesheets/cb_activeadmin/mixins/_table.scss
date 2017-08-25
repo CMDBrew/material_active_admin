@@ -4,8 +4,9 @@
   th {
     font-size: $table-th-fontsize;
     font-weight: $font-bold;
+    line-height: 1;
     color: $table-th-text-color;
-    text-transform: uppercase;
+    text-transform: capitalize;
 
     &[class*='sorted'] a {
       color: $table-active-text-color;
@@ -14,11 +15,11 @@
     &.sortable {
 
       &.sorted-asc a::after {
-        content: '\E5C7';
+        content: get-icon('sorted-asc');
       }
 
       &.sorted-desc a::after {
-        content: '\E5C5';
+        content: get-icon('sorted-desc');
       }
 
       &[class*='sorted-'] {
@@ -27,18 +28,16 @@
 
       a {
         position: relative;
-        min-height: 20px;
-        padding-right: $icon-size + $offset-base / 2;
+        display: flex;
+        align-items: center;
         color: inherit;
 
+        &::before,
         &::after {
-          position: absolute;
-          top: 50%;
-          right: 0;
-          font-family: $icon-font;
-          font-size: $icon-size;
-          line-height: 10px;
-          @include transform(translateY(-50%));
+          @extend %cb-aa-icon;
+
+          margin-left: $offset-base;
+          font-size: $h4-fontsize;
         }
       }
     }
@@ -48,24 +47,24 @@
   td {
     height: $table-row-height;
     max-width: 200px;
-    padding: 0 2 * $offset-base;
+    padding: 0 1.5 * $offset-base;
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: middle;
     box-sizing: border-box;
 
-    &.col-selectable,
-    &.col-icon {
-      width: $icon-size;
-      padding: 0;
+    &:first-child {
+      padding-left: 3 * $offset-base;
+    }
+
+    &:last-child {
+      padding-right: 3 * $offset-base;
     }
 
     &.col-selectable {
-      width: 32px;
-      min-width: 32px;
+      width: 40px;
+      min-width: 40px;
       text-align: center;
-      background: $body-bg;
-      border-right: 1px solid $table-divider-color;
 
       .checkbox-icon {
         display: inline-block;
@@ -79,7 +78,7 @@
   }
 
   thead th,
-  tbody tr:not(:last-child) td:not(.col-selectable) {
+  tbody tr:not(:last-child) td {
     border-bottom: 1px solid $table-divider-color;
   }
 
@@ -90,7 +89,6 @@
 
   td.col-actions {
     flex-direction: row;
-    padding: 0 $offset-base / 2;
     text-align: right;
 
     a.dropdown_menu_button::after {

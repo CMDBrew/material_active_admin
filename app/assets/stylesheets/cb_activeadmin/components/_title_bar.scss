@@ -1,73 +1,83 @@
 %title_bar-has-tab {
-  border-bottom: 1px solid $titlebar-divider-color;
   @include box-shadow(none);
 }
 
 #title_bar {
-  @include navbar-constructor($bg: $titlebar-bg, $nav-btn-color: $titlebar-btn-color);
-  @include box-shadow($titlebar-shadow);
+  @include navbar-constructor(
+    $_bg: $titlebar-bg,
+    $_text-color: $titlebar-text-color,
+    $_btn-color: $titlebar-btn-color
+  );
+  @include box-shadow($navbar-shadow);
 
   #sidebar-toggle {
     @extend %nav-switcher;
   }
 
-
   #titlebar_left {
     align-items: center;
-    // flex: 1 1 auto;
+    flex: 1 1 auto;
     flex-direction: row;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    .nav-icon,
+    .nav-btn {
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    #page_title,
+    .breadcrumb a,
+    .breadcrumb_sep {
+      color: $titlebar-text-color;
+    }
+
+    .breadcrumb {
+      display: flex;
+    }
+
+    .breadcrumb,
+    .breadcrumb span,
+    .breadcrumb a {
+      font-size: $h3-fontsize;
+      font-weight: $font-bold;
+    }
+
+    .breadcrumb > * {
+      display: flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .breadcrumb_sep {
+      margin: 0 $offset-base / 2;
+    }
   }
 
   #titlebar_right {
-    // flex: 0 0 auto;
+    flex: 0 0 auto;
     justify-content: flex-end;
     padding: 0 2 * $offset-base;
     text-align: right;
 
+    .nav-icon,
+    .nav-btn {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
     .action_item {
-      margin-left: $offset-base;
+      margin-left: $offset-base / 2;
     }
 
     .action_items {
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-  }
-
-  #titlebar_center {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-
-    #page_title {
-      margin-top: $offset-base / 2;
-      color: $titlebar-page-title-text-color;
-    }
-
-    .breadcrumb,
-    .breadcrumb span,
-    .breadcrumb a {
-      font-size: $titlebar-breadcrumb-fontsize;
-      font-weight: normal;
-      text-transform: uppercase;
-    }
-
-    .breadcrumb a {
-      color: $titlebar-breadcrumb-text-color;
-    }
-
-    .breadcrumb > * {
-      display: inline-block;
-      line-height: 1;
-      vertical-align: middle;
-    }
-
-    .breadcrumb_sep {
-      color: $titlebar-breadcrumb-text-color;
     }
   }
 

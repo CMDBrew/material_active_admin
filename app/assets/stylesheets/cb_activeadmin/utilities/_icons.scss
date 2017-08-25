@@ -1,8 +1,5 @@
 @function get-icon($key) {
-  @if map-has-key($icons-list, $key) {
-    $unicode: map-get($icons-list, $key);
-    @return $unicode;
-  }
+  @return get-map-value($key, $icon-map);
 }
 
 %cb-aa-icon {
@@ -28,7 +25,7 @@
   @extend %cb-aa-icon;
 }
 
-$icons-list: (
+$icon-map: (
   'close':              '\E5CD',
   'arrow-right':        '\E315',
   'arrow-left':         '\E314',
@@ -41,9 +38,11 @@ $icons-list: (
   'delete':             '\E872',
   'menu':               '\E5D2',
   'empty':              '\E156',
+  'sorted-desc':        '\E5DB',
+  'sorted-asc':         '\E5D8',
 );
 
-@each $_icon-name, $_icon-value in $icons-list {
+@each $_icon-name, $_icon-value in $icon-map {
   .cb-aa-icon-#{$_icon-name}::before {
     content: $_icon-value;
   }

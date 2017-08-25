@@ -3,35 +3,53 @@
   @include transform(translateX(0%));
 }
 
-#header {
-  @extend %site-title-constructor;
+%header-has-tab {
+  top: $navbar-height + $navbar-tab-height + 1.5 * $offset-base;
+}
 
+#header {
   position: fixed;
-  top: 0;
+  top: $navbar-height + 1.5 * $offset-base;
   bottom: 0;
   left: 0;
+  display: flex;
   flex-direction: column;
   width: $header-width;
-  overflow-y: scroll;
   color: $header-text-color;
   background: $header-bg;
 
-  @include transform(translateX(-100%));
   @include transition(transform 0.2s linear);
 
-  #sidebar-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 11;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: $titlebar-height;
-    color: adjust-text-color($header-title-bg);
-    cursor: pointer;
+  #main-nav {
+    flex: 1;
+    overflow-y: scroll;
   }
+
+  #sidebar-close,
+  .site_title {
+    display: none !important;
+  }
+
+  #footer {
+    padding: 2 * $offset-base;
+    color: $header-text-color;
+    text-align: left;
+  }
+
+  //
+  // #sidebar-close {
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   z-index: 11;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: 48px;
+  //   height: $navbar-height;
+  //   color: adjust-text-color($header-title-bg);
+  //   cursor: pointer;
+  // }
 
   ul {
     padding: 0;
@@ -44,7 +62,7 @@
     }
 
     li.current:not(.has_nested) > a {
-      background: $header-menu-item-hover-bg;
+      background: $header-item-hover-bg;
     }
   }
 
@@ -55,7 +73,7 @@
 
     li {
       &.current > a {
-        color: $header-menu-item-color-selected;
+        color: $header-item-text-color-active;
       }
 
       &.has_nested {
@@ -101,18 +119,19 @@
         align-items: center;
         flex-direction: row;
         flex-grow: 0;
-        height: $header-menu-item-height;
+        height: $header-item-height;
         padding: 0 $header-icon-padding;
         padding-right: 48px;
         overflow: hidden;
         font-size: $p-fontsize;
-        line-height: $header-menu-item-height;
-        color: $header-text-color;
+        font-weight: $font-bold;
+        line-height: $header-item-height;
+        color: $header-item-text-color;
         text-overflow: ellipsis;
         white-space: nowrap;
 
         &:hover {
-          background: $header-menu-item-hover-bg;
+          background: $header-item-hover-bg;
         }
 
         span {
@@ -137,7 +156,7 @@
           align-items: center;
           justify-content: center;
           width: $header-icon-padding;
-          height: $header-menu-item-height;
+          height: $header-item-height;
           font-size: $icon-size;
         }
       }

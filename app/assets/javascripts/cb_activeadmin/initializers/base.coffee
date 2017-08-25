@@ -15,6 +15,10 @@ $ ->
     return
 
 $ ->
+  $('body').on 'focus', ':input', MDI_INPUT_GUIDE_EFFECT.events.create_guide
+  $('body').on 'blur', ':input', MDI_INPUT_GUIDE_EFFECT.events.destroy_guide
+
+
   $('body').on 'click', "#header li.has_nested > a", NAV_MENU.events.toggle
   $('body').on 'click', "#sidebar-toggle", SIDEBAR_TOGGLE.events.toggle
   $('body').on 'click', "#sidebar-close", SIDEBAR_TOGGLE.events.toggle

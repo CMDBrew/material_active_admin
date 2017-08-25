@@ -20,7 +20,7 @@
   #batch_bar,
   #title_bar {
     .nav-btn.#{$_color-klass} {
-      @include button-constructor($type: $nav-btn-type, $color: $_color, $size: 'sm');
+      @include button-constructor($type: $navbar-btn-type, $color: $_color, $size: 'sm');
     }
   }
 }

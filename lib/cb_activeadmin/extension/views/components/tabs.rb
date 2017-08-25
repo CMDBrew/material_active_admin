@@ -15,7 +15,9 @@ module ActiveAdmin
 
       def build(type = 'jquery')
         add_class 'disable-jquery-ui-tabs' unless type == 'jquery'
-        @menu = ul(class: 'nav nav-tabs', role: 'tablist')
+        div class: 'nav-tabs-wrap' do
+          @menu = ul(class: 'nav nav-tabs', role: 'tablist')
+        end
         @tabs_content = div(class: 'tab-content')
       end
 

@@ -1,16 +1,12 @@
 @mixin comments-constructor {
   .panel_contents {
     padding-bottom: 0;
-    margin: -2 * $offset-base;
-    margin-top: 0;
+    margin: 0 ($panel-padding * -1);
   }
 
   .comment_item {
     padding: 2 * $offset-base 3 * $offset-base;
-
-    & + .comment_item {
-      border-top: 1px solid $divider-color;
-    }
+    background: $comment-bg;
 
     .comment_item_inner {
       display: flex;
@@ -33,7 +29,7 @@
     .comment_header {
       display: flex;
       align-items: center;
-      margin-bottom: $offset-base;
+      margin-bottom: $offset-base / 2;
 
       .comment_author {
         flex: 1 1 auto;
@@ -41,7 +37,7 @@
 
       .comment_date {
         flex: 0 0 auto;
-        color: $text-color-hint;
+        color: $comment-meta-text-color;
       }
 
       .comment_actions {
@@ -55,12 +51,25 @@
   }
 
   .admin-comment-form {
-    padding: 2 * $offset-base;
-    background: $body-bg;
-    border-top: 1px solid $divider-color;
+    display: flex;
+    flex-direction: row;
+    padding: $panel-padding;
+    border-top: 1px solid $panel-divider-color;
+
+    .inputs {
+      flex: 1;
+    }
+
+    textarea,
+    .input {
+      flex: initial;
+      min-height: $ctrl-height;
+      margin-bottom: 0;
+    }
 
     .actions {
       padding-top: 0;
+      margin-top: 0;
     }
   }
 }

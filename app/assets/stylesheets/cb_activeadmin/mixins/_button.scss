@@ -4,7 +4,7 @@
   align-items: center;
   padding: 0 2 * $offset-base;
   font-size: $p-fontsize;
-  font-weight: normal;
+  font-weight: $font-bold;
   text-align: center;
   text-decoration: none;
   text-overflow: ellipsis;
@@ -41,13 +41,9 @@
   $color: $brand-default,
   $type: 'solid',
   $size: 'default',
-  $shadow: null
+  $shadow: $button-shadow
 ) {
   @include button-base($size);
-
-  @if ($shadow != null) {
-    @include box-shadow($shadow);
-  }
 
   @if ($type == 'link') {
     color: $color;
@@ -56,9 +52,14 @@
     color: $color;
     background: transparent;
     border: 1px solid $color;
+  } @elseif ($type == 'solid') {
+    color: adjust-text-color($color);
+    background: $color;
   } @else {
     color: adjust-text-color($color);
     background: $color;
+
+    @include box-shadow($shadow);
 
     &:not(.disabled):hover {
       background: darken($color, 5%);

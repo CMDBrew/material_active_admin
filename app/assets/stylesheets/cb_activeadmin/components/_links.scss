@@ -1,6 +1,7 @@
 a,
 a:link,
 a:visited {
+  font-weight: $font-bold;
   color: $brand-primary;
   text-decoration: none;
   cursor: pointer;

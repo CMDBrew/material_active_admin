@@ -4,7 +4,6 @@ body.logged_out {
   display: flex;
   min-height: 100vh;
   padding: 0;
-  padding-top: calc(#{$banner-height} - 100px);
   padding-bottom: 5 * $offset-base;
   background-color: $body-bg;
   box-sizing: border-box;
