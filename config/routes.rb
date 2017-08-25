@@ -1,2 +1,2 @@
-CbActiveadmin::Engine.routes.draw do
+MaterialActiveAdmin::Engine.routes.draw do
 end
