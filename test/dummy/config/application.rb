@@ -3,7 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require "cb_activeadmin"
+require "material_active_admin"
 
 module Dummy
   class Application < Rails::Application

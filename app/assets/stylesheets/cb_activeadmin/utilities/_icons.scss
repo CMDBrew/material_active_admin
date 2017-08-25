@@ -21,11 +21,13 @@
   -webkit-font-smoothing: antialiased;
 }
 
-[class*='cb-aa-icon-']::before {
+[class*='mdi-aa-icon-']::before {
   @extend %cb-aa-icon;
 }
 
 $icon-map: (
+  'add':                '\E145',
+  'edit':               '\E254',
   'close':              '\E5CD',
   'arrow-right':        '\E315',
   'arrow-left':         '\E314',
@@ -43,7 +45,7 @@ $icon-map: (
 );
 
 @each $_icon-name, $_icon-value in $icon-map {
-  .cb-aa-icon-#{$_icon-name}::before {
+  .mdi-aa-icon-#{$_icon-name}::before {
     content: $_icon-value;
   }
 }
