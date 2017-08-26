@@ -66,7 +66,7 @@ module ActiveAdmin
 
         def build_float_ctrl
           klass = float_actions_for_action.length > 1 ? 'multi-actions' : nil
-          div(id: 'float_actions', class: klass) { build_float_actions }
+          div(id: 'float_actions_wrap', class: klass) { build_float_actions }
         end
 
         def skip_sidebar?
