@@ -54,8 +54,7 @@ body.logged_in {
     }
   }
 
-  #float_actions,
-  .mdi-float-actions {
+  #float_actions_wrap {
     @include float-actions-constructor;
   }
 

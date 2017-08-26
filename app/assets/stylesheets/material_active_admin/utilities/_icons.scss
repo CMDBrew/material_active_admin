@@ -42,6 +42,7 @@ $icon-map: (
   'empty':              '\E156',
   'sorted-desc':        '\E5DB',
   'sorted-asc':         '\E5D8',
+  'more':               '\E5D4'
 );
 
 @each $_icon-name, $_icon-value in $icon-map {

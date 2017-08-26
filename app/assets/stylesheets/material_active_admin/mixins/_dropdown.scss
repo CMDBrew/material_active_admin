@@ -47,7 +47,7 @@
     width: auto;
     height: auto;
     min-width: $dropdown-min-width;
-    padding: $offset-base 0;
+    padding: 2 * $offset-base 0;
     margin: 0;
     color: adjust-text-color($dropdown-bg);
     background: $dropdown-bg;

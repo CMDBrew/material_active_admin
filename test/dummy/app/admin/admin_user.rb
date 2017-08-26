@@ -42,6 +42,39 @@ ActiveAdmin.register AdminUser do
     end
   end
 
+  # FLOAT ACTIONS
+  config.clear_float_actions!
+
+  float_action :new, only: :index do
+    if controller.action_methods.include?('new') &&
+      authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
+      float_item("add", 'add', '#')
+    #   link_to content_tag(:i, 'add', class: 'material-icons'), new_resource_path
+    end
+  end
+
+  float_action :new,
+               only: :show do
+    if controller.action_methods.include?('show') &&
+       authorized?(ActiveAdmin::Auth::UPDATE, active_admin_config.resource_class)
+      link_to '' do
+        concat(content_tag(:i, 'mode_edit', class: 'material-icons'))
+        concat('Edit')
+      end
+    end
+  end
+
+  float_action :new,
+               only: :show do
+    if controller.action_methods.include?('show') &&
+       authorized?(ActiveAdmin::Auth::UPDATE, active_admin_config.resource_class)
+      link_to '', class: 'brand-warning' do
+        concat(content_tag(:i, 'videocam', class: 'material-icons'))
+          concat('Video')
+      end
+    end
+  end
+
   # sidebar :help, class: 'collapse' do
   #   "Need help? Email us at help@example.com"
   # end

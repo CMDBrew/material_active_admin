@@ -52,43 +52,55 @@
   padding: 3 * $offset;
 
   &.multi-actions {
-    &:hover {
-      .float_action {
-        display: block !important;
+    ul.bottom-sheet {
+      position: absolute;
+      right: 0;
+      bottom: $float-action-size + 2 * $offset-base;
+      z-index: 999;
+      width: auto;
+      height: auto;
+      min-width: $bottom-sheet-min-width;
+      padding: $offset-base 0;
+      margin: 0;
+      color: adjust-text-color($bottom-sheet-bg);
+      list-style: none;
+      background: $bottom-sheet-bg;
+      border-radius: $bottom-sheet-radius;
 
-        a.hide-on-hover {
-          display: none !important;
-        }
-
-        .ph-icon {
-          display: none;
-        }
-
-        .hover-icon {
-          display: block;
-        }
-      }
+      @include box-shadow($bottom-sheet-shadow);
+      @include animation(bottom-sheet-animation 0.2s);
+      transform-origin: 50% 0;
     }
 
-    .ph-icon {
-      display: block;
+    li:hover a {
+      color: $bottom-sheet-menu-item-text-color-active !important;
+      background: $bottom-sheet-menu-item-bg-active;
     }
 
-    .hover-icon {
-      display: none;
-    }
+    li a {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      height: $bottom-sheet-menu-item-height;
+      padding: 0 3 * $offset-base;
+      overflow: hidden;
+      font-size: $p-fontsize;
+      font-weight: normal;
+      color: adjust-text-color($bottom-sheet-bg);
+      text-overflow: ellipsis;
+      text-transform: none;
+      white-space: nowrap;
+      box-sizing: border-box;
 
-    .float_action:not(:last-child) {
-      display: none;
-
-      a {
-        width: 40px;
-        height: 40px;
+      & > i {
+        margin-right: $offset-base;
+        color: adjust-text-color($bottom-sheet-bg, $type: 'secondary');
       }
     }
   }
 
   .float_actions {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;

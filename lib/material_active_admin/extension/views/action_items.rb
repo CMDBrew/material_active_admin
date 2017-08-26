@@ -10,7 +10,7 @@ module ActiveAdmin
       def nav_icon(icon, url, html_options = {})
         html_options[:class] = "nav-icon #{html_options[:class]}"
         link_to url, html_options do
-          content_tag :i, icon, class: 'aa-icon'
+          content_tag :i, '', class: "mdi-aa-icon-#{icon}"
         end
       end
 
