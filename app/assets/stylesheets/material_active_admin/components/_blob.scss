@@ -1,0 +1,11 @@
+@each $_size-klass, $_size in $blob-size-map {
+  .blob.#{$_size-klass} {
+    &:not(.round) {
+      @include blob-constructor($_size: $_size, $_radius: 0);
+    }
+
+    &.round {
+      @include blob-constructor($_size: $_size, $_radius: 50%);
+    }
+  }
+}

@@ -80,7 +80,7 @@
 
       &.has_nested {
         & > a::after {
-          @extend %cb-aa-icon;
+          @extend %aa-icon;
 
           position: absolute;
           top: 0;
@@ -165,7 +165,7 @@
     }
   }
 
-  .cb-aa-badge {
+  .aa-badge {
     @include badge-constructor($header-badge-bg);
   }
 }

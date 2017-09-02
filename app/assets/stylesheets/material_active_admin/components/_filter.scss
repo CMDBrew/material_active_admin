@@ -1,3 +1,8 @@
+%search-filter-toggled {
+  @include box-shadow($filter-shadow);
+  @include transform(translateX(0%));
+}
+
 #search-filter {
   position: fixed;
   top: 0;
@@ -13,11 +18,6 @@
 
   @include transform(translateX(100%));
   @include transition(transform 0.2s linear);
-
-  &.search-filter-toggled {
-    @include box-shadow($filter-shadow);
-    @include transform(translateX(0%));
-  }
 
   #filters_sidebar_section > h3 {
     display: none;
@@ -55,6 +55,15 @@
     color: $filter-text-color;
     white-space: nowrap;
     background: $filter-header-bg;
+  }
+
+  .body {
+    position: absolute;
+    top: $navbar-height;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: scroll;
   }
 
   .search-close {

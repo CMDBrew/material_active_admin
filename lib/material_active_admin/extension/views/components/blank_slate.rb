@@ -22,7 +22,7 @@ module ActiveAdmin
       private
 
       def blank_slate_icon
-        i('', class: 'mdi-aa-icon-empty')
+        i('', class: 'aa-icon-empty')
       end
 
       def blank_slate_heading
@@ -30,7 +30,7 @@ module ActiveAdmin
       end
 
       def blank_slate_content(content)
-        content_tag(:span, content, class: 'blank_slate')
+        content_tag(:span, content.html_safe, class: 'blank_slate')
       end
 
     end

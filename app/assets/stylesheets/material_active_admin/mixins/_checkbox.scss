@@ -24,7 +24,7 @@
     vertical-align: middle;
 
     &::before {
-      @extend %cb-aa-icon;
+      @extend %aa-icon;
 
       color: $label-text-color;
       content: get-icon('checkbox-unchecked');

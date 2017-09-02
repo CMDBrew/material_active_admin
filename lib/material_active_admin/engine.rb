@@ -73,8 +73,9 @@ module MaterialActiveAdmin
 
     def component_files
       %w[
-        columns blank_slate batch_action_menu scopes site_title
+        columns blank_slate batch_action_menu scopes site_title bottom_sheet
         tabs table_for hidden_section dropdown_menu section attributes_table panel
+        active_admin_form
       ]
     end
 

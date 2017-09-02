@@ -10,7 +10,7 @@ module ActiveAdmin
       def build(title, attributes = {})
         super(attributes)
         add_class 'section'
-        @title = h5(title.to_s, class: 'section-title')
+        @title = h4(title.to_s, class: 'section-title')
         @contents = div(class: 'section_contents')
       end
 

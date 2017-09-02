@@ -227,10 +227,10 @@ $dropdown-shadow:        $widget-shadow !default;
 $dropdown-broder-radius: 0 !default;
 
 // Modal
-$modal-bg:            $widget-bg !default;
-$modal-header-bg:     $widget-bg !default;
-$modal-shadow:        0 1px 8px rgba(0,0,0,.3) !default;
-$modal-header-shadow: none !default;
+// $modal-bg:            $widget-bg !default;
+// $modal-header-bg:     $widget-bg !default;
+// $modal-shadow:        0 1px 8px rgba(0,0,0,.3) !default;
+// $modal-header-shadow: none !default;
 
 // Chip
 // $chip-size:              28px !default;
@@ -251,19 +251,19 @@ $modal-header-shadow: none !default;
 // $tab-chip-bg: darken($brand-primary, 4%) !default;
 
 // $Tooltip
-$tooltip-bg:     rgba(black, .7) !default;
-$tooltip-shadow: $widget-shadow !default;
+// $tooltip-bg:     rgba(black, .7) !default;
+// $tooltip-shadow: $widget-shadow !default;
 
 // Toast
 // $toast-bg:     #212121 !default;
 // $toast-shadow: 0 1px 8px rgba(0,0,0,.3) !default;
 
 // Flashes
-$flash-color-map: (
-  "flash_notice": $brand-warning,
-  "flash_alert":  $brand-danger,
-  "flash_error":  $brand-danger,
-) !default;
+// $flash-color-map: (
+//   "flash_notice": $brand-warning,
+//   "flash_alert":  $brand-danger,
+//   "flash_error":  $brand-danger,
+// ) !default;
 
 // SPINNER
 $spinner-bg: rgba(white, .54) !default;

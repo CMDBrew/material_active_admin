@@ -14,8 +14,7 @@ module ActiveAdmin
       def build(batch_actions)
         @batch_actions = Array(batch_actions)
         build_batch_bar_left
-        @actions = build_actions
-        @drop_down = build_drop_down
+        build_menu
       end
 
       # We don't want to wrap the action list (or any other children) in
@@ -23,6 +22,15 @@ module ActiveAdmin
       delegate :to_s, to: :children
 
       private
+
+      def build_menu
+        batch_action_menu id: 'batch_bar_right',
+                          class: 'batch_actions_selector',
+                          button: { class: 'disabled' } do
+          build_actions
+          build_drop_down
+        end
+      end
 
       def build_batch_bar_left
         div id: 'batch_bar_left' do
@@ -36,19 +44,15 @@ module ActiveAdmin
 
       def build_selection_toggle
         div id: 'selection-toggle' do
-          i '', class: 'mdi-aa-icon-arrow-back'
+          i '', class: 'aa-icon-arrow-back'
         end
       end
 
       def build_actions
         items = batch_actions_to_display.reject(&:dropdown_item)
         return if items.empty?
-        batch_action_menu id: 'batch_bar_right',
-                          class: 'batch_actions_selector',
-                          button: { class: 'disabled' } do
-          items.each do |batch_action|
-            build_action(batch_action)
-          end
+        items.each do |batch_action|
+          build_action(batch_action)
         end
       end
 
@@ -56,7 +60,7 @@ module ActiveAdmin
       def build_drop_down
         items = dropdown_items + hidden_mobile_items
         return if items.empty?
-        dropdown_menu '', class: "batch_actions_selector dropdown_menu #{extra_dropdown_klass}",
+        dropdown_menu '', class: "dropdown_menu #{extra_dropdown_klass}",
                           button: { class: 'nav-icon' } do
           hidden_mobile_items.each do |batch_action|
             build_drop_down_action(batch_action)
@@ -135,7 +139,7 @@ module ActiveAdmin
       end
 
       def action_icon(icon)
-        content_tag(:i, '', class: "mdi-aa-icon-#{icon}")
+        content_tag(:i, '', class: "aa-icon-#{icon}")
       end
 
       # Return the set of batch actions that should be displayed

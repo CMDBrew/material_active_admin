@@ -49,6 +49,34 @@ form {
     }
   }
 
+  fieldset.inputs:not(.has_many_fields) {
+    @include panel-constructor;
+
+    & > legend {
+      float: left;
+      width: 100%;
+    }
+  }
+
+  .inputs.has_many_fields {
+    padding-left: 3 * $offset-base;
+    margin-bottom: 3 * $offset-base;
+    border-left: 4px solid $panel-divider-color;
+  }
+
+  .button {
+    &.has_many_add {
+      @include button-constructor($color: $brand-default, $type: 'solid', $size: 'sm');
+      float: left;
+    }
+
+    &.has_many_remove {
+      @include button-constructor($color: $brand-danger, $type: 'link', $size: 'sm');
+      float: right;
+      padding: 0;
+    }
+  }
+
   .input {
     position: relative;
     padding: 0;
@@ -83,6 +111,10 @@ form {
 
     &.text {
       @include input-textarea-constructor;
+    }
+
+    &.file {
+      @include input-file-constructor;
     }
 
     .inline-errors {

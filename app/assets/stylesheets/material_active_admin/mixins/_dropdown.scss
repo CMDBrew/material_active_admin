@@ -26,7 +26,7 @@
     display: block;
 
     &::after {
-      @extend %cb-aa-icon;
+      @extend %aa-icon;
 
       justify-content: flex-end;
       margin-right: -#{$offset-base};

@@ -8,7 +8,7 @@ module ActiveAdmin
       builder_method :panel
 
       def build(title, attributes = {})
-        collapse = attributes.delete(:collapse) { false }
+        collapse = attributes.delete(:collapse) { true }
         hidden   = attributes.delete(:hidden) { false }
         super(attributes)
         add_class 'panel'

@@ -1,20 +1,11 @@
 // Colors
-$brand-accent:  #D23F31 !default;
-$brand-default: #EEEEEE !default;
-$brand-primary: #3949AB !default;
-$brand-success: #5CC09D !default;
-$brand-info:    #B388FF !default;
-$brand-warning: #FF9800 !default;
-$brand-danger:  #E83B4B !default;
-$btn-color-map: (
-  'brand-accent':  $brand-accent,
-  'brand-default': $brand-default,
-  'brand-primary': $brand-primary,
-  'brand-success': $brand-success,
-  'brand-info':    $brand-info,
-  'brand-warning': $brand-warning,
-  'brand-danger':  $brand-danger
-) !default;
+$brand-accent:  #E91E63 !default;
+$brand-default: #E0E0E0 !default;
+$brand-primary: #2A56C6 !default;
+$brand-success: #4799A8 !default;
+$brand-info:    #5E69C0 !default;
+$brand-warning: #EB6C2C !default;
+$brand-danger:  #BE361C !default;
 
 // Text colors
 $text-color-placeholder:       #9E9E9E !default;
@@ -25,18 +16,21 @@ $text-color-placeholder:       #9E9E9E !default;
 $text-color-primary-inverse:   rgba(255, 255, 255, 1) !default;
 $text-color-secondary-inverse: rgba(255, 255, 255, 0.7) !default;
 $text-color-hint-inverse:      rgba(255, 255, 255, 0.5) !default;
-$text-color-map: (
-  'primary': $text-color-primary,
-  'secondary': $text-color-secondary,
-  'hint': $text-color-hint,
-  'primary-inverse': $text-color-primary-inverse,
+
+$color-map: (
+  'brand-accent':      $brand-accent,
+  'brand-default':     $brand-default,
+  'brand-primary':     $brand-primary,
+  'brand-success':     $brand-success,
+  'brand-info':        $brand-info,
+  'brand-warning':     $brand-warning,
+  'brand-danger':      $brand-danger,
+  'primary':           $text-color-primary,
+  'secondary':         $text-color-secondary,
+  'hint':              $text-color-hint,
+  'primary-inverse':   $text-color-primary-inverse,
   'secondary-inverse': $text-color-secondary-inverse,
-  'hint-inverse': $text-color-hint-inverse,
-  'brand-primary': $brand-primary,
-  'brand-success': $brand-success,
-  'brand-info': $brand-info,
-  'brand-warning': $brand-warning,
-  'brand-danger': $brand-danger
+  'hint-inverse':      $text-color-hint-inverse
 ) !default;
 
 // Typography
@@ -59,28 +53,17 @@ $checkbox-icon-size: 22px !default;
 // Utilities
 $offset-base:            8px !default;
 $ctrl-height:            40px !default;
-$ctrl-height-sm:         36px !default;
+$ctrl-height-sm:         32px !default;
 $ctrl-hover-bg:          rgba(0, 0, 0, 0.05) !default;
 $ctrl-hover-bg-inverse:  rgba(255, 255, 255, 0.05) !default;
 $divider-color:          #E0E0E0 !default;
 $divider-color-inverse:  #656565 !default;
 $content-max-width:      1000px !default;
 $ctrl-radius:            2px !default;
-$body-bg:                #F2F2F2 !default;
+$body-bg:                #EEEEEE !default;
 $body-bg-logged-out:     $body-bg !default;
 $color-adjust-intensity: 75 !default;
 $ripple-bg:              white !default;
-
-// Navbar
-$navbar-tab-bg:                     $body-bg !default;
-$navbar-height:                     64px !default;
-$navbar-shadow:                     0 1px 8px rgba(0, 0, 0, 0.3) !default;
-$navbar-btn-type:                   'solid' !default;
-$navbar-tab-height:                 48px !default;
-$navbar-tab-min-width:              200px !default;
-$navbar-tab-indicator-color-active: $brand-primary !default;
-$navbar-tab-alignment:              center !default;
-$navbar-tab-badge-bg:               $brand-primary !default;
 
 // Title Bar
 $titlebar-bg:         $brand-primary !default;
@@ -93,8 +76,19 @@ $batchbar-btn-color:  adjust-text-color($batchbar-bg) !default;
 $batchbar-text-color: adjust-text-color($batchbar-bg) !default;
 $batchbar-badge-bg:   darken($batchbar-bg, 3%) !default;
 
+// Navbar
+$navbar-tab-bg:                     $body-bg !default;
+$navbar-height:                     64px !default;
+$navbar-shadow:                     0 1px 8px rgba(0, 0, 0, 0.3) !default;
+$navbar-btn-type:                   'solid' !default;
+$navbar-tab-height:                 48px !default;
+$navbar-tab-min-width:              200px !default;
+$navbar-tab-indicator-color-active: $brand-primary !default;
+$navbar-tab-alignment:              center !default;
+$navbar-tab-badge-bg:               $brand-danger !default;
+
 // Header
-$header-width:                  240px !default;
+$header-width:                  260px !default;
 $header-shadow:                 0 5px 10px 0 rgba(0, 0, 0, 0.1) !default;
 $header-bg:                     $body-bg !default;
 $header-text-color:             adjust-text-color($header-bg, $type: 'secondary') !default;
@@ -105,7 +99,7 @@ $header-item-hover-bg:          adjust-ctrl-hover-bg($header-bg) !default;
 $header-icon-padding:           72px !default;
 $header-favicon-size:           56px !default;
 $header-divider-color:          adjust-divider-color($header-bg) !default;
-$header-badge-bg:               $header-item-text-color-active !default;
+$header-badge-bg:               $brand-danger !default;
 
 // Filter
 $filter-header-bg:           $brand-primary !default;
@@ -149,20 +143,13 @@ $form-cancel-btn-color:     $brand-default !default;
 $form-submit-btn-color:     $brand-primary !default;
 
 // Blank Slate
-$blank-slate-text-color: adjust-text-color($panel-bg, $type: 'secondary') !default;
+$blank-slate-text-color: adjust-text-color($panel-bg, $type: 'hint') !default;
 
 // Button
 $button-radius:    2px !default;
 $button-height:    $ctrl-height !default;
 $button-height-sm: $ctrl-height-sm !default;
 $button-shadow:    0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
-
-// Float Button
-$float-action-size:          56px !default;
-$float-action-bg:            $brand-accent !default;
-$float-action-text-color:    adjust-text-color($float-action-bg) !default;
-$float-action-shadow:        0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
-$float-action-shadow-active: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
 
 // Table
 $table-row-height:               48px !default;
@@ -191,14 +178,23 @@ $dropdown-menu-item-height:            $ctrl-height !default;
 $dropdown-menu-item-bg-active:         adjust-ctrl-hover-bg($dropdown-bg) !default;
 $dropdown-menu-item-text-color-active: adjust-text-color($dropdown-bg) !default;
 
+// Float Button
+$float-action-size:          56px !default;
+$float-action-size-sm:       40px !default;
+$float-action-bg:            white !default;
+$float-action-text-color:    adjust-text-color($float-action-bg) !default;
+$float-action-shadow:        0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
+$float-action-shadow-active: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
+
 // Bottom Sheet
-$bottom-sheet-shadow:                      0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32) !default;
-$bottom-sheet-radius:                      $ctrl-radius !default;
-$bottom-sheet-bg:                          white !default;
-$bottom-sheet-min-width:                   148px !default;
-$bottom-sheet-menu-item-height:            $ctrl-height !default;
-$bottom-sheet-menu-item-bg-active:         adjust-ctrl-hover-bg($bottom-sheet-bg) !default;
-$bottom-sheet-menu-item-text-color-active: adjust-text-color($bottom-sheet-bg) !default;
+$bottom-sheet-shadow:                 $float-action-shadow !default;
+$bottom-sheet-radius:                 $ctrl-radius !default;
+$bottom-sheet-bg:                     white !default;
+$bottom-sheet-min-width:              200px !default;
+$bottom-sheet-item-height:            48px !default;
+$bottom-sheet-item-bg-active:         adjust-ctrl-hover-bg($bottom-sheet-bg) !default;
+$bottom-sheet-item-text-color-active: adjust-text-color($bottom-sheet-bg) !default;
+$bottom-sheet-item-icon-padding:      70px !default;
 
 // Tab
 $tab-height:                  $navbar-tab-height !default;
@@ -206,14 +202,14 @@ $tab-active-indicator-height: 2px !default;
 $tab-active-indicator-color:  $brand-primary !default;
 $tab-inactive-opacity:        0.54 !default;
 $tab-fontsize:                $p-fontsize !default;
-$tab-badge-bg:                $brand-accent !default;
+$tab-badge-bg:                $brand-danger !default;
 
 // Badge
-$badge-bg:         $brand-primary !default;
+$badge-bg:         $brand-danger !default;
 $badge-fontsize:   $h6-fontsize !default;
 $badge-height:     22px !default;
-$badge-radius:     $ctrl-radius !default;
-$badge-text-color: adjust-text-color($badge-bg, $type: 'secondary') !default;
+$badge-radius:     $badge-height / 2 !default;
+$badge-text-color: adjust-text-color($badge-bg) !default;
 
 // Toast
 $toast-bg:               #323232 !default;
@@ -234,6 +230,28 @@ $pager-btn-color: adjust-text-color($body-bg, $type: 'secondary') !default;
 $pager-btn-color-active: adjust-ctrl-hover-bg($body-bg) !default;
 $pager-btn-text-color-active: $brand-primary !default;
 
+// Modal
+$modal-overlay-bg: rgba(10, 10, 10, 0.6) !default;
+$modal-bg: $panel-bg !default;
+$modal-shadow: 0 0 14px rgba(0, 0, 0, 0.24), 0 14px 28px rgba(0, 0, 0, 0.48) !default;
+$modal-radius: 0 !default;
+$modal-min-width: 360px !default;
+
+// Tooltip
+$tooltip-bg: #727272 !default;
+$tooltip-shadow: none !default;
+
+// Blob
+$blob-bg: $body-bg !default;
+$blob-radius: 50% !default;
+$blob-size-map: (
+  'xs': 32px,
+  'sm': 64px,
+  'md': 128px,
+  'lg': 256px,
+  'xlg': 512px,
+) !default;
+
 // Flash
 $flash-fontsize:   $p-fontsize !default;
 $flash-radius:     $ctrl-radius !default;
@@ -246,17 +264,8 @@ $flash-color-map: (
 
 // Chip
 $chip-size:              32px !default;
-$chip-size-densed:       16px !default;
+$chip-size-densed:       24px !default;
 $chip-bg:                $brand-default !default;
 $chip-remove-bg:         rgba(0, 0, 0, 0.3) !default;
 $chip-remove-text-color: #E0E0E0 !default;
-$chip-color-map: (
-  'brand-default':   $brand-default,
-  'brand-primary':   $brand-primary,
-  'brand-danger':    $brand-danger,
-  'brand-warning':   $brand-warning,
-  'brand-info':      $brand-info,
-  'brand-success':   $brand-success,
-  'yes':             $brand-success,
-  'no':              $brand-default
-) !default;
+$chip-color-map:         map-merge($color-map, ('yes': $brand-success, 'no': $brand-danger)) !default;

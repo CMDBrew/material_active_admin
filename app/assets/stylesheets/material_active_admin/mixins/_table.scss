@@ -34,7 +34,7 @@
 
         &::before,
         &::after {
-          @extend %cb-aa-icon;
+          @extend %aa-icon;
 
           margin-left: $offset-base;
           font-size: $h4-fontsize;

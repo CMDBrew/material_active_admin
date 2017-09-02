@@ -4,7 +4,6 @@
 ) {
   position: relative;
   display: inline-block;
-  align-items: center;
   height: $size;
   max-width: 100%;
   min-width: $size;
@@ -22,9 +21,4 @@
   border: 0;
   border-radius: $size / 2;
   box-sizing: border-box;
-
-  @if($size == $chip-size-densed) {
-    padding: 0 $offset;
-    font-size: $h6-fontsize;
-  }
 }

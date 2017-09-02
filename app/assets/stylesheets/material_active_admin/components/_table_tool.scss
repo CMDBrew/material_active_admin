@@ -1,13 +1,15 @@
 %table-tools-batch-enabled {
+  $_bg: $navbar-tab-bg;
+  $_badge-bg: $navbar-tab-badge-bg;
+
+  @if ($navbar-tab-bg == $titlebar-bg) {
+    $_bg: $batchbar-bg;
+    $_badge-bg: $batchbar-badge-bg;
+  }
+
+  background: $_bg;
+
   .table_tools_segmented_control {
-    $_bg: $navbar-tab-bg;
-    $_badge-bg: $navbar-tab-badge-bg;
-
-    @if ($navbar-tab-bg == $titlebar-bg) {
-      $_bg: $batchbar-bg;
-      $_badge-bg: $batchbar-badge-bg;
-    }
-
     @include tab-constructor(
       $_color: $_bg,
       $_height: $navbar-tab-height,

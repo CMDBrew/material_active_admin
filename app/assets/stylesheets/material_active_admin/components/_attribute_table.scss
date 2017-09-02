@@ -1,10 +1,11 @@
-table.cb-aa-attributes-table {
+table.aa-attributes-table {
   width: 100%;
   overflow: hidden;
 
   td,
   th {
     display: flex;
+    align-items: flex-start;
     padding: 2 * $offset-base 0;
     text-align: left;
   }
@@ -19,7 +20,6 @@ table.cb-aa-attributes-table {
 
   th {
     width: 30%;
-    padding-right: 2 * $offset-base;
     font-size: $attr-table-th-fontsize;
     font-weight: normal;
     color: $attr-table-th-text-color;
@@ -28,6 +28,7 @@ table.cb-aa-attributes-table {
   td {
     flex: 1;
     flex-direction: column;
+    padding-left: 2 * $offset-base;
     font-size: $attr-table-td-fontsize;
     color: $attr-table-td-text-color;
     white-space: normal;

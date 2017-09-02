@@ -1,49 +1,67 @@
 @keyframes tooltip-animation {
   from {
-    @include transform(perspective(1000px)rotate3d(1,0,0,90deg)scale(.5)translateY(0));
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
   }
+
   to {
-    @include transform(perspective(1000px)rotate3d(1,0,0,0)scale(1));
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
   }
 }
 @-webkit-keyframes dropdown-animation {
   from {
-    @include transform(perspective(1000px)rotate3d(1,0,0,90deg)scale(.5)translateY(0));
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
   }
+
   to {
-    @include transform(perspective(1000px)rotate3d(1,0,0,0)scale(1));
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
   }
 }
 
-@mixin tooltip-constructor(
-  $max_width: 120px,
-  $bg_color: $tooltip-bg
-) {
+%tooltip-constructor {
   position: absolute;
   display: block;
   font-size: $p-fontsize;
   opacity: 0;
 
-  &.in     { opacity: 1; }
-  &.top    { margin-top:  -#{$offset}; padding:  0; }
-  &.right  { margin-left:  $offset; padding: 0 $offset; }
-  &.bottom { margin-top:   $offset; padding: $offset 0; }
-  &.left   { margin-left: -#{$offset}; padding: 0 $offset; }
+  &.in {
+    opacity: 1;
+  }
+
+  &.top {
+    padding: 0;
+    margin-top: -#{$offset-base};
+  }
+
+  &.right {
+    padding: 0 $offset-base;
+    margin-left: $offset-base;
+  }
+
+  &.bottom {
+    padding: $offset-base 0;
+    margin-top: $offset-base;
+  }
+
+  &.left {
+    padding: 0 $offset-base;
+    margin-left: -#{$offset-base};
+  }
 
   .tooltip-inner {
-    max-width: $max_width;
-    padding: $offset / 2 $offset;
     display: flex;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     align-items: center;
+    max-width: 120px;
+    padding: $offset-base / 2 $offset-base;
+    overflow: hidden;
+    color: adjust-text-color($tooltip-bg);
     text-align: left;
-    color: get-text-color($bg_color);
-    background-color: $bg_color;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: $tooltip-bg;
     border-radius: 2px;
-    @include animation(tooltip-animation .2s);
-    transform-origin: 50% 0;
+
     @include box-shadow($tooltip-shadow);
+    @include animation(tooltip-animation 0.2s);
+    transform-origin: 50% 0;
   }
 }

@@ -24,15 +24,15 @@ module ActiveAdmin
 
       def build_sidebar_toggle
         div id: 'sidebar-toggle' do
-          a class: 'nav-icon' do
-            i '', class: 'mdi-aa-icon-menu'
+          a class: 'nav-icon sidebar-toggle' do
+            i '', class: 'aa-icon-menu'
           end
         end
       end
 
       def build_search_toggle
-        div id: 'search-filter-toggle', class: 'nav-icon' do
-          i '', class: 'mdi-aa-icon-search'
+        div id: 'search-filter-toggle', class: 'nav-icon filter-toggle' do
+          i '', class: 'aa-icon-search'
         end
       end
 
@@ -44,7 +44,7 @@ module ActiveAdmin
         div id: 'search-filter' do
           div class: 'header' do
             span I18n.t('active_admin.search_model', model: active_admin_config.resource_label).to_s
-            div i('', class: 'mdi-aa-icon-close'), class: 'search-close'
+            div i('', class: 'aa-icon-close'), class: 'search-close filter-toggle'
           end
           div @filters.collect { |x| sidebar_section(x) }, class: 'body'
         end

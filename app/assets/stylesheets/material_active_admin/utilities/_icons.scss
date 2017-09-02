@@ -2,7 +2,7 @@
   @return get-map-value($key, $icon-map);
 }
 
-%cb-aa-icon {
+%aa-icon {
   display: inline-block;
   align-items: center;
   overflow: hidden;
@@ -21,8 +21,8 @@
   -webkit-font-smoothing: antialiased;
 }
 
-[class*='mdi-aa-icon-']::before {
-  @extend %cb-aa-icon;
+[class*='aa-icon-']::before {
+  @extend %aa-icon;
 }
 
 $icon-map: (
@@ -46,7 +46,7 @@ $icon-map: (
 );
 
 @each $_icon-name, $_icon-value in $icon-map {
-  .mdi-aa-icon-#{$_icon-name}::before {
+  .aa-icon-#{$_icon-name}::before {
     content: $_icon-value;
   }
 }

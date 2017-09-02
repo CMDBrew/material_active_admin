@@ -57,7 +57,7 @@
       }
       &:before {
         color: get-nav-text-color($header_bg, $status:active);
-        @extend %cb-aa-icon;
+        @extend %aa-icon;
       }
     }
   }
