@@ -1,0 +1,67 @@
+%modal-list {
+  width: 100% !important;
+
+  .item-content {
+    padding: 0 3 * $offset-base;
+  }
+}
+
+@mixin list-constructor($_bg: $panel-bg) {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li:not(.item) {
+    padding: 0;
+    margin: 0;
+  }
+
+  .item-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    padding: 0;
+
+    & + .item-content {
+      padding-left: 0;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+
+  .item-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 0 2 * $offset-base;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 56px;
+    padding: $offset-base 0;
+    margin: 0;
+    overflow: hidden;
+    font-size: $h4-fontsize;
+    font-weight: normal;
+    color: adjust-text-color($_bg);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover {
+      background: adjust-ctrl-hover-bg($_bg);
+    }
+  }
+}

@@ -1,4 +1,4 @@
 .tooltip {
-  @include tooltip-constructor;
+  @extend %tooltip-constructor;
   z-index: 2000;
 }

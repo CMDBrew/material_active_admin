@@ -10,21 +10,31 @@ ActiveAdmin.register AdminUser do
                 :select,
                 :textarea
 
+  # controller do
+  #   before_action :set_notice, only: :index
+  #
+  #   private
+  #
+  #   def set_notice
+  #     flash.now[:notice] = 'Test'
+  #   end
+  # end
+
   scope :basic_user, :show_count => true, :default => true do |records|
     records
   end
   scope :super_user, :show_count => true do |records|
     records
   end
-
-  batch_action :hello, hidden_mobile: true do
-    puts '132'
-  end
-
+  #
+  # batch_action :hello, hidden_mobile: true do
+  #   puts '132'
+  # end
+  #
   batch_action :world, dropdown_item: true do
     puts '132'
   end
-
+  #
   action_item :convert, only: :index, priority: 0 do
     nav_btn 'convert', '#'
   end
@@ -34,45 +44,48 @@ ActiveAdmin.register AdminUser do
   action_item :convert, only: :index, priority: 0 do
     nav_btn 'convert', '#'
   end
-
-  action_item :drop, only: :show do
-    dropdown_menu '' do
-      item "Edit Details", '#'
-      item "Edit My Account", '#'
-    end
-  end
+  #
+  # action_item :drop, only: :show do
+  #   dropdown_menu '' do
+  #     item "Edit Details", '#'
+  #     item "Edit My Account", '#'
+  #   end
+  # end
 
   # FLOAT ACTIONS
-  config.clear_float_actions!
+  # config.clear_float_actions!
 
   float_action :new, only: :index do
     if controller.action_methods.include?('new') &&
       authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
-      float_item("add", 'add', '#')
+      bottom_sheet '' do
+        item "Edit Details", '#', icon: 'delete'
+        item "Edit My Account", '#', icon: 'delete'
+      end
+      # float_btn('add', '#')
     #   link_to content_tag(:i, 'add', class: 'material-icons'), new_resource_path
     end
   end
 
-  float_action :new,
-               only: :show do
-    if controller.action_methods.include?('show') &&
-       authorized?(ActiveAdmin::Auth::UPDATE, active_admin_config.resource_class)
-      link_to '' do
-        concat(content_tag(:i, 'mode_edit', class: 'material-icons'))
-        concat('Edit')
-      end
-    end
-  end
+  # float_action :new, only: :index do
+  #   if controller.action_methods.include?('new') &&
+  #     authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
+  #     float_btn("add 2", 'add 2', '#')
+  #   #   link_to content_tag(:i, 'add', class: 'material-icons'), new_resource_path
+  #   end
+  # end
 
   float_action :new,
                only: :show do
     if controller.action_methods.include?('show') &&
        authorized?(ActiveAdmin::Auth::UPDATE, active_admin_config.resource_class)
-      link_to '', class: 'brand-warning' do
-        concat(content_tag(:i, 'videocam', class: 'material-icons'))
-          concat('Video')
-      end
+      float_btn('edit', '#', size: 'sm')
     end
+  end
+
+  float_action :new,
+               only: :show do
+    float_btn('add', '#', size: 'sm')
   end
 
   # sidebar :help, class: 'collapse' do
@@ -213,20 +226,18 @@ ActiveAdmin.register AdminUser do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    panel "Detail" do
-      f.inputs do
-        f.input :select,
-                as: :select,
-                collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
-                :input_html => {class: "select2-with-search"},
-                multiple: true,
-                :hint => "ahsdioahsoidhaio oiashdoiashd oahsdo hadsoaoishd asiod ashiohds"
-        f.input :is_super_admin
-        f.input :email, input_html: { disabled: "disabled" }
-        f.input :textarea, input_html: { rows: 4, class: "tinymce" }
-        f.input :password
-        f.input :password_confirmation
-      end
+    f.inputs "status", collapse: true do
+      f.input :select,
+              as: :select,
+              collection: (1..100).map { |x| ["options - #{x}", "options - #{x}"]},
+              :input_html => {class: "select2-with-search"},
+              multiple: true,
+              :hint => "ahsdioahsoidhaio oiashdoiashd oahsdo hadsoaoishd asiod ashiohds"
+      f.input :is_super_admin
+      f.input :email, input_html: { disabled: "disabled" }
+      f.input :textarea, input_html: { rows: 4, class: "tinymce" }
+      f.input :password
+      f.input :password_confirmation
       f.actions
     end
     # tabs do

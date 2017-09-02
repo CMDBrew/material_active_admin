@@ -25,7 +25,7 @@ module ActiveAdmin
 
       def build_sidebar_toggle
         div id: 'sidebar-close' do
-          i '', class: 'mdi-aa-icon-close'
+          i '', class: 'aa-icon-close sidebar-toggle'
         end
       end
 

@@ -58,6 +58,15 @@
 
     .inputs {
       flex: 1;
+      padding: 0;
+      overflow: visible;
+      border-radius: 0;
+      @include box-shadow(none);
+
+      & > ol {
+        padding: 0;
+        overflow: visible;
+      }
     }
 
     textarea,

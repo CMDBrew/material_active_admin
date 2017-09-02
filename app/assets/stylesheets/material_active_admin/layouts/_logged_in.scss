@@ -10,7 +10,17 @@ body.logged_in {
     @include index-page;
   }
 
+  &.filter-toggled:not(.batch-enabled) {
+    overflow: hidden;
+
+    #search-filter {
+      @extend %search-filter-toggled;
+    }
+  }
+
   &.sidebar-toggled {
+    overflow: hidden;
+
     #wrapper {
       padding-left: 0;
     }
@@ -46,12 +56,6 @@ body.logged_in {
     #wrapper {
       padding-top: $navbar-height + $navbar-tab-height;
     }
-
-    &.scrolled {
-      &::before {
-        @include box-shadow($navbar-shadow);
-      }
-    }
   }
 
   #float_actions_wrap {
@@ -80,7 +84,7 @@ body.logged_in {
     flex: 1;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 2 * $offset-base $offset-base;
+    padding: 2 * $offset-base 3 * $offset-base;
     padding-bottom: 100px;
   }
 

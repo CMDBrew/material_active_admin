@@ -23,13 +23,13 @@ module Formtastic
 
       def file_placeholder
         template.content_tag(
-          :span, ::I18n.t('active_admin.placeholders.choose_file'), class: 'file-text'
+          :div, ::I18n.t('active_admin.placeholders.choose_file'), class: 'file-text'
         )
       end
 
       def file_button
         template.content_tag(
-          :label, label_text, class: 'file-input mdi-btn brand-primary btn-densed'
+          :label, label_text, class: 'file-input aa-btn-solid brand-primary btn-sm'
         ) do
           template.content_tag(:span, ::I18n.t('active_admin.choose_file')) <<
             builder.file_field(method, input_html_options)

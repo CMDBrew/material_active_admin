@@ -10,6 +10,7 @@
 ) {
   .mce-tinymce {
     width: 100%;
+    margin-top: $offset-base;
     border-radius: $border_radius;
     border: $border !important;
     color: get-text-color($panel_bg);
@@ -154,7 +155,7 @@
     width: $icon_size;
     height: $icon_size;
     &:before {
-      @extend %cb-aa-icon;
+      @extend %aa-icon;
 
       font-size: 20px;
       font-weight: normal;

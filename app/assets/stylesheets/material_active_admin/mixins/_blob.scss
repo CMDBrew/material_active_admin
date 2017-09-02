@@ -1,0 +1,20 @@
+@mixin blob-constructor(
+  $_size,
+  $_radius
+) {
+  position: relative;
+  display: block;
+  width: $_size;
+  height: $_size;
+  overflow: hidden;
+  background: $blob-bg;
+  border-radius: $_radius;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    @include transform(translateX(-50%));
+  }
+}

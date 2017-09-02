@@ -13,7 +13,7 @@ module ActiveAdmin
         options = {}
         options[:for] = @collection.first if single_record?
         super(options)
-        @table = table(class: 'cb-aa-attributes-table')
+        @table = table(class: 'aa-attributes-table')
         build_colgroups
         rows(*attrs)
       end

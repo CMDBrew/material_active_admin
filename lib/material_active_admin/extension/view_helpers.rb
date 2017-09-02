@@ -2,11 +2,32 @@
 # rubocop:disable Metric/ModuleLength
 module ActiveAdmin::ViewHelpers
 
-  def menu_label(icon, label, badge: nil, html: [])
+  def blob(object, image_size:, blob_size: 'xs', name: 'image', round: false)
+    return unless object.respond_to?(name.to_sym)
+    klass = %w[blob]
+    klass.push blob_size
+    klass.push 'round' if round
+    klass.join(' ')
+    content_tag :div, class: klass do
+      image_tag object.send(name.to_sym).url(image_size)
+    end
+  end
+
+  def file_link(object, name: 'file')
+    return unless file_link?(object, name)
+    file_preview_label + file_preview_link(object, name)
+  end
+
+  def menu_label(label, icon: nil, badge: 0, html: [])
     html << menu_icon(icon)
     html << menu_title(label)
     html << menu_badge(badge)
     safe_join(html)
+  end
+
+  def aa_icon(icon)
+    return if icon.blank?
+    content_tag(:i, icon, class: 'aa-icon')
   end
 
   def admin_avatar(current_admin_user, html: [])
@@ -15,31 +36,20 @@ module ActiveAdmin::ViewHelpers
     safe_join(html)
   end
 
-  def admin_identifier(current_admin_user)
-    content_tag :span do
-      if current_admin_user.respond_to?(:full_name) &&
-         current_admin_user.full_name.present?
-        current_admin_user.full_name
-      else
-        current_admin_user.email
-      end
-    end
-  end
-
-  def file_preview(object, name = 'image', fields: [])
-    return unless file_preview?(object, name)
-    fields << file_preview_label
-    fields << file_preview_link(object, name)
-    safe_join(fields)
-  end
-
-  def image_preview(object, name = 'image', size = nil)
-    return unless image_preview?(object, name)
-    size = size.present? ? size.to_sym : nil
-    content_tag :div, class: 'image' do
-      image_tag object.send(name.to_sym).url(size)
-    end
-  end
+  # def file_preview(object, name = 'image', fields: [])
+  #   return unless file_link?(object, name)
+  #   fields << file_preview_label
+  #   fields << file_preview_link(object, name)
+  #   safe_join(fields)
+  # end
+  #
+  # def image_preview(object, name = 'image', size = nil)
+  #   return unless image_preview?(object, name)
+  #   size = size.present? ? size.to_sym : nil
+  #   content_tag :div, class: 'image' do
+  #     image_tag object.send(name.to_sym).url(size)
+  #   end
+  # end
 
   def blank_slate_msg(
     new_resource_path = nil,
@@ -50,14 +60,19 @@ module ActiveAdmin::ViewHelpers
   )
     msg << blank_slate_new_resource_path(new_resource_path).to_s
     content_tag :div, class: 'blank_slate_container' do
-      concat(content_tag(:i, '', class: "mdi-aa-icon-#{icon}"))
+      concat(content_tag(:i, '', class: "aa-icon-#{icon}"))
       concat(content_tag(:h3, title, class: 'title'))
       concat(content_tag(:p, safe_join(msg), class: 'blank_slate'))
     end
   end
 
   def tab_active?(target_tab)
-    target_tab == params[:active_tab] ? 'selected' : nil
+    target_tab == params[:active_tab]
+  end
+
+  def select_tab?(target_tab)
+    return unless tab_active?(target_tab)
+    'selected'
   end
 
   def mdi_spinner(color_klass = '')
@@ -88,7 +103,7 @@ module ActiveAdmin::ViewHelpers
       object.send(name.to_sym).present?
   end
 
-  def file_preview?(object, name)
+  def file_link?(object, name)
     object.respond_to?(name.to_sym) &&
       object.send(name.to_sym).present?
   end
@@ -98,10 +113,11 @@ module ActiveAdmin::ViewHelpers
   end
 
   def file_preview_link(object, name)
-    link_to object.send(name.to_sym).file.filename, object.send(name.to_sym).url, target: '_blank'
+    link_to object.send("#{name}_identifier".to_sym), object.send(name.to_sym).url, target: '_blank'
   end
 
   def menu_icon(icon)
+    return if icon.blank?
     content_tag(:i, icon, class: 'aa-icon')
   end
 
@@ -114,7 +130,7 @@ module ActiveAdmin::ViewHelpers
   def menu_badge(badge)
     return unless badge.is_a?(Integer) && badge.positive?
     badge = '99+' if badge > 99
-    content_tag(:span, badge, class: 'cb-aa-badge')
+    content_tag(:span, badge, class: 'aa-badge')
   end
 
   def admin_avatar_icon(current_admin_user)

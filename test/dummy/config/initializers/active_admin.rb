@@ -222,7 +222,7 @@ ActiveAdmin.setup do |config|
     end
     admin.build_menu :utility_navigation do |menu|
 
-      menu.add  :label    => proc { menu_label("settings", admin_identifier(current_active_admin_user)) },
+      menu.add  :label    => proc { menu_label("settings", current_active_admin_user.email) },
                 :id       => 'current_admin_user',
                 :priority => 2
 

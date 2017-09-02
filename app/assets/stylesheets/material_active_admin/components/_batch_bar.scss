@@ -30,6 +30,7 @@
   #batch_bar_right {
     display: flex;
     flex: 0 0 auto;
+    padding: 0 2 * $offset-base;
     text-align: right;
 
     & > ul {
@@ -44,8 +45,7 @@
 
   }
 
-  .batch_actions_selector.dropdown_menu {
-    margin-right: $offset-base;
+  .dropdown_menu {
     margin-left: $offset-base / 2;
   }
 }

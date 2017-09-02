@@ -1,3 +1,24 @@
+@keyframes bottom-sheet-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+@-webkit-keyframes dropdown-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+
+
 @keyframes float-action-animation {
   from {
     opacity: 0;
@@ -40,6 +61,10 @@
   @include box-shadow($float-action-shadow);
   @include animation(float-action-animation 0.4s);
 
+  span {
+    display: none;
+  }
+
   &:hover {
     @include box-shadow($float-action-shadow-active);
   }
@@ -51,12 +76,23 @@
   bottom: 0;
   padding: 3 * $offset;
 
-  &.multi-actions {
-    ul.bottom-sheet {
+  .bottom_sheet {
+    &.active {
+      .bottom_sheet_trigger {
+        opacity: 0;
+      }
+
+      .bottom_sheet_wrapper {
+        display: block;
+      }
+    }
+
+    .bottom_sheet_wrapper {
       position: absolute;
       right: 0;
-      bottom: $float-action-size + 2 * $offset-base;
-      z-index: 999;
+      bottom: 0;
+      z-index: 11;
+      display: none;
       width: auto;
       height: auto;
       min-width: $bottom-sheet-min-width;
@@ -69,32 +105,48 @@
 
       @include box-shadow($bottom-sheet-shadow);
       @include animation(bottom-sheet-animation 0.2s);
-      transform-origin: 50% 0;
-    }
+      transform-origin: right bottom;
 
-    li:hover a {
-      color: $bottom-sheet-menu-item-text-color-active !important;
-      background: $bottom-sheet-menu-item-bg-active;
-    }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
 
-    li a {
-      display: flex;
-      align-items: center;
-      flex: 1;
-      height: $bottom-sheet-menu-item-height;
-      padding: 0 3 * $offset-base;
-      overflow: hidden;
-      font-size: $p-fontsize;
-      font-weight: normal;
-      color: adjust-text-color($bottom-sheet-bg);
-      text-overflow: ellipsis;
-      text-transform: none;
-      white-space: nowrap;
-      box-sizing: border-box;
+      li:hover a {
+        color: $bottom-sheet-item-text-color-active !important;
+        background: $bottom-sheet-item-bg-active;
+      }
 
-      & > i {
-        margin-right: $offset-base;
-        color: adjust-text-color($bottom-sheet-bg, $type: 'secondary');
+      li a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        height: $bottom-sheet-item-height;
+        padding: 0 3 * $offset-base;
+        padding-left: $bottom-sheet-item-icon-padding;
+        overflow: hidden;
+        font-size: $p-fontsize;
+        font-weight: normal;
+        color: adjust-text-color($bottom-sheet-bg);
+        text-overflow: ellipsis;
+        text-transform: none;
+        white-space: nowrap;
+        box-sizing: border-box;
+
+        & > i {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: $bottom-sheet-item-icon-padding;
+          height: $bottom-sheet-item-height;
+          font-size: $icon-size;
+          color: adjust-text-color($bottom-sheet-bg, $type: 'secondary');
+        }
       }
     }
   }
@@ -103,23 +155,32 @@
     position: relative;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: flex-end;
   }
 
   .float_action {
     position: relative;
     z-index: 11;
-    margin-top: 2 * $offset;
+    display: block;
+
+    &:not(:first-child) {
+      margin-bottom: 2 * $offset-base;
+    }
   }
 
-  .float_action a {
+  .float-btn {
     @extend %float-action-base;
 
-    @each $color_class, $color in $btn-color-map {
-      &.#{$color_class} {
-        color: get-text-color($color);
-        background: $color;
+    &.sm {
+      width: $float-action-size-sm;
+      height: $float-action-size-sm;
+    }
+
+    @each $_class, $_color in $color-map {
+      &.#{$_class} {
+        color: get-text-color($_color);
+        background: $_color;
       }
     }
   }

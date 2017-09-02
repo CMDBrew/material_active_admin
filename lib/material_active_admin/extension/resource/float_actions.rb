@@ -66,9 +66,10 @@ module ActiveAdmin
         add_float_action :new, only: :index do
           if controller.action_methods.include?('new') &&
              authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
-            link_to(
-              content_tag(:i, '', class: 'mdi-aa-icon-add'),
-              new_resource_path
+            float_btn(
+              'add',
+              new_resource_path,
+              class: 'brand-accent'
             )
           end
         end
@@ -79,9 +80,10 @@ module ActiveAdmin
         add_float_action :edit, only: :show do
           if controller.action_methods.include?('edit') &&
              authorized?(ActiveAdmin::Auth::UPDATE, resource)
-            link_to(
-              content_tag(:i, '', class: 'mdi-aa-icon-edit'),
-              edit_resource_path(resource)
+            float_btn(
+              'edit',
+              edit_resource_path(resource),
+              class: 'brand-accent'
             )
           end
         end

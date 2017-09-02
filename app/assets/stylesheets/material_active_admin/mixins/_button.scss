@@ -23,7 +23,6 @@
   @extend %button;
 
   display: flex;
-  flex: 1;
   padding: 0 2 * $offset-base;
 
   @if ($_size == 'sm') {
