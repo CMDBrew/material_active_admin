@@ -60,7 +60,17 @@ body.logged_out {
     }
 
     .flash {
-      margin-bottom: 3 * $offset-base; 
+      margin-bottom: 3 * $offset-base;
+    }
+
+    .inputs {
+      margin-bottom: 0;
+
+      @include box-shadow(none);
+
+      ol {
+        padding: 0;
+      }
     }
 
     .actions {
@@ -69,6 +79,12 @@ body.logged_out {
         flex: 1;
         float: none;
         margin: 0;
+      }
+
+      input {
+        &[type='submit'] {
+          flex: 1;
+        }
       }
     }
   }

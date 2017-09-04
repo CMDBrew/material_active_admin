@@ -1,7 +1,7 @@
 ActiveAdmin.register AdminUser do
   menu :parent => "integration",
        priority: 1,
-       label: proc { menu_label("supervisor_account", "Admin Users", badge: 10) }
+       label: proc { menu_label("Admin Users", icon: "supervisor_account", badge: 10) }
 
   permit_params :email,
                 :password,

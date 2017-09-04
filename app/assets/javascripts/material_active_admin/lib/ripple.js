@@ -14,6 +14,8 @@ ActiveAdmin.Ripple = class Ripple {
   }
 
   create() {
+    $(`.${this.options.rippleClass}`).remove();
+
     let $ripple = $(this.options.ripple);
     let offset = this.$element.offset();
     let xPos = event.pageX - (offset.left);

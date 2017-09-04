@@ -24,11 +24,12 @@ form {
     }
   }
 
-  label.label {
+  label {
     display: block;
     width: 100%;
     min-height: 24px;
     padding-top: $offset-base;
+    margin-bottom: $offset-base;
     font-size: $label-fontsize;
     font-weight: $font-bold;
     color: $label-text-color;
@@ -115,6 +116,26 @@ form {
 
     &.file {
       @include input-file-constructor;
+    }
+
+    &.datetime_select,
+    &.date_select {
+      .fragments-group {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+
+        .fragment {
+          flex: 1;
+
+          @include input-text-constructor;
+          @include input-select-constructor;
+
+          &:not(:last-child) {
+            margin-right: $offset-base;
+          }
+        }
+      }
     }
 
     .inline-errors {

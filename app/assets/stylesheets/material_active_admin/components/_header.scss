@@ -1,6 +1,9 @@
 %header-toggled {
-  // @include box-shadow($header-shadow);
   @include transform(translateX(-100%));
+
+  @include tablet {
+    @include transform(translateX(0%));
+  }
 }
 
 %header-has-tab {
@@ -25,11 +28,6 @@
     overflow-y: scroll;
   }
 
-  #sidebar-close,
-  .site_title {
-    display: none !important;
-  }
-
   #footer {
     padding: 2 * $offset-base;
     color: $header-text-color;
@@ -38,20 +36,37 @@
     a { white-space: nowrap; }
   }
 
-  //
-  // #sidebar-close {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   z-index: 11;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   width: 48px;
-  //   height: $navbar-height;
-  //   color: adjust-text-color($header-title-bg);
-  //   cursor: pointer;
-  // }
+  #site_title {
+    position: relative;
+    display: none;
+    padding-right: 3 * $offset-base;
+    padding-left: $header-icon-padding;
+    border-bottom: 1px solid $header-divider-color;
+
+    #sidebar-close {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $header-icon-padding;
+      height: 100%;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      height: $navbar-height;
+      overflow: hidden;
+
+      * {
+        font-size: inherit;
+        color: inherit;
+      }
+    }
+  }
 
   ul {
     padding: 0;
@@ -167,5 +182,20 @@
 
   .aa-badge {
     @include badge-constructor($header-badge-bg);
+  }
+
+  @include tablet {
+    top: 0 !important;
+    z-index: 1400;
+    width: 100%;
+    max-width: $header-width-sm;
+    background: $header-bg-sm;
+
+    @include box-shadow($header-shadow-sm);
+    @include transform(translateX(-100%));
+
+    #site_title {
+      display: block;
+    }
   }
 }

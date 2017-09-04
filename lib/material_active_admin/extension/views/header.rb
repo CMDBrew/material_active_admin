@@ -12,20 +12,17 @@ module ActiveAdmin
         @menu         = menu
         @utility_menu = @namespace.fetch_menu(:utility_navigation)
 
-        build_sidebar_toggle
         build_site_title
-        div id: 'main-nav' do
-          build_global_navigation
-          build_utility_navigation
-        end
+        build_nav
         build_footer
       end
 
       private
 
-      def build_sidebar_toggle
-        div id: 'sidebar-close' do
-          i '', class: 'aa-icon-close sidebar-toggle'
+      def build_nav
+        div id: 'main-nav' do
+          build_global_navigation
+          build_utility_navigation
         end
       end
 

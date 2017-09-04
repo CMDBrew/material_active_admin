@@ -130,4 +130,26 @@ body.logged_in {
   #toast-container {
     @include toast-constructor;
   }
+
+  @include tablet {
+    #wrapper {
+      padding-left: 0;
+    }
+  }
+
+  @include mobile {
+    #active_admin_content,
+    #main_content_wrapper {
+      padding: 0;
+    }
+
+    #main_content_wrapper {
+      flex: auto;
+    }
+
+    #sidebar {
+      width: 100%;
+      padding: 0;
+    }
+  }
 }

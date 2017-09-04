@@ -212,17 +212,17 @@ ActiveAdmin.setup do |config|
   #
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add :label    => proc { menu_label("apps", "Integration") },
+      menu.add :label    => proc { menu_label("Integration", icon: "apps") },
                :id       => "integration",
                :priority => 2
 
-      menu.add :label    => proc { menu_label("help", "Help") },
+      menu.add :label    => proc { menu_label("Help", icon: "help") },
                :id       => 'support',
                :priority => 99
     end
     admin.build_menu :utility_navigation do |menu|
 
-      menu.add  :label    => proc { menu_label("settings", current_active_admin_user.email) },
+      menu.add  :label    => proc { menu_label(current_active_admin_user.email, icon: "settings") },
                 :id       => 'current_admin_user',
                 :priority => 2
 
