@@ -1,7 +1,7 @@
 ActiveAdmin.register_page "Dashboard" do
 
   # menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
-  menu priority: 1, label: proc { menu_label("donut_small", I18n.t("active_admin.dashboard")) }
+  menu priority: 1, label: proc { menu_label(I18n.t("active_admin.dashboard", icon: 'donut_small')) }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
     div class: "blank_slate_container", id: "dashboard_default_message" do

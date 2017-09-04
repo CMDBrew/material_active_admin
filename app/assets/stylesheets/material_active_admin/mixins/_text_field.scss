@@ -125,7 +125,7 @@
 
     &:not([multiple]) {
       padding-right: 4 * $offset-base;
-      background-image: image-url('cb_activeadmin/arrow_down.png');
+      background-image: image-url('material_active_admin/arrow_down.png');
       background-position: calc(100% - 4px) 8px;
       background-repeat: no-repeat;
       background-size: $icon-size;
@@ -155,6 +155,10 @@
       height: $input-height;
       margin-right: 2 * $offset-base;
       line-height: $input-height;
+    }
+
+    .file-input {
+      width: auto;
     }
 
     input {

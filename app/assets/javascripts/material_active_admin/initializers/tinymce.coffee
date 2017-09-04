@@ -7,7 +7,7 @@
 #     menubar: false
 #     toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
 #     elementpath: false
-#     content_css: "/assets/cb_activeadmin/themes/tinymce-default"
+#     content_css: "/assets/material_active_admin/themes/tinymce-default"
 #
 # # @InitAdminCommentTinyMCE = ->
 # #   tinymce.init
@@ -17,7 +17,7 @@
 # #     menubar: false
 # #     toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
 # #     elementpath: false
-# #     content_css: "/assets/cb_activeadmin/themes/tinymce-default"
+# #     content_css: "/assets/material_active_admin/themes/tinymce-default"
 #
 #
 # $(document).on 'ready page:load turbolinks:load', ->

@@ -10,13 +10,17 @@ module ActiveAdmin
       end
 
       def build(namespace)
-        super(class: 'site_title')
+        super(id: 'site_title')
         @namespace = namespace
 
-        if site_title_link?
-          site_title_with_link
-        else
-          site_title_content
+        build_toggle
+
+        h3 class: 'title' do
+          if site_title_link?
+            site_title_with_link
+          else
+            title_text
+          end
         end
       end
 
@@ -31,17 +35,12 @@ module ActiveAdmin
       private
 
       def site_title_with_link
-        helpers.link_to(site_title_content, @namespace.site_title_link)
+        helpers.link_to(title_text, @namespace.site_title_link)
       end
 
-      def site_title_content
-        if site_title_image?
-          div(class: 'favicon-container') do
-            div(title_image, class: 'favicon')
-          end
-        end
-        div(class: 'title') do
-          title_text
+      def build_toggle
+        div id: 'sidebar-close' do
+          i '', class: 'aa-icon-menu sidebar-toggle'
         end
       end
 
