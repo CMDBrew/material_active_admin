@@ -134,7 +134,7 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = { label: proc { menu_label("format_quote", "Comment") } }
+  config.comments_menu = { label: proc { menu_label("Comment", icon: "format_quote") } }
 
   # == Batch Actions
   #

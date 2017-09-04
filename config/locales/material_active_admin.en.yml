@@ -1,0 +1,10 @@
+en:
+  material_active_admin:
+    powered_by: "©%{owner}. All Rights Reserved. Version: %{version}"
+    owner: "Clever Banana Studios Inc"
+    file_preview:
+      label: 'Current attachment: '
+    blank_slate:
+      heading: "No Records Found"
+      content: "There are no %{resource_name} found."
+      link: "Create one"

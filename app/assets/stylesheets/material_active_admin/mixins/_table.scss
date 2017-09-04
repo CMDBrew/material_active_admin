@@ -101,7 +101,7 @@
       justify-content: flex-end;
 
       & > a {
-        @include button-constructor($color: $brand-primary, $size: 'sm' , $type: 'link');
+        @include button-constructor($_color: $brand-primary, $_size: 'sm' , $_type: 'link');
       }
 
       a.member_link {

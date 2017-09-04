@@ -64,6 +64,7 @@ $body-bg:                #EEEEEE !default;
 $body-bg-logged-out:     $brand-primary !default;
 $color-adjust-intensity: 75 !default;
 $ripple-bg:              white !default;
+$aside-width:            320px !default;
 
 // Title Bar
 $titlebar-bg:         $brand-primary !default;
@@ -270,6 +271,9 @@ $blob-size-map: (
   'xlg': 512px,
 ) !default;
 
+// Spinner
+$spinner-size: 40px !default;
+
 // Flash
 $flash-fontsize:   $p-fontsize !default;
 $flash-radius:     $ctrl-radius !default;
@@ -287,3 +291,8 @@ $chip-bg:                $brand-default !default;
 $chip-remove-bg:         rgba(0, 0, 0, 0.3) !default;
 $chip-remove-text-color: #E0E0E0 !default;
 $chip-color-map:         map-merge($color-map, ('yes': $brand-success, 'no': $brand-danger)) !default;
+
+// Datepicker
+$date-picker-bg:        white !default;
+$date-picker-shadow:    $dropdown-shadow !default;
+$date-picker-item-size: 32px !default;

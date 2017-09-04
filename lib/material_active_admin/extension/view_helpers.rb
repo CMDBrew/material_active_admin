@@ -1,5 +1,4 @@
 # Extend ActiveAdmin ViewHelpers
-# rubocop:disable Metric/ModuleLength
 module ActiveAdmin::ViewHelpers
 
   def blob(object, image_size:, blob_size: 'xs', name: 'image', round: false)
@@ -18,11 +17,12 @@ module ActiveAdmin::ViewHelpers
     file_preview_label + file_preview_link(object, name)
   end
 
-  def menu_label(label, icon: nil, badge: 0, html: [])
-    html << menu_icon(icon)
-    html << menu_title(label)
-    html << menu_badge(badge)
-    safe_join(html)
+  def menu_label(label, icon: nil, badge: 0)
+    safe_join [
+      menu_icon(icon),
+      menu_title(label),
+      menu_badge(badge)
+    ]
   end
 
   def aa_icon(icon)
@@ -30,39 +30,18 @@ module ActiveAdmin::ViewHelpers
     content_tag(:i, icon, class: 'aa-icon')
   end
 
-  def admin_avatar(current_admin_user, html: [])
-    html << admin_avatar_icon(current_admin_user)
-    html << admin_identifier(current_admin_user)
-    safe_join(html)
-  end
-
-  # def file_preview(object, name = 'image', fields: [])
-  #   return unless file_link?(object, name)
-  #   fields << file_preview_label
-  #   fields << file_preview_link(object, name)
-  #   safe_join(fields)
-  # end
-  #
-  # def image_preview(object, name = 'image', size = nil)
-  #   return unless image_preview?(object, name)
-  #   size = size.present? ? size.to_sym : nil
-  #   content_tag :div, class: 'image' do
-  #     image_tag object.send(name.to_sym).url(size)
-  #   end
-  # end
-
   def blank_slate_msg(
-    new_resource_path = nil,
-    resource_name = 'Records',
-    icon  = 'empty',
-    title = blank_slate_title,
-    msg   = [blank_slate_body(resource_name)]
+    new_resource_path: nil,
+    resource_name: 'Records',
+    icon: 'empty',
+    title: blank_slate_title,
+    msg: [blank_slate_body(resource_name)]
   )
     msg << blank_slate_new_resource_path(new_resource_path).to_s
     content_tag :div, class: 'blank_slate_container' do
       concat(content_tag(:i, '', class: "aa-icon-#{icon}"))
       concat(content_tag(:h3, title, class: 'title'))
-      concat(content_tag(:p, safe_join(msg), class: 'blank_slate'))
+      concat(content_tag(:p, safe_join(msg, ' '), class: 'blank_slate'))
     end
   end
 
@@ -75,10 +54,10 @@ module ActiveAdmin::ViewHelpers
     'selected'
   end
 
-  def mdi_spinner(color_klass = '')
-    content_tag :div, class: "mdi-spinner #{color_klass}" do
-      (1..12).each do |i|
-        concat(content_tag(:div, '', class: "mdi-circle mdi-circle#{i}"))
+  def spinner(klass: 'brand-primary')
+    content_tag :div, class: "aa-spinner #{klass}" do
+      12.times do
+        concat(content_tag(:div, '', class: 'circle'))
       end
     end
   end
@@ -86,21 +65,20 @@ module ActiveAdmin::ViewHelpers
   private
 
   def blank_slate_title
-    I18n.t('active_admin.blank_slate.heading')
+    I18n.t('material_active_admin.blank_slate.heading')
   end
 
   def blank_slate_body(resource_name)
-    I18n.t('active_admin.blank_slate.content', resource_name: resource_name)
+    I18n.t('material_active_admin.blank_slate.content', resource_name: resource_name)
+  end
+
+  def blank_slate_link
+    I18n.t('material_active_admin.blank_slate.link')
   end
 
   def blank_slate_new_resource_path(new_resource_path)
     return if new_resource_path.blank?
-    link_to('Create one', new_resource_path, class: 'brand-link')
-  end
-
-  def image_preview?(object, name)
-    object.respond_to?(name.to_sym) &&
-      object.send(name.to_sym).present?
+    link_to(blank_slate_link, new_resource_path)
   end
 
   def file_link?(object, name)
@@ -109,7 +87,7 @@ module ActiveAdmin::ViewHelpers
   end
 
   def file_preview_label
-    content_tag(:span, 'current attachment: ')
+    content_tag(:span, I18n.t('material_active_admin.file_preview.label'))
   end
 
   def file_preview_link(object, name)
@@ -131,18 +109,6 @@ module ActiveAdmin::ViewHelpers
     return unless badge.is_a?(Integer) && badge.positive?
     badge = '99+' if badge > 99
     content_tag(:span, badge, class: 'aa-badge')
-  end
-
-  def admin_avatar_icon(current_admin_user)
-    content_tag :div, class: 'avatar-container' do
-      content_tag :div, class: 'avatar' do
-        if current_admin_user.respond_to?(:avatar) && current_admin_user.avatar.present?
-          image_tag current_admin_user.avatar.url(:thumb)
-        else
-          current_admin_user.email[0]
-        end
-      end
-    end
   end
 
 end

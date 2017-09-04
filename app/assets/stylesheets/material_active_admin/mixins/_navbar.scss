@@ -46,9 +46,9 @@
 
   .nav-btn {
     @include button-constructor(
-      $color: $_btn-color,
-      $size: 'sm',
-      $type: $navbar-btn-type
+      $_color: $_btn-color,
+      $_size: 'sm',
+      $_type: $navbar-btn-type
     );
   }
 
@@ -62,6 +62,6 @@
 
   .action_item .dropdown_menu,
   .nav-icon {
-    @include button-icon-constructor($color: $_btn-color);
+    @include button-icon-constructor($_color: $_btn-color);
   }
 }

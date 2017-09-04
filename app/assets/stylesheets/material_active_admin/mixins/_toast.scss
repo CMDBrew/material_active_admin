@@ -69,7 +69,7 @@
 
     button {
       @include button-constructor(
-        $color: $toast-btn-color, $type: $toast-btn-type
+        $_color: $toast-btn-color, $_type: $toast-btn-type
       );
     }
   }

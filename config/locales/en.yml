@@ -6,8 +6,6 @@ en:
     formats:
       long: "%Y/%m/%d %I:%M:%p"
   active_admin:
-    powered_by: "©%{owner}. All Rights Reserved. Version: %{version}"
-    owner:     "Clever Banana Studios Inc"
     dashboard: "Dashboard"
     admin:     "Admin"
     search:    "Search"
@@ -83,10 +81,6 @@ en:
         one:   "entry"
         other: "entries"
     any: "Any"
-    blank_slate:
-      heading: "No Records Found"
-      content: "There are no %{resource_name} found."
-      link: "Create one"
     dropdown_actions:
       button_label: "Actions"
     batch_actions:
@@ -162,9 +156,3 @@ en:
       turn_off_compatibility_view: "If you are using IE 9 or later, make sure you <a href=\"http://windows.microsoft.com/en-US/windows7/webpages-look-incorrect-in-Internet-Explorer\">turn off \"Compatibility View\"</a>."
     access_denied:
       message: "You are not authorized to perform this action."
-    index_list:
-      table: "<i class='cb_activeadmin-icons'>view_list</i><span class='text'>Table</span>"
-      block: "<i class='cb_activeadmin-icons'>apps</i><span class='text'>Block</span>"
-      grid:  "<i class='cb_activeadmin-icons'>apps</i><span class='text'>Grid</span>"
-      blog:  "<i class='cb_activeadmin-icons'>view_stream</i><span class='text'>Blog</span>"
-      feed:  "<i class='cb_activeadmin-icons'>view_stream</i><span class='text'>Feed</span>"

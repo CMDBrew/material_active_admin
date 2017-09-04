@@ -1,4 +1,4 @@
-@mixin input-checkbox-constructor {
+%input-checkbox-constructor {
   & > label:not(.label) {
     display: flex;
     align-items: center;

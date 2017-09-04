@@ -15,7 +15,7 @@ module ActiveAdmin
             if @comments.any?
               @comments.each(&method(:build_comment))
             else
-              blank_slate_msg(nil, ActiveAdmin::Comment.model_name.human(count: 2))
+              empty_state_msg
             end
           end
           build_comment_form
@@ -55,6 +55,13 @@ module ActiveAdmin
         end
 
         private
+
+        def empty_state_msg
+          blank_slate_msg(
+            new_resource_path: nil,
+            resource_name: ActiveAdmin::Comment.model_name.human(count: 2)
+          )
+        end
 
         def comment_body(comment)
           div class: 'comment_content' do

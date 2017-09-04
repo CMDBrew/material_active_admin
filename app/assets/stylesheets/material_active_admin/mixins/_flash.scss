@@ -1,4 +1,4 @@
-@mixin flash-base($_bg) {
+@mixin flash-constructor($_bg) {
   padding: 2 * $offset-base;
   font-size: $flash-fontsize;
   color: adjust-text-color($_bg);
