@@ -14,7 +14,7 @@ body.logged_in {
     overflow: hidden;
 
     #search-filter {
-      @extend %search-filter-toggled;
+      @extend %filter-toggled;
     }
   }
 

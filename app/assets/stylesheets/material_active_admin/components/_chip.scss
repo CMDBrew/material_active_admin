@@ -2,11 +2,11 @@
   .aa-chip,
   .status_tag {
     &.densed.#{$_type} {
-      @include chip-constructor($bg: $_color, $size: $chip-size-densed);
+      @include chip-constructor($_bg: $_color, $_size: $chip-size-densed);
     }
 
     &.#{$_type}:not(.densed) {
-      @include chip-constructor($bg: $_color);
+      @include chip-constructor($_bg: $_color);
     }
   }
 }
@@ -14,10 +14,10 @@
 .aa-chip,
 .status_tag {
   &.densed {
-    @include chip-constructor($bg: $chip-bg, $size: $chip-size-densed);
+    @include chip-constructor($_bg: $chip-bg, $_size: $chip-size-densed);
   }
 
   &:not(.densed) {
-    @include chip-constructor($bg: $chip-bg);
+    @include chip-constructor($_bg: $chip-bg);
   }
 }

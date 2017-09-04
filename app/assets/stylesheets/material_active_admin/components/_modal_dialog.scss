@@ -1,9 +1,7 @@
 .ui-widget-overlay {
   @extend %modal-dialog-overlay;
-  z-index: 2500;
 }
 
 .ui-dialog {
   @extend %modal-dialog;
-  z-index: 2800;
 }

@@ -22,7 +22,9 @@
     .next-button a,
     .prev-button a,
     .page a {
-      @include button-constructor($pager-btn-color, $type: 'link', $size: 'sm');
+      @include button-constructor(
+        $_color: $pager-btn-color, $_type: 'link', $_size: 'sm'
+      );
     }
 
     .page.current,

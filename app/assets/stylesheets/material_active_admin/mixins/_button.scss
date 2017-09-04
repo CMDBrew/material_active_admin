@@ -45,31 +45,31 @@
 }
 
 @mixin button-constructor(
-  $color: $brand-default,
-  $type: 'solid',
-  $size: 'default',
-  $shadow: $button-shadow
+  $_color: $brand-default,
+  $_type: 'solid',
+  $_size: 'default',
+  $_shadow: $button-shadow
 ) {
-  @include button-base($size);
+  @include button-base($_size);
 
-  @if ($type == 'link') {
-    color: $color;
+  @if ($_type == 'link') {
+    color: $_color;
     background: transparent;
-  } @elseif ($type == 'outline') {
-    color: $color;
+  } @elseif ($_type == 'outline') {
+    color: $_color;
     background: transparent;
-    border: 1px solid $color;
-  } @elseif ($type == 'solid') {
-    color: adjust-text-color($color);
-    background: $color;
+    border: 1px solid $_color;
+  } @elseif ($_type == 'solid') {
+    color: adjust-text-color($_color);
+    background: $_color;
   } @else {
-    color: adjust-text-color($color);
-    background: $color;
+    color: adjust-text-color($_color);
+    background: $_color;
 
-    @include box-shadow($shadow);
+    @include box-shadow($_shadow);
 
     &:not(.disabled):hover {
-      background: darken($color, 5%);
+      background: darken($_color, 5%);
     }
   }
 
@@ -78,13 +78,13 @@
   }
 }
 
-@mixin button-icon-base($size) {
+@mixin button-icon-base($_size) {
   @extend %button;
 
   display: block;
   border-radius: 50%;
 
-  @if ($size == 'sm') {
+  @if ($_size == 'sm') {
     width: $button-height-sm;
     height: $button-height-sm;
     line-height: $button-height-sm;
@@ -108,12 +108,12 @@
 }
 
 @mixin button-icon-constructor(
-  $size: 'default',
-  $color: $brand-default,
+  $_size: 'default',
+  $_color: $brand-default,
 ) {
-  @include button-icon-base($size);
+  @include button-icon-base($_size);
 
-  color: $color;
+  color: $_color;
   background: transparent;
 
   &.disabled {

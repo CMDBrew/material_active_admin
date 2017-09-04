@@ -31,18 +31,17 @@
       justify-content: flex-end;
       margin-right: -#{$offset-base};
       color: adjust-text-color($_parent-bg, 'hint');
-      content: '\E5C5';
+      content: get-icon('arrow-down');
     }
 
     &:empty::after {
       margin-right: 0;
-      content: '\E5D4';
+      content: get-icon('more');
     }
   }
 
   .dropdown_menu_list_wrapper {
     position: absolute;
-    z-index: 999;
     display: none;
     width: auto;
     height: auto;

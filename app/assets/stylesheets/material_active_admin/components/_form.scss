@@ -1,6 +1,6 @@
 form {
   ul.errors {
-    @include flash-base(get-map-value('flash_error', $flash-color-map));
+    @include flash-constructor(get-map-value('flash_error', $flash-color-map));
 
     padding-left: 4 * $offset-base;
     margin-top: 0;
@@ -19,7 +19,8 @@ form {
   input {
     &[type='submit'] {
       @include button-constructor(
-        $color: $form-submit-btn-color, $type: $form-submit-btn-type
+        $_color: $form-submit-btn-color,
+        $_type: $form-submit-btn-type
       );
     }
   }
@@ -67,12 +68,12 @@ form {
 
   .button {
     &.has_many_add {
-      @include button-constructor($color: $brand-default, $type: 'solid', $size: 'sm');
+      @include button-constructor($_color: $brand-default, $_type: 'solid', $_size: 'sm');
       float: left;
     }
 
     &.has_many_remove {
-      @include button-constructor($color: $brand-danger, $type: 'link', $size: 'sm');
+      @include button-constructor($_color: $brand-danger, $_type: 'link', $_size: 'sm');
       float: right;
       padding: 0;
     }
@@ -107,7 +108,7 @@ form {
     }
 
     &.boolean {
-      @include input-checkbox-constructor;
+      @extend %input-checkbox-constructor;
     }
 
     &.text {
@@ -165,7 +166,8 @@ form {
 
   .cancel > a {
     @include button-constructor(
-      $color: $form-cancel-btn-color, $type: $form-cancel-btn-type
+      $_color: $form-cancel-btn-color,
+      $_type: $form-cancel-btn-type
     );
   }
 }

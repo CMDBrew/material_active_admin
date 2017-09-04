@@ -155,15 +155,15 @@ $tinymce-dropdown-bg:                  $widget-bg !default;
 $tinymce-dropdown-item-shortcut-color: $text-color-placeholder !default;
 $tinymce-dropdown-shadow:              rgba(255,255,255,.9) 0px 1px 0px inset, rgba(0,0,0,.03) 0px -1px 0px inset, rgba(0,0,0,.2) 0px 1px 3px !default;
 
-// Datepicker
-$datepicker-bg: $widget-bg !default;
-$datepicker-header-bg: $brand-primary !default;
-$datepicker-shadow: $widget-shadow !default;
+// // Datepicker
+// $datepicker-bg: $widget-bg !default;
+// $datepicker-header-bg: $brand-primary !default;
+// $datepicker-shadow: $widget-shadow !default;
 
-// Navbar
-$app-header-height:     28px !default;
-$app-header-bg:         #303F9F !default;
-$app-header-shadow:     none !default;
+// // Navbar
+// $app-header-height:     28px !default;
+// $app-header-bg:         #303F9F !default;
+// $app-header-shadow:     none !default;
 // $navbar-bg:             $brand-primary !default;
 // $navbar-shadow:         0 1px 8px rgba(0,0,0,.3) !default;
 // $navbar-height:         64px !default;
@@ -177,42 +177,42 @@ $app-header-shadow:     none !default;
 // $tab-link-active-color: get-nav-text-color($navbar-bg, $status:active) !default;
 
 // Sidebar
-$sidebar-width-min:                   9 * $offset !default;
-$sidebar-width-max:                   240px !default;
-$sidebar-bg:                          rgba(white, 0) !default;
-$sidebar-bg-xs:                       $widget-bg !default;
-$sidebar-shadow:                      0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.4) !default;
-$sidebar-active-item-indicator-color: transparent !default;
-
-// Aside
-$aside-width: 320px !default;
-
-// Search Filter
-$search-filter-bg:            $body-bg !default;
-$search-filter-header-bg:     $body-bg !default;
-// $search-filter-header-shadow: $navbar-shadow !default;
-$search-filter-width:         340px !default;
-$search-filter-shadow:        $widget-shadow !default;
-// $search-filter-header-height: $navbar-height !default;
+// $sidebar-width-min:                   9 * $offset !default;
+// $sidebar-width-max:                   240px !default;
+// $sidebar-bg:                          rgba(white, 0) !default;
+// $sidebar-bg-xs:                       $widget-bg !default;
+// $sidebar-shadow:                      0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.4) !default;
+// $sidebar-active-item-indicator-color: transparent !default;
+//
+// // Aside
+// $aside-width: 320px !default;
+//
+// // Search Filter
+// $search-filter-bg:            $body-bg !default;
+// $search-filter-header-bg:     $body-bg !default;
+// // $search-filter-header-shadow: $navbar-shadow !default;
+// $search-filter-width:         340px !default;
+// $search-filter-shadow:        $widget-shadow !default;
+// // $search-filter-header-height: $navbar-height !default;
 
 // Panel
-$panel-header-height:        48px !default;
-$panel-header-bg:            $widget-bg !default;
-$panel-header-border-bottom: none !default;
-$panel-header-font-weight:   300 !default;
-$panel-header-font-size:     $h6-fontsize !default;
-$panel-bg:                   $widget-bg !default;
-$panel-ctrl-bg:              $widget-ctrl-bg !default;
-$panel-shadow:               0 1px 4px 0 rgba(0,0,0,0.14) !default;
-$panel-shadow-active:        0 1px 4px 0 rgba(0,0,0,0.14) !default;
-$panel-border-radius:        $widget-border-radius !default;
+// $panel-header-height:        48px !default;
+// $panel-header-bg:            $widget-bg !default;
+// $panel-header-border-bottom: none !default;
+// $panel-header-font-weight:   300 !default;
+// $panel-header-font-size:     $h6-fontsize !default;
+// $panel-bg:                   $widget-bg !default;
+// $panel-ctrl-bg:              $widget-ctrl-bg !default;
+// $panel-shadow:               0 1px 4px 0 rgba(0,0,0,0.14) !default;
+// $panel-shadow-active:        0 1px 4px 0 rgba(0,0,0,0.14) !default;
+// $panel-border-radius:        $widget-border-radius !default;
 
 // Has Many Fields
-$has-many-container-border: 2px solid rgba(black, .1) !default;
-$has-many-container-shadow: none !default;
-$has-many-add-color:        $brand-default !default;
-$has-many-delete-color:     $brand-danger !default;
-$has-many-add-ctrl-bg:      transparent !default;
+// $has-many-container-border: 2px solid rgba(black, .1) !default;
+// $has-many-container-shadow: none !default;
+// $has-many-add-color:        $brand-default !default;
+// $has-many-delete-color:     $brand-danger !default;
+// $has-many-add-ctrl-bg:      transparent !default;
 
 // Table
 // $table-bg:              $widget-bg !default;
@@ -222,9 +222,9 @@ $has-many-add-ctrl-bg:      transparent !default;
 // $table-border-radius:   $widget-border-radius !default;
 
 // Dropdown Menu
-$dropdown-bg:            $widget-bg !default;
-$dropdown-shadow:        $widget-shadow !default;
-$dropdown-broder-radius: 0 !default;
+// $dropdown-bg:            $widget-bg !default;
+// $dropdown-shadow:        $widget-shadow !default;
+// $dropdown-broder-radius: 0 !default;
 
 // Modal
 // $modal-bg:            $widget-bg !default;
@@ -266,21 +266,21 @@ $dropdown-broder-radius: 0 !default;
 // ) !default;
 
 // SPINNER
-$spinner-bg: rgba(white, .54) !default;
-
-$spinner-color-map: (
-  "brand-default":   $brand-default,
-  "brand-primary":   $brand-primary,
-  "brand-danger":    $brand-danger,
-  "brand-warning":   $brand-warning,
-  "brand-info":      $brand-info,
-  "brand-success":   $brand-success,
-  "dark":            $text-color-primary,
-  "light":           $text-color-primary-inverse
-) !default;
+// $spinner-bg: rgba(white, .54) !default;
+//
+// $spinner-color-map: (
+//   "brand-default":   $brand-default,
+//   "brand-primary":   $brand-primary,
+//   "brand-danger":    $brand-danger,
+//   "brand-warning":   $brand-warning,
+//   "brand-info":      $brand-info,
+//   "brand-success":   $brand-success,
+//   "dark":            $text-color-primary,
+//   "light":           $text-color-primary-inverse
+// ) !default;
 
 // Comments
-$comment-divider-color: rgba(black, .1) !default;
+// $comment-divider-color: rgba(black, .1) !default;
 
 // Icons
-$folder-icon: "\E2C7";
+// $folder-icon: "\E2C7";

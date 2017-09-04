@@ -1,5 +1,5 @@
 @each $_class, $_color in $flash-color-map {
   .flash.#{$_class} {
-    @include flash-base($_color);
+    @include flash-constructor($_color);
   }
 }

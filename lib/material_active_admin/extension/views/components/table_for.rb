@@ -6,7 +6,7 @@ module ActiveAdmin
     class TableFor < Arbre::HTML::Table
 
       def resource_selection_toggle_cell
-        label(class: 'mdi-checkbox') do
+        label(class: 'aa-checkbox') do
           input(
             type: 'checkbox',
             id: 'collection_selection_toggle_all',
@@ -18,7 +18,7 @@ module ActiveAdmin
       end
 
       def resource_selection_cell(resource)
-        label(class: 'mdi-checkbox') do
+        label(class: 'aa-checkbox') do
           input(
             type: 'checkbox',
             id: "batch_action_item_#{resource.id}",
