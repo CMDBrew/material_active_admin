@@ -19,8 +19,6 @@ body.logged_in {
   }
 
   &.sidebar-toggled {
-    overflow: hidden;
-
     #wrapper {
       padding-left: 0;
     }
@@ -132,6 +130,10 @@ body.logged_in {
   }
 
   @include tablet {
+    &.sidebar-toggled {
+      overflow: hidden;
+    }
+
     #wrapper {
       padding-left: 0;
     }
