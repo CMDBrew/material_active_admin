@@ -191,11 +191,15 @@ $select2-option-height:           $dropdown-menu-item-height !default;
 $select-option-bg-active:         adjust-ctrl-hover-bg($select2-dropdown-bg) !default;
 $select-option-text-color-active: adjust-text-color($select2-dropdown-bg) !default;
 
-
-
-$select2-fontsize:      $p-fontsize !default;
-// $select2-shadow:        0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32) !default;
-// $select2-option-height: $ctrl-height !default;
+// TinyMCE
+$tinymce-bg:                           white !default;
+$tinymce-header-panel-bg:              #F1F1F1 !default;
+$tinymce-border:                       1px solid adjust-divider-color($tinymce-bg) !default;
+$tinymce-border-radius:                $input-radius !default;
+$tinymce-dropdown-bg:                  $dropdown-bg !default;
+$tinymce-dropdown-item-shortcut-color: adjust-text-color($tinymce-bg) !default;
+$tinymce-dropdown-shadow:              $dropdown-shadow !default;
+$tinymce-icon-size:                    $icon-size !default;
 
 // Float Button
 $float-action-size:          56px !default;
