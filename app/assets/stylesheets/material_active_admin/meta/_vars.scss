@@ -1,3 +1,7 @@
+// Mobile Responsiveness
+$screen-tablet:  768px !default;
+$screen-desktop: 992px !default;
+
 // Colors
 $brand-accent:  #E91E63 !default;
 $brand-default: #E0E0E0 !default;
@@ -47,6 +51,7 @@ $font-light:         300 !default;
 $font-bold:          500 !default;
 
 // Icon
+$icon-font:          'Material Icons' !default;
 $icon-size:          24px !default;
 $checkbox-icon-size: 22px !default;
 

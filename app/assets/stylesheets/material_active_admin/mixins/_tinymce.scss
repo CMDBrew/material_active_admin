@@ -7,7 +7,7 @@
     width: 100%;
     margin-top: $offset-base;
     overflow: hidden;
-    color: get-text-color($tinymce-header-panel-bg);
+    color: adjust-text-color($tinymce-header-panel-bg);
     border: $tinymce-border !important;
     border-radius: $tinymce-border-radius;
 
@@ -22,47 +22,38 @@
 
   .mce-toolbar-grp {
     padding: 0;
-  }
 
-  .mce-btn-group .mce-btn {
-    margin: 0;
-  }
-
-  .mce-flow-layout {
-    padding: $offset 0;
+    & > .mce-container-body {
+      flex-direction: column;
+    }
   }
 
   .mce-flow-layout-item {
     margin: 0;
   }
 
-  .mce-panel {
+  .mce-menubar,
+  .mce-toolbar-grp {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     background: $tinymce-header-panel-bg;
-    border-color: get-divider-color($tinymce-header-panel-bg);
+    border-color: adjust-divider-color($tinymce-header-panel-bg);
+
+    .mce-container-body,
+    .mce-toolbar {
+      display: flex;
+      align-items: flex-start;
+      height: 100%;
+    }
   }
 
   .mce-stack-layout {
     .mce-menu-item {
       display: flex;
       align-items: center;
-      padding: $offset;
+      padding: $offset-base;
       margin: 0;
-    }
-  }
-
-  .mce-colorbutton,
-  .mce-splitbtn {
-    .mce-open,
-    .mce-open.mce-active {
-      height: $tinymce-icon-size;
-      padding: 0;
-      background: transparent;
-      border: 0;
-      outline: none;
-
-      .mce-caret {
-        margin: 0;
-      }
     }
   }
 
@@ -72,6 +63,7 @@
     margin-top: 8px;
     margin-left: -16px;
   }
+
 
   .mce-widget,
   .mce-menubtn,
@@ -83,64 +75,121 @@
   }
 
   .mce-btn-group {
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: row;
+    height: 48px;
+    padding: 0 2 * $offset-base !important;
 
     & > * {
       display: flex;
       align-items: center;
       flex-direction: row;
     }
+
+    &:not(:first-child) {
+      margin: 0;
+      border: 0;
+
+      &::before {
+        position: absolute;
+        top: $offset-base;
+        bottom: $offset-base;
+        left: -1px;
+        border-left: 1px solid adjust-divider-color($tinymce-header-panel-bg);
+        content: '';
+      }
+    }
+
+    .mce-text,
+    .mce-btn {
+      display: flex;
+      align-items: center;
+      margin-left: 0;
+
+      &:not(:last-child) {
+        margin-right: 2 * $offset-base;
+      }
+
+      .mce-caret {
+        position: static;
+        width: $tinymce-icon-size;
+        height: $tinymce-icon-size;
+        border: 0;
+
+        &::before {
+          @extend %aa-icon;
+          content: get-icon('arrow-dropdown');
+        }
+
+        i { display: none; }
+      }
+
+      .mce-open,
+      .mce-open.mce-active {
+        height: $tinymce-icon-size;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        outline: none;
+      }
+    }
   }
 
-  .mce-menubar .mce-menubtn:hover,
-  .mce-menubar .mce-menubtn.mce-active,
-  .mce-menubar .mce-menubtn:focus {
-    background: transparent;
-    border-color: transparent;
-    outline: none;
+  .mce-menubtn.mce-fixed-width span {
+    width: auto;
   }
 
+  .mce-menubar .mce-menubtn {
+    &.mce-active,
+    &:hover,
+    &:focus {
+      background: transparent;
+      border-color: transparent;
+      outline: none;
+    }
+  }
+
+  .mce-text,
   .mce-btn {
+    height: 48px;
     padding: 0;
     background: transparent;
+    border: 0 !important;
 
     &[aria-disabled='false'],
     &.mce-active,
     &.mce-active:hover {
       background: transparent;
-      border: 1px solid transparent;
-
-      i {
-        color: adjust-text-color($tinymce-bg, $type: 'secondary');
-      }
+      border: 0;
     }
 
     &:hover,
     &:focus {
       background: transparent;
       border: 1px solid transparent;
-
-      i {
-        color: adjust-text-color($tinymce-bg);
-      }
     }
 
     .mce-caret {
       margin: 0;
-      margin-left: $offset;
     }
 
     button {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: $offset / 2;
+      padding: 0;
+      color: adjust-text-color($tinymce-header-panel-bg, $type: 'hint');
+
+      &:hover,
+      &:focus {
+        color: adjust-text-color($tinymce-bg);
+      }
     }
 
     i {
-      color: adjust-text-color($tinymce-header-panel-bg, $type: 'secondary');
+      color: inherit;
       text-shadow: none;
     }
   }
@@ -157,29 +206,24 @@
     }
 
     .mce-menu-item {
-      padding: $offset 2 * $offset;
+      display: flex;
+      align-items: center;
+      padding: 0 2 * $offset-base;
 
       &.mce-selected,
       &:hover,
       &:focus {
+        background: adjust-ctrl-hover-bg($tinymce-dropdown-bg);
+
         .mce-text,
         .mce-caret {
-          color: get-text-color($tinymce-dropdown-bg) !important;
-        }
-
-        .mce-caret {
-          border-left-color: get-text-color($tinymce-dropdown-bg) !important;
+          color: adjust-text-color($tinymce-dropdown-bg) !important;
         }
       }
 
-      &.mce-selected,
-      &:hover,
-      &:focus {
-        @if (lightness($tinymce-dropdown-bg) > 50) {
-          background: darken($tinymce-dropdown-bg, $color-adjust-default);
-        } @else {
-          background: lighten($tinymce-dropdown-bg, $color-adjust-default);
-        }
+      .mce-text {
+        display: flex;
+        align-items: center;
       }
 
       .mce-menu-shortcut {
@@ -187,11 +231,7 @@
       }
 
       .mce-ico {
-        margin-right: $offset;
-      }
-
-      i {
-        color: adjust-text-color($tinymce-dropdown-bg, $type: 'secondary') !important;
+        margin-right: $offset-base;
       }
     }
   }
@@ -205,8 +245,12 @@
   .mce-wordcount {
     position: absolute;
     top: 0;
-    right: 2 * $offset;
+    right: 2 * $offset-base;
     padding: 0;
+  }
+
+  .mce-ico.mce-i-none {
+    display: none !important;
   }
 
   .mce-ico:not(.mce-i-resize) {
@@ -223,6 +267,16 @@
       align-items: center;
       overflow: hidden;
       line-height: 1;
+    }
+
+    .mce-statusbar {
+      height: 24px;
+      background-color: $tinymce-bg;
+
+      .mce-flow-layout {
+        height: 100%;
+        box-sizing: border-box;
+      }
     }
 
     &.mce-i-undo::before           { content: get-icon('tinymce-undo'); }
@@ -265,19 +319,6 @@
     &.mce-i-paste::before          { content: get-icon('tinymce-paste'); }
     &.mce-i-newdocument::before    { content: get-icon('tinymce-newdocument'); }
     &.mce-i-selected::before       { content: get-icon('tinymce-selected'); }
-  }
-
-  .mce-btn-group:not(:first-child) {
-    border-color: adjust-divider-color($tinymce-header-panel-bg);
-  }
-
-  .mce-statusbar {
-    height: 24px;
-    background: $tinymce-bg;
-
-    .mce-flow-layout {
-      height: 100%;
-      box-sizing: border-box;
-    }
+    &.mce-i-blockquote::before     { content: get-icon('tinymce-blockquote'); }
   }
 }
