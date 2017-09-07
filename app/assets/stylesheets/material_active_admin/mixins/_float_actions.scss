@@ -74,7 +74,7 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  padding: 3 * $offset;
+  padding: 3 * $offset-base;
 
   .bottom_sheet {
     &.active {
@@ -177,7 +177,7 @@
 
     @each $_class, $_color in $color-map {
       &.#{$_class} {
-        color: get-text-color($_color);
+        color: adjust-text-color($_color);
         background: $_color;
       }
     }

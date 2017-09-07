@@ -33,6 +33,8 @@ const onDOMReady = function() {
   $('#toast-container').aaToast();
   $("input[type='file']").aaFileInput();
   $('#active_admin_content .tabs').aaTabs();
+  $('.select2').aaSelect2();
+  $('.tinymce').aaTinyMCE();
   $(rippleTargets).aaRipple();
 };
 
@@ -43,4 +45,5 @@ $(document).
 $(document).on('has_many_add:after', '.has_many_container', function(e, fieldset, container) {
   fieldset.find(':input').aaGuide();
   fieldset.find("input[type='file']").aaFileInput();
+  fieldset.find('.select2').aaSelect2();
 });

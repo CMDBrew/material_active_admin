@@ -3,7 +3,7 @@
   flex-direction: row;
 
   .column {
-    padding: 0 1.5 * $offset;
+    padding: 0 1.5 * $offset-base;
     box-sizing: border-box;
 
     &:first-child {

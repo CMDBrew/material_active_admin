@@ -34,6 +34,7 @@ $icon-map: (
   'arrow-up':                '\E316',
   'arrow-down':              '\E313',
   'arrow-back':              '\E5C4',
+  'arrow-dropdown':          '\E5C5',
   'checkbox-unchecked':      '\E835',
   'checkbox-checked':        '\E834',
   'search':                  '\E8B6',
@@ -83,6 +84,7 @@ $icon-map: (
   'tinymce-paste':           '\E14F',
   'tinymce-newdocument':     '\E02E',
   'tinymce-selected':        '\E5CA',
+  'tinymce-blockquote':      '\E244',
 );
 
 @each $_icon-name, $_icon-value in $icon-map {

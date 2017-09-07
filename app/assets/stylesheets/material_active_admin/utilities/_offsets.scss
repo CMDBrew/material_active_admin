@@ -1,64 +1,50 @@
-@mixin mDirVal ($d, $value){
-  @if $d == "all" {
-    margin: $value !important;
+@mixin margin-val ($_d, $_value) {
+  @if($_d == 'all') {
+    margin: $_value;
+  } @elseif($_d == 'horz')  {
+    margin-right: $_value;
+    margin-left: $_value;
+  } @elseif($_d == 'vert') {
+    margin-top: $_value;
+    margin-bottom: $_value;
   } @else {
-    margin-#{$d}: $value !important;
+    $_dir: -#{$_d};
+    margin#{$_dir}: $_value;
   }
 }
 
-@mixin pDirVal ($d, $value){
-  @if $d == "all" {
-    padding: $value !important;
+@mixin padding-val ($_d, $_value) {
+  @if($_d == 'all') {
+    padding: $_value;
+  } @elseif($_d == 'horz')  {
+    padding-right: $_value;
+    padding-left: $_value;
+  } @elseif($_d == 'vert') {
+    padding-top: $_value;
+    padding-bottom: $_value;
   } @else {
-    padding-#{$d}: $value !important;
+    $_dir: -#{$_d};
+    padding#{$_dir}: $_value;
   }
 }
 
-@for $i from 0 through 50 {
-  $directions: ("all", "top", "bottom", "left", "right");
-  $signs:      ("", "-");
-  $unit:       $offset;
+@for $_i from 0 through 50 {
+  $_directions: ('all', 'top', 'bottom', 'left', 'right', 'horz', 'vert');
+  $_signs: ('', '-');
+  $_unit: $offset-base;
 
-  @each $d in $directions {
-    @each $sign in $signs {
-      $klass: #{$d}-#{$sign}#{$i}x;
-      $value: calc(#{$sign}#{$i} * #{$unit});
+  @each $_d in $_directions {
+    @each $_sign in $_signs {
+      $_klass: #{$_d}-#{$_sign}#{$_i}x;
+      $_value: calc(#{$_sign}#{$_i} * #{$_unit});
 
-      .m-#{$klass} { @include mDirVal($d, $value); }
-      body .m-#{$klass}-sm { @include tablet { @include mDirVal($d, $value); } }
-      body .m-#{$klass}-xs { @include mobile { @include mDirVal($d, $value); } }
+      .m-#{$_klass}    { @include margin-val($_d, $_value); }
+      .m-#{$_klass}-sm { @include tablet { @include margin-val($_d, $_value); } }
+      .m-#{$_klass}-xs { @include mobile { @include margin-val($_d, $_value); } }
 
-      .p-#{$klass} { @include pDirVal($d, $value); }
-      body .p-#{$klass}-sm { @include tablet { @include pDirVal($d, $value); } }
-      body .p-#{$klass}-xs { @include mobile { @include pDirVal($d, $value); } }
+      .p-#{$_klass}    { @include padding-val($_d, $_value); }
+      .p-#{$_klass}-sm { @include tablet { @include padding-val($_d, $_value); } }
+      .p-#{$_klass}-xs { @include mobile { @include padding-val($_d, $_value); } }
     }
   }
 }
-
-// .content-offset {
-//   &.all    { padding: $content-offset; }
-//   &.horz   { padding: 0 $content-offset; }
-//   &.vert   { padding: $content-offset 0; }
-//   &.top    { padding-top: $content-offset; }
-//   &.bottom { padding-bottom: $content-offset; }
-//   &.left   { padding-left: $content-offset; }
-//   &.right  { padding-right: $content-offset; }
-//   &.xs {
-//     &.all    { padding: $content-offset-xs; }
-//     &.horz   { padding: 0 $content-offset-xs; }
-//     &.vert   { padding: $content-offset-xs 0; }
-//     &.top    { padding-top: $content-offset-xs; }
-//     &.bottom { padding-bottom: $content-offset-xs; }
-//     &.left   { padding-left: $content-offset-xs; }
-//     &.right  { padding-right: $content-offset-xs; }
-//   }
-//   @include mobile {
-//     &.all    { padding: $content-offset-xs; }
-//     &.horz   { padding: 0 $content-offset-xs; }
-//     &.vert   { padding: $content-offset-xs 0; }
-//     &.top    { padding-top: $content-offset-xs; }
-//     &.bottom { padding-bottom: $content-offset-xs; }
-//     &.left   { padding-left: $content-offset-xs; }
-//     &.right  { padding-right: $content-offset-xs; }
-//   }
-// }

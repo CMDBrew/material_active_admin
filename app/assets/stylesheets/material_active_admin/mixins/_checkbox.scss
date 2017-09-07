@@ -18,8 +18,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 3 * $offset;
-    margin-right: $offset;
+    width: 3 * $offset-base;
+    margin-right: $offset-base;
     text-align: center;
     vertical-align: middle;
 

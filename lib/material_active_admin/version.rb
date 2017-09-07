@@ -1,5 +1,5 @@
 module MaterialActiveAdmin
 
-  VERSION = '0.0.6'.freeze
+  VERSION = '1.0.0'.freeze
 
 end
