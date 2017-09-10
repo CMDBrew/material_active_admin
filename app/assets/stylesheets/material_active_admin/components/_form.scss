@@ -26,29 +26,7 @@ form {
   }
 
   label {
-    display: block;
-    width: 100%;
-    min-height: 24px;
-    padding-top: $offset-base;
-    margin-bottom: $offset-base;
-    font-size: $label-fontsize;
-    font-weight: $font-bold;
-    color: $label-text-color;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    &.hidden {
-      opacity: 0;
-    }
-
-    abbr {
-      &[title='required'] {
-        margin-left: $offset-base / 2;
-        color: $brand-danger;
-        text-decoration: none;
-        border: 0;
-      }
-    }
+    @extend %input-label;
   }
 
   fieldset.inputs:not(.has_many_fields) {

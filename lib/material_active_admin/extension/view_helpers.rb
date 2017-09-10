@@ -19,7 +19,7 @@ module ActiveAdmin::ViewHelpers
 
   def menu_label(label, icon: nil, badge: 0)
     safe_join [
-      menu_icon(icon),
+      aa_icon(icon),
       menu_title(label),
       menu_badge(badge)
     ]
@@ -27,7 +27,7 @@ module ActiveAdmin::ViewHelpers
 
   def aa_icon(icon)
     return if icon.blank?
-    content_tag(:i, icon, class: 'aa-icon')
+    content_tag(:i, '', class: "aa-icon-#{icon}")
   end
 
   def blank_slate_msg(
@@ -39,7 +39,7 @@ module ActiveAdmin::ViewHelpers
   )
     msg << blank_slate_new_resource_path(new_resource_path).to_s
     content_tag :div, class: 'blank_slate_container' do
-      concat(content_tag(:i, '', class: "aa-icon-#{icon}"))
+      concat(aa_icon(icon))
       concat(content_tag(:h3, title, class: 'title'))
       concat(content_tag(:p, safe_join(msg, ' '), class: 'blank_slate'))
     end
@@ -92,11 +92,6 @@ module ActiveAdmin::ViewHelpers
 
   def file_preview_link(object, name)
     link_to object.send("#{name}_identifier".to_sym), object.send(name.to_sym).url, target: '_blank'
-  end
-
-  def menu_icon(icon)
-    return if icon.blank?
-    content_tag(:i, icon, class: 'aa-icon')
   end
 
   def menu_title(label)

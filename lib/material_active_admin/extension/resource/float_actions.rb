@@ -67,7 +67,7 @@ module ActiveAdmin
           if controller.action_methods.include?('new') &&
              authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
             float_btn(
-              'add',
+              'plus',
               new_resource_path,
               class: 'brand-accent'
             )
@@ -81,7 +81,7 @@ module ActiveAdmin
           if controller.action_methods.include?('edit') &&
              authorized?(ActiveAdmin::Auth::UPDATE, resource)
             float_btn(
-              'edit',
+              'pencil',
               edit_resource_path(resource),
               class: 'brand-accent'
             )

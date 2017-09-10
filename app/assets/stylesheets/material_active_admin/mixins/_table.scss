@@ -15,11 +15,11 @@
     &.sortable {
 
       &.sorted-asc a::after {
-        content: get-icon('sorted-asc');
+        content: get-icon('arrow-up');
       }
 
       &.sorted-desc a::after {
-        content: get-icon('sorted-desc');
+        content: get-icon('arrow-down');
       }
 
       &[class*='sorted-'] {

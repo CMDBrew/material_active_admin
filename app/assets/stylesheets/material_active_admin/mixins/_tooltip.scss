@@ -17,6 +17,24 @@
   }
 }
 
+%tooltip-base {
+  display: flex;
+  align-items: center;
+  max-width: 120px;
+  padding: $offset-base / 2 $offset-base;
+  overflow: hidden;
+  color: adjust-text-color($tooltip-bg);
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: $tooltip-bg;
+  border-radius: 2px;
+
+  @include box-shadow($tooltip-shadow);
+  @include animation(tooltip-animation 0.2s);
+  transform-origin: 50% 0;
+}
+
 %tooltip-constructor {
   position: absolute;
   display: block;
@@ -48,20 +66,6 @@
   }
 
   .tooltip-inner {
-    display: flex;
-    align-items: center;
-    max-width: 120px;
-    padding: $offset-base / 2 $offset-base;
-    overflow: hidden;
-    color: adjust-text-color($tooltip-bg);
-    text-align: left;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: $tooltip-bg;
-    border-radius: 2px;
-
-    @include box-shadow($tooltip-shadow);
-    @include animation(tooltip-animation 0.2s);
-    transform-origin: 50% 0;
+    @extend %tooltip-base;
   }
 }

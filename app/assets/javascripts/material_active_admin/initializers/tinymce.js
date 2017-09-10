@@ -4,17 +4,24 @@ ActiveAdmin.TinyMCE = class TinyMCE {
     this.element = element;
 
     const defaults = {
-      height: 500,
-      menubar: 'tools table format view insert edit',
+      height: 400,
+      menubar: false,
       plugins: [
         'advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
         'insertdatetime media table contextmenu paste code',
-        'table textcolor'
+        'table textcolor wordcount hr'
       ],
-      toolbar: 'formatselect | forecolor bold italic underline strikethrough blockquote | alignleft aligncenter alignright | outdent indent | bullist numlist | removeformat link',
+      toolbar1: 'undo redo | removeformat | table link hr | alignleft aligncenter alignright outdent indent bullist numlist',
+      toolbar2: 'formatselect | forecolor backcolor bold italic underline strikethrough blockquote superscript subscript',
       block_formats: 'Header 1=h1; Header 2=h2; Header 3=h3; Header 4=h4; Header 5=h5; Header 6=h6; Paragraph=p',
       browser_spellcheck: true,
+      elementpath: false,
+      branding: false,
+      table_appearance_options: false,
+      table_advtab: false,
+      table_cell_advtab: false,
+      table_row_advtab: false,
       content_css: [
         '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
       ]

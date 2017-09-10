@@ -39,7 +39,7 @@
         width: $icon-size;
         height: 100%;
         color: $panel-action-color;
-        content: get-icon('arrow-up');
+        content: get-icon('chevron-up');
 
         @include transition(all 0.2s ease-in-out);
       }

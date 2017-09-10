@@ -159,7 +159,7 @@
 
         margin-right: $offset-base;
         color: adjust-text-color($select2-dropdown-bg, $type: 'secondary');
-        content: get-icon('checkbox-unchecked');
+        content: get-icon('checkbox-blank-outline');
       }
 
       &.select2-results__option {
@@ -168,7 +168,7 @@
 
           &:not(.select2-results__message)::before {
             color: $brand-primary !important;
-            content: get-icon('checkbox-checked');
+            content: get-icon('checkbox-marked');
           }
         }
       }
