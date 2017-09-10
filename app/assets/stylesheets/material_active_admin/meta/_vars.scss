@@ -51,7 +51,7 @@ $font-light:         300 !default;
 $font-bold:          500 !default;
 
 // Icon
-$icon-font:          'Material Icons' !default;
+$icon-font:          'Material Design Icons' !default;
 $icon-size:          24px !default;
 $checkbox-icon-size: 22px !default;
 
@@ -83,13 +83,13 @@ $batchbar-text-color: adjust-text-color($batchbar-bg) !default;
 $batchbar-badge-bg:   darken($batchbar-bg, 3%) !default;
 
 // Navbar
-$navbar-tab-bg:                     $body-bg !default;
+$navbar-tab-bg:                     $brand-primary !default;
 $navbar-height:                     64px !default;
 $navbar-shadow:                     0 1px 8px rgba(0, 0, 0, 0.3) !default;
 $navbar-btn-type:                   'solid' !default;
 $navbar-tab-height:                 48px !default;
 $navbar-tab-min-width:              200px !default;
-$navbar-tab-indicator-color-active: $brand-primary !default;
+$navbar-tab-indicator-color-active: adjust-text-color($brand-primary) !default;
 $navbar-tab-alignment:              center !default;
 $navbar-tab-badge-bg:               $brand-danger !default;
 
@@ -178,7 +178,7 @@ $attr-table-td-text-color:       adjust-text-color($panel-bg) !default;
 $attr-table-td-empty-text-color: adjust-text-color($panel-bg, $type: 'hint') !default;
 
 // Dropdown
-$dropdown-shadow:                      0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32) !default;
+$dropdown-shadow:                      0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12) !default;
 $dropdown-radius:                      $ctrl-radius !default;
 $dropdown-bg:                          white !default;
 $dropdown-min-width:                   148px !default;

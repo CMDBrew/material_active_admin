@@ -31,12 +31,12 @@
       justify-content: flex-end;
       margin-right: -#{$offset-base};
       color: adjust-text-color($_parent-bg, 'hint');
-      content: get-icon('arrow-down');
+      content: get-icon('menu-down');
     }
 
     &:empty::after {
       margin-right: 0;
-      content: get-icon('more');
+      content: get-icon('dots-vertical');
     }
   }
 
@@ -46,7 +46,7 @@
     width: auto;
     height: auto;
     min-width: $dropdown-min-width;
-    padding: 2 * $offset-base 0;
+    padding: $offset-base 0;
     margin: 0;
     color: adjust-text-color($dropdown-bg);
     background: $dropdown-bg;

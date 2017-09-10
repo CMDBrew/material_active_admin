@@ -44,7 +44,7 @@ module ActiveAdmin
 
       def build_selection_toggle
         div id: 'selection-toggle' do
-          i '', class: 'aa-icon-arrow-back'
+          i '', class: 'aa-icon-arrow-left'
         end
       end
 

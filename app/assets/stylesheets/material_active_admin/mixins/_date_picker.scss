@@ -55,7 +55,7 @@
         order: 1;
 
         &::before {
-          content: get-icon('arrow-left');
+          content: get-icon('chevron-left');
         }
       }
 
@@ -63,7 +63,7 @@
         order: 3;
 
         &::before {
-          content: get-icon('arrow-right');
+          content: get-icon('chevron-right');
         }
       }
 

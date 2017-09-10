@@ -55,10 +55,10 @@
   }
 
   .next-button a::before {
-    content: get-icon('arrow-right');
+    content: get-icon('chevron-right');
   }
 
   .prev-button a::before {
-    content: get-icon('arrow-left');
+    content: get-icon('chevron-left');
   }
 }
