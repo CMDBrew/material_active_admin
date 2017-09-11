@@ -30,7 +30,10 @@ module MaterialActiveAdmin
     end
 
     initializer 'material_active_admin.assets.precompile' do |app|
-      app.config.assets.precompile += %w[material_active_admin/cb-logo.png]
+      app.config.assets.precompile += %w[
+        material_active_admin/cb-logo.png
+        material_active_admin/tinymce/style.scss
+      ]
       config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     end
 
