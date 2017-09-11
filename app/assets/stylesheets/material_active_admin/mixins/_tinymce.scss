@@ -192,8 +192,6 @@
   @include box-shadow($dropdown-shadow);
 
   &.mce-fixed {
-    width: calc(#{$modal-min-width} - 2 * 3 * #{$offset-base}) !important;
-
     & > * { width: 100% !important; }
   }
 
@@ -342,13 +340,14 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    height: 48px;
+    min-height: $ctrl-height;
     padding: 0 2 * $offset-base !important;
 
     & > * {
       display: flex;
       align-items: center;
       flex-direction: row;
+      flex-wrap: wrap;
     }
 
     &:not(:first-child) {
@@ -369,6 +368,8 @@
     .mce-btn {
       display: flex;
       align-items: center;
+      flex-grow: 0;
+      flex-shrink: 0;
       margin-left: 0;
 
       &:not(:last-child) {
