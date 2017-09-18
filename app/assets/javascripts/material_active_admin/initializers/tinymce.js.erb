@@ -1,0 +1,45 @@
+ActiveAdmin.TinyMCE = class TinyMCE {
+  constructor(options, element) {
+    this.options = options;
+    this.element = element;
+
+    const defaults = {
+      height: 400,
+      menubar: false,
+      plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table contextmenu paste code',
+        'table textcolor wordcount hr'
+      ],
+      toolbar1: 'undo redo | removeformat | table link hr | alignleft aligncenter alignright outdent indent bullist numlist',
+      toolbar2: 'formatselect | forecolor backcolor bold italic underline strikethrough blockquote superscript subscript',
+      block_formats: 'Header 1=h1; Header 2=h2; Header 3=h3; Header 4=h4; Header 5=h5; Header 6=h6; Paragraph=p',
+      browser_spellcheck: true,
+      elementpath: false,
+      branding: false,
+      table_appearance_options: false,
+      table_advtab: false,
+      table_cell_advtab: false,
+      table_row_advtab: false,
+      content_css: [
+        "<%= asset_url('/assets/material_active_admin/tinymce/style') %>"
+      ]
+    };
+
+    this.options = $.extend(defaults, this.options);
+    this.create();
+  }
+
+  destroy() {
+    tinymce.remove();
+  }
+
+  create() {
+    this.options = $.extend(this.options, { target: this.element });
+    tinymce.init(this.options);
+    return this;
+  }
+};
+
+$.widget.bridge('aaTinyMCE', ActiveAdmin.TinyMCE);

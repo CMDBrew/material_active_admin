@@ -1,0 +1,129 @@
+%table-base {
+  width: 100%;
+
+  th {
+    font-size: $table-th-fontsize;
+    font-weight: $font-bold;
+    line-height: 1;
+    color: $table-th-text-color;
+    text-transform: capitalize;
+
+    &[class*='sorted'] a {
+      color: $table-active-text-color;
+    }
+
+    &.sortable {
+
+      &.sorted-asc a::after {
+        content: get-icon('arrow-up');
+      }
+
+      &.sorted-desc a::after {
+        content: get-icon('arrow-down');
+      }
+
+      &[class*='sorted-'] {
+        color: $table-active-text-color;
+      }
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: inherit;
+
+        &::before,
+        &::after {
+          @extend %aa-icon;
+
+          margin-left: $offset-base;
+          font-size: $h4-fontsize;
+        }
+      }
+    }
+  }
+
+  th,
+  td {
+    height: $table-row-height;
+    max-width: 200px;
+    padding: 0 1.5 * $offset-base;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    box-sizing: border-box;
+
+    &:first-child {
+      padding-left: 3 * $offset-base;
+    }
+
+    &:last-child {
+      padding-right: 3 * $offset-base;
+    }
+
+    &.col-selectable {
+      width: 40px;
+      min-width: 40px;
+      text-align: center;
+
+      .checkbox-icon {
+        display: inline-block;
+        margin: 0;
+      }
+    }
+  }
+
+  tr.selected {
+    background: $table-selected-row-bg;
+  }
+
+  thead th,
+  tbody tr:not(:last-child) td {
+    border-bottom: 1px solid $table-divider-color;
+  }
+
+  td {
+    font-size: $table-td-fontsize;
+    color: $table-td-text-color;
+  }
+
+  td.col-actions {
+    flex-direction: row;
+    text-align: right;
+
+    a.dropdown_menu_button::after {
+      color: $table-action-text-color;
+    }
+
+    .table_actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      & > a {
+        @include button-constructor($_color: $brand-primary, $_size: 'sm' , $_type: 'link');
+      }
+
+      a.member_link {
+        &:not(:last-child) {
+          margin-right: $offset-base / 2;
+        }
+      }
+    }
+  }
+
+  span.empty {
+    color: $table-empty-text-color;
+  }
+}
+
+@mixin table-constructor {
+  @extend %table-base;
+
+  overflow: auto;
+  text-align: left;
+  white-space: nowrap;
+  border: 0;
+  border-collapse: collapse;
+  border-radius: 0;
+}

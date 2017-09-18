@@ -1,0 +1,64 @@
+.pagination {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+
+  .pager {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+
+    @include transform(translate3d(0, 0, 0));
+
+    .inner-pages {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .page.current,
+    .next-button a,
+    .prev-button a,
+    .page a {
+      @include button-constructor(
+        $_color: $pager-btn-color, $_type: 'link', $_size: 'sm'
+      );
+    }
+
+    .page.current,
+    .page a:hover {
+      color: $pager-btn-text-color-active;
+      background: $pager-btn-color-active;
+    }
+
+    .next-button a,
+    .prev-button a,
+    .page.current,
+    .page a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $button-height-sm;
+      height: $button-height-sm;
+      padding: 0;
+      margin: 0 1px;
+    }
+  }
+
+  .next-button,
+  .prev-button {
+    a::before {
+      @extend %aa-icon;
+    }
+  }
+
+  .next-button a::before {
+    content: get-icon('chevron-right');
+  }
+
+  .prev-button a::before {
+    content: get-icon('chevron-left');
+  }
+}

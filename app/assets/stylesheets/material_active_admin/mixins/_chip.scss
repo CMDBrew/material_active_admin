@@ -1,0 +1,24 @@
+@mixin chip-constructor(
+  $_bg: $chip-bg,
+  $_size: $chip-size
+) {
+  position: relative;
+  display: inline-block;
+  height: $_size;
+  max-width: 100%;
+  min-width: $_size;
+  padding: 0 1.5 * $offset-base;
+  margin: $offset-base / 4;
+  overflow: hidden;
+  font-size: $p-fontsize;
+  line-height: $_size;
+  color: adjust-text-color($_bg);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  background: $_bg;
+  border: 0;
+  border-radius: $_size / 2;
+  box-sizing: border-box;
+}

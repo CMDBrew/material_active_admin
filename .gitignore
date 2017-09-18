@@ -3,6 +3,7 @@
 .bundle/
 log/*.log
 pkg/
+.yardoc
 
 # Ignore Test Files
 test/dummy/db/*.sqlite3
@@ -11,3 +12,6 @@ test/dummy/log/*.log
 test/dummy/tmp/
 test/dummy/.sass-cache
 test/dummy/.byebug_history
+
+# Ignore doc
+doc/*

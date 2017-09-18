@@ -1,0 +1,56 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: normal;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: $h1-fontsize;
+}
+
+h2 {
+  font-size: $h2-fontsize;
+  font-weight: $font-light;
+}
+
+h3 {
+  font-size: $h3-fontsize;
+  font-weight: $font-bold;
+}
+
+h4 {
+  font-size: $h4-fontsize;
+  font-weight: $font-bold;
+}
+
+h5 {
+  font-size: $h5-fontsize;
+}
+
+h6 {
+  font-size: $h6-fontsize;
+}
+
+p {
+  font-size: $p-fontsize;
+}
+
+.mdi-icon,
+.aa-icon,
+.cb_activeadmin-icons {
+  @extend %aa-icon;
+}
+
+html {
+  font-family: $font-stack;
+  font-size: $base-fontsize;
+  line-height: 1.3;
+  color: adjust-text-color($body-bg);
+  -webkit-font-smoothing: antialiased;
+}

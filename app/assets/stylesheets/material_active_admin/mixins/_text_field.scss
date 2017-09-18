@@ -1,0 +1,196 @@
+%input-label {
+  display: block;
+  width: 100%;
+  min-height: 24px;
+  padding-top: $offset-base;
+  margin-bottom: $offset-base;
+  font-size: $label-fontsize;
+  font-weight: $font-bold;
+  color: $label-text-color;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  abbr {
+    &[title='required'] {
+      margin-left: $offset-base / 2;
+      color: $brand-danger;
+      text-decoration: none;
+      border: 0;
+    }
+  }
+}
+
+%input-error {
+  input,
+  textarea,
+  select {
+    border-color: $brand-danger !important;
+    @include box-shadow(0 1px 0 $brand-danger);
+
+    &:focus {
+      border-color: $brand-danger !important;
+    }
+  }
+
+  .guide {
+    display: none;
+  }
+}
+
+%input-guide {
+  position: absolute;
+  left: 50%;
+  height: 2px;
+  background: $input-border-color-active;
+  @include transform(translateX(-50%));
+}
+
+%input-wrap-base {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  background: $input-wrapper-bg;
+  border-radius: $input-wrapper-radius;
+}
+
+%input-wrap {
+  &:not(.field-parts) {
+    @extend %input-wrap-base;
+  }
+
+  .field-part {
+    @extend %input-wrap-base;
+  }
+
+  .guide {
+    @extend %input-guide;
+  }
+}
+
+%input-base {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0;
+  font-size: $input-fontsize;
+  color: $input-text-color;
+  white-space: nowrap;
+  background: $input-bg;
+  border: 0;
+  border-color: $input-border-color;
+  border-style: solid;
+  border-width: 0 0 1px;
+  border-radius: $input-radius;
+  outline: none;
+  box-sizing: border-box;
+  // sass-lint:disable no-vendor-prefixes
+
+  -webkit-appearance: none;
+  -webkit-backface-visibility: hidden;
+
+  &[disabled] {
+    border-style: dashed;
+  }
+}
+
+@mixin input-text-constructor {
+  @extend %input-wrap;
+
+  input {
+    @extend %input-base;
+
+    &[type='text'],
+    &[type='password'],
+    &[type='email'],
+    &[type='number'],
+    &[type='url'],
+    &[type='search'],
+    &[type='tel'] {
+      position: relative;
+      flex: 1;
+      flex-direction: column;
+      width: 100%;
+      height: $input-height;
+    }
+  }
+}
+
+@mixin input-textarea-constructor {
+  @extend %input-wrap;
+
+  textarea {
+    @extend %input-base;
+
+    position: relative;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: $offset-base 0;
+    resize: vertical;
+  }
+}
+
+@mixin input-select-constructor {
+  @extend %input-wrap;
+
+  select {
+    @extend %input-base;
+
+    position: relative;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    height: $input-height;
+    line-height: $input-height;
+
+    &:not([multiple]) {
+      padding-right: 4 * $offset-base;
+      background-image: image-url('material_active_admin/arrow_down.png');
+      background-position: calc(100% - 4px) 8px;
+      background-repeat: no-repeat;
+      background-size: $icon-size;
+    }
+
+    &[multiple] {
+      height: auto;
+    }
+  }
+}
+
+@mixin input-file-constructor {
+  @extend %input-wrap;
+
+  .file-container {
+    display: flex;
+    align-items: center;
+
+    .file-text {
+      @extend %input-base;
+
+      position: relative;
+      align-items: flex-start;
+      flex: 1;
+      flex-direction: column;
+      width: 100%;
+      height: $input-height;
+      margin-right: 2 * $offset-base;
+      line-height: $input-height;
+    }
+
+    .file-input {
+      width: auto;
+    }
+
+    input {
+      &[type='file'] {
+        display: none;
+      }
+    }
+  }
+}

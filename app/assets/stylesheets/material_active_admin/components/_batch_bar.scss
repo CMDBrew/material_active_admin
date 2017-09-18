@@ -1,0 +1,50 @@
+#batch_bar {
+  @include navbar-constructor(
+    $_bg: $batchbar-bg,
+    $_text-color: $batchbar-text-color,
+    $_btn-color: $batchbar-btn-color
+  );
+  @include transform(translateY(-100%));
+
+  opacity: 0;
+  visibility: hidden;
+
+  #page_title {
+    color: $batchbar-text-color;
+  }
+
+  #batch_bar_left {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    flex-direction: row;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #selection-toggle {
+    @extend %nav-switcher;
+  }
+
+  #batch_bar_right {
+    display: flex;
+    flex: 0 0 auto;
+    padding: 0 2 * $offset-base;
+    text-align: right;
+
+    & > ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .batch_action:not(:first-child) {
+        margin-left: $offset-base / 2;
+      }
+    }
+  }
+
+  .dropdown_menu {
+    margin-left: $offset-base / 2;
+  }
+}

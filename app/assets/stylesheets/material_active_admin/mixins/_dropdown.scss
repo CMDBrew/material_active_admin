@@ -1,0 +1,95 @@
+@keyframes dropdown-animation {
+  from {
+    @include transform(perspective(1000px) rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+@-webkit-keyframes dropdown-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+
+@mixin dropdown-constructor(
+  $_parent-bg: $panel-bg
+) {
+  position: static !important;
+
+  .dropdown_menu_button {
+    display: block;
+
+    &::after {
+      @extend %aa-icon;
+
+      justify-content: flex-end;
+      margin-right: -#{$offset-base};
+      color: adjust-text-color($_parent-bg, 'hint');
+      content: get-icon('menu-down');
+    }
+
+    &:empty::after {
+      margin-right: 0;
+      content: get-icon('dots-vertical');
+    }
+  }
+
+  .dropdown_menu_list_wrapper {
+    position: absolute;
+    display: none;
+    width: auto;
+    height: auto;
+    min-width: $dropdown-min-width;
+    padding: $offset-base 0;
+    margin: 0;
+    color: adjust-text-color($dropdown-bg);
+    background: $dropdown-bg;
+    border-radius: $dropdown-radius;
+    transform-origin: 50% 0;
+
+    @include animation(dropdown-animation 0.2s);
+    @include box-shadow($dropdown-shadow);
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    li.divider {
+      margin: $offset-base 0;
+      border-bottom: 1px solid $divider-color;
+    }
+
+    li:hover a {
+      color: $dropdown-menu-item-text-color-active !important;
+      background: $dropdown-menu-item-bg-active;
+    }
+
+    li a {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      height: $dropdown-menu-item-height;
+      padding: 0 3 * $offset-base;
+      overflow: hidden;
+      font-size: $p-fontsize;
+      font-weight: normal;
+      color: adjust-text-color($dropdown-bg);
+      text-overflow: ellipsis;
+      text-transform: none;
+      white-space: nowrap;
+      box-sizing: border-box;
+
+      & > i {
+        margin-right: $offset-base;
+      }
+    }
+  }
+}

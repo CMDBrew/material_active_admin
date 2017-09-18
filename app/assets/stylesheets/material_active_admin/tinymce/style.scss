@@ -1,0 +1,7 @@
+@import 'material_active_admin/mixins';
+
+body.mce-content-body {
+  padding: 2 * $offset-base;
+  margin: 0;
+  color: adjust-text-color($tinymce-bg);
+}

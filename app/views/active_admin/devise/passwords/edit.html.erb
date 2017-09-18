@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  <h3><%= title t('active_admin.devise.change_password.title') %></h3>
+<% end %>
+<!-- <%= devise_error_messages! %> -->
+<%= active_admin_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+  f.inputs do
+    f.input :password
+    f.input :password_confirmation
+    f.input :reset_password_token, as: :hidden, input_html: { value: resource.reset_password_token }
+  end
+  f.actions do
+    f.action :submit,
+             :button_html  => { value: t('active_admin.devise.change_password.submit') },
+             :wrapper_html => {
+               :class             => "mdi-btn mdi-btn__brand-primary with-ripple",
+               :data_ripple_color => "rgba(0,0,0,.3)"
+             }
+  end
+end
+%>
+<% content_for :extra do %>
+  <%= render partial: "active_admin/devise/shared/links" %>
+<% end %>

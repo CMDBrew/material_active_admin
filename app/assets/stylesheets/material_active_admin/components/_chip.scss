@@ -1,0 +1,23 @@
+@each $_type, $_color in $chip-color-map {
+  .aa-chip,
+  .status_tag {
+    &.densed.#{$_type} {
+      @include chip-constructor($_bg: $_color, $_size: $chip-size-densed);
+    }
+
+    &.#{$_type}:not(.densed) {
+      @include chip-constructor($_bg: $_color);
+    }
+  }
+}
+
+.aa-chip,
+.status_tag {
+  &.densed {
+    @include chip-constructor($_bg: $chip-bg, $_size: $chip-size-densed);
+  }
+
+  &:not(.densed) {
+    @include chip-constructor($_bg: $chip-bg);
+  }
+}

@@ -1,0 +1,29 @@
+$_dir-map: ('start', 'end', 'center');
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@for $_i from 1 through 12 {
+  .flex-col-#{$_i} {
+    flex: $_i;
+  }
+}
+
+[class*='flex-'] {
+  @each $_value in $_dir-map {
+    &.justify-#{$_value} {
+      justify-content: $_value;
+    }
+
+    &.align-#{$_value} {
+      align-content: $_value;
+    }
+  }
+}

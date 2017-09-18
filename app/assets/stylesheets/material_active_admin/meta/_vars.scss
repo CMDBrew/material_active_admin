@@ -1,0 +1,307 @@
+// Mobile Responsiveness
+$screen-tablet:  768px !default;
+$screen-desktop: 992px !default;
+
+// Colors
+$brand-accent:  #E91E63 !default;
+$brand-default: #E0E0E0 !default;
+$brand-primary: #2A56C6 !default;
+$brand-success: #4799A8 !default;
+$brand-info:    #5E69C0 !default;
+$brand-warning: #EB6C2C !default;
+$brand-danger:  #BE361C !default;
+
+// Text colors
+$text-color-placeholder:       #9E9E9E !default;
+$text-color-primary:           #444444 !default;
+$text-color-secondary:         #787878 !default;
+$text-color-hint:              #B3B3B3 !default;
+$text-color-placeholder:       #9E9E9E !default;
+$text-color-primary-inverse:   rgba(255, 255, 255, 1) !default;
+$text-color-secondary-inverse: rgba(255, 255, 255, 0.7) !default;
+$text-color-hint-inverse:      rgba(255, 255, 255, 0.5) !default;
+
+$color-map: (
+  'brand-accent':      $brand-accent,
+  'brand-default':     $brand-default,
+  'brand-primary':     $brand-primary,
+  'brand-success':     $brand-success,
+  'brand-info':        $brand-info,
+  'brand-warning':     $brand-warning,
+  'brand-danger':      $brand-danger,
+  'primary':           $text-color-primary,
+  'secondary':         $text-color-secondary,
+  'hint':              $text-color-hint,
+  'primary-inverse':   $text-color-primary-inverse,
+  'secondary-inverse': $text-color-secondary-inverse,
+  'hint-inverse':      $text-color-hint-inverse
+) !default;
+
+// Typography
+$h1-fontsize:        2.43rem !default;
+$h2-fontsize:        1.71rem !default;
+$h3-fontsize:        1.43rem !default;
+$h4-fontsize:        1.14rem !default;
+$h5-fontsize:        1.07rem !default;
+$h6-fontsize:        0.86rem !default;
+$p-fontsize:         1rem !default;
+$base-fontsize:      14px !default;
+$font-stack:         Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-light:         300 !default;
+$font-bold:          500 !default;
+
+// Icon
+$icon-font:          'Material Design Icons' !default;
+$icon-size:          24px !default;
+$checkbox-icon-size: 22px !default;
+
+// Utilities
+$offset-base:            8px !default;
+$ctrl-height:            40px !default;
+$ctrl-height-sm:         32px !default;
+$ctrl-hover-bg:          rgba(0, 0, 0, 0.05) !default;
+$ctrl-hover-bg-inverse:  rgba(255, 255, 255, 0.05) !default;
+$divider-color:          #E0E0E0 !default;
+$divider-color-inverse:  #656565 !default;
+$content-max-width:      1000px !default;
+$ctrl-radius:            2px !default;
+$body-bg:                #EEEEEE !default;
+$body-bg-logged-out:     $brand-primary !default;
+$color-adjust-intensity: 75 !default;
+$ripple-bg:              white !default;
+$aside-width:            320px !default;
+$backdrop-bg:            rgba(10, 10, 10, 0.6) !default;
+
+// Title Bar
+$titlebar-bg:         $brand-primary !default;
+$titlebar-btn-color:  adjust-text-color($titlebar-bg) !default;
+$titlebar-text-color: adjust-text-color($titlebar-bg) !default;
+
+// Batch Bar
+$batchbar-bg:         #636363 !default;
+$batchbar-btn-color:  adjust-text-color($batchbar-bg) !default;
+$batchbar-text-color: adjust-text-color($batchbar-bg) !default;
+$batchbar-badge-bg:   darken($batchbar-bg, 3%) !default;
+
+// Navbar
+$navbar-tab-bg:                     $titlebar-bg !default;
+$navbar-height:                     64px !default;
+$navbar-shadow:                     0 1px 8px rgba(0, 0, 0, 0.3) !default;
+$navbar-btn-type:                   'solid' !default;
+$navbar-tab-height:                 48px !default;
+$navbar-tab-min-width:              200px !default;
+$navbar-tab-indicator-color-active: adjust-text-color($brand-primary) !default;
+$navbar-tab-alignment:              center !default;
+$navbar-tab-badge-bg:               $brand-danger !default;
+
+// Header
+$header-width:                  260px !default;
+$header-bg:                     $body-bg !default;
+$header-bg-sm:                  white !default;
+$header-width-sm:               320px !default;
+$header-shadow-sm:              0 5px 10px 0 rgba(0, 0, 0, 0.1) !default;
+$header-text-color:             adjust-text-color($header-bg, $type: 'secondary') !default;
+$header-item-text-color:        adjust-text-color($header-bg, $type: 'secondary') !default;
+$header-item-text-color-active: $brand-primary !default;
+$header-item-height:            48px !default;
+$header-item-hover-bg:          adjust-ctrl-hover-bg($header-bg) !default;
+$header-icon-padding:           72px !default;
+$header-favicon-size:           56px !default;
+$header-divider-color:          adjust-divider-color($header-bg) !default;
+$header-badge-bg:               $brand-danger !default;
+
+// Filter
+$filter-header-bg:           $titlebar-bg !default;
+$filter-bg:                  white !default;
+$filter-width:               380px !default;
+$filter-shadow:              0 -5px 10px 0 rgba(0, 0, 0, 0.1) !default;
+$filter-header-action-color: adjust-text-color($filter-header-bg, $type: 'secondary') !default;
+$filter-text-color:          adjust-text-color($filter-header-bg) !default;
+
+// Panel
+$panel-bg:                 white !default;
+$panel-shadow:             0 1px 4px 0 rgba(0, 0, 0, 0.14) !default;
+$panel-radius:             $ctrl-radius !default;
+$panel-transparent-border: adjust-divider-color($body-bg) !default;
+$panel-action-color:       adjust-text-color($panel-bg, $type: 'secondary') !default;
+$panel-tabs-border-color:  adjust-divider-color($panel-bg) !default;
+$panel-divider-color:      adjust-divider-color($panel-bg) !default;
+$panel-text-color:         adjust-text-color($panel-bg) !default;
+$panel-padding:            3 * $offset-base !default;
+$panel-btn-color:          adjust-text-color($panel-bg, $type: 'secondary') !default;
+
+// Form
+$input-guide-color:         #E0E0E0 !default;
+$input-wrapper-bg:          transparent !default;
+$input-wrapper-radius:      0 !default;
+$input-bg:                  transparent !default;
+$input-bg-disabled:         rgba(0, 0, 0, 0.05) !default;
+$input-border-color:        darken($panel-bg, 16%) !default;
+$input-border-color-active: $brand-primary !default;
+$input-height:              $ctrl-height !default;
+$input-radius:              0 !default;
+$input-text-color:          adjust-text-color($panel-bg) !default;
+$input-text-color-disabled: adjust-text-color($panel-bg, $type: 'hint') !default;
+$input-fontsize:            $h5-fontsize !default;
+$input-active-color:        $brand-primary !default;
+$label-fontsize:            $h6-fontsize !default;
+$label-text-color:          adjust-text-color($panel-bg, $type: 'secondary') !default;
+$form-cancel-btn-type:      'solid' !default;
+$form-submit-btn-type:      'solid' !default;
+$form-cancel-btn-color:     $brand-default !default;
+$form-submit-btn-color:     $brand-primary !default;
+
+// Blank Slate
+$blank-slate-text-color: adjust-text-color($panel-bg, $type: 'hint') !default;
+
+// Button
+$button-radius:    2px !default;
+$button-height:    $ctrl-height !default;
+$button-height-sm: $ctrl-height-sm !default;
+$button-shadow:    0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
+
+// Table
+$table-row-height:               48px !default;
+$table-selected-row-bg:          transparentize($brand-primary, 0.87) !default;
+$table-active-text-color:        $brand-primary !default;
+$table-action-text-color:        adjust-text-color($panel-bg, $type: 'secondary') !default;
+$table-th-fontsize:              $h6-fontsize !default;
+$table-td-fontsize:              $p-fontsize !default;
+$table-th-text-color:            adjust-text-color($panel-bg, $type: 'secondary') !default;
+$table-td-text-color:            adjust-text-color($panel-bg) !default;
+$table-divider-color:            adjust-divider-color($panel-bg) !default;
+$table-empty-text-color:         adjust-text-color($panel-bg, $type: 'hint') !default;
+$attr-table-row-divider-color:   adjust-divider-color($panel-bg) !default;
+$attr-table-th-fontsize:         $p-fontsize !default;
+$attr-table-th-text-color:       adjust-text-color($panel-bg, $type: 'secondary') !default;
+$attr-table-td-fontsize:         $p-fontsize !default;
+$attr-table-td-text-color:       adjust-text-color($panel-bg) !default;
+$attr-table-td-empty-text-color: adjust-text-color($panel-bg, $type: 'hint') !default;
+
+// Dropdown
+$dropdown-shadow:                      0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12) !default;
+$dropdown-radius:                      $ctrl-radius !default;
+$dropdown-bg:                          white !default;
+$dropdown-min-width:                   148px !default;
+$dropdown-menu-item-height:            $ctrl-height !default;
+$dropdown-menu-item-bg-active:         adjust-ctrl-hover-bg($dropdown-bg) !default;
+$dropdown-menu-item-text-color-active: adjust-text-color($dropdown-bg) !default;
+
+// Select2
+$select2-input-height:            $input-height !default;
+$select2-bg:                      $input-bg !default;
+$select2-dropdown-bg:             $dropdown-bg !default;
+$select2-dropdown-shadow:         $dropdown-shadow !default;
+$select2-dropdown-radius:         $dropdown-radius !default;
+$select2-option-height:           $dropdown-menu-item-height !default;
+$select-option-bg-active:         adjust-ctrl-hover-bg($select2-dropdown-bg) !default;
+$select-option-text-color-active: adjust-text-color($select2-dropdown-bg) !default;
+
+// TinyMCE
+$tinymce-bg:                           white !default;
+$tinymce-header-panel-bg:              #F1F1F1 !default;
+$tinymce-border:                       1px solid adjust-divider-color($tinymce-bg) !default;
+$tinymce-border-radius:                $input-radius !default;
+$tinymce-dropdown-bg:                  $dropdown-bg !default;
+$tinymce-dropdown-item-shortcut-color: adjust-text-color($tinymce-bg) !default;
+$tinymce-dropdown-shadow:              $dropdown-shadow !default;
+$tinymce-icon-size:                    $icon-size !default;
+
+// Float Button
+$float-action-size:          56px !default;
+$float-action-size-sm:       40px !default;
+$float-action-bg:            white !default;
+$float-action-text-color:    adjust-text-color($float-action-bg) !default;
+$float-action-shadow:        0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
+$float-action-shadow-active: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28) !default;
+
+// Bottom Sheet
+$bottom-sheet-shadow:                 $float-action-shadow !default;
+$bottom-sheet-radius:                 $ctrl-radius !default;
+$bottom-sheet-bg:                     white !default;
+$bottom-sheet-min-width:              200px !default;
+$bottom-sheet-item-height:            48px !default;
+$bottom-sheet-item-bg-active:         adjust-ctrl-hover-bg($bottom-sheet-bg) !default;
+$bottom-sheet-item-text-color-active: adjust-text-color($bottom-sheet-bg) !default;
+$bottom-sheet-item-icon-padding:      70px !default;
+
+// Tab
+$tab-height:                  $navbar-tab-height !default;
+$tab-active-indicator-height: 2px !default;
+$tab-active-indicator-color:  $brand-primary !default;
+$tab-inactive-opacity:        0.54 !default;
+$tab-fontsize:                $p-fontsize !default;
+$tab-badge-bg:                $brand-danger !default;
+
+// Badge
+$badge-bg:         $brand-danger !default;
+$badge-fontsize:   $h6-fontsize !default;
+$badge-height:     24px !default;
+$badge-radius:     $badge-height / 2 !default;
+$badge-text-color: adjust-text-color($badge-bg) !default;
+
+// Toast
+$toast-bg:               #323232 !default;
+$toast-max-width:        480px !default;
+$toast-shadow:           0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
+$toast-radius:           $ctrl-radius !default;
+$toast-btn-color:        $brand-accent !default;
+$toast-btn-type:         'link' !default;
+
+// Comment
+$comment-avatar-size:     32px !default;
+$comment-avatar-bg:       $brand-default !default;
+$comment-bg:              transparent !default;
+$comment-meta-text-color: adjust-text-color($panel-bg, $type: 'secondary') !default;
+
+// Pagination
+$pager-btn-color: adjust-text-color($body-bg, $type: 'secondary') !default;
+$pager-btn-color-active: adjust-ctrl-hover-bg($body-bg) !default;
+$pager-btn-text-color-active: $brand-primary !default;
+
+// Modal
+$modal-bg: $panel-bg !default;
+$modal-shadow: 0 0 14px rgba(0, 0, 0, 0.24), 0 14px 28px rgba(0, 0, 0, 0.48) !default;
+$modal-radius: 0 !default;
+$modal-min-width: 360px !default;
+
+// Tooltip
+$tooltip-bg: #727272 !default;
+$tooltip-shadow: none !default;
+
+// Blob
+$blob-bg: $body-bg !default;
+$blob-radius: 50% !default;
+$blob-size-map: (
+  'xs': 32px,
+  'sm': 64px,
+  'md': 128px,
+  'lg': 256px,
+  'xlg': 512px,
+) !default;
+
+// Spinner
+$spinner-size: 40px !default;
+
+// Flash
+$flash-fontsize:   $p-fontsize !default;
+$flash-radius:     $ctrl-radius !default;
+
+$flash-color-map: (
+  'flash_notice': $brand-warning,
+  'flash_alert':  $brand-danger,
+  'flash_error':  $brand-danger,
+) !default;
+
+// Chip
+$chip-size:              32px !default;
+$chip-size-densed:       24px !default;
+$chip-bg:                $brand-default !default;
+$chip-remove-bg:         rgba(0, 0, 0, 0.3) !default;
+$chip-remove-text-color: #E0E0E0 !default;
+$chip-color-map:         map-merge($color-map, ('yes': $brand-success, 'no': $brand-danger)) !default;
+
+// Datepicker
+$date-picker-bg:        white !default;
+$date-picker-shadow:    $dropdown-shadow !default;
+$date-picker-item-size: 32px !default;

@@ -1,0 +1,122 @@
+%button {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: $p-fontsize;
+  font-weight: $font-bold;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  border-radius: $button-radius;
+  outline: none;
+
+  -webkit-appearance: none;
+  -webkit-backface-visibility: hidden;
+}
+
+@mixin button-base($_size) {
+  @extend %button;
+
+  display: flex;
+  padding: 0 2 * $offset-base;
+
+  @if ($_size == 'sm') {
+    line-height: $button-height-sm;
+  } @else {
+    line-height: $button-height;
+  }
+
+  input {
+    &[type='submit'] {
+      color: inherit;
+      text-transform: uppercase;
+      background: transparent;
+      border: 0;
+
+      -webkit-appearance: none;
+      -webkit-backface-visibility: hidden;
+    }
+  }
+}
+
+@mixin button-constructor(
+  $_color: $brand-default,
+  $_type: 'solid',
+  $_size: 'default',
+  $_shadow: $button-shadow
+) {
+  @include button-base($_size);
+
+  @if ($_type == 'link') {
+    color: $_color;
+    background: transparent;
+  } @elseif ($_type == 'outline') {
+    color: $_color;
+    background: transparent;
+    border: 1px solid $_color;
+  } @elseif ($_type == 'solid') {
+    color: adjust-text-color($_color);
+    background: $_color;
+  } @else {
+    color: adjust-text-color($_color);
+    background: $_color;
+
+    @include box-shadow($_shadow);
+
+    &:not(.disabled):hover {
+      background: darken($_color, 5%);
+    }
+  }
+
+  &.disabled {
+    opacity: 0.54;
+  }
+}
+
+@mixin button-icon-base($_size) {
+  @extend %button;
+
+  display: block;
+  border-radius: 50%;
+
+  @if ($_size == 'sm') {
+    width: $button-height-sm;
+    height: $button-height-sm;
+    line-height: $button-height-sm;
+  } @else {
+    width: $button-height;
+    height: $button-height;
+    line-height: $button-height;
+  }
+
+  input {
+    &[type='submit'] {
+      color: inherit;
+      text-transform: uppercase;
+      background: transparent;
+      border: 0;
+
+      -webkit-appearance: none;
+      -webkit-backface-visibility: hidden;
+    }
+  }
+}
+
+@mixin button-icon-constructor(
+  $_size: 'default',
+  $_color: $brand-default,
+) {
+  @include button-icon-base($_size);
+
+  color: $_color;
+  background: transparent;
+
+  &.disabled {
+    opacity: 0.54;
+  }
+}

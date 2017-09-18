@@ -1,0 +1,32 @@
+@function get-map-value($key, $map) {
+  @if map-has-key($map, $key) {
+    $unicode: map-get($map, $key);
+    @return $unicode;
+  } @else {
+    @return null;
+  }
+}
+
+@function adjust-text-color($color, $type: 'primary') {
+  @if (lightness($color) > $color-adjust-intensity) {
+    @return get-map-value('#{$type}', $color-map);
+  } @else {
+    @return get-map-value('#{$type}-inverse', $color-map);
+  }
+}
+
+@function adjust-divider-color($color) {
+  @if (lightness($color) > $color-adjust-intensity) {
+    @return $divider-color;
+  } @else {
+    @return $divider-color-inverse;
+  }
+}
+
+@function adjust-ctrl-hover-bg($color) {
+  @if (lightness($color) > $color-adjust-intensity) {
+    @return $ctrl-hover-bg;
+  } @else {
+    @return $ctrl-hover-bg-inverse;
+  }
+}

@@ -1,0 +1,195 @@
+@keyframes menu-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+@-webkit-keyframes menu-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+
+@mixin select2-constructor {
+  width: 100% !important;
+
+  .selection {
+    @extend %input-wrap;
+  }
+
+  &.select2-container--focus .select2-selection--multiple,
+  .select2-selection {
+    @extend %input-base;
+
+    height: $input-height;
+    padding-right: 4 * $offset-base;
+    line-height: $input-height;
+    background-image: image-url('material_active_admin/arrow_down.png');
+    background-position: calc(100% - 4px) 8px;
+    background-repeat: no-repeat;
+    background-size: $checkbox-icon-size;
+  }
+
+  .select2-selection {
+    &.select2-selection--multiple {
+      flex-wrap: wrap;
+      height: auto;
+      min-height: $input-height;
+
+      .select2-selection__rendered {
+        display: block;
+      }
+    }
+
+    .select2-selection__rendered {
+      display: flex;
+      flex: 1;
+      padding: 0;
+      padding-right: $badge-height + $offset-base;
+      line-height: $input-height;
+    }
+
+    .select2-selection__clear {
+      @include badge-constructor($_bg: $brand-default);
+
+      position: absolute;
+      top: $offset-base;
+      right: 0;
+      margin: 0;
+    }
+
+    .select2-search__field {
+      width: auto !important;
+    }
+
+    .select2-selection__choice {
+      @include chip-constructor($_bg: $brand-default, $_size: $chip-size);
+
+      max-width: 180px;
+      padding-right: 5 * $offset-base;
+      margin: 0;
+      margin-right: $offset-base;
+      margin-bottom: $offset-base;
+      overflow: hidden;
+
+      .select2-selection__choice__remove {
+        @include badge-constructor($_bg: #A6A6A6);
+        @include transform(translateY(-50%));
+
+        position: absolute;
+        top: 50%;
+        right: $offset-base / 2;
+        margin: 0;
+        color: $brand-default;
+      }
+    }
+  }
+
+  .select2-selection__rendered {
+    position: relative;
+  }
+
+  .select2-selection__arrow {
+    display: none;
+  }
+
+  .select2-selection__placeholder {
+    color: $text-color-placeholder;
+  }
+
+  .select2-dropdown {
+    padding: 0;
+    margin: 0;
+    margin-top: $offset-base / 2;
+    background: $select2-dropdown-bg;
+    border: 0;
+    border-radius: $select2-dropdown-radius;
+
+    @include animation(menu-animation 0.2s);
+    @include box-shadow($select2-dropdown-shadow);
+    transform-origin: 50% 0;
+
+    .select2-results {
+      padding: $offset-base 0;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      display: block;
+      align-items: center;
+      float: left;
+      width: 100%;
+      height: $select2-option-height;
+      padding: 0 $offset-base * 2;
+      padding-left: 64px;
+      overflow: hidden;
+      font-size: $p-fontsize;
+      font-weight: normal;
+      line-height: $select2-option-height;
+      color: adjust-text-color($select2-dropdown-bg);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      box-sizing: border-box;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: $select2-option-height;
+      }
+
+      &:not(.select2-results__message)::before {
+        @extend %aa-icon;
+
+        margin-right: $offset-base;
+        color: adjust-text-color($select2-dropdown-bg, $type: 'secondary');
+        content: get-icon('checkbox-blank-outline');
+      }
+
+      &.select2-results__option {
+        &[aria-selected='true'] {
+          background: transparent;
+
+          &:not(.select2-results__message)::before {
+            color: $brand-primary !important;
+            content: get-icon('checkbox-marked');
+          }
+        }
+      }
+    }
+
+    .select2-results__option--highlighted {
+      &[aria-selected] {
+        color: $select-option-text-color-active;
+        background: $select-option-bg-active;
+      }
+    }
+
+    .select2-search {
+      @extend %input-wrap;
+      @include input-text-constructor;
+
+      padding: $offset-base 3 * $offset-base;
+
+      .select2-search__field {
+        border-bottom: 2px solid $brand-primary;
+      }
+    }
+  }
+}
