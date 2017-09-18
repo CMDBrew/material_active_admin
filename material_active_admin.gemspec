@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-ui-rails', '~> 5.0.5'
   s.add_dependency 'select2-rails'
   s.add_dependency 'tinymce-rails'
+  s.add_dependency 'sprockets', '>= 3.0', '< 4.1'
+  s.add_dependency 'sprockets-es6', '>= 0.9.2'
 
   s.add_development_dependency 'devise', '~> 4.2.0'
   s.add_development_dependency 'pg',     '~> 0.15'
