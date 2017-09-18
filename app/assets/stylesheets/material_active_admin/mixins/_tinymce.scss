@@ -552,7 +552,7 @@
 
 @mixin tinymce-constructor {
   .mce-modal-block {
-    @extend %modal-dialog-overlay;
+    @extend %backdrop;
   }
 
   .mce-tinymce {

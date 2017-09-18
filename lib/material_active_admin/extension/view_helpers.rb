@@ -2,7 +2,7 @@
 module ActiveAdmin::ViewHelpers
 
   def blob(object, image_size:, blob_size: 'xs', name: 'image', round: false)
-    return unless object.respond_to?(name.to_sym)
+    return unless object.respond_to?(name.to_sym) && object.try(name.to_sym).present?
     klass = %w[blob]
     klass.push blob_size
     klass.push 'round' if round
@@ -59,6 +59,18 @@ module ActiveAdmin::ViewHelpers
       12.times do
         concat(content_tag(:div, '', class: 'circle'))
       end
+    end
+  end
+
+  def admin_menu_label(user)
+    (blob(user, image_size: 'thumb', name: 'avatar', round: true) || aa_icon('account-circle')) +
+      admin_identifier(user)
+  end
+
+  def admin_identifier(user)
+    identifier = user.respond_to?(:full_name) ? user.full_name : user.email
+    content_tag(:div, class: 'menu-title', id: 'current-admin-menu') do
+      content_tag(:span, identifier)
     end
   end
 

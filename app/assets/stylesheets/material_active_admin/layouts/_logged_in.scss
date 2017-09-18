@@ -21,6 +21,11 @@ body.logged_in {
   &.sidebar-toggled {
     #wrapper {
       padding-left: 0;
+
+      &::after {
+        @extend %backdrop;
+        content: none;
+      }
     }
 
     #header {
@@ -132,6 +137,10 @@ body.logged_in {
   @include tablet {
     &.sidebar-toggled {
       overflow: hidden;
+
+      #wrapper::after {
+        content: '';
+      }
     }
 
     #wrapper {

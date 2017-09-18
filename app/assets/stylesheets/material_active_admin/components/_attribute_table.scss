@@ -6,6 +6,8 @@ table.aa-attributes-table {
   th {
     display: flex;
     align-items: flex-start;
+    flex-grow: 0;
+    flex-shrink: 0;
     padding: 2 * $offset-base 0;
     text-align: left;
   }

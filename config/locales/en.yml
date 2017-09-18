@@ -126,7 +126,7 @@ en:
       login:
         title:               "Sign In"
         remember_me:         "Remember me"
-        submit:              "submit"
+        submit:              "Log In"
         submit/disable_with: "Logging In..."
       reset_password:
         title:  "Forgot password?"

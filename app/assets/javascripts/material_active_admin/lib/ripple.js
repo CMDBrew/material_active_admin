@@ -33,7 +33,7 @@ ActiveAdmin.Ripple = class Ripple {
       $ripple.remove();
     }, 2000);
 
-    return this;
+    return true;
   }
 
   _bind() {

@@ -22,7 +22,7 @@ html
               #logo
                 =image_tag ActiveAdmin.application.site_title_image, :alt => ActiveAdmin.application.site_title, retina: true, class: "logo_normal"
             -else 
-              #site-title=ActiveAdmin.application.site_title
+              h1#site-title=ActiveAdmin.application.site_title
           #login.panel
             =yield :title
             -flash_messages.each do |type, message|

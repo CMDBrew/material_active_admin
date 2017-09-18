@@ -16,11 +16,6 @@ module MaterialActiveAdmin
       generate 'material_active_admin:assets'
     end
 
-    # def replace_active_admin_defaults
-    #   template 'dashboard.rb.erb', 'app/admin/dashboard.rb'
-    #   template 'admin_user.rb.erb', 'app/admin/admin_user.rb'
-    # end
-
   end
 
 end

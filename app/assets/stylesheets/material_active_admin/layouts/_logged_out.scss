@@ -32,6 +32,10 @@ body.logged_out {
     display: block;
     margin-bottom: 4 * $offset-base;
 
+    #site-title {
+      color: adjust-text-color($body-bg-logged-out);
+    }
+
     #logo {
       height: 96px;
       overflow: hidden;

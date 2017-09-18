@@ -79,6 +79,7 @@
 
     & + .panel_contents,
     & + ol {
+      padding-top: 0;
       margin-top: 2 * $offset-base;
     }
 
@@ -129,8 +130,7 @@
   & > ol,
   .panel_contents {
     display: block;
-    padding: 0 $panel-padding;
-    padding-bottom: 3 * $offset-base;
+    padding: $panel-padding;
     overflow: hidden;
   }
 
