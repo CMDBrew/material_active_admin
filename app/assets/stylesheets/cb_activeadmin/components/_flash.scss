@@ -1,3 +1,0 @@
-@each $flash_class, $flash_color in $flash-color-map {
-  .flash.#{$flash_class} { @include flash-base($flash_color); }
-}

@@ -1,0 +1,42 @@
+@mixin index-page {
+  .paginated_collection {
+    display: block;
+    width: 100%;
+  }
+
+  .index_as_table {
+    @include panel-constructor;
+
+    padding: 0;
+    margin-bottom: 0;
+    overflow: scroll;
+
+    table { @include table-constructor; }
+  }
+
+  #main_content_wrapper {
+    max-width: $content-max-width;
+  }
+
+  #index_footer {
+    padding: $offset-base * 2 0;
+
+    .pagination {
+      margin-bottom: 2 * $offset-base;
+    }
+
+    .pagination_information,
+    .download_links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: $offset-base;
+      color: adjust-text-color($body-bg);
+
+      a,
+      b {
+        margin: 0 $offset-base / 4;
+      }
+    }
+  }
+}

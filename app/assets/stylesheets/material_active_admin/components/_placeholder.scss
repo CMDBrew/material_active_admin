@@ -1,0 +1,16 @@
+// sass-lint:disable no-vendor-prefixes
+::-webkit-input-placeholder {
+  color: $text-color-placeholder;
+}
+
+:-moz-placeholder {
+  color: $text-color-placeholder;
+}
+
+::-moz-placeholder {
+  color: $text-color-placeholder;
+}
+
+:-ms-input-placeholder {
+  color: $text-color-placeholder;
+}

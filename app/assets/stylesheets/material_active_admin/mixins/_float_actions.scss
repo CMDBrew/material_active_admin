@@ -1,0 +1,185 @@
+@keyframes bottom-sheet-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+@-webkit-keyframes dropdown-animation {
+  from {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 90deg)scale(0.5)translateY(0));
+  }
+
+  to {
+    @include transform(perspective(1000px)rotate3d(1, 0, 0, 0)scale(1));
+  }
+}
+
+
+@keyframes float-action-animation {
+  from {
+    opacity: 0;
+
+    @include transform(translateY(50px));
+  }
+
+  to {
+    opacity: 1;
+
+    @include transform(translateY(0));
+  }
+}
+@-webkit-keyframes float-action-animation {
+  from {
+    opacity: 0;
+
+    @include transform(translateY(50px));
+  }
+
+  to {
+    opacity: 1;
+
+    @include transform(translateY(0));
+  }
+}
+
+%float-action-base {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $float-action-size;
+  height: $float-action-size;
+  overflow: hidden;
+  color: $float-action-text-color;
+  background: $float-action-bg;
+  border-radius: 50%;
+
+  @include box-shadow($float-action-shadow);
+  @include animation(float-action-animation 0.4s);
+
+  span {
+    display: none;
+  }
+
+  &:hover {
+    @include box-shadow($float-action-shadow-active);
+  }
+}
+
+@mixin float-actions-constructor {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 3 * $offset-base;
+
+  .bottom_sheet {
+    &.active {
+      .bottom_sheet_trigger {
+        opacity: 0;
+      }
+
+      .bottom_sheet_wrapper {
+        display: block;
+      }
+    }
+
+    .bottom_sheet_wrapper {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: none;
+      width: auto;
+      height: auto;
+      min-width: $bottom-sheet-min-width;
+      padding: $offset-base 0;
+      margin: 0;
+      color: adjust-text-color($bottom-sheet-bg);
+      list-style: none;
+      background: $bottom-sheet-bg;
+      border-radius: $bottom-sheet-radius;
+
+      @include box-shadow($bottom-sheet-shadow);
+      @include animation(bottom-sheet-animation 0.2s);
+      transform-origin: right bottom;
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      li:hover a {
+        color: $bottom-sheet-item-text-color-active !important;
+        background: $bottom-sheet-item-bg-active;
+      }
+
+      li a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        height: $bottom-sheet-item-height;
+        padding: 0 3 * $offset-base;
+        padding-left: $bottom-sheet-item-icon-padding;
+        overflow: hidden;
+        font-size: $p-fontsize;
+        font-weight: normal;
+        color: adjust-text-color($bottom-sheet-bg);
+        text-overflow: ellipsis;
+        text-transform: none;
+        white-space: nowrap;
+        box-sizing: border-box;
+
+        & > i {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: $bottom-sheet-item-icon-padding;
+          height: $bottom-sheet-item-height;
+          font-size: $icon-size;
+          color: adjust-text-color($bottom-sheet-bg, $type: 'secondary');
+        }
+      }
+    }
+  }
+
+  .float_actions {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+
+  .float_action {
+    position: relative;
+    display: block;
+
+    &:not(:first-child) {
+      margin-bottom: 2 * $offset-base;
+    }
+  }
+
+  .float-btn {
+    @extend %float-action-base;
+
+    &.sm {
+      width: $float-action-size-sm;
+      height: $float-action-size-sm;
+    }
+
+    @each $_class, $_color in $color-map {
+      &.#{$_class} {
+        color: adjust-text-color($_color);
+        background: $_color;
+      }
+    }
+  }
+}

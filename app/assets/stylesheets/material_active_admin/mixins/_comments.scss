@@ -1,0 +1,84 @@
+%comments-constructor {
+  .panel_contents {
+    padding-bottom: 0;
+    margin: 0 ($panel-padding * -1);
+  }
+
+  .comment_item {
+    padding: 2 * $offset-base 3 * $offset-base;
+    background: $comment-bg;
+
+    .comment_item_inner {
+      display: flex;
+    }
+
+    .comment_avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $comment-avatar-size;
+      height: $comment-avatar-size;
+      margin-right: 2 * $offset-base;
+      overflow: hidden;
+      font-weight: $font-bold;
+      text-transform: uppercase;
+      background: $comment-avatar-bg;
+      border-radius: 50%;
+    }
+
+    .comment_header {
+      display: flex;
+      align-items: center;
+      margin-bottom: $offset-base / 2;
+
+      .comment_author {
+        flex: 1 1 auto;
+      }
+
+      .comment_date {
+        flex: 0 0 auto;
+        color: $comment-meta-text-color;
+      }
+
+      .comment_actions {
+        margin-left: $offset-base;
+      }
+    }
+
+    .comment_content {
+      flex: 1;
+    }
+  }
+
+  .admin-comment-form {
+    display: flex;
+    flex-direction: row;
+    padding: $panel-padding;
+    border-top: 1px solid $panel-divider-color;
+
+    .inputs {
+      flex: 1;
+      padding: 0;
+      overflow: visible;
+      border-radius: 0;
+      @include box-shadow(none);
+
+      & > ol {
+        padding: 0;
+        overflow: visible;
+      }
+    }
+
+    textarea,
+    .input {
+      flex: initial;
+      min-height: $ctrl-height;
+      margin-bottom: 0;
+    }
+
+    .actions {
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+}

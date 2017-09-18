@@ -4,29 +4,32 @@ html
     meta[content=("text/html; charset=utf-8") http-equiv="Content-type"]/
     meta[content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no" name="viewport"]/
     meta[name="apple-mobile-web-app-capable" content="yes"]
-    title= [@page_title, render_or_call_method_or_proc_on(self, ActiveAdmin.application.site_title)].compact.join(" | ")
-    - ActiveAdmin.application.stylesheets.each do |style, options|
-      = stylesheet_link_tag style, options
-    - ActiveAdmin.application.javascripts.each do |path|
-      = javascript_include_tag path
-    = favicon_link_tag ActiveAdmin.application.favicon if ActiveAdmin.application.favicon
-    - ActiveAdmin.application.meta_tags_for_logged_out_pages.each do |name, content|
-      = tag(:meta, name: name, content: content)
-    = csrf_meta_tag
+    title=[@page_title, render_or_call_method_or_proc_on(self, ActiveAdmin.application.site_title)].compact.join(" | ")
+    -ActiveAdmin.application.stylesheets.each do |style, options|
+      =stylesheet_link_tag style, options
+    -ActiveAdmin.application.javascripts.each do |path|
+      =javascript_include_tag path
+    =favicon_link_tag ActiveAdmin.application.favicon if ActiveAdmin.application.favicon
+    -ActiveAdmin.application.meta_tags_for_logged_out_pages.each do |name, content|
+      =tag(:meta, name: name, content: content)
+    =csrf_meta_tag
   body class=("active_admin logged_out #{controller.action_name}")
     #wrapper
       #content_wrapper
         #active_admin_content
-          -if ActiveAdmin.application.site_title_image.present?
-            #logo
-              =image_tag ActiveAdmin.application.site_title_image, :alt => ActiveAdmin.application.site_title, retina: true, class: "logo_normal"
-          -else 
-            #site-title=ActiveAdmin.application.site_title
-          #login
-            = yield :title
-            - flash_messages.each do |type, message|
-              = content_tag :div, message.downcase, class: "flash flash_#{type}"
-            = yield
-          #extra
-            = yield :extra
-        = yield :footer
+          #title
+            -if ActiveAdmin.application.site_title_image.present?
+              #logo
+                =image_tag ActiveAdmin.application.site_title_image, :alt => ActiveAdmin.application.site_title, retina: true, class: "logo_normal"
+            -else 
+              h1#site-title=ActiveAdmin.application.site_title
+          #login.panel
+            =yield :title
+            -flash_messages.each do |type, message|
+              =content_tag :div, message.downcase, class: "flash flash_#{type}"
+              
+            =yield
+            
+            #extra
+              =yield :extra
+          =render partial: "active_admin/devise/shared/footer"

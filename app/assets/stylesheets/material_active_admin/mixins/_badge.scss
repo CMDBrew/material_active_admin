@@ -1,0 +1,15 @@
+@mixin badge-constructor($_bg: $badge-bg) {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  width: $badge-height;
+  height: $badge-height;
+  padding: 0;
+  font-size: $badge-fontsize;
+  font-weight: $font-bold;
+  line-height: $badge-height;
+  color: adjust-text-color($_bg);
+  background: $_bg;
+  border-radius: $badge-radius;
+}

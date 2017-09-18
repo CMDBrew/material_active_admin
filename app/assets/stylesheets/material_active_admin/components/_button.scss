@@ -1,0 +1,20 @@
+@each $_klass, $_color in $color-map {
+  @each $_type in ('outline', 'default', 'link', 'solid') {
+    .aa-btn-#{$_type}.#{$_klass}:not(.btn-sm) {
+      @include button-constructor($_type: $_type, $_color: $_color);
+    }
+
+    .aa-btn-#{$_type}.#{$_klass}.btn-sm {
+      @include button-constructor($_type: $_type, $_color: $_color, $_size: 'sm');
+    }
+  }
+}
+
+@each $_klass, $_color in $color-map {
+  #batch_bar,
+  #title_bar {
+    .nav-btn.#{$_klass} {
+      @include button-constructor($_type: $navbar-btn-type, $_color: $_color, $_size: 'sm');
+    }
+  }
+}

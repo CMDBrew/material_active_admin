@@ -1,0 +1,50 @@
+@mixin margin-val ($_d, $_value) {
+  @if($_d == 'all') {
+    margin: $_value;
+  } @elseif($_d == 'horz')  {
+    margin-right: $_value;
+    margin-left: $_value;
+  } @elseif($_d == 'vert') {
+    margin-top: $_value;
+    margin-bottom: $_value;
+  } @else {
+    $_dir: -#{$_d};
+    margin#{$_dir}: $_value;
+  }
+}
+
+@mixin padding-val ($_d, $_value) {
+  @if($_d == 'all') {
+    padding: $_value;
+  } @elseif($_d == 'horz')  {
+    padding-right: $_value;
+    padding-left: $_value;
+  } @elseif($_d == 'vert') {
+    padding-top: $_value;
+    padding-bottom: $_value;
+  } @else {
+    $_dir: -#{$_d};
+    padding#{$_dir}: $_value;
+  }
+}
+
+@for $_i from 0 through 50 {
+  $_directions: ('all', 'top', 'bottom', 'left', 'right', 'horz', 'vert');
+  $_signs: ('', '-');
+  $_unit: $offset-base;
+
+  @each $_d in $_directions {
+    @each $_sign in $_signs {
+      $_klass: #{$_d}-#{$_sign}#{$_i}x;
+      $_value: calc(#{$_sign}#{$_i} * #{$_unit});
+
+      .m-#{$_klass}    { @include margin-val($_d, $_value); }
+      .m-#{$_klass}-sm { @include tablet { @include margin-val($_d, $_value); } }
+      .m-#{$_klass}-xs { @include mobile { @include margin-val($_d, $_value); } }
+
+      .p-#{$_klass}    { @include padding-val($_d, $_value); }
+      .p-#{$_klass}-sm { @include tablet { @include padding-val($_d, $_value); } }
+      .p-#{$_klass}-xs { @include mobile { @include padding-val($_d, $_value); } }
+    }
+  }
+}

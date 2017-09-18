@@ -1,0 +1,95 @@
+%nav-tabs {
+  position: fixed;
+  top: $navbar-height;
+  right: 0;
+  left: 0;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: $navbar-tab-height;
+  padding: 0;
+  margin: 0 auto;
+  background: $navbar-tab-bg;
+  @include box-shadow($navbar-shadow);
+}
+
+@mixin tab-constructor(
+  $_color: $panel-bg,
+  $_height: $tab-height,
+  $_indicator-bg: $tab-active-indicator-color,
+  $_badge-bg: $tab-badge-bg,
+  $_align: flex-start,
+  $_min-width: auto
+) {
+  z-index: 111;
+  display: flex;
+  flex-direction: row;
+  justify-content: $_align;
+  height: $_height;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  overflow-x: scroll;
+  background: $_color;
+  box-sizing: border-box;
+
+  @include non-selectable;
+
+  li {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    height: 100%;
+    min-width: $_min-width;
+    padding: 0;
+    overflow: hidden;
+    line-height: $_height;
+    color: adjust-text-color($_color);
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+    opacity: $tab-inactive-opacity;
+
+    &.ui-tabs-active,
+    &.selected {
+      opacity: 1;
+
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: $tab-active-indicator-height;
+        background: $_indicator-bg;
+        content: '';
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 3 * $offset-base;
+      font-size: $tab-fontsize;
+      font-weight: $font-bold;
+      line-height: $_height;
+      color: inherit;
+      text-transform: uppercase;
+      white-space: nowrap;
+      vertical-align: top;
+    }
+  }
+
+  span.count {
+    @include badge-constructor($_badge-bg);
+
+    margin-left: 2 * $offset-base;
+  }
+}

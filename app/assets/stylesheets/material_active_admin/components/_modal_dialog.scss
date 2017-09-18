@@ -1,0 +1,7 @@
+.ui-widget-overlay {
+  @extend %backdrop;
+}
+
+.ui-dialog {
+  @extend %modal-dialog;
+}

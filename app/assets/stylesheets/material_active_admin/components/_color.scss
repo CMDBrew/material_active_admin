@@ -1,0 +1,4 @@
+@each $_klass, $_color in $color-map {
+  .text-#{$_klass} { color: $_color; }
+  .bg-#{$_klass} { background-color: $_color; }
+}

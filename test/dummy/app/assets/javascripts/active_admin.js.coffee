@@ -1,4 +1,4 @@
-#= require cb_activeadmin/base
+#= require material_active_admin/base
 
 @InitTinyMCE = ->
   tinymce.init

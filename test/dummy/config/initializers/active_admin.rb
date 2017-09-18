@@ -4,9 +4,9 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Dummy"
+  config.site_title = "Clever Banana Studios Inc."
 
-  config.site_title_image = "slack-logo.png"
+  config.site_title_image = "logo.png"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -134,7 +134,7 @@ ActiveAdmin.setup do |config|
   # config.comments_menu = false
   #
   # You can customize the comment menu:
-  config.comments_menu = { label: proc { menu_label("format_quote", "Comment") } }
+  config.comments_menu = { label: proc { menu_label("Comment", icon: "format_quote") } }
 
   # == Batch Actions
   #
@@ -212,27 +212,27 @@ ActiveAdmin.setup do |config|
   #
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add :label    => proc { menu_label("apps", "Integration") },
+      menu.add :label    => proc { menu_label("Integration", icon: "apps") },
                :id       => "integration",
                :priority => 2
 
-      menu.add :label    => proc { menu_label("help", "Help") },
+      menu.add :label    => proc { menu_label("Help", icon: "help") },
                :id       => 'support',
                :priority => 99
     end
     admin.build_menu :utility_navigation do |menu|
 
-      menu.add  :label    => proc { menu_label("settings", admin_identifier(current_active_admin_user)) },
+      menu.add  :label    => proc { menu_label(current_active_admin_user.email, icon: "settings") },
                 :id       => 'current_admin_user',
                 :priority => 2
 
-      menu.add  :label    => proc { menu_label("person", "Profile") },
+      menu.add  :label    => "Profile",
                 :id       => "profile",
                 :url      => proc { admin_admin_user_path(current_active_admin_user) },
                 :priority => 1,
                 :parent   => 'current_admin_user'
 
-      menu.add  :label    => proc { menu_label("exit_to_app", "Log Out") },
+      menu.add  :label    => "Log Out",
                 :id       => "logout",
                 :url      => proc{ destroy_admin_user_session_path },
                 :priority => 2,

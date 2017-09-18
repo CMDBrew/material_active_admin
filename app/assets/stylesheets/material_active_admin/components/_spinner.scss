@@ -1,0 +1,9 @@
+@each $_klass, $_color in $color-map {
+  .aa-spinner.#{$_klass} {
+    @extend %spinner-constructor;
+
+    .circle::before {
+      background: $_color;
+    }
+  }
+}

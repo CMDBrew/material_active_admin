@@ -1,0 +1,76 @@
+@keyframes toast-animation {
+  from {
+    @include transform(translateY(calc(100% + 100px)));
+  }
+
+  to {
+    @include transform(translateY(0));
+  }
+}
+
+@-webkit-keyframes toast-animation {
+  from {
+    @include transform(translateY(calc(100% + 100px)));
+  }
+
+  to {
+    @include transform(translateY(0));
+  }
+}
+
+@mixin toast-constructor {
+  position: fixed;
+  bottom: 3 * $offset-base;
+  left: 3 * $offset-base;
+
+  @include transition(all 0.5s);
+  @include animation(toast-animation 0.2s);
+
+  @include mobile {
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    .toast {
+      max-width: none;
+      border-radius: 0;
+
+      .flash-message {
+        flex: 1;
+      }
+    }
+  }
+
+  &.removing {
+    @include transform(translateY(calc(100% + 100px)));
+  }
+
+  .toast {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    max-width: $toast-max-width;
+    padding: $offset-base;
+    background: $toast-bg;
+    border-radius: $toast-radius;
+    box-sizing: border-box;
+
+    @include box-shadow($toast-shadow);
+
+    .flash-message {
+      padding: 6px 2 * $offset-base;
+      color: adjust-text-color($toast-bg);
+
+      & + .toast-action {
+        margin-left: 3 * $offset-base;
+      }
+    }
+
+    button {
+      @include button-constructor(
+        $_color: $toast-btn-color, $_type: $toast-btn-type
+      );
+    }
+  }
+}

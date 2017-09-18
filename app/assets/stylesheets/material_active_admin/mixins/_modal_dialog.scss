@@ -1,0 +1,80 @@
+%modal-dialog {
+  position: fixed;
+  min-width: $modal-min-width;
+  overflow: hidden;
+  color: adjust-text-color($modal-bg);
+  background-color: $modal-bg;
+  border-radius: $modal-radius;
+
+  @include box-shadow($modal-shadow);
+
+  & > * {
+    display: block;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ui-dialog-titlebar {
+    padding: 3 * $offset-base;
+    padding-bottom: 2.5 * $offset-base;
+    overflow: hidden;
+    font-size: $h3-fontsize;
+    font-weight: $font-bold;
+    line-height: 1.3;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ui-dialog-titlebar-close {
+    display: none;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  li {
+    margin: $offset-base 0;
+  }
+
+  label {
+    margin-right: $offset-base;
+  }
+
+  .body {
+    padding: 3 * $offset-base;
+    padding-top: 0;
+    font-size: $p-fontsize;
+  }
+
+  .ui-dialog-buttonset {
+    text-align: right;
+  }
+
+  .ui-dialog-buttonpane {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 56px;
+    padding: 0 2 * $offset-base;
+    box-sizing: border-box;
+  }
+
+  form {
+    display: block;
+    min-height: 0;
+  }
+
+  .ui-dialog-buttonpane button {
+    float: right;
+  }
+
+  .aa-list {
+    @extend %modal-list;
+  }
+}

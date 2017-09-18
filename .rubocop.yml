@@ -9,6 +9,7 @@ AllCops:
     - 'db/schema.rb'
     - 'script/**/*'
     - 'node_modules/**/*'
+    - 'material_active_admin.gemspec'
 
 Rails:
   Enabled: true

@@ -1,0 +1,36 @@
+%blank-slate-constructor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3 * $offset-base;
+  color: $blank-slate-text-color;
+  box-sizing: border-box;
+
+  @include mobile {
+    padding: 1.5 * $offset-base;
+  }
+
+  & > i {
+    margin-bottom: $offset-base;
+    line-height: 1;
+    color: $blank-slate-text-color;
+
+    &::before {
+      font-size: 64px;
+    }
+  }
+
+  .title {
+    margin-bottom: $offset-base;
+  }
+
+  .blank_slate {
+    text-align: center;
+  }
+
+  a {
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,151 @@
+form {
+  ul.errors {
+    @include flash-constructor(get-map-value('flash_error', $flash-color-map));
+
+    padding-left: 4 * $offset-base;
+    margin-top: 0;
+    margin-bottom: 2 * $offset-base;
+  }
+
+  ol,
+  ul {
+    &:not(.errors) {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+
+  input {
+    &[type='submit'] {
+      @include button-constructor(
+        $_color: $form-submit-btn-color,
+        $_type: $form-submit-btn-type
+      );
+    }
+  }
+
+  label {
+    @extend %input-label;
+  }
+
+  fieldset.inputs:not(.has_many_fields) {
+    @include panel-constructor;
+
+    & > legend {
+      float: left;
+      width: 100%;
+    }
+  }
+
+  .inputs.has_many_fields {
+    padding-left: 3 * $offset-base;
+    margin-bottom: 3 * $offset-base;
+    border-left: 4px solid $panel-divider-color;
+  }
+
+  .button {
+    &.has_many_add {
+      @include button-constructor($_color: $brand-default, $_type: 'solid', $_size: 'sm');
+      float: left;
+    }
+
+    &.has_many_remove {
+      @include button-constructor($_color: $brand-danger, $_type: 'link', $_size: 'sm');
+      float: right;
+      padding: 0;
+    }
+  }
+
+  .input {
+    position: relative;
+    padding: 0;
+    margin-bottom: 3 * $offset-base;
+
+    &.hidden {
+      display: none;
+    }
+
+    &.error {
+      @extend %input-error;
+
+      label.label {
+        color: $brand-danger;
+      }
+    }
+
+    &.select,
+    &.filter_boolean,
+    &.select_and_search {
+      @include input-select-constructor;
+    }
+
+    &.date_range,
+    &.stringish {
+      @include input-text-constructor;
+    }
+
+    &.boolean {
+      @extend %input-checkbox-constructor;
+    }
+
+    &.text {
+      @include input-textarea-constructor;
+    }
+
+    &.file {
+      @include input-file-constructor;
+    }
+
+    &.datetime_select,
+    &.date_select {
+      .fragments-group {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+
+        .fragment {
+          flex: 1;
+
+          @include input-text-constructor;
+          @include input-select-constructor;
+
+          &:not(:last-child) {
+            margin-right: $offset-base;
+          }
+        }
+      }
+    }
+
+    .inline-errors {
+      margin-top: $offset-base;
+      font-size: $label-fontsize;
+      color: $brand-danger;
+    }
+
+    .inline-hints {
+      margin-top: 2 * $offset-base;
+      font-size: $p-fontsize;
+      color: $text-color-secondary;
+    }
+  }
+
+  .actions {
+    margin-top: $offset-base;
+
+    ol > li {
+      position: relative;
+      float: right;
+      width: auto;
+      margin-left: $offset-base;
+      overflow: hidden;
+    }
+  }
+
+  .cancel > a {
+    @include button-constructor(
+      $_color: $form-cancel-btn-color,
+      $_type: $form-cancel-btn-type
+    );
+  }
+}

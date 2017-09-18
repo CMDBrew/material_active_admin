@@ -1,4 +1,0 @@
-@each $color_class, $color in $text-color-map {
-  .text-#{$color_class} { color: $color; }
-  .bg-#{$color_class} { background-color: $color; }
-}

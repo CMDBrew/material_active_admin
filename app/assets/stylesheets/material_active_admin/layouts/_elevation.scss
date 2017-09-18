@@ -1,0 +1,50 @@
+#wrapper::after {
+  z-index: 1500;
+}
+
+#header {
+  @include tablet {
+    z-index: 1800;
+  }
+}
+
+#batch_bar {
+  z-index: 1400;
+}
+
+#title_bar {
+  z-index: 1300;
+}
+
+#search-filter {
+  z-index: 2400;
+}
+
+#toast-container {
+  z-index: 1100;
+}
+
+.select2-container {
+  z-index: 1999;
+}
+
+.dropdown_menu_list_wrapper {
+  z-index: 1000;
+}
+
+.ui-widget-overlay {
+  z-index: 2500;
+}
+
+.ui-dialog {
+  z-index: 2800;
+}
+
+.tooltip {
+  z-index: 2000;
+}
+
+.float_action,
+.bottom_sheet_wrapper {
+  z-index: 11;
+}
