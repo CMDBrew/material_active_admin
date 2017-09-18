@@ -70,6 +70,7 @@ $body-bg-logged-out:     $brand-primary !default;
 $color-adjust-intensity: 75 !default;
 $ripple-bg:              white !default;
 $aside-width:            320px !default;
+$backdrop-bg:            rgba(10, 10, 10, 0.6) !default;
 
 // Title Bar
 $titlebar-bg:         $brand-primary !default;
@@ -83,7 +84,7 @@ $batchbar-text-color: adjust-text-color($batchbar-bg) !default;
 $batchbar-badge-bg:   darken($batchbar-bg, 3%) !default;
 
 // Navbar
-$navbar-tab-bg:                     $brand-primary !default;
+$navbar-tab-bg:                     $titlebar-bg !default;
 $navbar-height:                     64px !default;
 $navbar-shadow:                     0 1px 8px rgba(0, 0, 0, 0.3) !default;
 $navbar-btn-type:                   'solid' !default;
@@ -110,7 +111,7 @@ $header-divider-color:          adjust-divider-color($header-bg) !default;
 $header-badge-bg:               $brand-danger !default;
 
 // Filter
-$filter-header-bg:           $brand-primary !default;
+$filter-header-bg:           $titlebar-bg !default;
 $filter-bg:                  white !default;
 $filter-width:               380px !default;
 $filter-shadow:              0 -5px 10px 0 rgba(0, 0, 0, 0.1) !default;
@@ -259,7 +260,6 @@ $pager-btn-color-active: adjust-ctrl-hover-bg($body-bg) !default;
 $pager-btn-text-color-active: $brand-primary !default;
 
 // Modal
-$modal-overlay-bg: rgba(10, 10, 10, 0.6) !default;
 $modal-bg: $panel-bg !default;
 $modal-shadow: 0 0 14px rgba(0, 0, 0, 0.24), 0 14px 28px rgba(0, 0, 0, 0.48) !default;
 $modal-radius: 0 !default;

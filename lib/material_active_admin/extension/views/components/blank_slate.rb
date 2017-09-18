@@ -26,10 +26,11 @@ module ActiveAdmin
       end
 
       def blank_slate_heading
-        h3(I18n.t('active_admin.blank_slate.heading'), class: 'title')
+        h3(I18n.t('material_active_admin.blank_slate.heading'), class: 'title')
       end
 
       def blank_slate_content(content)
+        # rubocop:disable Rails/OutputSafety
         content_tag(:span, content.html_safe, class: 'blank_slate')
       end
 
