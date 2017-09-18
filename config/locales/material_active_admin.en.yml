@@ -1,7 +1,6 @@
 en:
   material_active_admin:
-    powered_by: '©%{owner}. All Rights Reserved.'
-    version: 'Version: %{version}'
+    powered_by: '©%{owner}. All Rights Reserved. Version: %{version}'
     owner: "Clever Banana Studios Inc"
     file_preview:
       label: 'Current attachment: '

@@ -19,9 +19,9 @@ module ActiveAdmin
       private
 
       def powered_by_message
-        I18n.t('material_active_admin.powered_by', owner: t('material_active_admin.owner')) +
-          ' ' +
-          I18n.t('material_active_admin.version', version: MaterialActiveAdmin::VERSION)
+        I18n.t('material_active_admin.powered_by',
+               owner: t('material_active_admin.owner'),
+               version: MaterialActiveAdmin::VERSION)
       end
 
     end

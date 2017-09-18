@@ -2,6 +2,7 @@ require 'rubygems'
 require 'active_admin/engine'
 require 'select2-rails'
 require 'tinymce-rails'
+require 'material_active_admin/version'
 
 module MaterialActiveAdmin
 
