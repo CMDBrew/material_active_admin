@@ -38,9 +38,9 @@ const onDOMReady = function() {
   $(rippleTargets).aaRipple();
 };
 
-$(document).
-  ready(onDOMReady).
-  on('page:load turbolinks:load', onDOMReady);
+$(document)
+  .ready(onDOMReady)
+  .on('page:load turbolinks:load', onDOMReady);
 
 $(document).on('has_many_add:after', '.has_many_container', function(e, fieldset, container) {
   fieldset.find(':input').aaGuide();

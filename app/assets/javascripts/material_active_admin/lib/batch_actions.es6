@@ -59,6 +59,6 @@ const BatchAction = function() {
   }
 };
 
-$(document).
-  ready(BatchAction).
-  on('page:load turbolinks:load', BatchAction);
+$(document)
+  .ready(BatchAction)
+  .on('page:load turbolinks:load', BatchAction);
