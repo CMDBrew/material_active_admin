@@ -8,4 +8,7 @@ require 'sprockets/es6'
 
 # Engine
 module MaterialActiveAdmin
+
+  autoload :VERSION, 'material_active_admin/version'
+
 end
