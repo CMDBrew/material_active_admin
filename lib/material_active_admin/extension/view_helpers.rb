@@ -37,6 +37,7 @@ module ActiveAdmin::ViewHelpers
     title: blank_slate_title,
     msg: [blank_slate_body(resource_name)]
   )
+    msg ||= []
     msg << blank_slate_new_resource_path(new_resource_path).to_s
     content_tag :div, class: 'blank_slate_container' do
       concat(aa_icon(icon))
