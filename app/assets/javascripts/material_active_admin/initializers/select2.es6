@@ -30,6 +30,7 @@ ActiveAdmin.Select2 = class Select2 {
 
   _other_opts() {
     this.options = $.extend(this.options, {
+      tags: true,
       createTag: (params) => {
         return {
           id: params.term,
@@ -56,8 +57,8 @@ ActiveAdmin.Select2 = class Select2 {
     this._dynamic_opts();
 
     if(this.$element.hasClass('select2-hidden-accessible')) this._destroy();
-    if(this.$element.data('select2-search') === 'true') this._search_opts();
-    if(this.$element.data('select2-other') === 'true') this._other_opts();
+    if(this.$element.data('select2-search')) this._search_opts();
+    if(this.$element.data('select2-other')) this._other_opts();
 
     this.$element.select2(this.options);
     return this;
