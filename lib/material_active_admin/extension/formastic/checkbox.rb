@@ -15,8 +15,8 @@ module Formtastic
 
       def label_text
         template.content_tag :span, class: 'checkbox-label' do
-          (localized_label || humanized_method_name) +
-            requirement_text
+          template.concat(localized_label || humanized_method_name)
+          template.concat(requirement_text)
         end
       end
 
