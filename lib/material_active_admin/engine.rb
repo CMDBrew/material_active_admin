@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'active_admin/engine'
+require 'active_admin'
 require 'select2-rails'
 require 'tinymce-rails'
 
