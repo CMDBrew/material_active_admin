@@ -1,18 +1,104 @@
+function initImageUpload(editor, imageUrl) {
+  const inp = $('<input id="tinymce-image-uploader" type="file" name="pic" accept="image/*" style="display:none">');
+  $(editor.getElement()).parent().append(inp);
+
+  // add the image upload button to the editor toolbar
+  editor.addButton('image', {
+    text: '',
+    title: 'Insert image',
+    icon: 'image',
+    onclick(e) {
+      inp.trigger('click')
+    }
+  });
+
+  // when a file is selected, upload it to the server
+  inp.on("change", function(e){
+    uploadAsset($(this), editor, imageUrl, 'image');
+  });
+}
+
+function initFileUpload(editor, fileUrl) {
+  const inp = $('<input id="tinymce-file-uploader" type="file" name="pic" accept=".pdf" style="display:none">');
+  $(editor.getElement()).parent().append(inp);
+
+  // add the image upload button to the editor toolbar
+  editor.addButton('file', {
+    text: '',
+    title: 'Insert File',
+    icon: 'file',
+    onclick(e) {
+      inp.trigger('click')
+    }
+  });
+
+  // when a file is selected, upload it to the server
+  inp.on("change", function(e){
+    uploadAsset($(this), editor, fileUrl, 'file');
+  });
+}
+
+function uploadAsset(inp, editor, url, asset_type) {
+  const $el    = $(editor.getElement());
+  const urlArr = $el.parents('form').attr('action').split('/').slice(2);
+  const input  = inp.get(0);
+  const data   = new FormData();
+  const attribute_name = $el.attr('name');
+
+  let parent_type = $el.data('parent-type') ? $el.data('parent-type') : urlArr[0];
+  let parent_id   = $el.data('parent-id') ? $el.data('parent-id') : urlArr[1];
+  let name_arr    = attribute_name.match(/\[(.*?)\]/);
+  let name        = name_arr[name_arr.length - 1].replace(/[\[\]\s]/g, '');
+
+  data.append('parent_type', parent_type);
+  data.append('parent_id', parent_id);
+  data.append('file_type', asset_type);
+  data.append('file', input.files[0]);
+  data.append('field_name', name);
+
+  $.ajax({
+    url,
+    type: 'POST',
+    data,
+    processData: false, // Don't process the files
+    contentType: false, // Set content type to false as jQuery will tell the server its a query string request
+    dataType: 'json',
+    success(data, textStatus, jqXHR) {
+      switch( asset_type ) {
+        case 'image':
+          editor.insertContent(`<img id='asset-${data.id}' title="${data.name}" class="assets" src="${data.url}"/>`);
+          break;
+        case 'file':
+          editor.insertContent(`<a id='asset-${data.id}' class="assets" href="${data.url}" target="_blank">${data.name}</a>`);
+          break;
+      }
+    },
+    error(jqXHR, textStatus, errorThrown) {
+      if(jqXHR.responseText) {
+        errors = JSON.parse(jqXHR.responseText).errors
+        alert(`Error uploading image: ${errors.join(", ")}. Make sure the file is an image and has extension jpg/jpeg/png.`);
+      }
+    }
+  });
+}
+
+
 ActiveAdmin.TinyMCE = class TinyMCE {
   constructor(options, element) {
     this.options = options;
     this.element = element;
 
     const defaults = {
+      themes: 'modern',
       height: 400,
       menubar: false,
       plugins: [
-        'advlist autolink lists link image charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
+        'advlist autolink lists link charmap print preview anchor',
+        'searchreplace visualblocks fullscreen',
         'insertdatetime media table contextmenu paste code',
         'table textcolor wordcount hr'
       ],
-      toolbar1: 'undo redo | removeformat | table link hr | alignleft aligncenter alignright outdent indent bullist numlist',
+      toolbar1: 'undo redo | removeformat | table link image file hr | alignleft aligncenter alignright outdent indent bullist numlist',
       toolbar2: 'formatselect | forecolor backcolor bold italic underline strikethrough blockquote superscript subscript',
       block_formats: 'Header 1=h1; Header 2=h2; Header 3=h3; Header 4=h4; Header 5=h5; Header 6=h6; Paragraph=p',
       browser_spellcheck: true,
@@ -22,9 +108,17 @@ ActiveAdmin.TinyMCE = class TinyMCE {
       table_advtab: false,
       table_cell_advtab: false,
       table_row_advtab: false,
+      code_dialog_height: 300,
+      code_dialog_width: 300,
       content_css: [
         "<%= asset_url('/assets/material_active_admin/tinymce/style') %>"
-      ]
+      ],
+      setup(editor) {
+        let imageUrl = $(editor.getElement()).data('image-url');
+        let fileUrl = $(editor.getElement()).data('file-url');
+        if(imageUrl) initImageUpload( editor, imageUrl )
+        if(fileUrl) initFileUpload( editor, fileUrl )
+      }
     };
 
     this.options = $.extend(defaults, this.options);
