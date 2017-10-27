@@ -633,5 +633,7 @@
     &.mce-i-resize::before                 { content: get-icon('resize-bottom-right'); }
     &.mce-i-checkbox::before               { content: get-icon('checkbox-blank-outline'); }
     &.mce-i-hr::before                     { content: get-icon('border-horizontal'); }
+    &.mce-i-image::before                  { content: get-icon('file-image'); }
+    &.mce-i-file::before                   { content: get-icon('file-pdf'); }
   }
 }
