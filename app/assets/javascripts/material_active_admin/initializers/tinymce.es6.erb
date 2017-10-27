@@ -47,7 +47,7 @@ function uploadAsset(inp, editor, url, asset_type) {
 
   let parent_type = $el.data('parent-type') ? $el.data('parent-type') : urlArr[0];
   let parent_id   = $el.data('parent-id') ? $el.data('parent-id') : urlArr[1];
-  let name_arr    = attribute_name.match(/\[(.*?)\]/);
+  let name_arr    = attribute_name.match(/\[(.*?)\]/g);
   let name        = name_arr[name_arr.length - 1].replace(/[\[\]\s]/g, '');
 
   data.append('parent_type', parent_type);
