@@ -40,21 +40,11 @@ function initFileUpload(editor, fileUrl) {
 
 function uploadAsset(inp, editor, url, asset_type) {
   const $el    = $(editor.getElement());
-  const urlArr = $el.parents('form').attr('action').split('/').slice(2);
   const input  = inp.get(0);
   const data   = new FormData();
-  const attribute_name = $el.attr('name');
 
-  let parent_type = $el.data('parent-type') ? $el.data('parent-type') : urlArr[0];
-  let parent_id   = $el.data('parent-id') ? $el.data('parent-id') : urlArr[1];
-  let name_arr    = attribute_name.match(/\[(.*?)\]/g);
-  let name        = name_arr[name_arr.length - 1].replace(/[\[\]\s]/g, '');
-
-  data.append('parent_type', parent_type);
-  data.append('parent_id', parent_id);
   data.append('file_type', asset_type);
   data.append('file', input.files[0]);
-  data.append('field_name', name);
 
   $.ajax({
     url,
@@ -78,7 +68,10 @@ function uploadAsset(inp, editor, url, asset_type) {
         errors = JSON.parse(jqXHR.responseText).errors
         alert(`Error uploading image: ${errors.join(", ")}. Make sure the file is an image and has extension jpg/jpeg/png.`);
       }
-    }
+    },
+  })
+  .done(function() {
+    inp.val('');
   });
 }
 
