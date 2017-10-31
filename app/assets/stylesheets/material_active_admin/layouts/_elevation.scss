@@ -26,6 +26,8 @@
 
 .select2-container {
   z-index: 1000;
+
+  &.select2-container--open { z-index: 3000; }
 }
 
 .dropdown_menu_list_wrapper {
