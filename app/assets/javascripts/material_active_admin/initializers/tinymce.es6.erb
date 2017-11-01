@@ -38,10 +38,30 @@ function initFileUpload(editor, fileUrl) {
   });
 }
 
+function spinnerInit(editor, action = 'create') {
+  switch( action ) {
+    case 'create':
+      const spinner = $('<div class="mce-spinner-wrap"><div class="aa-spinner primary-inverse"></div></div>');
+
+      for (let i = 0; i < 12; i++) {
+        $(spinner).find(".aa-spinner").append('<span class="circle"></span>');
+      }
+
+      $(editor.getElement()).siblings('.mce-tinymce').append(spinner);
+
+      break;
+    default:
+      $(editor.getElement()).siblings('.mce-tinymce').find('.mce-spinner-wrap').remove();
+      break;
+  }
+}
+
 function uploadAsset(inp, editor, url, asset_type) {
   const $el    = $(editor.getElement());
   const input  = inp.get(0);
   const data   = new FormData();
+
+  spinnerInit(editor);
 
   data.append('file_type', asset_type);
   data.append('file', input.files[0]);
@@ -72,6 +92,7 @@ function uploadAsset(inp, editor, url, asset_type) {
   })
   .done(function() {
     inp.val('');
+    spinnerInit(editor, 'destroy');
   });
 }
 
