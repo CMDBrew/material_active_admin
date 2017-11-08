@@ -125,7 +125,7 @@ ActiveAdmin.TinyMCE = class TinyMCE {
       code_dialog_height: 300,
       code_dialog_width: 300,
       content_css: [
-        "<%= asset_url('/assets/material_active_admin/tinymce/style') %>"
+        "<%= asset_url('material_active_admin/tinymce/style') %>"
       ],
       setup(editor) {
         let imageUrl = $(editor.getElement()).data('image-url');
