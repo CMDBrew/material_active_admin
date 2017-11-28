@@ -4,4 +4,8 @@ body.mce-content-body {
   padding: 2 * $offset-base;
   margin: 0;
   color: adjust-text-color($tinymce-bg);
+
+  img {
+    &[class='assets'] { max-width: 100%; }
+  }
 }
