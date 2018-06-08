@@ -99,6 +99,7 @@ function uploadAsset(inp, editor, url, asset_type) {
 
 ActiveAdmin.TinyMCE = class TinyMCE {
   constructor(options, element) {
+
     this.options = options;
     this.element = element;
 
@@ -122,6 +123,8 @@ ActiveAdmin.TinyMCE = class TinyMCE {
       table_advtab: false,
       table_cell_advtab: false,
       table_row_advtab: false,
+      forced_root_block : false,
+      force_p_newlines : true,
       code_dialog_height: 300,
       code_dialog_width: 300,
       content_css: [
@@ -148,6 +151,7 @@ ActiveAdmin.TinyMCE = class TinyMCE {
     tinymce.init(this.options);
     return this;
   }
+
 };
 
 $.widget.bridge('aaTinyMCE', ActiveAdmin.TinyMCE);
